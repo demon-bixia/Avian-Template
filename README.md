@@ -1,16 +1,59 @@
-# Vue 3 + TypeScript + Vite
+<img src="src/assets/cover.svg"/>
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Resources
 
-## Recommended IDE Setup
+<p>The resources used in this project are:</p>
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+- <a href="https://vuejs.org/">Vue 3</a>
+- <a href="https://pinia.vuejs.org/">Pinia</a>
+- <a href="https://tailwindcss.com/">Tailwind CSS</a>
+- <a href="https://heroicons.com/">Heroicons</a>
+- <a href="https://www.figma.com/file/P4anyRLoN2NNhDicfFUcqi/Avian-Chat?node-id=0%3A1">Design System</a>
 
-## Type Support For `.vue` Imports in TS
+## Setup
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+<p>1. Clone the repository.</p>
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+```bash
+git clone https://github.com/demon-bixia/Avian.git
+```
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+<p>2. Install dependencies.</p>
+
+```bash
+npm install
+```
+
+<p>3. Run the development server.</p>
+
+```bash
+npm run dev
+```
+
+## Design
+
+
+<img src="src/assets/screenshots/login.png"/>
+<p>login page</p>
+
+<br/>
+
+<img src="src/assets/screenshots/messages.jpg"/>
+<p>messages page</p>
+
+<br/>
+
+<img src="src/assets/screenshots/contacts.png"/>
+<p>contacts page</p>
+
+<br/>
+
+<img src="src/assets/screenshots/notifications.png"/>
+<p>notifications page</p>
+
+<br/>
+
+<img src="src/assets/screenshots/archived messages.png"/>
+<p>archives messages page</p>
+
+<br/>
