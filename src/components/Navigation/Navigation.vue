@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import { ArchiveBoxIcon, BellIcon, ChatBubbleOvalLeftIcon, Cog6ToothIcon, MoonIcon, UserIcon } from "@heroicons/vue/24/solid";
-import { ForwardIcon } from "@heroicons/vue/24/outline";
+import { ForwardIcon, ArrowLeftOnRectangleIcon, ArrowPathIcon, InformationCircleIcon } from "@heroicons/vue/24/outline";
 import { ref } from "vue";
 import Logo from "../../assets/logo.svg";
-import Person1 from '../../assets/people/person-1.jpg';
 import NavLink from "./NavLink.vue";
+import useChatStore from "../../stores/chat";
+import useAuthStore from "../../stores/auth";
+
+const auth = useAuthStore();
+const chat = useChatStore();
+
+const showDropdown = ref(false);
 
 let LinkFocused = ref(false);
 
@@ -15,6 +21,10 @@ const handleLinkFocus = () => {
 const handleLinkBlur = () => {
     LinkFocused.value = false;
 };
+
+const handleActiveComponentChange = (value: string) => {
+    chat.activeSidebarComponent = value;
+};
 </script>
 
 <template>
@@ -22,11 +32,11 @@ const handleLinkBlur = () => {
         <!-- logo -->
         <div class="mb-7 h-7">
             <a href="#mainContent" title="Skip to main content" tabindex="0" @blur="handleLinkBlur"
-                @focus="handleLinkFocus" :class="{absolute: !LinkFocused, 'left-full': !LinkFocused}">
+                @focus="handleLinkFocus" :class="{absolute: !LinkFocused, 'right-[10000px]': !LinkFocused}">
                 <ForwardIcon class="w-7 h-6 text-indigo-300" />
             </a>
 
-            <a href="#" :class="{hidden:LinkFocused}">
+            <a href="#" :class="{'hidden':LinkFocused}">
                 <Logo class="w-8 h-7" />
             </a>
         </div>
@@ -36,16 +46,23 @@ const handleLinkBlur = () => {
             <nav aria-label="Main navigation">
                 <ul>
                     <li>
-                        <NavLink :icon="ChatBubbleOvalLeftIcon" title="Conversations" />
+                        <NavLink :icon="ChatBubbleOvalLeftIcon" title="Conversations"
+                            @click="()=>handleActiveComponentChange('messages')"
+                            :active="chat.activeSidebarComponent === 'messages'" />
                     </li>
                     <li>
-                        <NavLink :icon="UserIcon" title="Contacts" />
+                        <NavLink :icon="UserIcon" title="Contacts" @click="()=>handleActiveComponentChange('contacts')"
+                            :active="chat.activeSidebarComponent === 'contacts'" />
                     </li>
                     <li>
-                        <NavLink :icon="BellIcon" :notifications="3" title="Notifications" />
+                        <NavLink :icon="BellIcon" title="Notifications"
+                            @click="()=>handleActiveComponentChange('notifications')"
+                            :active="chat.activeSidebarComponent === 'notifications'" />
                     </li>
                     <li>
-                        <NavLink :icon="ArchiveBoxIcon" title="Archived messages" />
+                        <NavLink :icon="ArchiveBoxIcon" title="Archived messages"
+                            @click="()=>handleActiveComponentChange('archive')"
+                            :active="chat.activeSidebarComponent === 'archive'" />
                     </li>
                 </ul>
 
@@ -60,17 +77,79 @@ const handleLinkBlur = () => {
                         <NavLink :icon="MoonIcon" title="Night mode" />
                     </li>
                     <li>
-                        <NavLink :icon="Cog6ToothIcon" title="Settings" />
+                        <NavLink :icon="Cog6ToothIcon" title="Settings"
+                            @click="()=>handleActiveComponentChange('settings')"
+                            :active="chat.activeSidebarComponent === 'settings'" />
                     </li>
                 </ul>
             </nav>
 
             <hr class="mb-6 border-gray-100" />
-            <button
-                class="bg-white rounded-full shadow shadow-indigo-500 hover:shadow-md active:scale-110 transition duration-300 ease-out">
-                <div :style="{ backgroundImage: `url(${Person1})`}" class="w-7 h-7  rounded-full bg-cover bg-center">
-                </div>
-            </button>
+
+            <div class="relative">
+                <button @blur="showDropdown=false" @click="showDropdown = !showDropdown"
+                    class="bg-white rounded-full active:scale-110 transition duration-200 ease-out focus:outline-none "
+                    style="box-shadow:0 2px 5px rgba(193, 202, 255, 0.5),2px 0 5px rgba(193, 202, 255, 0.5),-2px 0 5px rgba(193, 202, 255, 0.5),0 -2px 5px rgba(193, 202, 255, 0.5);">
+                    <div :style="{ backgroundImage: `url(${auth.user?.avatar})`}"
+                        class="w-7 h-7  rounded-full bg-cover bg-center">
+                    </div>
+                </button>
+
+                <!--dropdown menu-->
+                <Transition name="scale">
+                    <div v-show="showDropdown"
+                        class="absolute bottom-0 left-[40px] z-10 mt-2 w-56  rounded-sm bg-white shadow-lg ring-1 ring-gray-100 focus:outline-none"
+                        role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="0">
+                        <div class="py-1" role="none">
+                            <a href="#"
+                                class=" border-b border-gray-200 text-black opacity-60 active:bg-gray-100 hover:bg-gray-50 duration-200 px-4 py-3 text-sm flex items-center"
+                                role="menuitem" tabindex="-1" id="menu-item-0">
+                                <InformationCircleIcon class="text-black opacity-60 h-5 w-5 mr-3" /> Profile Information
+                            </a>
+                            <a href="#"
+                                class=" border-b border-gray-200 text-black opacity-60 active:bg-gray-100 hover:bg-gray-50 duration-200 px-4 py-3 text-sm flex items-center"
+                                role="menuitem" tabindex="-1" id="menu-item-0">
+                                <ArrowPathIcon class="text-black opacity-60 h-5 w-5 mr-3" /> Password Change
+                            </a>
+                            <a href="#"
+                                class="  text-red-500  active:bg-red-100 hover:bg-red-50 duration-200 px-4 py-3 text-sm flex items-center"
+                                role="menuitem" tabindex="-1" id="menu-item-0">
+                                <ArrowLeftOnRectangleIcon class="text-red-500 h-5 w-5 mr-3" /> Logout
+                            </a>
+                        </div>
+                    </div>
+                </Transition>
+            </div>
         </div>
     </aside>
 </template>
+
+<style scoped>
+.scale-enter-active {
+    transition: all 0.100s ease-out;
+}
+
+.scale-leave-active {
+    transition: all 0.075s ease-in;
+}
+
+.scale-enter-from {
+    opacity: 0;
+    transform: scale(.95);
+}
+
+.scale-enter-to {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.scale-leave-from {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.scale-leave-to {
+    opacity: 0;
+    transform: scale(.95);
+}
+</style>

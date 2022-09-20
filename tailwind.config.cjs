@@ -1,9 +1,11 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
+
   theme: {
     extend: {
       color: {
@@ -104,8 +106,13 @@ module.exports = {
           '70': '0.70',
           '90': '0.90',
         },
+
+        boxShadow: {
+          'cxl': '0 2px 5px rgba(193, 202, 255, 0.5), 2px 0 5px rgba(193, 202, 255, 0.5), -2px 0 5px rgba(193, 202, 255, 0.5), 0 -2px 5px rgba(193, 202, 255, 0.5)'
+        }
       }
-    },
+    }
   },
+
   plugins: [],
-}
+};
