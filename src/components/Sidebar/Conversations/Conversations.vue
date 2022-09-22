@@ -3,13 +3,13 @@ import { PencilSquareIcon } from "@heroicons/vue/24/outline";
 import type { Ref } from "vue";
 import { ref, watch } from "vue";
 import useChatStore, { Conversation as ConversationType } from "../../../stores/chat";
+import ContactGroups from "../Contacts/ContactGroups.vue";
 import Content from "../Content.vue";
 import Conversation from "../Conversation.vue";
 import Header from "../Header.vue";
-import LoadingConversation from "../loadingComponents/LoadingConversation.vue";
+import Loading1Vue from "../../loading/Loading1.vue";
+import Modal from "../../modals/Modal.vue";
 import Search from "../Search.vue";
-import Modal from "../Modal.vue";
-import ContactGroups from "../Contacts/ContactGroups.vue";
 
 const chat = useChatStore();
 
@@ -17,8 +17,12 @@ const filteredConversations: Ref<ConversationType[] | undefined> = ref(chat.conv
 
 const searchText: Ref<string> = ref('');
 
+const combineName = (conversation: ConversationType) => {
+    return conversation.contact.firstName.toLowerCase() + ' ' + conversation.contact.lastName.toLowerCase();
+};
+
 watch(searchText, () => {
-    filteredConversations.value = chat.conversations?.filter((conversation) => conversation.name.toLowerCase().includes(searchText.value.toLowerCase()));
+    filteredConversations.value = chat.conversations?.filter((conversation) => combineName(conversation).includes(searchText.value.toLowerCase()));
 });
 
 const open = ref(false);
@@ -29,6 +33,10 @@ const openModal = () => {
 
 const closeModal = () => {
     open.value = false;
+};
+
+const handleConversationChange = (conversationId: number) => {
+    chat.activeConversationId = conversationId;
 };
 </script>
 
@@ -48,26 +56,28 @@ const closeModal = () => {
 
         <Content>
             <template v-slot:content>
-                <Conversation v-if="chat.status === 'success' && !chat.delayLoading"
-                    v-for="conversation in filteredConversations" :conversation="conversation" :key="conversation.id" />
+                <Conversation :handle-conversation-change="handleConversationChange"
+                    :active-id="(chat.activeConversationId as number)"
+                    v-if="chat.status === 'success' && !chat.delayLoading" v-for="conversation in filteredConversations"
+                    :conversation="conversation" :key="conversation.id" />
 
-                <LoadingConversation v-if="chat.status === 'loading'  || chat.delayLoading" v-for="item in 6" />
+                <Loading1Vue v-if="chat.status === 'loading'  || chat.delayLoading" v-for="item in 6" />
             </template>
         </Content>
 
-        <Modal :open="open" :closeModal="closeModal" :isList="true">
+        <Modal :open="open" :close-modal="closeModal" :is-list="true">
             <template v-slot:header>
                 Contacts
             </template>
-            <template v-slot:search>
+            <template v-slot:middle>
                 <div class="mb-2">
                     <Search />
                 </div>
             </template>
             <template v-slot:content>
                 <ContactGroups v-if="chat.status === 'success' && !chat.delayLoading"
-                    :contactGroups="chat.contactGroups" :slim="true" />
-                <LoadingConversation v-if="chat.status === 'loading'  || chat.delayLoading" v-for="item in 3" />
+                    :contact-groups="chat.contactGroups" :slim="true" />
+                <Loading1Vue v-if="chat.status === 'loading'  || chat.delayLoading" v-for="item in 3" />
             </template>
         </Modal>
     </div>

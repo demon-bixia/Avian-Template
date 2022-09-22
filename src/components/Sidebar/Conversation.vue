@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { defineProps } from "vue";
-import { Conversation } from "../../stores/chat";
-import { ref } from "vue";
+import { ArchiveBoxArrowDownIcon, InformationCircleIcon, TrashIcon } from "@heroicons/vue/24/outline";
 import type { Ref } from "vue";
-import { TrashIcon, InformationCircleIcon, ArchiveBoxArrowDownIcon } from "@heroicons/vue/24/outline";
+import { defineProps, ref, watch } from "vue";
+import { Conversation } from "../../stores/chat";
 
 const props = defineProps<{
     conversation: Conversation,
     slim?: boolean,
+    activeId?: number,
+    handleConversationChange?: (conversationId: number) => void,
 }>();
 
 const showContextMenu = ref(false);
@@ -19,17 +20,31 @@ const handleShowContextMenu = (event: any) => {
     contextMenuCordinations.value = { x: event.pageX, y: window.innerHeight - 125 <= event.pageY ? window.innerHeight - 200 : event.pageY };
 };
 
+const handleSelectConversation = () => {
+    showContextMenu.value = false;
+    if (props.handleConversationChange)
+        props.handleConversationChange(props.conversation.id);
+};
+
+const isActive: Ref<boolean> = ref(props.activeId === props.conversation.id);
+
+const getActiveId = () => props.activeId;
+
+watch(getActiveId, () => {
+    isActive.value = props.activeId === props.conversation.id
+});
+
 </script>
 
 <template>
     <div>
         <a tabindex="0" @blur="showContextMenu = false" @contextmenu.prevent="handleShowContextMenu"
-            @click="showContextMenu = false" href="#"
+            @click="handleSelectConversation" href="#"
             class="w-full flex px-5 py-6 mb-3 hover:bg-indigo-50 active:bg-indigo-100 duration-200 transition ease-out focus:outline-none focus:bg-indigo-50"
-            :class="{'rounded': !slim, 'py-6': !slim, 'py-[16px]': slim}">
+            :class="{'rounded': !slim, 'py-6': !slim, 'py-[16px]': slim, 'bg-indigo-50': isActive}">
             <!--profile image-->
             <div class="mr-4">
-                <div :style="{ backgroundImage: `url(${props.conversation.avatar})`}"
+                <div :style="{ backgroundImage: `url(${props.conversation.contact.avatar})`}"
                     class="w-7 h-7 rounded-full bg-cover bg-center">
                 </div>
             </div>
@@ -38,8 +53,9 @@ const handleShowContextMenu = (event: any) => {
             <div class="grow">
                 <div class="flex flex-col items-start">
                     <p class="mb-4 opacity-60 font-semibold text-sm leading-4 tracking-[0.16px]">
-                        {{props.conversation.name}}
+                        {{props.conversation.contact.firstName + ' ' + props.conversation.contact.lastName}}
                     </p>
+
                     <p class="opacity-60 font-normal text-sm leading-4 tracking-[0.16px]">
                         {{props.conversation.messages[props.conversation.messages.length - 1].content}}
                     </p>

@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import Conversations from "./Conversations/Conversations.vue";
-import Contacts from "./Contacts/Contacts.vue";
-import Notifications from "./Notifications/Notifications.vue";
-import Archive from "./Archive/Archive.vue";
-import Settings from "./Settings/Settings.vue";
-import useChatStore from "../../stores/chat";
 import { computed } from "vue";
+import useChatStore from "../../stores/chat";
+import Archive from "./Archive/Archive.vue";
+import Contacts from "./Contacts/Contacts.vue";
+import Conversations from "./Conversations/Conversations.vue";
+import Notifications from "./Notifications/Notifications.vue";
+import Settings from "./Settings/Settings.vue";
+import FadeTransition from "../transitions/FadeTransition.vue";
 
 const chat = useChatStore();
 
@@ -25,21 +26,9 @@ const ActiveComponent = computed(() => {
 </script>
 
 <template>
-    <div class="w-[290px] h-full flex flex-col overflow-visible">
-        <Transition name="fade" mode="out-in">
+    <div class="w-[290px] h-full  flex flex-col overflow-visible">
+        <FadeTransition>
             <component :is="ActiveComponent" class="h-full flex flex-col" />
-        </Transition>
+        </FadeTransition>
     </div>
 </template>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.2s ease-in;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-    opacity: 0;
-}
-</style>

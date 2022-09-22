@@ -2,25 +2,7 @@ import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 import type { Ref } from "vue";
 import { DefaultSettings } from "./defaultData";
-
-export interface Message {
-    content: string,
-    date: string,
-    sender: {
-        id: number,
-        firstName: string,
-        lastName: string,
-        email: string
-        avatar: string,
-    }
-};
-
-export interface Conversation {
-    id: number,
-    name: string,
-    avatar: string,
-    messages: Message[],
-};
+import { CONVERSATIONS, CONTACTS, NOTIFICATIONS, ARCHIVE } from "./fakeData";
 
 export interface Contact {
     id: number,
@@ -29,6 +11,19 @@ export interface Contact {
     avatar: string,
     email: string,
     lastSeen: Date,
+};
+
+export interface Message {
+    content: string,
+    date: string,
+    sender: Contact
+};
+
+
+export interface Conversation {
+    id: number,
+    contact: Contact,
+    messages: Message[],
 };
 
 export interface ContactGroup {
@@ -66,15 +61,16 @@ const useChatStore = defineStore("chat", () => {
     const status = ref('idle');
 
     // app data refs
-    const contacts: Ref<Contact[] | undefined> = ref(storage.contacts); // fetched always
-    const conversations: Ref<Conversation[] | undefined> = ref(storage.conversations); // not fetched but updated
-    const notifications: Ref<Notification[] | undefined> = ref(storage.notifications); // not fetched but updated
-    const archivedConversations: Ref<Conversation[] | undefined> = ref(storage.archivedConversations); // not fetched
-    const settings: Ref<Settings[]> = ref(/*storage.settings ||*/ DefaultSettings); // not fetched
+    const contacts: Ref<Contact[] | undefined> = ref(CONTACTS); // fetched always
+    const conversations: Ref<Conversation[] | undefined> = ref(CONVERSATIONS); // not fetched but updated
+    const notifications: Ref<Notification[] | undefined> = ref(NOTIFICATIONS); // not fetched but updated
+    const archivedConversations: Ref<Conversation[] | undefined> = ref(ARCHIVE); // not fetched
+    const settings: Ref<Settings[]> = ref(storage.settings || DefaultSettings); // not fetched
 
     // ui refs
     const activeSidebarComponent: Ref<string> = ref(storage.activeSidebarComponent || 'messages');
     const delayLoading: Ref<boolean> = ref(true);
+    const activeConversationId: Ref<number | null> = ref(storage.activeConversationId || storage.conversations[0].id || null);
 
     // contacts grouped alphabetically.
     const contactGroups: Ref<ContactGroup[] | undefined> = computed(() => {
@@ -127,6 +123,7 @@ const useChatStore = defineStore("chat", () => {
         // ui refs
         activeSidebarComponent,
         delayLoading,
+        activeConversationId,
     };
 });
 

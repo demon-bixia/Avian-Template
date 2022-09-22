@@ -1,14 +1,16 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
 import type { Ref } from "vue";
+import { ref } from "vue";
 import { USER } from "./fakeData";
 
-interface User {
+export interface User {
+    id: number,
     firstName: string,
     lastName: string,
     email: string,
     avatar: string,
     token: string,
+    lastSeen: Date,
 };
 
 const useAuthStore = defineStore("auth", () => {

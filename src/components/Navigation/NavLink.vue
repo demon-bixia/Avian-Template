@@ -20,7 +20,7 @@ const { icon, notifications } = defineProps<{
 
             <!--pill-->
             <div v-if="notifications"
-                class="border border-white text-white bg-indigo-300 rounded-full flex items-center justify-center text-xs w-5 h-5 absolute right-0 top-3">
+                class="border border-white text-white bg-indigo-400 rounded-full flex items-center justify-center text-xs w-5 h-5 absolute right-0 top-3">
                 {{notifications}}
             </div>
         </a>

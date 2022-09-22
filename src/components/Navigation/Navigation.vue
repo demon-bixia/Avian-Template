@@ -6,6 +6,7 @@ import Logo from "../../assets/logo.svg";
 import NavLink from "./NavLink.vue";
 import useChatStore from "../../stores/chat";
 import useAuthStore from "../../stores/auth";
+import ScaleTransition from "../transitions/ScaleTransition.vue";
 
 const auth = useAuthStore();
 const chat = useChatStore();
@@ -55,7 +56,7 @@ const handleActiveComponentChange = (value: string) => {
                             :active="chat.activeSidebarComponent === 'contacts'" />
                     </li>
                     <li>
-                        <NavLink :icon="BellIcon" title="Notifications"
+                        <NavLink :icon="BellIcon" title="Notifications" :notifications="3"
                             @click="()=>handleActiveComponentChange('notifications')"
                             :active="chat.activeSidebarComponent === 'notifications'" />
                     </li>
@@ -96,7 +97,7 @@ const handleActiveComponentChange = (value: string) => {
                 </button>
 
                 <!--dropdown menu-->
-                <Transition name="scale">
+                <ScaleTransition>
                     <div v-show="showDropdown"
                         class="absolute bottom-0 left-[40px] z-10 mt-2 w-56  rounded-sm bg-white shadow-lg ring-1 ring-gray-100 focus:outline-none"
                         role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="0">
@@ -118,38 +119,8 @@ const handleActiveComponentChange = (value: string) => {
                             </a>
                         </div>
                     </div>
-                </Transition>
+                </ScaleTransition>
             </div>
         </div>
     </aside>
 </template>
-
-<style scoped>
-.scale-enter-active {
-    transition: all 0.100s ease-out;
-}
-
-.scale-leave-active {
-    transition: all 0.075s ease-in;
-}
-
-.scale-enter-from {
-    opacity: 0;
-    transform: scale(.95);
-}
-
-.scale-enter-to {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.scale-leave-from {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.scale-leave-to {
-    opacity: 0;
-    transform: scale(.95);
-}
-</style>

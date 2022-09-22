@@ -2,11 +2,11 @@
 import useChatStore, { Conversation as ConversationType } from "../../../stores/chat";
 import Content from "../Content.vue";
 import Conversation from "../Conversation.vue";
-import LoadingConversation from "../loadingComponents/LoadingConversation.vue";
 import Header from "../Header.vue";
 import Search from "../Search.vue";
 import { watch, ref } from "vue";
 import type { Ref } from "vue";
+import Loading1Vue from "../../loading/Loading1.vue";
 
 const chat = useChatStore();
 
@@ -32,7 +32,7 @@ watch(searchText, () => {
                 <Conversation v-if="chat.status === 'success' && !chat.delayLoading"
                     v-for="conversation in filteredConversations" :conversation="conversation" :key="conversation.id" />
 
-                <LoadingConversation v-if="chat.status === 'loading'  || chat.delayLoading" v-for="item in 6" />
+                <Loading1Vue v-if="chat.status === 'loading'  || chat.delayLoading" v-for="item in 6" />
             </template>
         </Content>
     </div>

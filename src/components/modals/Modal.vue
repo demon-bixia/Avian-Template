@@ -42,7 +42,7 @@ const closeOnClick = (event: Event) => {
                         </div>
 
                         <!--Search-->
-                        <slot name="search"></slot>
+                        <slot name="middle"></slot>
 
                         <!--content-->
                         <div class="overflow-y-scroll scrollbar scrollbar-hidden" :class="{'h-64': isList}">
@@ -67,7 +67,7 @@ const closeOnClick = (event: Event) => {
 
 .scale-enter-from {
     opacity: 0;
-    transform: scale(.95);
+    transform: scale(.75);
 }
 
 .scale-enter-to {
@@ -82,7 +82,7 @@ const closeOnClick = (event: Event) => {
 
 .scale-leave-to {
     opacity: 0;
-    transform: scale(.95);
+    transform: scale(.85);
 }
 
 .fade-enter-active,

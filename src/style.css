@@ -7,8 +7,8 @@
 
     /* styled scrollbar */
     .scrollbar::-webkit-scrollbar {
-        width: 5px;
-        height: 5px;
+        width: 7px;
+        height: 7px;
     }
 
     .scrollbar::-webkit-scrollbar-track {

@@ -3,14 +3,14 @@ import { PlusCircleIcon } from "@heroicons/vue/24/outline";
 import type { Ref } from "vue";
 import { ref, watch } from "vue";
 import useChatStore, { ContactGroup } from "../../../stores/chat";
+import PrimaryButton from "../../utils/PrimaryButton.vue";
+import TextInput from "../../utils/TextInput.vue";
 import Content from "../Content.vue";
 import Header from "../Header.vue";
-import LoadingContactGroup from "../loadingComponents/LoadingContactGroup.vue";
-import Modal from "../Modal.vue";
+import Modal from "../../modals/Modal.vue";
 import Search from "../Search.vue";
 import ContactGroups from "./ContactGroups.vue";
-import TextInput from "../../utils/TextInput.vue";
-import PrimaryButton from "../../utils/PrimaryButton.vue";
+import Loading2 from "../../loading/Loading2.vue";
 
 const chat = useChatStore();
 
@@ -63,7 +63,7 @@ const closeModal = () => {
             <template v-slot:content>
                 <ContactGroups v-if="chat.status === 'success' && !chat.delayLoading"
                     :contactGroups="filteredContactGroups" />
-                <LoadingContactGroup v-if="chat.status === 'loading'  || chat.delayLoading" v-for="item in 5" />
+                <Loading2 v-if="chat.status === 'loading'  || chat.delayLoading" v-for="item in 5" />
             </template>
         </Content>
 

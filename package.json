@@ -12,7 +12,8 @@
     "@heroicons/vue": "^2.0.10",
     "pinia": "^2.0.22",
     "vue": "^3.2.37",
-    "vue-router": "4"
+    "vue-router": "4",
+    "vue3-emoji-picker": "^1.1.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.1.0",

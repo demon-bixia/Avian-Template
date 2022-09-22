@@ -5,7 +5,7 @@ import { ContactGroup } from "../../../stores/chat";
 import { ref } from "vue";
 import type { Ref } from "vue";
 import { TrashIcon, InformationCircleIcon } from "@heroicons/vue/24/outline";
-
+import ScaleTransition from "../../transitions/ScaleTransition.vue";
 
 const props = defineProps<{
     contactGroups?: ContactGroup[],
@@ -56,7 +56,8 @@ const closeAllMenus = () => {
                         </p>
 
                         <p :class="{'hidden': !slim}"
-                            class="opacity-60 font-normal text-sm leading-4 tracking-[0.16px]">Last seen 2:30 am
+                            class="opacity-50 font-extralight text-sm leading-4 tracking-[0.16px]">
+                            Last seen 2:30 am
                         </p>
                     </div>
                 </a>
@@ -68,7 +69,7 @@ const closeAllMenus = () => {
                     </button>
 
                     <!--dropdown menu-->
-                    <Transition name="scale">
+                    <ScaleTransition>
                         <div v-show="(dropdownMenuStates as boolean[][])[groupIndex][index]"
                             class="absolute top-6 right-0 z-10 mt-2 w-56  rounded-sm bg-white shadow-lg ring-1 ring-gray-100 focus:outline-none"
                             role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
@@ -88,40 +89,9 @@ const closeAllMenus = () => {
                                 </a>
                             </div>
                         </div>
-                    </Transition>
+                    </ScaleTransition>
                 </div>
             </div>
         </div>
     </div>
 </template>
-
-<style scoped>
-.scale-enter-active {
-    transition: all 0.100s ease-out;
-}
-
-.scale-leave-active {
-    transition: all 0.075s ease-in;
-
-}
-
-.scale-enter-from {
-    opacity: 0;
-    transform: scale(.95);
-}
-
-.scale-enter-to {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.scale-leave-from {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.scale-leave-to {
-    opacity: 0;
-    transform: scale(.95);
-}
-</style>
