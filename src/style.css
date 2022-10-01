@@ -20,10 +20,11 @@
         background: #EEEEEE;
         border-radius: 100vh;
         border: 0;
+        cursor: default;
     }
 
     .scrollbar::-webkit-scrollbar-thumb:hover {
-        background: #F8F8F9;
+        background: #9e9e9e;
     }
 
     /* hidden scrollbar */

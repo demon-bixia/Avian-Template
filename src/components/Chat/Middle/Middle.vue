@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import type { Ref } from "vue";
-import { defineProps, onMounted, ref } from "vue";
-import useAuthStore, { User } from "../../stores/auth";
-import useChatStore, { Conversation, Message as MessageType } from "../../stores/chat";
+import { defineProps, onMounted, provide, ref } from "vue";
+
+import useAuthStore, { User } from "../../../stores/auth";
+import useChatStore, { Conversation, Message as MessageType } from "../../../stores/chat";
+
 import MessageBubble from "./MessageBubble.vue";
 import TimelineDivider from "./TimelineDivider.vue";
 
 const props = defineProps<{
-    activeConversation?: Conversation
+    activeConversation?: Conversation,
+    selectMessageToReplyTo: (message?: MessageType) => void
 }>();
 
 const auth = useAuthStore();
@@ -45,6 +48,17 @@ const renderDivider = (index: number, previousIndex: number): boolean => {
 onMounted(() => {
     (container.value as HTMLElement).scrollTop = (container.value as HTMLElement).scrollHeight;
 });
+
+// get message to reply to.
+const getReplyToMessage = (message: MessageType) => {
+    if (message.replyTo) {
+        let replyToMessage = (props.activeConversation as Conversation).messages.find(item => item.id === message.replyTo);
+        return replyToMessage;
+    }
+};
+
+// provide the active conversation to all children
+provide('activeConversaion', props.activeConversation);
 </script>
 
 <template>
@@ -54,7 +68,8 @@ onMounted(() => {
             <TimelineDivider v-if="renderDivider(index, index-1)" />
 
             <MessageBubble :message="message" :self="isSelf(message)" :follow-up="isFollowUp(index, index - 1)"
-                :divider="renderDivider(index, index - 1)" />
+                :divider="renderDivider(index, index - 1)" :select-message-to-reply-to="props.selectMessageToReplyTo"
+                :reply-to-message="getReplyToMessage(message)" />
         </div>
     </div>
 </template>

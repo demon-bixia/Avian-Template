@@ -10,7 +10,12 @@
   },
   "dependencies": {
     "@heroicons/vue": "^2.0.10",
+    "@videojs-player/vue": "^1.0.0",
+    "click-outside-vue3": "^4.0.1",
+    "linkify-string": "^4.0.0",
+    "linkifyjs": "^4.0.0",
     "pinia": "^2.0.22",
+    "video.js": "^7.20.3",
     "vue": "^3.2.37",
     "vue-router": "4",
     "vue3-emoji-picker": "^1.1.4"

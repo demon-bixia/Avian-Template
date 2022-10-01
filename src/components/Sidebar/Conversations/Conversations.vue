@@ -1,84 +1,73 @@
 <script setup lang="ts">
 import { PencilSquareIcon } from "@heroicons/vue/24/outline";
+
 import type { Ref } from "vue";
 import { ref, watch } from "vue";
+
 import useChatStore, { Conversation as ConversationType } from "../../../stores/chat";
-import ContactGroups from "../Contacts/ContactGroups.vue";
-import Content from "../Content.vue";
-import Conversation from "../Conversation.vue";
-import Header from "../Header.vue";
-import Loading1Vue from "../../loading/Loading1.vue";
-import Modal from "../../modals/Modal.vue";
-import Search from "../Search.vue";
+import { getName } from "../../../utils";
+
+import Loading1 from "../../loading/Loading1.vue";
+import ComposeModal from "../../modals/ComposeModal/ComposeModal.vue";
+import IconButton from "../../utils/IconButton.vue";
+import SearchInput from "../../utils/SearchInput.vue";
+import Conversation from "./Conversation.vue";
+import SidebarHeader from "../SidebarHeader.vue";
 
 const chat = useChatStore();
 
-const filteredConversations: Ref<ConversationType[] | undefined> = ref(chat.conversations);
-
 const searchText: Ref<string> = ref('');
 
-const combineName = (conversation: ConversationType) => {
-    return conversation.contact.firstName.toLowerCase() + ' ' + conversation.contact.lastName.toLowerCase();
-};
+const composeOpen = ref(false);
 
+// the filterd list of conversations.
+const filteredConversations: Ref<ConversationType[] | undefined> = ref(chat.conversations);
+
+// filter the list of conversation based on search text.
 watch(searchText, () => {
-    filteredConversations.value = chat.conversations?.filter((conversation) => combineName(conversation).includes(searchText.value.toLowerCase()));
+    filteredConversations.value = chat.conversations?.filter((conversation) => getName(conversation)?.includes(searchText.value.toLowerCase()));
 });
 
-const open = ref(false);
-
-const openModal = () => {
-    open.value = true;
-};
-
-const closeModal = () => {
-    open.value = false;
-};
-
+// (event) switch between the rendered conversations.
 const handleConversationChange = (conversationId: number) => {
     chat.activeConversationId = conversationId;
+};
+
+// (event) close the compose modal.
+const closeComposeModal = () => {
+    composeOpen.value = false;
 };
 </script>
 
 <template>
     <div>
-        <Header>
+        <SidebarHeader>
+            <!--title-->
             <template v-slot:title>Messages</template>
+
+            <!--side actions-->
             <template v-slot:actions>
-                <button @click="openModal"
-                    class="rounded-full w-7 h-7  flex justify-center items-center transition-all duration-200 outline-none focus:outline-none focus:bg-gray-50 hover:bg-gray-50">
+                <IconButton @click="composeOpen = true">
                     <PencilSquareIcon class="w-[20px] h-[20px] text-indigo-300 hover:text-indigo-400 " />
-                </button>
+                </IconButton>
             </template>
-        </Header>
+        </SidebarHeader>
 
-        <Search v-model="searchText" />
+        <!--search bar-->
+        <div class="px-5 pb-5">
+            <SearchInput v-model="searchText" />
+        </div>
 
-        <Content>
-            <template v-slot:content>
-                <Conversation :handle-conversation-change="handleConversationChange"
-                    :active-id="(chat.activeConversationId as number)"
-                    v-if="chat.status === 'success' && !chat.delayLoading" v-for="conversation in filteredConversations"
-                    :conversation="conversation" :key="conversation.id" />
+        <!--conversations-->
+        <div class="w-full h-full scroll-smooth scrollbar-hidden" style="overflow-x:visible; overflow-y: scroll;">
+            <Conversation :handle-conversation-change="handleConversationChange"
+                :active-id="(chat.activeConversationId as number)"
+                v-if="chat.status === 'success' && !chat.delayLoading" v-for="conversation in filteredConversations"
+                :conversation="conversation" :key="conversation.id" />
+            <Loading1 v-if="chat.status === 'loading'  || chat.delayLoading" v-for="item in 6" />
+        </div>
 
-                <Loading1Vue v-if="chat.status === 'loading'  || chat.delayLoading" v-for="item in 6" />
-            </template>
-        </Content>
-
-        <Modal :open="open" :close-modal="closeModal" :is-list="true">
-            <template v-slot:header>
-                Contacts
-            </template>
-            <template v-slot:middle>
-                <div class="mb-2">
-                    <Search />
-                </div>
-            </template>
-            <template v-slot:content>
-                <ContactGroups v-if="chat.status === 'success' && !chat.delayLoading"
-                    :contact-groups="chat.contactGroups" :slim="true" />
-                <Loading1Vue v-if="chat.status === 'loading'  || chat.delayLoading" v-for="item in 3" />
-            </template>
-        </Modal>
+        <!--compose modal-->
+        <ComposeModal :open="composeOpen" :close-modal="closeComposeModal" />
     </div>
 </template>

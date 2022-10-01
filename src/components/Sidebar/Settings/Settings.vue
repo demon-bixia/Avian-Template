@@ -1,19 +1,16 @@
 <script setup lang="ts">
-import Header from "../Header.vue";
-import Content from "../Content.vue";
+import SidebarHeader from "../SidebarHeader.vue";
 import SettingsAccordion from "./SettingsAccordion.vue";
 </script>
 
 <template>
     <div>
-        <Header>
+        <SidebarHeader>
             <template v-slot:title>Settings</template>
-        </Header>
+        </SidebarHeader>
 
-        <Content>
-            <template v-slot:content>
-                <SettingsAccordion />
-            </template>
-        </Content>
+        <div class="w-full h-full scroll-smooth scrollbar-hidden" style="overflow-x:visible; overflow-y: scroll;">
+            <SettingsAccordion />
+        </div>
     </div>
 </template>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
 import { Message } from "../../stores/chat";
+import { getFullName } from "../../utils";
 
 const props = defineProps<{
     message: Message
@@ -20,7 +21,7 @@ const props = defineProps<{
         <div class="grow">
             <div class="flex flex-col items-start">
                 <p class="mb-4 opacity-60 font-semibold text-sm leading-4 tracking-[0.16px]">
-                    {{ props.message.sender.firstName + ' ' + props.message.sender.lastName }}
+                    {{ getFullName(props.message.sender) }}
                 </p>
 
                 <p class="opacity-60 font-normal text-sm leading-4 tracking-[0.16px]">

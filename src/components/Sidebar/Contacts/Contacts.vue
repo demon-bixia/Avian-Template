@@ -2,24 +2,26 @@
 import { PlusCircleIcon } from "@heroicons/vue/24/outline";
 import type { Ref } from "vue";
 import { ref, watch } from "vue";
+
 import useChatStore, { ContactGroup } from "../../../stores/chat";
-import PrimaryButton from "../../utils/PrimaryButton.vue";
-import TextInput from "../../utils/TextInput.vue";
-import Content from "../Content.vue";
-import Header from "../Header.vue";
-import Modal from "../../modals/Modal.vue";
-import Search from "../Search.vue";
-import ContactGroups from "./ContactGroups.vue";
+
 import Loading2 from "../../loading/Loading2.vue";
+import SearchInput from "../../utils/SearchInput.vue";
+import SidebarHeader from "../SidebarHeader.vue";
+import ContactGroups from "./ContactGroups.vue";
+import AddContactModal from "../../modals/AddContactModal.vue";
+import IconButton from "../../utils/IconButton.vue"
 
 const chat = useChatStore();
 
-const open = ref(false);
-
-const filteredContactGroups: Ref<ContactGroup[] | undefined> = ref(chat.contactGroups);
-
 const searchText: Ref<string> = ref('');
 
+const openModal = ref(false);
+
+// contact groups filtered by search text
+const filteredContactGroups: Ref<ContactGroup[] | undefined> = ref(chat.contactGroups);
+
+// update the filtered contact groups based on the searchtext
 watch(searchText, () => {
     filteredContactGroups.value = chat.contactGroups?.map((group) => {
         let newGroup = { ...group };
@@ -34,55 +36,35 @@ watch(searchText, () => {
         return newGroup;
     }).filter((group) => group.contacts.length > 0);
 });
-
-const openModal = () => {
-    open.value = true;
-};
-
-const closeModal = () => {
-    open.value = false;
-};
 </script>
 
 <template>
     <div>
-        <Header>
+        <SidebarHeader>
+            <!--title-->
             <template v-slot:title>Contacts</template>
+
+            <!--side actions-->
             <template v-slot:actions>
-                <button @click="openModal" class="rounded-full w-7 h-7  flex justify-center items-center 
-                     transition-all duration-200 outline-none
-                     focus:outline-none focus:bg-gray-50 hover:bg-gray-50">
+                <IconButton @click="openModal = true">
                     <PlusCircleIcon class="w-[20px] h-[20px] text-indigo-300 hover:text-indigo-400 " />
-                </button>
+                </IconButton>
             </template>
-        </Header>
+        </SidebarHeader>
 
-        <Search v-model="searchText" />
+        <!--search-->
+        <div class="px-5 pb-5">
+            <SearchInput v-model="searchText" />
+        </div>
 
-        <Content>
-            <template v-slot:content>
-                <ContactGroups v-if="chat.status === 'success' && !chat.delayLoading"
-                    :contactGroups="filteredContactGroups" />
-                <Loading2 v-if="chat.status === 'loading'  || chat.delayLoading" v-for="item in 5" />
-            </template>
-        </Content>
+        <!--content-->
+        <div class="w-full h-full scroll-smooth scrollbar-hidden" style="overflow-x:visible; overflow-y: scroll;">
+            <ContactGroups v-if="chat.status === 'success' && !chat.delayLoading"
+                :contactGroups="filteredContactGroups" />
+            <Loading2 v-if="chat.status === 'loading'  || chat.delayLoading" v-for="item in 5" />
+        </div>
 
-        <Modal :open="open" :closeModal="closeModal">
-            <template v-slot:header>
-                Add Contact
-            </template>
-
-            <template v-slot:content>
-                <div class="px-5 py-5">
-                    <TextInput type="text" placeholder="Email" />
-                </div>
-
-                <div class="px-5 py-1">
-                    <PrimaryButton>
-                        Add
-                    </PrimaryButton>
-                </div>
-            </template>
-        </Modal>
+        <!--add contact modal-->
+        <AddContactModal :open-modal="openModal" :close-modal="() => openModal = false" />
     </div>
 </template>

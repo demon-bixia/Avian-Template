@@ -14,4 +14,4 @@ export interface BooleanValue {
     groupId: number
 }
 
-export type FileOrTextValue = TextValue & FileValue;
+export type FileOrTextValue = TextValue | FileValue;

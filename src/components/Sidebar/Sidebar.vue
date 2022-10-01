@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import { computed } from "vue";
+
 import useChatStore from "../../stores/chat";
+
+import FadeTransition from "../transitions/FadeTransition.vue";
 import Archive from "./Archive/Archive.vue";
 import Contacts from "./Contacts/Contacts.vue";
 import Conversations from "./Conversations/Conversations.vue";
 import Notifications from "./Notifications/Notifications.vue";
 import Settings from "./Settings/Settings.vue";
-import FadeTransition from "../transitions/FadeTransition.vue";
 
 const chat = useChatStore();
 
+// the selected sidebar component (e.g message/notifications/settings)
 const ActiveComponent = computed(() => {
     if (chat.activeSidebarComponent === 'messages') {
         return Conversations;
@@ -26,7 +29,7 @@ const ActiveComponent = computed(() => {
 </script>
 
 <template>
-    <div class="w-[290px] h-full  flex flex-col overflow-visible">
+    <div class="w-[290px] h-full flex flex-col overflow-visible">
         <FadeTransition>
             <component :is="ActiveComponent" class="h-full flex flex-col" />
         </FadeTransition>

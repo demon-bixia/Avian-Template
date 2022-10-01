@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import type { Ref } from "vue";
-import { Settings } from "../../../stores/chat";
-import AccordionElement from "./AccordionElement.vue";
-import useChatStore from "../../../stores/chat";
-import { Value, FileOrTextValue, BooleanValue } from "./types";
+import { ref } from "vue";
+
+import useChatStore, { Settings } from "../../../stores/chat";
 import { updateAccount } from "../../../stores/fakeData";
+import { BooleanValue, FileOrTextValue, Value } from "./types";
+
+import AccordionElement from "./AccordionElement.vue";
 
 const chat = useChatStore();
 
@@ -22,6 +23,17 @@ const handleToggleElement = (index: number) => {
             return !state;
         } else {
             return true;
+        }
+    });
+};
+
+// change the state of the accordion element to loading.
+const toggleLoadingState = (index: number) => {
+    accordionLoading.value = accordionLoading.value.map((state, idx) => {
+        if (index === idx) {
+            return !state;
+        } else {
+            return state;
         }
     });
 };
@@ -49,31 +61,19 @@ const updateSettings = (event: Value) => {
     });
 };
 
-// event that changes the switch form toggled to untoggled.
+// event that toggles the setting switch.
 const handleToggleSwitch = (event: BooleanValue) => {
     updateSettings(event);
 };
 
-// change the state of the accordion element to loading.
-const toggleLoadinState = (index: number) => {
-    accordionLoading.value = accordionLoading.value.map((state, idx) => {
-        if (index === idx) {
-            return !state;
-        } else {
-            return state;
-        }
-    });
-
-}
-
 // event that fires when save settings is click
 // send updated settings to server and save the state locally.
 const handleSaveSettings = async (event: FileOrTextValue[], index: number) => {
-    toggleLoadinState(index);
+    toggleLoadingState(index);
 
     await updateAccount();
 
-    toggleLoadinState(index);
+    toggleLoadingState(index);
 
     for (let setting of event) {
         updateSettings(setting);
@@ -83,7 +83,7 @@ const handleSaveSettings = async (event: FileOrTextValue[], index: number) => {
 
 <template>
     <AccordionElement v-for="(settingsGroup, index) in chat.settings" :settings-group="settingsGroup"
-        :collapsed="accordionState[index]" :loading="accordionLoading[index]"
-        :handle-toggle-element="handleToggleElement" :index="index" :key="index"
-        :handleToggleSwitch="handleToggleSwitch" :handle-save-settings="handleSaveSettings" />
+        :collapsed="accordionState[index]" :loading="accordionLoading[index]" :index="index"
+        :handle-toggle-element="handleToggleElement" :handleToggleSwitch="handleToggleSwitch"
+        :handle-save-settings="handleSaveSettings" :key="index" />
 </template>

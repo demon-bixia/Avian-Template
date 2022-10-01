@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { onMounted } from "vue";
+
+import useChatStore from "../stores/chat";
+import { fetchData } from "../stores/fakeData";
+
+import Chat from "../components/Chat/Chat.vue";
 import Navigation from "../components/Navigation/Navigation.vue";
 import Sidebar from "../components/Sidebar/Sidebar.vue";
-import Chat from "../components/Chat/Chat.vue";
-import useChatStore from "../stores/chat";
-import { onMounted } from "vue";
-import { fetchData } from "../stores/fakeData";
 
 const chat = useChatStore();
 

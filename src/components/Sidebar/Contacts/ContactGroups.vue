@@ -1,95 +1,98 @@
 <script setup lang="ts">
-import { EllipsisVerticalIcon } from "@heroicons/vue/24/outline";
-import { defineProps } from 'vue';
-import { ContactGroup } from "../../../stores/chat";
-import { ref } from "vue";
+import { EllipsisVerticalIcon, InformationCircleIcon, TrashIcon } from "@heroicons/vue/24/outline";
 import type { Ref } from "vue";
-import { TrashIcon, InformationCircleIcon } from "@heroicons/vue/24/outline";
+import { defineProps, ref } from 'vue';
+
+import { ContactGroup } from "../../../stores/chat";
+import { getFullName } from "../../../utils";
+
 import ScaleTransition from "../../transitions/ScaleTransition.vue";
+import Dropdown from "../../utils/Dropdown.vue";
+import DropdownLink from "../../utils/DropdownLink.vue";
+import Typography from "../../utils/Typography.vue";
+import IconButton from "../../utils/IconButton.vue";
 
 const props = defineProps<{
     contactGroups?: ContactGroup[],
-    slim?: boolean,
 }>();
 
+// controll the states of contact dropdown menus
 const dropdownMenuStates: Ref<boolean[][] | undefined> = ref(props.contactGroups?.map((contactGroup) => {
     let group = contactGroup.contacts.map(() => false);
     return group;
 }));
 
-const toggleDropdown = (groupIndex: number, index: number) => {
-    (dropdownMenuStates.value as boolean[][])[groupIndex][index] = !(dropdownMenuStates.value as boolean[][])[groupIndex][index];
-};
-
-const closeAllMenus = () => {
+// close all contact dropdown menus
+const handleCloseAllMenus = () => {
     dropdownMenuStates.value = props.contactGroups?.map((contactGroup) => {
         let group = contactGroup.contacts.map(() => false);
         return group;
     });
-}
+};
+
+// (event) open/close the selected dropdown menu.
+const handleToggleDropdown = (groupIndex: number, index: number) => {
+    dropdownMenuStates.value = (dropdownMenuStates.value as boolean[][]).map((group) => {
+        return group.map((value, idx) => {
+            if (idx === index)
+                return value;
+            else
+                return false
+        });
+    });
+
+    (dropdownMenuStates.value)[groupIndex][index] = !(dropdownMenuStates.value as boolean[][])[groupIndex][index];
+};
+
+// (event) close doprdown menu when clicking outside 
+const handleClickOutside = (event: Event) => {
+    let target = event.target as HTMLElement;
+
+    if (!target.classList.contains('open-menu')
+        && !(target.parentElement as HTMLElement).classList.contains('open-menu')) {
+        handleCloseAllMenus();
+    }
+};
 </script>
 
 <template>
     <div v-for="(group, groupIndex) in props.contactGroups" :key="groupIndex">
         <!--group title-->
-        <p :class="{'hidden': slim}"
-            class="w-full px-5 pb-3 pt-5 opacity-50 text-xs leading-4 font-semibold tracking-[0.16px]">
+        <Typography variant="heading-3" class="w-full px-5 pb-3 pt-5">
             {{group.letter}}
-        </p>
+        </Typography>
 
         <!--contacts-->
         <div v-for="(contact, index) in group.contacts" :key="index">
-            <div class="w-full flex justify-between items-center" :class="{'p-5': !slim}">
-                <a href="#" class="duration-200 transition ease-out"
-                    :class="{'flex': slim, 'p-5': slim, 'w-full': slim, 'hover:bg-indigo-50': slim, 'active:bg-indigo-100': slim}">
-                    <!--profile image-->
-                    <div class="mr-4" :class="{'hidden': !slim}">
-                        <div :style="{ backgroundImage: `url(${contact.avatar})`}"
-                            class="w-7 h-7 rounded-full bg-cover bg-center">
-                        </div>
-                    </div>
-                    <!--contact name-->
-                    <div :class="{'flex': slim, 'flex-col': slim, 'flex-row': !slim, 'items-start': slim}">
-                        <p href="#" :class="{'mb-2': slim}"
-                            class="opacity-60 font-semibold text-sm leading-4 tracking-[0.16px]" tabindex="0">
-                            {{contact.firstName + ' ' + contact.lastName}}
-                        </p>
-
-                        <p :class="{'hidden': !slim}"
-                            class="opacity-50 font-extralight text-sm leading-4 tracking-[0.16px]">
-                            Last seen 2:30 am
-                        </p>
+            <div class="w-full p-5 flex justify-between items-center">
+                <a href="#" class="transition-all duration-200 ease-out">
+                    <div class="flex-row">
+                        <!--contact name-->
+                        <Typography variant="heading-2">
+                            {{ getFullName(contact) }}
+                        </Typography>
                     </div>
                 </a>
-                <div class="relative" :class="{'hidden': slim}">
+
+                <!--dropdown menu-->
+                <div class="relative">
                     <!--dropdown menu button-->
-                    <button @click="() => toggleDropdown(groupIndex, index)" @blur="closeAllMenus"
-                        class="rounded-full w-6 h-6 hover:bg-gray-100 flex justify-center items-center duration-200">
-                        <EllipsisVerticalIcon class="h-5 w-5 text-black opacity-60" tabindex="0" />
-                    </button>
+                    <IconButton @click="() => handleToggleDropdown(groupIndex, index)" class="open-menu w-6 h-6">
+                        <EllipsisVerticalIcon class="open-menu h-5 w-5 text-black opacity-60" tabindex="0" />
+                    </IconButton>
 
-                    <!--dropdown menu-->
-                    <ScaleTransition>
-                        <div v-show="(dropdownMenuStates as boolean[][])[groupIndex][index]"
-                            class="absolute top-6 right-0 z-10 mt-2 w-56  rounded-sm bg-white shadow-lg ring-1 ring-gray-100 focus:outline-none"
-                            role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-                            <div class="py-1" role="none">
-                                <a href="#"
-                                    class=" border-b border-gray-200 text-black opacity-60 active:bg-gray-100 hover:bg-gray-50 duration-200 px-4 py-3 text-sm flex items-center"
-                                    role="menuitem" tabindex="-1" id="menu-item-0">
-                                    <InformationCircleIcon class="text-black opacity-60 h-5 w-5 mr-3" />
-                                    Personal information
-                                </a>
+                    <Dropdown :handle-click-outside="handleClickOutside"
+                        :show="(dropdownMenuStates as boolean[][])[groupIndex][index]" :position="['top-6', 'right-0']">
+                        <DropdownLink>
+                            <InformationCircleIcon class="h-5 w-5 mr-3 text-black opacity-60" />
+                            Personal information
+                        </DropdownLink>
 
-                                <a href="#"
-                                    class=" text-red-500  active:bg-red-100 hover:bg-red-50 duration-200 px-4 py-3 text-sm flex items-center"
-                                    role="menuitem" tabindex="-1" id="menu-item-1">
-                                    <TrashIcon class="text-red-500  h-5 w-5 mr-3" />
-                                    Delete contact
-                                </a>
-                            </div>
-                        </div>
-                    </ScaleTransition>
+                        <DropdownLink class="text-red-500 hover:bg-red-100 active:bg-red-100">
+                            <TrashIcon class="h-5 w-5 mr-3 text-red-500" />
+                            Delete contact
+                        </DropdownLink>
+                    </Dropdown>
                 </div>
             </div>
         </div>

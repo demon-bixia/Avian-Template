@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import { ChevronRightIcon } from "@heroicons/vue/24/outline";
 import { defineProps, ref } from "vue";
+
 import { Settings } from "../../../stores/chat";
-import AccordionInput from "./AccordionInput.vue";
 import { BooleanValue, FileOrTextValue } from "./types";
+
+import CollapseTransition from "../../transitions/CollapseTransition.vue";
+import PrimaryButton from "../../utils/PrimaryButton.vue";
+import Typography from "../../utils/Typography.vue";
+import AccordionInput from "./AccordionInput.vue";
 
 const props = defineProps<{
     index: number,
@@ -27,7 +32,6 @@ const queuedValues = ref((() => {
 
 // update queued changes
 const handleQueuedValueChange = (event: FileOrTextValue, index: number) => {
-    console.log(queuedValues.value);
     (queuedValues.value as FileOrTextValue[])[index] = event;
 };
 
@@ -45,26 +49,19 @@ const hasInput = () => {
         @click="() => handleToggleElement(props.index)">
         <!--title and description-->
         <div class="grow text-start">
-            <p class="mb-4 opacity-60 font-semibold text-sm leading-4 tracking-[0.16px]">
-                {{props.settingsGroup.title}}
-            </p>
-            <p class="opacity-60 font-normal text-sm leading-4 tracking-[0.16px]">
-                {{props.settingsGroup.description}}
-            </p>
+            <Typography variant="heading-2" class="mb-4"> {{props.settingsGroup.title}} </Typography>
+            <Typography variant="body-2"> {{props.settingsGroup.description}} </Typography>
         </div>
 
         <!--dropdown button icon-->
-        <div>
-            <i class="opacity-60 font-light text-xs leading-4 tracking-[0.16px]">
-                <ChevronRightIcon class="w-5 h-5 stoke-1 text-black opacity-70 transition-all duration-300"
-                    :class="{'rotate-90': !collapsed}" />
-            </i>
-        </div>
+        <ChevronRightIcon class="w-5 h-5 stoke-1 text-black opacity-70 transition-all duration-300"
+            :class="{'rotate-90': !collapsed}" />
     </button>
 
     <!--accordion collapsed region-->
-    <Transition name="collapse">
+    <CollapseTransition>
         <div class="w-full flex flex-col px-5" v-show="!collapsed">
+            <!--inputs-->
             <div v-for="(setting, index) in props.settingsGroup.settings" class="mb-5" :key="index">
                 <AccordionInput :setting="setting" :group-id="props.settingsGroup.id"
                     :handle-toggle-switch="handleToggleSwitch" :handle-queued-value-change="handleQueuedValueChange"
@@ -72,49 +69,11 @@ const hasInput = () => {
             </div>
 
             <!--Save settings button-->
-            <button @click="() => props.handleSaveSettings(queuedValues as FileOrTextValue[], props.index)"
-                v-if="hasInput()" class="w-full p-3 rounded-sm bg-indigo-300 mt-2 hover:bg-indigo-400 active:ring 
-                active:ring-indigo-200 transition duration-200 ease-out active:bg-indigo-400
-                 focus:outline-none focus:ring focus:ring-indigo-100 flex  justify-center items-center" tabindex="0">
-
-                <svg v-if="props.loading" :class="{'animate-spin': props.loading}"
-                    class=" -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
-                    </path>
-                </svg>
-
-                <span v-if="props.loading" class="text-white">Processing</span>
-                <span v-else class="text-white">Save Settings</span>
-            </button>
+            <PrimaryButton v-if="hasInput()"
+                @click="() => props.handleSaveSettings(queuedValues as FileOrTextValue[], props.index)"
+                class="w-full py-4" :loading="props.loading">
+                Save Settings
+            </PrimaryButton>
         </div>
-    </Transition>
+    </CollapseTransition>
 </template>
-
-<style>
-.collapse-enter-active {
-    animation: collapse reverse 300ms ease;
-}
-
-.collapse-leave-active {
-    animation: collapse 300ms ease;
-}
-
-@keyframes collapse {
-    100% {
-        max-height: 0px;
-        opacity: 0;
-    }
-
-    50% {
-        max-height: 400px;
-    }
-
-    0% {
-        opacity: 1;
-    }
-
-}
-</style>
