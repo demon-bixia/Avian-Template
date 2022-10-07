@@ -4,9 +4,9 @@ import { onMounted } from "vue";
 import useChatStore from "../stores/chat";
 import { fetchData } from "../stores/fakeData";
 
-import Chat from "../components/Chat/Chat.vue";
-import Navigation from "../components/Navigation/Navigation.vue";
-import Sidebar from "../components/Sidebar/Sidebar.vue";
+import Chat from "../components/home/Chat/Chat.vue";
+import Navigation from "../components/home/Navigation/Navigation.vue";
+import Sidebar from "../components/home/Sidebar/Sidebar.vue";
 
 const chat = useChatStore();
 

@@ -68,7 +68,7 @@ export const CONVERSATIONS = [
                 date: '6:00 pm',
                 attachments: [
                     { id: 5, type: 'video', name: 'fun-video.mp4', size: '11.4 MB', url: 'https://www.w3schools.com/html/mov_bbb.mp4', thumbnail: 'https://images.unsplash.com/photo-1559705421-4ae9bf6fabb5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', },
-                    //{ id: 12, type: 'video', name: 'awesome-video.mp4', size: '11.4 MB', url: 'https://assets.mixkit.co/videos/preview/mixkit-small-flowering-plants-in-a-nursery-43709-large.mp4', thumbnail: 'https://images.unsplash.com/photo-1496715976403-7e36dc43f17b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', },
+                    { id: 12, type: 'video', name: 'awesome-video.mp4', size: '11.4 MB', url: 'https://assets.mixkit.co/videos/preview/mixkit-small-flowering-plants-in-a-nursery-43709-large.mp4', thumbnail: 'https://images.unsplash.com/photo-1496715976403-7e36dc43f17b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', },
                 ],
                 sender: { id: 6, email: 'user@gmail.com', firstName: 'Elijah', lastName: "Sabrina", lastSeen: new Date(), avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' },
             },
@@ -77,7 +77,7 @@ export const CONVERSATIONS = [
                 type: 'recording',
                 content: { id: 1, size: '10 MB', url: '', duration: '23s' },
                 date: '6:20 pm',
-                sender: { id: 6, email: 'user@gmail.com', firstName: 'Elijah', lastName: "Sabrina", lastSeen: new Date(), avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' },
+                sender: { id: 1, firstName: 'Dawn', lastName: 'Sabrina', lastSeen: new Date(), email: 'sabrina@gmail.com', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80', },
             }
         ],
     },
@@ -149,7 +149,7 @@ export const CONVERSATIONS = [
         type: 'group',
         name: 'Design Team',
         avatar: 'https://images.unsplash.com/photo-1573867639040-6dd25fa5f597?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-        admins: [{ id: 1, firstName: 'Dawn', lastName: 'Sabrina', lastSeen: new Date(), email: 'sabrina@gmail.com', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' },],
+        admins: [1],
         contacts: [
             { id: 1, firstName: 'Dawn', lastName: 'Sabrina', lastSeen: new Date(), email: 'sabrina@gmail.com', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' },
             { id: 2, email: 'user@gmail.com', firstName: 'Ahmed', lastName: "Ali", lastSeen: new Date(), avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' },
@@ -171,7 +171,7 @@ export const CONVERSATIONS = [
         type: 'boradcast',
         name: 'Breaing News',
         avatar: 'https://images.unsplash.com/photo-1572949645841-094f3a9c4c94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-        admins: [{ id: 1, firstName: 'Dawn', lastName: 'Sabrina', lastSeen: new Date(), email: 'sabrina@gmail.com', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' },],
+        admins: [1],
         contacts: [
             { id: 1, firstName: 'Dawn', lastName: 'Sabrina', lastSeen: new Date(), email: 'sabrina@gmail.com', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' },
             { id: 2, email: 'user@gmail.com', firstName: 'Ahmed', lastName: "Ali", lastSeen: new Date(), avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' },

@@ -6,52 +6,10 @@ module.exports = {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
 
+  darkMode: 'class',
+
   theme: {
     extend: {
-      color: {
-        'indigo': {
-          50: '#F5F6FF',
-          100: '#C1CAFF',
-          200: '#8E99F3',
-          300: '#5C6BC0',
-          400: '#294699',
-          500: '#002380',
-        },
-        'gray': {
-          100: '#EEEEEE',
-          200: '#F8F8F9',
-          300: '#C5C5C6',
-          400: '#676767',
-        },
-        'green': {
-          100: '#C8E6C9',
-          200: '#80E27E',
-          300: '#4CAF50',
-          400: '#087F23',
-          500: '#1B5E20',
-        },
-        'red': {
-          100: '#FFC2AD',
-          200: '#FF7961',
-          300: '#F44336',
-          400: '#BA000D',
-          500: '#820000',
-        },
-        'yellow': {
-          100: '#FFFFAD',
-          200: '#FFFF72',
-          300: '#FFEB3B',
-          400: '#B8AA00',
-          500: '#807600',
-        },
-        'blue': {
-          100: '#ADDFFF',
-          200: '#6EC6FF',
-          300: '#2196F3',
-          400: '#0069C0',
-          500: '#004680',
-        },
-      },
 
       spacing: {
         0: '0',
@@ -72,6 +30,7 @@ module.exports = {
 
       fontFamily: {
         sans: ['Open Sans', 'sans-serif'],
+        display: ['Fredoka']
       },
 
       borderRadius: {
@@ -99,18 +58,36 @@ module.exports = {
         'shadow-xl': '0px 15px 25px 0px rgba(3,3,3,0.1), 0px 5px 10px 0px rgba(3,3,3,0.1)',
       },
 
-      extend: {
-        opacity: {
-          '30': '0.30',
-          '50': '0.54',
-          '70': '0.70',
-          '90': '0.90',
-        },
+      keyframes: {
+        gradient: {
+          '0%': {
+            'background-position': '0% 0%'
+          },
 
-        boxShadow: {
-          'cxl': '0 2px 5px rgba(193, 202, 255, 0.5), 2px 0 5px rgba(193, 202, 255, 0.5), -2px 0 5px rgba(193, 202, 255, 0.5), 0 -2px 5px rgba(193, 202, 255, 0.5)'
+          '50%': {
+            'background-position': '0% 100%'
+          },
+
+          '100%': {
+            'background-position': '0% 0%'
+          }
         }
-      }
+      },
+
+      animation: {
+        gradient: 'gradient 15s ease infinite',
+      },
+
+      opacity: {
+        '30': '0.30',
+        '50': '0.54',
+        '70': '0.70',
+        '90': '0.90',
+      },
+
+      boxShadow: {
+        'cxl': '0 2px 5px rgba(193, 202, 255, 0.5), 2px 0 5px rgba(193, 202, 255, 0.5), -2px 0 5px rgba(193, 202, 255, 0.5), 0 -2px 5px rgba(193, 202, 255, 0.5)'
+      },
     }
   },
 

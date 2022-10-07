@@ -9,7 +9,8 @@
 - <a href="https://tailwindcss.com/">Tailwind CSS</a>
 - <a href="https://heroicons.com/">Heroicons</a>
 - <a href="https://github.com/delowardev/vue3-emoji-picker">Vue3 Emoji Picker</a>
-- <a href="https://www.figma.com/file/P4anyRLoN2NNhDicfFUcqi/Avian-Chat?node-id=0%3A1">Design System</a>
+- <a href="https://www.figma.com/file/P4anyRLoN2NNhDicfFUcqi/Avian-Chat?node-id=0%3A1">figma</a>
+- <a href="https://vueuse.org/">vueuse</a>
 
 ## Setup
 

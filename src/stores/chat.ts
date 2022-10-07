@@ -50,7 +50,7 @@ export interface Conversation {
     type: string,
     name?: string,
     avatar?: string,
-    admins?: Contact[],
+    admins?: number[],
     contacts: Contact[],
     messages: Message[],
 };
@@ -97,8 +97,9 @@ const useChatStore = defineStore("chat", () => {
 
     // ui refs
     const activeSidebarComponent: Ref<string> = ref(storage.activeSidebarComponent || 'messages');
-    const delayLoading: Ref<boolean> = ref(true);
+    const delayLoading = ref(true);
     const activeConversationId: Ref<number | null> = ref(storage.activeConversationId || null);
+    const darkMode = ref(storage.darkMode || false);
 
     // contacts grouped alphabetically.
     const contactGroups: Ref<ContactGroup[] | undefined> = computed(() => {
@@ -152,6 +153,7 @@ const useChatStore = defineStore("chat", () => {
         activeSidebarComponent,
         delayLoading,
         activeConversationId,
+        darkMode,
     };
 });
 
