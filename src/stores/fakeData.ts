@@ -130,19 +130,7 @@ export const CONVERSATIONS = [
         },],
     },
 
-    {
-        id: 3,
-        type: 'couple',
-        contacts: [
-            { id: 4, email: 'user@gmail.com', firstName: 'Dawn', lastName: "Sabrina", lastSeen: new Date(), avatar: 'https://images.unsplash.com/photo-1657214059233-5626b35eb349?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=436&q=80' },
-            { id: 1, firstName: 'Dawn', lastName: 'Sabrina', lastSeen: new Date(), email: 'sabrina@gmail.com', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80', }
-        ],
-        messages: [{
-            id: 1,
-            content: 'Oh, ok good to know.', date: '4:00 pm',
-            sender: { id: 1, firstName: 'Dawn', lastName: 'Sabrina', lastSeen: new Date(), email: 'sabrina@gmail.com', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80', },
-        }],
-    },
+
 
     {
         id: 6,
@@ -163,7 +151,8 @@ export const CONVERSATIONS = [
             { id: 5, content: 'Thank you very much.', date: '3:00 pm', sender: { id: 1, firstName: 'Dawn', lastName: 'Sabrina', lastSeen: new Date(), email: 'sabrina@gmail.com', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' }, },
             { id: 6, content: 'Lets meet agian next week.', date: '5:00 pm', sender: { id: 1, firstName: 'Dawn', lastName: 'Sabrina', lastSeen: new Date(), email: 'sabrina@gmail.com', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' }, },
             { id: 7, content: 'Ok next week then.', date: '5:00 pm', sender: { id: 2, email: 'user@gmail.com', firstName: 'Ahmed', lastName: "Ali", lastSeen: new Date(), avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' }, },
-        ]
+        ],
+
     },
 
     {

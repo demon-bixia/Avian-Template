@@ -1,4 +1,5 @@
 import useAuthStore, { User } from "./stores/auth";
+import useChatStore from "./stores/chat";
 import { Contact, Conversation, Message } from "./stores/chat";
 
 // combine first name and last name of a contact
@@ -44,9 +45,9 @@ export const getName = (conversation?: Conversation) => {
 // trim message.
 export const shorten = (message: Message, maxLength: number = 23) => {
     if (message.content) {
-        let trimmedString = message.content;
+        let trimmedString = (message.content as string);
 
-        if (message.content.length > maxLength) {
+        if ((message.content as string).length > maxLength) {
             // trim the string to the maximum length.
             trimmedString = trimmedString.slice(0, maxLength);
             // add three dots to indicate that there is more to the message.
@@ -61,4 +62,18 @@ export const shorten = (message: Message, maxLength: number = 23) => {
 export const hasAttachments = (message: Message) => {
     let attachments = message.attachments;
     return attachments && attachments.length > 0;
+};
+
+// get index of the conversation inside the conversations array
+export const getConversationIndex = (conversationId: number) => {
+    let conversationIndex;
+    const chat = useChatStore();
+
+    (chat.conversations as Conversation[]).forEach((conversation, index) => {
+        if (conversation.id === conversationId) {
+            conversationIndex = index;
+        }
+    });
+
+    return conversationIndex;
 };

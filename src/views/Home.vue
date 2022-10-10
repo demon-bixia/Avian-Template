@@ -36,9 +36,9 @@ onMounted(async () => {
 
 <template>
     <KeepAlive>
-        <div class="h-screen w-screen flex overflow-hidden">
-            <Navigation />
-            <Sidebar />
+        <div class="xs:relative md:static h-screen w-screen flex xs:flex-col md:flex-row overflow-hidden">
+            <Navigation class="xs:order-1 md:-order-none" />
+            <Sidebar class="xs:grow-1 md:grow-0 xs:overflow-y-scroll md:overflow-visible scrollbar-hidden" />
             <Chat />
         </div>
     </KeepAlive>

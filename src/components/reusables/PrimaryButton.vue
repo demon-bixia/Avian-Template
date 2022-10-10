@@ -22,7 +22,7 @@ const buttonClasses = computed(() => {
         classes = [...classes, 'hover:bg-indigo-50', 'hover:text-indigo-400', 'active:bg-indigo-100', 'dark:hover:bg-gray-600'];
 
     else if (props.variant === 'gohst' && props.color === 'danger')
-        classes = [...classes, 'hover:bg-red-50', 'active:bg-red-100', 'dark:hover:bg-red-500', 'active:bg-red-400',];
+        classes = [...classes, 'hover:bg-red-50', 'active:bg-red-100', 'dark:hover:bg-red-500', 'dark:active:bg-red-400',];
 
     else if (props.variant === 'primary' && props.color === 'primary'
         || (!props.variant && props.color === 'primary')

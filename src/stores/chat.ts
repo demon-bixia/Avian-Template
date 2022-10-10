@@ -42,7 +42,7 @@ export interface Message {
     sender: Contact,
     replyTo?: number,
     previewData?: PreviewData,
-    attachments?: Attachment[]
+    attachments?: Attachment[],
 };
 
 export interface Conversation {
@@ -53,6 +53,8 @@ export interface Conversation {
     admins?: number[],
     contacts: Contact[],
     messages: Message[],
+    pinnedMessage?: number,
+    pinnedMessageHidden?: boolean,
 };
 
 export interface ContactGroup {
@@ -99,6 +101,7 @@ const useChatStore = defineStore("chat", () => {
     const activeSidebarComponent: Ref<string> = ref(storage.activeSidebarComponent || 'messages');
     const delayLoading = ref(true);
     const activeConversationId: Ref<number | null> = ref(storage.activeConversationId || null);
+    const conversationOpen: Ref<string | undefined> = ref(storage.conversationOpen);
     const darkMode = ref(storage.darkMode || false);
 
     // contacts grouped alphabetically.
@@ -153,6 +156,7 @@ const useChatStore = defineStore("chat", () => {
         activeSidebarComponent,
         delayLoading,
         activeConversationId,
+        conversationOpen,
         darkMode,
     };
 });

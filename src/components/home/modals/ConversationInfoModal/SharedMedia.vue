@@ -8,6 +8,7 @@ import { hasAttachments } from "../../../../utils";
 import NoMedia from "../../../reusables/emptyStates/NoMedia.vue";
 import SearchInput from "../../../reusables/SearchInput.vue";
 import Typography from "../../../reusables/Typography.vue";
+import MediaItem from "./MediaItem.vue";
 
 const props = defineProps<{
     closeModal: () => void,
@@ -41,7 +42,7 @@ const attachmentMessages = computed(() => {
                         focus:bg-indigo-100 hover:bg-indigo-100 hover:border-indigo-100 dark:hover:border-indigo-400 
                         dark:hover:bg-indigo-400 dark:focus:bg-reindigod-400 dark:focus:border-indigo-400 transition-all duration-200 outline-none">
                 <ArrowUturnLeftIcon
-                    class="w-5 h-5 text-black opacity-50 dark:text-white  dark:opacity-70 group-hover:text-indigo-500 group-hover:opacity-100 stroke-1" />
+                    class="w-5 h-5 text-black opacity-50 dark:text-white  dark:opacity-70 group-hover:text-indigo-500 group-hover:opacity-100 dark:group-hover:text-white" />
             </button>
         </div>
 
@@ -51,14 +52,14 @@ const attachmentMessages = computed(() => {
         </div>
 
         <!--media messages-->
-        <div class="overflow-y-scroll scrollbar scrollbar-hidden max-h-[250px]">
+        <div class="overflow-y-scroll scrollbar scrollbar-hidden max-h-[222px]">
             <div v-if="(attachmentMessages as Message[]).length > 0" v-for="(message, index) in attachmentMessages"
                 :key="index">
                 <MediaItem v-for="(attachment, index) in message.attachments" :attachment="attachment"
                     :date="message.date" :key="index" />
             </div>
 
-            <NoMedia vertical />
+            <NoMedia v-else vertical />
         </div>
     </div>
 </template>

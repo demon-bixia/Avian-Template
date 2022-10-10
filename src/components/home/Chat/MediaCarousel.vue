@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { ChevronLeftIcon, ChevronRightIcon, XMarkIcon } from "@heroicons/vue/24/outline";
-import { computed, inject, onMounted, onUnmounted, ref, watch } from "vue";
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap';
 import type { Ref } from "vue";
+import { computed, inject, onMounted, onUnmounted, ref, watch } from "vue";
 
 import { Attachment, Conversation } from "../../../stores/chat";
 import { hasAttachments } from "../../../utils";
 
 import VideoPlayer from "./VideoPlayer.vue";
-import FadeTransition from "../../reusables/transitions/FadeTransition.vue";
 
 const props = defineProps<{
     open: boolean,
@@ -165,19 +164,18 @@ onUnmounted(() => {
                             </button>
                         </div>
 
-                        <FadeTransition>
+                        <div class="w-full h-full px-5 flex items-center justify-center basis[90%]">
                             <!--image-->
-                            <div v-if="selectedAttachment.type === 'image'"
-                                class="px-5 flex w-full h-full items-center basis[90%]" :key="selectedAttachment.id">
-                                <div class="w-full h-full bg-no-repeat bg-center"
-                                    :style="{ backgroundImage: `url(${selectedAttachment?.url})`}">
-                                </div>
-                            </div>
+
+                            <img v-if="selectedAttachment.type === 'image'" :src="selectedAttachment?.url"
+                                :key="selectedAttachment.id" />
+
 
                             <!--video-->
                             <VideoPlayer v-if="selectedAttachment.type === 'video'" :url="selectedAttachment.url"
-                                :thumbnail="(selectedAttachment.thumbnail as string)" :key="selectedAttachment.id" />
-                        </FadeTransition>
+                                :thumbnail="(selectedAttachment.thumbnail as string)" :key="selectedAttachment.id"
+                                class="w-full xs:h-[200px] md:h-[500px]" />
+                        </div>
 
                         <!--right controls-->
                         <div class="flex items-center justify-end basis-[5%]">

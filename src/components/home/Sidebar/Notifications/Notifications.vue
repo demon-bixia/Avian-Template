@@ -19,7 +19,7 @@ const chat = useChatStore();
         <div class="w-full h-full scroll-smooth scrollbar-hidden" style="overflow-x:visible; overflow-y: scroll;">
             <Loading1
                 v-if="chat.status === 'loading'  || chat.delayLoading && (chat.notifications as NotificationType[]).length > 0"
-                v-for="item in 8" />
+                v-for="item in 6" />
 
             <Notification v-else-if="chat.status === 'success' && !chat.delayLoading"
                 v-for="(notification, index) in chat.notifications" :notification="notification" :key="index" />

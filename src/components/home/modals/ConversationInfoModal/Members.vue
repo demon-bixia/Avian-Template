@@ -80,7 +80,7 @@ const handleClickOutside = (event: Event) => {
                         dark:hover:bg-indigo-400 dark:focus:bg-reindigod-400 dark:focus:border-indigo-400 transition-all duration-200 outline-none">
 
                 <ArrowUturnLeftIcon
-                    class="w-5 h-5 text-black opacity-50 dark:text-white  dark:opacity-70 group-hover:text-indigo-500 group-hover:opacity-100 stroke-1" />
+                    class="w-5 h-5 text-black opacity-50 dark:text-white  dark:opacity-70 group-hover:text-indigo-500 group-hover:opacity-100 dark:group-hover:text-white " />
             </button>
         </div>
 

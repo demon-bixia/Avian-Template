@@ -82,7 +82,7 @@ const handleSaveSettings = async (event: FileOrTextValue[], index: number) => {
 </script>
 
 <template>
-    <div role="list" aria-label="Settings Accordion Control Group Buttons">
+    <div role="list" aria-label="Settings Accordion Control Group Buttons" class="h-full ">
         <AccordionElement v-for="(settingsGroup, index) in chat.settings" :settings-group="settingsGroup"
             :collapsed="accordionState[index]" :loading="accordionLoading[index]" :index="index"
             :handle-toggle-element="handleToggleElement" :handleToggleSwitch="handleToggleSwitch"

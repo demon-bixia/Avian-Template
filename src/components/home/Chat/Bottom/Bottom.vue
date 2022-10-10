@@ -44,12 +44,22 @@ const handleToggleRecording = () => {
 const handleCancelRecording = () => {
     recording.value = false;
 };
+
+// close picker when you click outside.
+const handleClickOutside = (event: Event) => {
+    let target = (event.target as HTMLElement);
+    let parent = (target.parentElement as HTMLElement);
+
+    if ((target && !target.classList.contains('toggle-picker-button')) && (parent && !parent.classList.contains('toggle-picker-button'))) {
+        showPicker.value = false;
+    }
+};
 </script>
 
 <template>
     <div>
         <!--selected reply display-->
-        <div class="relative transition-all duration-200" :class="{'pt-[80px]': props.selectedMessageToReplyTo}">
+        <div class="relative transition-all duration-200" :class="{'pt-[60px]': props.selectedMessageToReplyTo}">
             <SelectedReply :selected-message-to-reply-to="props.selectedMessageToReplyTo"
                 :remove-message-to-reply-to="removeMessageToReplyTo" />
         </div>
@@ -83,19 +93,20 @@ const handleCancelRecording = () => {
             <!--emojies-->
             <div class="relative" v-if="!recording">
                 <!--emoji button-->
-                <IconButton @click="showPicker = !showPicker" class="group w-7 h-7 mr-5"
+                <IconButton @click="showPicker = !showPicker" class="toggle-picker-button group w-7 h-7 mr-5"
                     aria-label="toggle emoji picker">
                     <XCircleIcon v-if="showPicker"
-                        class="w-[20px] h-[20px] text-gray-300 group-hover:text-indigo-300" />
+                        class=" w-[20px] h-[20px] text-gray-300 group-hover:text-indigo-300" />
                     <FaceSmileIcon v-else class="w-[20px] h-[20px] text-gray-300 group-hover:text-indigo-300" />
                 </IconButton>
 
                 <!--emoji picker-->
                 <ScaleTransition>
-                    <div v-show="showPicker" class="absolute z-10 bottom-[45px] right-0 mt-2">
+                    <div v-click-outside="handleClickOutside" v-show="showPicker"
+                        class="absolute z-10 bottom-[45px] right-0 mt-2">
                         <div role="none">
                             <EmojiPicker :native="true" hide-group-icons hide-group-names
-                                class="pt-5 dark:bg-gray-800 dark:text-white " />
+                                class="dark:bg-gray-800 dark:text-white" />
                         </div>
                     </div>
                 </ScaleTransition>

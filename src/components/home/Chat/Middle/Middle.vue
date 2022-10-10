@@ -4,6 +4,7 @@ import { onMounted, provide, ref } from "vue";
 
 import useAuthStore, { User } from "../../../../stores/auth";
 import useChatStore, { Conversation, Message as MessageType } from "../../../../stores/chat";
+import { getConversationIndex } from "../../../../utils";
 
 import MessageBubble from "./MessageBubble.vue";
 import TimelineDivider from "./TimelineDivider.vue";
@@ -57,6 +58,16 @@ const getReplyToMessage = (message: MessageType) => {
     }
 };
 
+// (event) pin message to conversation
+const handlePinMessage = (messageId: number) => {
+    let activeConversationIndex = getConversationIndex((props.activeConversation as Conversation).id);
+
+    if (activeConversationIndex !== undefined && activeConversationIndex !== null) {
+        (chat.conversations as Conversation[])[activeConversationIndex].pinnedMessage = messageId;
+        (chat.conversations as Conversation[])[activeConversationIndex].pinnedMessageHidden = false;
+    }
+};
+
 // provide the active conversation to all children
 provide('activeConversaion', props.activeConversation);
 </script>
@@ -69,7 +80,7 @@ provide('activeConversaion', props.activeConversation);
 
             <MessageBubble :message="message" :self="isSelf(message)" :follow-up="isFollowUp(index, index - 1)"
                 :divider="renderDivider(index, index - 1)" :select-message-to-reply-to="props.selectMessageToReplyTo"
-                :reply-to-message="getReplyToMessage(message)" />
+                :reply-to-message="getReplyToMessage(message)" :handle-pin-message="handlePinMessage" />
         </div>
     </div>
 </template>

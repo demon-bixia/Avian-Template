@@ -8,7 +8,7 @@ const chat = useChatStore();
 
 <template>
     <div :class="{'dark': chat.darkMode}">
-        <div class="w-full h-screen dark:bg-gray-800">
+        <div class="w-full h-screen bg-white dark:bg-gray-800 transition-all duration-500">
             <router-view v-slot="{ Component }">
                 <FadeTransition>
                     <component :is="Component" />

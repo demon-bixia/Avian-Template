@@ -35,7 +35,7 @@ const props = defineProps<{
                 </div>
 
                 <!--search-->
-                <div class="mx-5 mb-5">
+                <div class="mx-5  mb-5">
                     <SearchInput />
                 </div>
 

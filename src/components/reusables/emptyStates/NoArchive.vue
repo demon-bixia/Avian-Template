@@ -22,6 +22,5 @@ import Typography from "../Typography.vue";
                 to save one.
             </Typography>
         </div>
-
     </div>
 </template>

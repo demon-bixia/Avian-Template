@@ -12,10 +12,9 @@ import Typography from "../../../reusables/Typography.vue";
 
 const props = defineProps<{
     conversation: Conversation,
-    activeId?: number,
+    isActive?: boolean,
     handleConversationChange?: (conversationId: number) => void,
 }>();
-
 
 const showContextMenu = ref(false);
 
@@ -24,7 +23,10 @@ const contextMenuCordinations: Ref<{ x: number, y: number } | undefined> = ref()
 // open context menu.
 const handleShowContextMenu = (event: any) => {
     showContextMenu.value = true;
-    contextMenuCordinations.value = { x: event.pageX, y: window.innerHeight - 125 <= event.pageY ? window.innerHeight - 200 : event.pageY };
+    contextMenuCordinations.value = {
+        x: window.innerWidth - 205 <= event.pageX ? window.innerWidth - 220 : event.pageX,
+        y: window.innerHeight - 125 <= event.pageY ? window.innerHeight - 200 : event.pageY,
+    };
 };
 
 // (event) closes the context menu
@@ -41,26 +43,22 @@ const contextConfig = {
 // (event) select this conversation.
 const handleSelectConversation = () => {
     showContextMenu.value = false;
+
     if (props.handleConversationChange)
         props.handleConversationChange(props.conversation.id);
 };
 
 // last message in conversation to display
 const lastMessage = computed(() => props.conversation.messages[props.conversation.messages.length - 1]);
-
-// determine whether the conversation is active or not
-const isActive: Ref<boolean> = computed(() => {
-    return props.activeId === props.conversation.id
-});
 </script>
 
 <template>
     <div>
         <button :aria-label="'conversation with' + getName(props.conversation) " tabindex="0"
             v-click-outside="contextConfig" @contextmenu.prevent="handleShowContextMenu"
-            @click="handleSelectConversation" class="w-full px-5 py-6 mb-3 flex rounded focus:bg-indigo-50  dark:active:bg-gray-600 dark:focus:bg-gray-600 dark:hover:bg-gray-600 
+            @click="handleSelectConversation" class="w-full h-[92px] px-5 py-6 mb-3 flex rounded focus:bg-indigo-50  dark:active:bg-gray-600 dark:focus:bg-gray-600 dark:hover:bg-gray-600 
             hover:bg-indigo-50 active:bg-indigo-100 focus:outline-none transition duration-500 ease-out"
-            :class="{'bg-indigo-50': isActive, 'dark:bg-gray-600': isActive}">
+            :class="{'md:bg-indigo-50': props.isActive, 'md:dark:bg-gray-600': props.isActive}">
 
             <!--profile image-->
             <div class="mr-4">

@@ -63,7 +63,7 @@ const hasInput = () => {
     <!--accordion collapsed region-->
     <CollapseTransition>
         <div :id="'content-' + props.index" class="w-full flex flex-col px-5" :aria-hidden="collapsed"
-            v-show="!collapsed">
+            v-if="!collapsed">
             <!--inputs-->
             <div v-for="(setting, index) in props.settingsGroup.settings" class="mb-5" :key="index">
                 <AccordionInput :setting="setting" :group-id="props.settingsGroup.id"

@@ -53,7 +53,7 @@ watch(() => props.open, () => {
 </script>
 
 <template>
-    <div role="dialog" class="relative z-10" :aria-hidden="!props.open" aria-labelledby="modal-title" aria-modal="true"
+    <div role="dialog" class="relative z-20" :aria-hidden="!props.open" aria-labelledby="modal-title" aria-modal="true"
         tabindex="-1">
         <!--overlay-->
         <Transition name="fade">

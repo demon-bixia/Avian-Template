@@ -13,7 +13,11 @@ import Typography from "../../../reusables/Typography.vue";
 
 const props = defineProps<{
     contactGroups?: ContactGroup[],
+    bottomEdge?: number,
 }>();
+
+// the position of the dropdown menu.
+const dropdownMenuPosition = ref(['top-6', 'right-0']);
 
 // controll the states of contact dropdown menus
 const dropdownMenuStates: Ref<boolean[][] | undefined> = ref(props.contactGroups?.map((contactGroup) => {
@@ -30,7 +34,15 @@ const handleCloseAllMenus = () => {
 };
 
 // (event) open/close the selected dropdown menu.
-const handleToggleDropdown = (groupIndex: number, index: number) => {
+const handleToggleDropdown = (event: Event, groupIndex: number, index: number) => {
+    if (props.bottomEdge) {
+        let buttonBottom = (event.currentTarget as HTMLElement).getBoundingClientRect().bottom;
+
+        if (buttonBottom >= props.bottomEdge - 75) { dropdownMenuPosition.value = ['bottom-6', 'right-0'] }
+        else { dropdownMenuPosition.value = ['top-6', 'right-0'] }
+    }
+
+
     dropdownMenuStates.value = (dropdownMenuStates.value as boolean[][]).map((group) => {
         return group.map((value, idx) => {
             if (idx === index)
@@ -80,7 +92,7 @@ const handleClickOutside = (event: Event) => {
                     <IconButton :id="'open-contact-menu-' + index"
                         :aria-expanded="(dropdownMenuStates as boolean[][])[groupIndex][index]"
                         :aria-controls="'contact-menu-' + index" aria-label="toggle contact menu"
-                        @click="() => handleToggleDropdown(groupIndex, index)" class="open-menu w-6 h-6">
+                        @click="event => handleToggleDropdown(event, groupIndex, index)" class="open-menu w-6 h-6">
                         <EllipsisVerticalIcon
                             class="open-menu h-5 w-5 text-black opacity-60 dark:text-white dark:opacity-70"
                             tabindex="0" />
@@ -88,7 +100,7 @@ const handleClickOutside = (event: Event) => {
 
                     <Dropdown :id="'contact-menu-' + index" :close-dropdown="handleCloseAllMenus"
                         :handle-click-outside="handleClickOutside" :aria-labelledby="'open-contact-menu-' + index"
-                        :show="(dropdownMenuStates as boolean[][])[groupIndex][index]" :position="['top-6', 'right-0']">
+                        :show="(dropdownMenuStates as boolean[][])[groupIndex][index]" :position="dropdownMenuPosition">
                         <DropdownLink>
                             <InformationCircleIcon
                                 class="h-5 w-5 mr-3 text-black opacity-60 dark:text-white dark:opacity-70" />

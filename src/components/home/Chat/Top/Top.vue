@@ -1,19 +1,20 @@
 <script setup lang="ts">
-import { EllipsisVerticalIcon, InformationCircleIcon, MagnifyingGlassIcon, MusicalNoteIcon, NoSymbolIcon } from "@heroicons/vue/24/outline";
+import { PhoneIcon, EllipsisVerticalIcon, InformationCircleIcon, MagnifyingGlassIcon, MusicalNoteIcon, NoSymbolIcon, ChevronLeftIcon } from "@heroicons/vue/24/outline";
 import { ref } from "vue";
 
-import useChatStore, { Conversation } from "../../../stores/chat";
-import { getAvatar, getName } from "../../../utils";
+import useChatStore, { Conversation } from "../../../../stores/chat";
+import { getAvatar, getName } from "../../../../utils";
 
-import Dropdown from "../../reusables/Dropdown.vue";
-import DropdownLink from "../../reusables/DropdownLink.vue";
-import Typography from "../../reusables/Typography.vue";
-import ConversationInfoModal from "../modals/ConversationInfoModal/ConversationInfoModal.vue";
-import SearchModal from "../modals/SearchModal.vue";
-import IconButton from "../../reusables/IconButton.vue";
+import Dropdown from "../../../reusables/Dropdown.vue";
+import DropdownLink from "../../../reusables/DropdownLink.vue";
+import IconButton from "../../../reusables/IconButton.vue";
+import Typography from "../../../reusables/Typography.vue";
+import ConversationInfoModal from "../../modals/ConversationInfoModal/ConversationInfoModal.vue";
+import SearchModal from "../../modals/SearchModal.vue";
+import SelectedPinnedMessage from "./SelectedPinnedMessage.vue";
 
 const props = defineProps<{
-    activeConversation?: Conversation
+    activeConversation?: Conversation,
 }>();
 
 const chat = useChatStore();
@@ -38,13 +39,26 @@ const handleClickOutside = (event: Event) => {
         && (parentElement && !(parentElement.classList as Element["classList"]).contains('open-top-menu'))) {
         handleCloseDropdown();
     }
-}
+};
+
+// (event) close the selected conversation
+const handleCloseConversation = () => {
+    chat.conversationOpen = 'close';
+};
 </script>
 
 <template>
     <div>
-        <!--top section-->
+        <!--Top section-->
         <div class="w-full px-5 py-6 flex justify-center items-center">
+            <!--back button-->
+            <div class="group mr-4 md:hidden">
+                <IconButton class="w-7 h-7" @click="handleCloseConversation">
+                    <ChevronLeftIcon aria-label="close conversation"
+                        class="w-[20px] h-[20px] text-gray-300 group-hover:text-indigo-300" />
+                </IconButton>
+            </div>
+
             <div v-if="chat.status !== 'loading'" class="flex grow">
                 <!--avatar-->
                 <button class="mr-5 outline-none" @click="() => openInfo = true" aria-label="profile avatar">
@@ -108,11 +122,17 @@ const handleClickOutside = (event: Event) => {
             </div>
         </div>
 
-        <!--search modal-->
+        <!--Pinned Message-->
+        <div class="relative transition-[padding] duration-200"
+            :class="{'pb-[60px]': (props.activeConversation as Conversation).pinnedMessage && !(props.activeConversation as Conversation).pinnedMessageHidden}">
+            <SelectedPinnedMessage :active-conversation="props.activeConversation" />
+        </div>
+
+        <!--Search modal-->
         <SearchModal :open="openSearch" :close-modal="() => openSearch = false"
             :conversation="(props.activeConversation as Conversation)" />
 
-        <!--contact info modal-->
+        <!--Contact info modal-->
         <ConversationInfoModal :open="openInfo" :closeModal="() => openInfo = false"
             :conversation="(props.activeConversation as Conversation)" />
     </div>

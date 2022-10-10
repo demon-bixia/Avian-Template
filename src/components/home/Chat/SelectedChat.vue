@@ -6,7 +6,7 @@ import { Conversation as ConversationType, Message } from "../../../stores/chat"
 
 import Bottom from "./Bottom/Bottom.vue";
 import Middle from "./Middle/Middle.vue";
-import Top from "./Top.vue";
+import Top from "./Top/Top.vue";
 
 const props = defineProps<{
     activeConversation: ConversationType
@@ -27,7 +27,7 @@ const removeMessageToReplyTo = () => {
 </script>
 
 <template>
-    <div class="h-full flex flex-col">
+    <div class="h-full flex flex-col scrollbar-hidden">
         <Top :active-conversation="props.activeConversation" />
 
         <Middle :active-conversation="props.activeConversation" :select-message-to-reply-to="selectMessageToReplyTo" />

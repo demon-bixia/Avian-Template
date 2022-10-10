@@ -10,7 +10,7 @@ const props = defineProps<{
 </script>
 
 <template>
-    <div class="mb-6">
+    <div class="xs:mb-0 md:mb-6">
         <button class="group relative focus:outline-none" :title="props.title"
             :aria-label="props.notifications ? props.title + ' ' + props.notifications + ' new notifications'  :props.title">
             <!--icon-->

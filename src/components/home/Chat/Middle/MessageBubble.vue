@@ -1,19 +1,20 @@
 <script setup lang="ts">
-import { ArrowUturnLeftIcon, BookmarkIcon, TrashIcon } from "@heroicons/vue/24/outline";
+import { ArrowUturnLeftIcon, BookmarkIcon, BookmarkSquareIcon, TrashIcon } from "@heroicons/vue/24/outline";
+
 import linkifyStr from 'linkify-string';
 import type { Ref } from "vue";
 import { ref } from "vue";
 
 import { Message, PreviewData, Recording as RecordingType } from "../../../../stores/chat";
 
-import DropdownLink from "../../../reusables/DropdownLink.vue";
+import { getFullName } from "../../../../utils";
 import Dropdown from "../../../reusables/Dropdown.vue";
+import DropdownLink from "../../../reusables/DropdownLink.vue";
 import Typography from "../../../reusables/Typography.vue";
-import ReplyPreview from "../ReplyPreview.vue";
+import ReplyPreview from "../MessagePreview.vue";
 import Attachments from "./Attachments.vue";
 import LinkPreview from "./LinkPreview.vue";
 import Recording from "./Recording.vue";
-import { getFullName } from "../../../../utils";
 
 const props = defineProps<{
     message: Message,
@@ -21,7 +22,8 @@ const props = defineProps<{
     self: boolean,
     divider?: boolean,
     replyToMessage?: Message,
-    selectMessageToReplyTo: (message?: Message) => void
+    selectMessageToReplyTo: (message?: Message) => void,
+    handlePinMessage: (messageId: number) => void,
 }>();
 
 const showContextMenu = ref(false);
@@ -33,7 +35,7 @@ const handleShowContextMenu = (event: any) => {
     showContextMenu.value = true;
     contextMenuCordinations.value = {
         x: window.innerWidth - 220 <= event.pageX ? window.innerWidth - 250 : event.pageX,
-        y: window.innerHeight - 125 <= event.pageY ? window.innerHeight - 200 : event.pageY
+        y: window.innerHeight - 200 <= event.pageY ? window.innerHeight - 200 : event.pageY
     };
 };
 
@@ -66,7 +68,7 @@ const hideAvatar = () => {
 
 <template>
     <div>
-        <div class="mb-5 flex" :class="{'justify-end': props.self}">
+        <div class="xs:mb-6 md:mb-5 flex" :class="{'justify-end': props.self}">
             <!--avatar-->
             <div class="mr-4" :class="{'ml-[36px]': props.followUp && !divider}">
                 <div v-if="!hideAvatar()" tabindex="0" :aria-label="getFullName((props.message as Message).sender)"
@@ -115,7 +117,7 @@ const hideAvatar = () => {
 
                 <!--date-->
                 <div>
-                    <Typography variant="body-1">
+                    <Typography variant="body-1" class="whitespace-pre">
                         {{(props.message as Message).date}}
                     </Typography>
                 </div>
@@ -135,6 +137,11 @@ const hideAvatar = () => {
             <DropdownLink :handle-click="handleCloseContextMenu">
                 <BookmarkIcon class="h-5 w-5 mr-3 text-black opacity-60 dark:text-white dark:opacity-70" />
                 Copy
+            </DropdownLink>
+
+            <DropdownLink :handle-click="()=> {handleCloseContextMenu(); props.handlePinMessage(props.message.id)} ">
+                <BookmarkSquareIcon class="h-5 w-5 mr-3 text-black opacity-60 dark:text-white dark:opacity-70" />
+                Pin
             </DropdownLink>
 
             <DropdownLink :handle-click="handleCloseContextMenu"

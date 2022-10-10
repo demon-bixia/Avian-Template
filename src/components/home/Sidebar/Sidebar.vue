@@ -4,7 +4,6 @@ import { computed } from "vue";
 import useChatStore from "../../../stores/chat";
 
 import FadeTransition from "../../reusables/transitions/FadeTransition.vue";
-import Archive from "./Archive/Archive.vue";
 import Contacts from "./Contacts/Contacts.vue";
 import Conversations from "./Conversations/Conversations.vue";
 import Notifications from "./Notifications/Notifications.vue";
@@ -20,8 +19,6 @@ const ActiveComponent = computed(() => {
         return Contacts;
     } else if (chat.activeSidebarComponent === 'notifications') {
         return Notifications;
-    } else if (chat.activeSidebarComponent === 'archive') {
-        return Archive;
     } else if (chat.activeSidebarComponent === 'settings') {
         return Settings;
     }
@@ -29,7 +26,8 @@ const ActiveComponent = computed(() => {
 </script>
 
 <template>
-    <aside class="w-[290px] h-full flex flex-col overflow-visible dark:bg-gray-800 transition-all duration-500">
+    <aside
+        class="xs:w-full md:w-[290px] h-full xs:px-5 md:p-0 flex flex-col overflow-visible transition-all duration-500">
         <FadeTransition>
             <component :is="ActiveComponent" class="h-full flex flex-col" />
         </FadeTransition>

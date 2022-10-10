@@ -82,7 +82,7 @@ const numberOfVideos = computed(() => {
                     :aria-label="numberOfImages > 2 ? (props.message.attachments as []).length - 1  + ' more attachments' : attachment.name">
                     <div v-if="index < 2" :style="{ backgroundImage: `url(${attachment.url})`}"
                         class="rounded bg-cover bg-center"
-                        :class="(numberOfImages === 1 && numberOfVideos === 0) ? ['w-[200px]', 'h-[200px]'] : ['w-[110px]', 'h-[100px]']">
+                        :class="(numberOfImages === 1 && numberOfVideos === 0) ? ['w-[200px]', 'h-[200px]'] : ['md:w-[110px]', 'md:h-[100px]', 'xs:w-[100px]', 'xs:h-[95px]']">
 
                         <div v-if="index === 0 || (index === 1 && numberOfImages === 2)"
                             class="w-full h-full flex justify-center items-center rounded bg-black bg-opacity-20 hover:bg-opacity-10 transition duration-200">
@@ -102,7 +102,7 @@ const numberOfVideos = computed(() => {
                     :aria-label="numberOfVideos > 2 ? (props.message.attachments as []).length - 1  + ' more attachments' : attachment.name">
                     <div v-if=" index < 2" :style="{ backgroundImage: `url(${attachment.thumbnail})`}"
                         class="rounded bg-cover bg-center"
-                        :class="(numberOfVideos === 1 && numberOfImages  === 0) ? ['w-[200px]', 'h-[200px]'] : ['w-[110px]', 'h-[100px]']">
+                        :class="(numberOfVideos === 1 && numberOfImages  === 0) ? ['w-[200px]', 'h-[200px]',] : ['md:w-[110px]', 'md:h-[100px]',  'xs:w-[100px]', 'xs:h-[95px]']">
 
                         <div v-if="index === 0 || (index === 1 && numberOfVideos === 2)"
                             class="w-full h-full flex justify-center items-center rounded bg-black bg-opacity-20 hover:bg-opacity-10 transition duration-200">

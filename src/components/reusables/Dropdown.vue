@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, } from "vue";
-import { useFocusTrap } from '@vueuse/integrations/useFocusTrap';
+import { onClickOutside } from '@vueuse/core';
+import { onMounted, onUnmounted, ref } from "vue";
 
 import ScaleTransition from "./transitions/ScaleTransition.vue";
 
@@ -13,19 +13,25 @@ const props = defineProps<{
     closeDropdown: () => void
 }>();
 
-// (event) close dropdown when typing esc button
+// html element containing the dropdown.
+const dropdown = ref();
+
+// (event) close dropdown when typing esc button.
 const handleCloseOnEscape = (event: KeyboardEvent) => {
     if (['Escape', 'Esc'].includes(event.key)) {
         props.closeDropdown();
     }
 };
 
-// set the handleCloseOnEscape when mounting the component
 onMounted(() => {
+    // set the handleCloseOnEscape when mounting the component.
     document.addEventListener('keydown', handleCloseOnEscape);
+    // when clicking outside
+    onClickOutside(dropdown, (event) => props.handleClickOutside)
 });
 
 onUnmounted(() => {
+    // remove handleCloseOnEscape when unmounting the component.
     document.removeEventListener('keydown', handleCloseOnEscape);
 });
 

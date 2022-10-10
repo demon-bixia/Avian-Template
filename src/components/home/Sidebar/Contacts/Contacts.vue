@@ -19,6 +19,9 @@ const searchText: Ref<string> = ref('');
 
 const openModal = ref(false);
 
+// html element containing the contact groups
+const contactContainer: Ref<HTMLElement | null> = ref(null);
+
 // contact groups filtered by search text
 const filteredContactGroups: Ref<ContactGroup[] | undefined> = ref(chat.contactGroups);
 
@@ -54,17 +57,19 @@ watch(searchText, () => {
         </SidebarHeader>
 
         <!--search-->
-        <div class="px-5 pb-5">
+        <div class="px-5 xs:pb-6 md:pb-5">
             <SearchInput v-model="searchText" />
         </div>
 
         <!--content-->
-        <div class="w-full h-full scroll-smooth scrollbar-hidden" style="overflow-x:visible; overflow-y: scroll;">
+        <div ref="contactContainer" class="w-full h-full scroll-smooth scrollbar-hidden"
+            style="overflow-x:visible; overflow-y: scroll;">
             <Loading2 v-if="chat.status === 'loading'  || chat.delayLoading" v-for="item in 5" />
 
             <ContactGroups
                 v-else-if="chat.status === 'success' && !chat.delayLoading && (chat.contacts as Contact[])?.length > 0"
-                :contactGroups="filteredContactGroups" />
+                :contactGroups="filteredContactGroups"
+                :bottom-edge="(contactContainer as HTMLElement)?.getBoundingClientRect().bottom" />
 
             <NoContacts v-else />
         </div>

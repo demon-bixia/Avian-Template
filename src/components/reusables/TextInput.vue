@@ -20,10 +20,11 @@ const classes = computed(() => {
 
     if (props.variant === 'bordered') {
         classes = [...classes, 'border', 'border-gray-200', 'text-black', 'opacity-60', 'bg-gray-50',
-            'dark:text-white', 'dark:opacity-70', 'dark:focus:bg-opacity-0', 'focus:bg-opacity-0', 'focus:border-indigo-300', 'dark:border-gray-600'];
+            'dark:text-white', 'dark:opacity-70', 'dark:focus:bg-opacity-0', 'focus:bg-opacity-0', 'focus:border-indigo-300',
+            'dark:border-gray-600'];
     } else {
         classes = [...classes, 'border', 'border-gray-50', 'text-black', 'opacity-60', 'bg-gray-50', 'dark:text-white',
-            'dark:opacity-70', 'dark:border-gray-700', 'focus:ring', 'focus:ring-indigo-100', 'focus:bg-opacity-0'];
+            'dark:opacity-70', 'dark:border-gray-700', 'focus:ring', 'focus:ring-indigo-100', 'dark:focus:bg-opacity-0', 'focus:bg-opacity-0'];
     }
 
     return classes;
