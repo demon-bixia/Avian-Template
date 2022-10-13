@@ -3,7 +3,7 @@ import type { Ref } from "vue";
 import { computed, ref } from "vue";
 
 import { DefaultSettings } from "./defaultData";
-import { ARCHIVE, CONTACTS, CONVERSATIONS, NOTIFICATIONS } from "./fakeData";
+import { ARCHIVE, CONTACTS, CONVERSATIONS, NOTIFICATIONS, CALLS, ACTIVECALL } from "./fakeData";
 
 export interface Contact {
     id: number,
@@ -83,6 +83,16 @@ export interface Settings {
     settings: Setting[],
 };
 
+export interface Call {
+    type: string,
+    direction: string,
+    status: string,
+    date: string,
+    length: string,
+    members: Contact[],
+    adminIds: number[],
+};
+
 const useChatStore = defineStore("chat", () => {
     // local storage
     const storage = JSON.parse(localStorage.getItem('chat') || '{}');
@@ -95,7 +105,9 @@ const useChatStore = defineStore("chat", () => {
     const conversations: Ref<Conversation[] | undefined> = ref(CONVERSATIONS); // not fetched but updated
     const notifications: Ref<Notification[] | undefined> = ref(NOTIFICATIONS); // not fetched but updated
     const archivedConversations: Ref<Conversation[] | undefined> = ref(ARCHIVE); // not fetched
+    const calls: Ref<Call[] | undefined> = ref(CALLS); // not fetched
     const settings: Ref<Settings[]> = ref(DefaultSettings); // not fetched
+    const activeCall: Ref<Call | null> = ref(ACTIVECALL) //not fetched
 
     // ui refs
     const activeSidebarComponent: Ref<string> = ref(storage.activeSidebarComponent || 'messages');
@@ -103,6 +115,8 @@ const useChatStore = defineStore("chat", () => {
     const activeConversationId: Ref<number | null> = ref(storage.activeConversationId || null);
     const conversationOpen: Ref<string | undefined> = ref(storage.conversationOpen);
     const darkMode = ref(storage.darkMode || false);
+    const callMinimized = ref(false);
+    const openVoiceCall = ref(false);
 
     // contacts grouped alphabetically.
     const contactGroups: Ref<ContactGroup[] | undefined> = computed(() => {
@@ -150,7 +164,9 @@ const useChatStore = defineStore("chat", () => {
         contactGroups,
         notifications,
         archivedConversations,
+        calls,
         settings,
+        activeCall,
 
         // ui refs
         activeSidebarComponent,
@@ -158,6 +174,8 @@ const useChatStore = defineStore("chat", () => {
         activeConversationId,
         conversationOpen,
         darkMode,
+        callMinimized,
+        openVoiceCall,
     };
 });
 

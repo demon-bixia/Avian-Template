@@ -17,7 +17,7 @@ const chat = useChatStore();
         </div>
 
         <!--contacts-->
-        <div class="overflow-y-scroll scrollbar scrollbar-hidden max-h-64">
+        <div class="overflow-y-scroll scrollbar scrollbar-hidden max-h-[200px]">
             <Loading1 v-if="chat.status === 'loading'  || chat.delayLoading" v-for="item in 3" />
 
             <ContactItem

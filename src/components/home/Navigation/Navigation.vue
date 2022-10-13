@@ -79,15 +79,17 @@ const handleActiveSidebarComponentChange = (value: string) => {
                     </li>
 
                     <!--notifications button-->
-                    <li>
+                    <li class="xs:hidden md:inline">
                         <NavLink :icon="BellIcon" title="Notifications" :notifications="3"
                             @click="()=>handleActiveSidebarComponentChange('notifications')"
                             :active="chat.activeSidebarComponent === 'notifications'" />
                     </li>
 
-                    <!--call log button-->
-                    <li class="xs:hidden md:inline">
-                        <NavLink :icon="PhoneIcon" title="Call log" :active="chat.activeSidebarComponent === 'phone'" />
+                    <!--voice call button-->
+                    <li>
+                        <NavLink :icon="PhoneIcon" title="Call log"
+                            @click="()=>handleActiveSidebarComponentChange('phone')"
+                            :active="chat.activeSidebarComponent === 'phone'" />
                     </li>
 
                     <!--settings button small screen-->

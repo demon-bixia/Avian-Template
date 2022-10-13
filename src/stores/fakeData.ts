@@ -130,8 +130,6 @@ export const CONVERSATIONS = [
         },],
     },
 
-
-
     {
         id: 6,
         type: 'group',
@@ -235,6 +233,95 @@ export const NOTIFICATIONS = [
 
     },
 ];
+
+export const CALLS = [
+    {
+        id: 1,
+        type: 'voice',
+        status: 'missed',
+        direction: 'incoming',
+        date: 'Dec 12, 2020',
+        length: '01:12',
+        members: [
+            { id: 1, firstName: 'Dawn', lastName: 'Sabrina', lastSeen: new Date(), email: 'sabrina@gmail.com', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80', },
+            { id: 2, email: 'user@gmail.com', firstName: 'Ahmed', lastName: "Ali", lastSeen: new Date(), avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' },
+        ],
+        adminIds: [1],
+    },
+
+    {
+        id: 2,
+        type: 'voice',
+        status: 'received',
+        direction: 'incoming',
+        date: 'Dec 12, 2020',
+        length: '01:12',
+        members: [
+            { id: 1, firstName: 'Dawn', lastName: 'Sabrina', lastSeen: new Date(), email: 'sabrina@gmail.com', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' },
+            { id: 2, email: 'user@gmail.com', firstName: 'Ahmed', lastName: "Ali", lastSeen: new Date(), avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' },
+            { id: 3, email: 'user@gmail.com', firstName: 'Allen', lastName: "Carr", "lastSeen": new Date(), avatar: 'https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', },
+            { id: 9, email: 'user@gmail.com', firstName: 'Feng', lastName: "Zhuo", "lastSeen": new Date(), avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80', },
+        ],
+        adminIds: [2],
+    },
+
+    {
+        id: 3,
+        type: 'voice',
+        status: 'sent',
+        direction: 'outgoing',
+        date: 'Dec 12, 2020',
+        length: '01:12',
+        members: [
+            { id: 1, firstName: 'Dawn', lastName: 'Sabrina', lastSeen: new Date(), email: 'sabrina@gmail.com', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80', },
+            { id: 5, email: 'user@gmail.com', firstName: 'Dylan', lastName: "Billy", "lastSeen": new Date(), avatar: 'https://images.unsplash.com/photo-1522556189639-b150ed9c4330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80', },
+        ],
+        adminIds: [1],
+    },
+
+    {
+        id: 4,
+        type: 'voice',
+        status: 'missed',
+        direction: 'incoming',
+        date: 'Dec 12, 2020',
+        length: '01:12',
+        members: [
+            { id: 1, firstName: 'Dawn', lastName: 'Sabrina', lastSeen: new Date(), email: 'sabrina@gmail.com', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' },
+            { id: 3, email: 'user@gmail.com', firstName: 'Allen', lastName: "Carr", "lastSeen": new Date(), avatar: 'https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', },
+        ],
+        adminIds: [1],
+    },
+
+    {
+        id: 5,
+        type: 'voice',
+        status: 'sent',
+        direction: 'outgoing',
+        date: 'Dec 12, 2020',
+        length: '01:12',
+        members: [
+            { id: 1, firstName: 'Dawn', lastName: 'Sabrina', lastSeen: new Date(), email: 'sabrina@gmail.com', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80', },
+            { id: 8, email: 'user@gmail.com', firstName: 'Evelyn', lastName: "Billy", "lastSeen": new Date(), avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60' },
+            { id: 10, email: 'user@gmail.com', firstName: 'Fung', lastName: "Sheng", "lastSeen": new Date(), avatar: 'https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?cs=srgb&dl=pexels-charles-1851164.jpg&fm=jpg', }
+        ],
+        adminIds: [1],
+    },
+];
+
+export const ACTIVECALL = {
+    id: 6,
+    type: 'voice',
+    status: 'dialing',
+    direction: 'outgoing',
+    date: 'Dec 12, 2020',
+    length: '01:12',
+    members: [
+        { id: 1, firstName: 'Dawn', lastName: 'Sabrina', lastSeen: new Date(), email: 'sabrina@gmail.com', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80', },
+        { id: 8, email: 'user@gmail.com', firstName: 'Evelyn', lastName: "Billy", "lastSeen": new Date(), avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60' },
+    ],
+    adminIds: [1],
+};
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 

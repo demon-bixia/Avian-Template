@@ -18,7 +18,7 @@ const props = defineProps<{
     closeModal: () => void,
 }>();
 
-// selected group memeber
+// selected group member
 const selectedMember: Ref<Contact | undefined> = ref();
 
 // used to determine whether to slide left or right

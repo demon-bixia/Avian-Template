@@ -1,6 +1,6 @@
 import useAuthStore, { User } from "./stores/auth";
 import useChatStore from "./stores/chat";
-import { Contact, Conversation, Message } from "./stores/chat";
+import { Contact, Conversation, Message, Call } from "./stores/chat";
 
 // combine first name and last name of a contact
 export const getFullName = (contact: Contact) => {
@@ -42,19 +42,26 @@ export const getName = (conversation?: Conversation) => {
     }
 };
 
-// trim message.
+// trim message content.
 export const shorten = (message: Message, maxLength: number = 23) => {
-    if (message.content) {
-        let trimmedString = (message.content as string);
+    return shortenText((message.content as string), maxLength);
+};
 
-        if ((message.content as string).length > maxLength) {
+// trim string.
+export const shortenText = (text: string, maxLength: number = 23) => {
+    if (text) {
+        let trimmedString = text;
+
+        if (text.length > maxLength) {
             // trim the string to the maximum length.
             trimmedString = trimmedString.slice(0, maxLength);
             // add three dots to indicate that there is more to the message.
             trimmedString += '...';
         }
+
         return trimmedString;
     }
+
     return '';
 };
 
@@ -76,4 +83,35 @@ export const getConversationIndex = (conversationId: number) => {
     });
 
     return conversationIndex;
+};
+
+export const getOtherMembers = (call: Call) => {
+    const auth = useAuthStore();
+    let members = [];
+
+    if (call) {
+        for (let member of call.members) {
+            if (member.id !== (auth.user as User).id) {
+                members.push(member);
+            }
+        }
+    }
+
+    return members;
+};
+
+
+export const getCallName = (call: Call) => {
+    let members = getOtherMembers(call);
+    let callName: string = '';
+
+    for (let member of members) {
+        callName += getFullName(member)
+
+        if (members.length > 1) {
+            callName += ', '
+        }
+    }
+
+    return shortenText(callName, 20)
 };

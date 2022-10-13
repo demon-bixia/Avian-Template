@@ -2,7 +2,7 @@
 import { computed, ref } from "vue";
 
 import GroupInfo from "./GroupInfo.vue";
-import GroupMemebers from "./GroupMemebers.vue";
+import GroupMembers from "./GroupMembers.vue";
 import SlideTransition from "../../../reusables/transitions/SlideTransition.vue";
 
 
@@ -19,7 +19,7 @@ const ActivePage = computed(() => {
     if (activePageName.value === 'group-info')
         return GroupInfo;
     else if (activePageName.value === 'group-members')
-        return GroupMemebers;
+        return GroupMembers;
 });
 
 // event to move between modal pages

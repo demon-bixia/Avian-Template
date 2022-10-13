@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PlusCircleIcon } from "@heroicons/vue/24/outline";
+import { UserPlusIcon } from "@heroicons/vue/24/outline";
 import type { Ref } from "vue";
 import { ref, watch } from "vue";
 
@@ -51,7 +51,7 @@ watch(searchText, () => {
             <!--side actions-->
             <template v-slot:actions>
                 <IconButton @click="openModal = true" aria-label="add contacts">
-                    <PlusCircleIcon class="w-[20px] h-[20px] text-indigo-300 hover:text-indigo-400 " />
+                    <UserPlusIcon class="w-[20px] h-[20px] text-indigo-300 hover:text-indigo-400 " />
                 </IconButton>
             </template>
         </SidebarHeader>

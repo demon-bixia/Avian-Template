@@ -13,6 +13,7 @@ const classes = computed(() => {
     if (props.variant === 'gohst') {
         classes = [...classes];
     }
+
     else {
         classes = [...classes, 'p-2', 'focus:bg-gray-50', 'hover:bg-gray-50', 'dark:hover:bg-gray-700', 'dark:focus:bg-gray-600'];
     }

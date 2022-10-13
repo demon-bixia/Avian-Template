@@ -4,7 +4,7 @@ import { computed } from "vue";
 import useChatStore from "../../../stores/chat";
 
 import loading3 from "../../reusables/loading/loading3.vue";
-import NoChatSelected from "./NoChatSelected.vue";
+import NoChatSelected from "../../reusables/emptyStates/NoChatSelected.vue";
 import SelectedChat from "./SelectedChat.vue";
 
 

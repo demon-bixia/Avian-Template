@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { PhoneIcon, EllipsisVerticalIcon, InformationCircleIcon, MagnifyingGlassIcon, MusicalNoteIcon, NoSymbolIcon, ChevronLeftIcon } from "@heroicons/vue/24/outline";
+import { ChevronLeftIcon, EllipsisVerticalIcon, InformationCircleIcon, MagnifyingGlassIcon, NoSymbolIcon, PhoneIcon, ShareIcon } from "@heroicons/vue/24/outline";
 import { ref } from "vue";
 
-import useChatStore, { Conversation } from "../../../../stores/chat";
+import useChatStore, { Call, Conversation } from "../../../../stores/chat";
 import { getAvatar, getName } from "../../../../utils";
 
 import Dropdown from "../../../reusables/Dropdown.vue";
@@ -12,6 +12,8 @@ import Typography from "../../../reusables/Typography.vue";
 import ConversationInfoModal from "../../modals/ConversationInfoModal/ConversationInfoModal.vue";
 import SearchModal from "../../modals/SearchModal.vue";
 import SelectedPinnedMessage from "./SelectedPinnedMessage.vue";
+import VoiceCallModal from "../../modals/VoiceCallModal/VoiceCallModal.vue";
+import { ACTIVECALL } from "../../../../stores/fakeData";
 
 const props = defineProps<{
     activeConversation?: Conversation,
@@ -44,6 +46,28 @@ const handleClickOutside = (event: Event) => {
 // (event) close the selected conversation
 const handleCloseConversation = () => {
     chat.conversationOpen = 'close';
+};
+
+// (event) open the voice call modal and expand call
+const handleOpenVoiceCallModal = () => {
+    chat.activeCall = ACTIVECALL;
+    chat.callMinimized = false;
+
+    // wait for the transition to ongoing status to end
+    setTimeout(() => {
+        chat.openVoiceCall = true;
+    }, 300)
+};
+
+// (event) close the voice call modal and minimize the call
+const handleCloseVoiceCallModal = (endCall: boolean) => {
+    if (endCall) {
+        chat.activeCall = null;
+        chat.callMinimized = false;
+    }
+
+    chat.openVoiceCall = false;
+    chat.callMinimized = true;
 };
 </script>
 
@@ -106,11 +130,16 @@ const handleCloseConversation = () => {
                             Profile Information
                         </DropdownLink>
 
-                        <DropdownLink :handle-click="handleCloseDropdown">
-                            <MusicalNoteIcon
-                                class="h-5 w-5 mr-3 text-black opacity-60 dark:text-white dark:opacity-70" />
-                            View Media
+                        <DropdownLink :handle-click="()=>{handleCloseDropdown(); handleOpenVoiceCallModal()}">
+                            <PhoneIcon class="h-5 w-5 mr-3 text-black opacity-60 dark:text-white dark:opacity-70" />
+                            Voice call
                         </DropdownLink>
+
+                        <DropdownLink :handle-click="handleCloseDropdown">
+                            <ShareIcon class="h-5 w-5 mr-3 text-black opacity-60 dark:text-white dark:opacity-70" />
+                            Shared media
+                        </DropdownLink>
+
 
                         <DropdownLink :handle-click="handleCloseDropdown"
                             class="text-red-500 hover:bg-red-100 active:bg-red-100 dark:text-red-500">
@@ -135,5 +164,8 @@ const handleCloseConversation = () => {
         <!--Contact info modal-->
         <ConversationInfoModal :open="openInfo" :closeModal="() => openInfo = false"
             :conversation="(props.activeConversation as Conversation)" />
+
+        <!--voice call modal-->
+        <VoiceCallModal :open="chat.openVoiceCall" :close-modal="handleCloseVoiceCallModal" />
     </div>
 </template>

@@ -6,7 +6,7 @@ import { Contact, Conversation } from "../../../../stores/chat";
 import { getAvatar, getFullName, getName, getOddContact } from "../../../../utils";
 
 import Typography from "../../../reusables/Typography.vue";
-import InfoItem from "./InfoItem.vue";
+import InfoItem from "../../../reusables/InfoItem.vue";
 
 const props = defineProps<{
     conversation?: Conversation,
@@ -79,7 +79,7 @@ const props = defineProps<{
                             Last seen Dec 16, 2019
                         </span>
 
-                        <!--or number of group memebers-->
+                        <!--or number of group members-->
                         <span v-else-if="['group', 'boradcast'].includes((props.conversation as Conversation).type)">
                             {{(props.conversation as Conversation).contacts.length}} Contacts
                         </span>
@@ -99,7 +99,7 @@ const props = defineProps<{
             <!--(group) members-->
             <div v-if="['group', 'boradcast'].includes((props.conversation as Conversation).type) && !props.contact"
                 class="px-5 flex items-center pb-5">
-                <InfoItem :icon="UserIcon" title="memebers" link chevron
+                <InfoItem :icon="UserIcon" title="members" link chevron
                     @click="$emit('active-page-change', {tabName: 'members', animationName: 'slide-left'})" />
             </div>
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Typography from '../../reusables/Typography.vue';
+import Typography from '../Typography.vue';
 import { ChatBubbleOvalLeftIcon } from "@heroicons/vue/24/solid";
 </script>
 

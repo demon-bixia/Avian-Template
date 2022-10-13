@@ -2,8 +2,8 @@
 import { ChevronRightIcon } from "@heroicons/vue/24/outline";
 import type { Component } from "vue";
 
-import SwitchInput from "../../../reusables/SwitchInput.vue";
-import Typography from "../../../reusables/Typography.vue";
+import SwitchInput from "./SwitchInput.vue";
+import Typography from "./Typography.vue";
 
 const props = defineProps<{
     link?: boolean,

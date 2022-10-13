@@ -11,6 +11,7 @@ defineEmits(['contactSelected']);
 const props = defineProps<{
     contact: Contact,
     variant?: string,
+    active?: boolean,
 }>();
 
 const auth = useAuthStore();
@@ -20,8 +21,11 @@ const auth = useAuthStore();
     <div>
         <component :is="props.variant === 'card' ? 'div' : 'a'"
             @click="props.variant === 'card' ? () => {} :$emit('contactSelected', props.contact)" href="#"
-            class="w-full p-5 flex transition duration-200 ease-out outline-none"
-            :class="props.variant === 'card' ? [] : ['hover:bg-indigo-50', 'active:bg-indigo-100', 'focus:bg-indigo-50', 'dark:hover:bg-gray-600', 'dark:focus:bg-gray-600']">
+            class="w-full p-5 flex transition duration-200 ease-out outline-none" :class="{
+            'hover:bg-indigo-50 active:bg-indigo-100 focus:bg-indigo-50 dark:hover:bg-gray-600 dark:focus:bg-gray-600':  props.variant !== 'card', 
+            'bg-indigo-50 dark:bg-gray-600': props.active
+            }">
+
             <!--profile image-->
             <div class="mr-4">
                 <div :style=" { backgroundImage: `url(${props.contact.avatar})`}"
@@ -52,6 +56,10 @@ const auth = useAuthStore();
                 <Typography variant="body-2">
                     Last seen 2:30 am
                 </Typography>
+            </div>
+
+            <div class="h-full flex flex-col justify-center items-center">
+                <slot name="checkbox"></slot>
             </div>
         </component>
     </div>

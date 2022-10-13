@@ -70,7 +70,7 @@ const handleClickOutside = (event: Event) => {
         <!--header-->
         <div class="flex justify-between items-center mb-6 px-5">
             <Typography id="modal-title" variant="heading-1" class="outline-none">
-                Memebers
+                Members
             </Typography>
 
             <button @click="$emit('active-page-change', {tabName: 'conversationInfo', animationName: 'slide-right'})"
@@ -90,7 +90,7 @@ const handleClickOutside = (event: Event) => {
         </div>
 
         <!--contacts-->
-        <div ref="contactContainer" class="overflow-y-scroll scrollbar scrollbar-hidden">
+        <div ref="contactContainer" class="max-h-[232px] overflow-y-scroll scrollbar scrollbar-hidden">
             <ContactItem variant="card"
                 @contact-selected="contact => $emit('active-page-change', {tabName: 'conversationInfo', animationName: 'slide-left', contact: contact})"
                 v-for="(contact, index) in props.conversation.contacts" :contact="contact" :key="index">
