@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { EyeSlashIcon } from "@heroicons/vue/24/outline";
-import { RouterLink } from 'vue-router'
+import { RouterLink } from 'vue-router';
 
-import GoogleIcon from '../../../assets/google-logo.svg';
 import IconButton from "../../reusables/IconButton.vue";
 import PrimaryButton from "../../reusables/PrimaryButton.vue";
 import TextInput from "../../reusables/TextInput.vue";
@@ -35,7 +34,8 @@ import Typography from "../../reusables/Typography.vue";
                 <PrimaryButton class="w-full mb-4 " link to="/">Sign in</PrimaryButton>
                 <PrimaryButton variant="outlined" class="w-full">
                     <span class="flex">
-                        <GoogleIcon class="mr-3" /> Sign in with google
+                        <img src="../../../assets/google-logo.svg" class="mr-3" />
+                        Sign in with google
                     </span>
                 </PrimaryButton>
             </div>

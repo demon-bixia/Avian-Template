@@ -23,13 +23,13 @@
     "vue3-emoji-picker": "^1.1.4"
   },
   "devDependencies": {
+    "@types/video.js": "7.x",
     "@vitejs/plugin-vue": "^3.1.2",
     "autoprefixer": "^10.4.12",
     "postcss": "^8.4.18",
     "tailwindcss": "^3.1.8",
     "typescript": "^4.8.4",
     "vite": "^3.1.8",
-    "vite-svg-loader": "^3.6.0",
     "vue-tsc": "^1.0.7"
   }
 }

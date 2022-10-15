@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import GoogleIcon from '../../../assets/google-logo.svg';
 import PrimaryButton from '../../reusables/PrimaryButton.vue';
 import TextInput from '../../reusables/TextInput.vue';
 </script>
@@ -23,7 +22,7 @@ import TextInput from '../../reusables/TextInput.vue';
 
             <PrimaryButton variant="outlined" class="w-full">
                 <span class="flex">
-                    <GoogleIcon class="mr-3" /> Sign up with google
+                    <img src="../../../assets/google-logo.svg" class="mr-3" /> Sign up with google
                 </span>
             </PrimaryButton>
         </div>

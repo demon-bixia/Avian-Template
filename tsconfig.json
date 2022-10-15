@@ -15,7 +15,12 @@
       "DOM",
       "DOM.Iterable"
     ],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "*": [
+        "./src/client/@custom_types/*"
+      ]
+    },
   },
   "include": [
     "src/**/*.ts",
@@ -27,5 +32,5 @@
     {
       "path": "./tsconfig.node.json"
     }
-  ]
+  ],
 }

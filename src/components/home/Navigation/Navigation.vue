@@ -9,9 +9,6 @@ import useChatStore from "../../../stores/chat";
 import NavLink from "./NavLink.vue";
 import ProfileDropdown from "./ProfileDropdown.vue";
 
-import WhiteLogo from "../../../assets/logo-white.svg";
-import Logo from "../../../assets/logo.svg";
-
 const auth = useAuthStore();
 const chat = useChatStore();
 
@@ -37,8 +34,8 @@ const handleActiveSidebarComponentChange = (value: string) => {
             </a>
 
             <button aria-label="avian logo" :class="{'hidden':SkipLinkFocused}" class="outline-none">
-                <Logo v-if="!chat.darkMode" class="w-8 h-7" />
-                <WhiteLogo v-else class="w-8 h-7 opacity-40" />
+                <img v-if="!chat.darkMode" src="../../../assets/logo.svg" class="w-8 h-7" />
+                <img v-else src="../../../assets/logo-white.svg" class="w-8 h-7 opacity-40" />
             </button>
         </div>
 

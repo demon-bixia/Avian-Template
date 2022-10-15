@@ -10,7 +10,7 @@ const props = defineProps<{
 <template>
     <div class="relative">
         <i class="absolute left-0 top-[10.5px] ml-3 text-center">
-            <MagnifyingGlassIcon class="w-5 h-5 stroke-2 text-black opacity-90 dark:text-white dark:opacity-70" />
+            <MagnifyingGlassIcon class="w-5 h-5 stroke-2 text-black opacity-40 dark:text-white dark:opacity-70" />
         </i>
 
         <input type="text" placeholder="Search.." class="w-full h-8 py-3 px-7 border outline-none rounded-sm border-gray-100 dark:border-gray-700
