@@ -106,7 +106,7 @@ const useChatStore = defineStore("chat", () => {
     const notifications: Ref<Notification[] | undefined> = ref(NOTIFICATIONS); // not fetched but updated
     const archivedConversations: Ref<Conversation[] | undefined> = ref(ARCHIVE); // not fetched
     const calls: Ref<Call[] | undefined> = ref(CALLS); // not fetched
-    const settings: Ref<Settings[]> = ref(DefaultSettings); // not fetched
+    const settings: Ref<Settings[]> = ref(storage.settings || DefaultSettings); // not fetched
     const activeCall: Ref<Call | null> = ref(ACTIVECALL) //not fetched
 
     // ui refs
@@ -114,7 +114,6 @@ const useChatStore = defineStore("chat", () => {
     const delayLoading = ref(true);
     const activeConversationId: Ref<number | null> = ref(storage.activeConversationId || null);
     const conversationOpen: Ref<string | undefined> = ref(storage.conversationOpen);
-    const darkMode = ref(storage.darkMode || false);
     const callMinimized = ref(false);
     const openVoiceCall = ref(false);
 
@@ -173,7 +172,6 @@ const useChatStore = defineStore("chat", () => {
         delayLoading,
         activeConversationId,
         conversationOpen,
-        darkMode,
         callMinimized,
         openVoiceCall,
     };

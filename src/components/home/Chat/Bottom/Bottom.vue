@@ -80,7 +80,7 @@ const handleClickOutside = (event: Event) => {
                     class="resize-none py-[30px] w-full mr-5 outline-none text-sm text-black opacity-60 
                     dark:text-white dark:opacity-70 font-normal leading-4 tracking-[0.16px] placeholder:text-black 
                     placeholder:opacity-50 dark:placeholder:text-white dark:placeholder:opacity-70 bg-transparent"
-                    :class="chat.darkMode ? ['scrollbar-dark'] : ['scrollbar']"></textarea>
+                    :class="chat.settings[2].settings[0].value ? ['scrollbar-dark'] : ['scrollbar']"></textarea>
             </div>
 
             <!--cancel recording button-->

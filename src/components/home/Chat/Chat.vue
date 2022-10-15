@@ -29,11 +29,13 @@ const activeChatComponent = computed(() => {
     else
         return NoChatSelected;
 });
+
+
 </script>
 
 <template>
     <div id="mainContent"
-        class="xs:absolute md:static grow h-full xs:w-[inherit] md:w-fit scrollbar-hidden bg-white dark:bg-gray-800 transition-all duration-500"
+        class="xs:absolute xs:z-10 md:static grow h-full xs:w-full md:w-fit scrollbar-hidden bg-white dark:bg-gray-800 transition-all duration-500"
         :class="chat.conversationOpen === 'open' ? ['xs:left-[0px]','xs:static'] : ['xs:left-[1000px]']" role="region">
         <Transition name="fade" mode="out-in">
             <component :is="activeChatComponent" :active-conversation="activeConversation"

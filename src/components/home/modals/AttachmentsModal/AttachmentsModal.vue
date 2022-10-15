@@ -21,7 +21,7 @@ const chat = useChatStore();
             <div class="w-[400px] bg-white dark:bg-gray-800 rounded py-6">
                 <!--attachments list-->
                 <div class="max-h-[140px] overflow-y-scroll "
-                    :class="chat.darkMode ? ['scrollbar-dark'] : ['scrollbar']">
+                    :class="chat.settings[2].settings[0].value ? ['scrollbar-dark'] : ['scrollbar']">
                     <Attachment v-for="(attachment, index) in ATTACHMENTS" :attachment="attachment" :key="index" />
                 </div>
 

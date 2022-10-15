@@ -19,14 +19,14 @@ const ActiveMethod = computed(() => {
 </script>
 
 <template>
-    <div class="w-full h-screen">
+    <div class="w-full h-full">
         <div class=" w-full h-full flex dark:bg-gray-800">
             <FadeTransition>
                 <component :is="ActiveMethod" class="p-5 md:basis-1/2 xs:basis-full flex flex-col
                  justify-center items-center" />
             </FadeTransition>
 
-            <Cover class="h-screen basis-1/2 md:flex xs:hidden items-center justify-center" />
+            <Cover class="h-full basis-1/2 md:flex xs:hidden items-center justify-center" />
         </div>
     </div>
 </template>
