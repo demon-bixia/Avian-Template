@@ -2,7 +2,6 @@
 
 ## Features ⚡
 - [x] Dark and light themes
-- [x] Basic messaging features
 - [x] Message attachments
 - [x] Replies and pins
 - [x] Voice calls
@@ -44,3 +43,4 @@ npm run dev
 - <a href="https://heroicons.com/">Heroicons</a>
 - <a href="https://github.com/delowardev/vue3-emoji-picker">Vue3 Emoji Picker</a>
 - <a href="https://vueuse.org/">vueuse</a>
+- <a href="https://www.figma.com/file/P4anyRLoN2NNhDicfFUcqi/Avian-Messaging?node-id=2%3A4">Figma File</a>
