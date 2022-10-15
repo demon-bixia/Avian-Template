@@ -111,7 +111,12 @@ export const CONVERSATIONS = [
         },
         {
             id: 6,
-            content: 'Hey there, check this link out', date: '1:30 pm',
+            content: 'Hey there, check this out', date: '1:30 pm',
+            attachments: [
+                { id: 14, type: 'image', name: 'forest.jpg', size: '20 MB', url: 'https://images.unsplash.com/photo-1664021975758-78d83898225d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60', },
+                { id: 13, type: 'video', name: 'fun-video.mp4', size: '11.4 MB', url: 'https://www.w3schools.com/html/mov_bbb.mp4', thumbnail: 'https://images.unsplash.com/photo-1559705421-4ae9bf6fabb5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', },
+                { id: 15, type: 'image', name: 'forest.jpg', size: '20 MB', url: 'https://images.unsplash.com/photo-1664021975758-78d83898225d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60', },
+            ],
             sender: { id: 5, email: 'user@gmail.com', firstName: 'Dylan', lastName: "Billy", lastSeen: new Date(), avatar: 'https://images.unsplash.com/photo-1522556189639-b150ed9c4330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80', },
         },
         {

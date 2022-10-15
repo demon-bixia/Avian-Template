@@ -101,7 +101,7 @@ export const getOtherMembers = (call: Call) => {
 };
 
 
-export const getCallName = (call: Call) => {
+export const getCallName = (call: Call, full?: boolean, maxLength: number = 20) => {
     let members = getOtherMembers(call);
     let callName: string = '';
 
@@ -113,5 +113,9 @@ export const getCallName = (call: Call) => {
         }
     }
 
-    return shortenText(callName, 20)
+    if (full) {
+        return callName;
+    } else {
+        return shortenText(callName, maxLength);
+    }
 };

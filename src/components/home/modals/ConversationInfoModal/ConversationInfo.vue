@@ -1,18 +1,31 @@
 <script setup lang="ts">
-import { ArrowLeftOnRectangleIcon, AtSymbolIcon, BellIcon, NoSymbolIcon, ShareIcon, TrashIcon, UserIcon } from "@heroicons/vue/24/outline";
+import { ArrowLeftOnRectangleIcon, PencilIcon, AtSymbolIcon, BellIcon, NoSymbolIcon, ShareIcon, TrashIcon, UserIcon } from "@heroicons/vue/24/outline";
 import { ArrowUturnLeftIcon } from "@heroicons/vue/24/solid";
+import { computed, ref } from "vue";
 
 import { Contact, Conversation } from "../../../../stores/chat";
 import { getAvatar, getFullName, getName, getOddContact } from "../../../../utils";
 
-import Typography from "../../../reusables/Typography.vue";
 import InfoItem from "../../../reusables/InfoItem.vue";
+import Typography from "../../../reusables/Typography.vue";
+import ImageViewer from "./ImageViewer.vue";
+import IconButton from "../../../reusables/IconButton.vue";
 
 const props = defineProps<{
     conversation?: Conversation,
     contact?: Contact,
     closeModal: () => void
 }>();
+
+const openImageViewer = ref(false);
+
+const imageUrl = computed(() => {
+    if (props.contact) {
+        return props.contact.avatar;
+    } else {
+        return getAvatar(props.conversation);
+    }
+})
 </script>
 
 <template>
@@ -53,25 +66,38 @@ const props = defineProps<{
             <div class="flex">
                 <!--avatar-->
                 <div class="mr-5">
-                    <div v-if="props.contact" :style="{ backgroundImage: `url(${props.contact.avatar})`}"
-                        class="w-[38px] h-[38px] rounded-full bg-cover bg-center">
-                    </div>
+                    <button v-if="props.contact" @click="openImageViewer = true" class="outline-none"
+                        aria-label="view avatar">
+                        <div :style="{ backgroundImage: `url(${props.contact.avatar})`}"
+                            class="w-[38px] h-[38px] rounded-full bg-cover bg-center">
+                        </div>
+                    </button>
 
-                    <div v-else :style="{ backgroundImage: `url(${getAvatar(props.conversation)})`}"
-                        class="w-[38px] h-[38px] rounded-full bg-cover bg-center">
-                    </div>
+                    <button v-else @click="openImageViewer = true" class="outline-none" aria-label="view avatar">
+                        <div :style="{ backgroundImage: `url(${getAvatar(props.conversation)})`}"
+                            class="w-[38px] h-[38px] rounded-full bg-cover bg-center">
+                        </div>
+                    </button>
                 </div>
 
                 <!--name-->
-                <div class="flex flex-col items-start">
-                    <Typography variant="heading-2" class="mb-3">
-                        <span v-if="props.contact">
-                            {{getFullName(props.contact)}}
-                        </span>
-                        <span v-else>
-                            {{getName(props.conversation)}}
-                        </span>
-                    </Typography>
+                <div class="w-full flex flex-col items-start">
+                    <div class="w-full flex justify-between">
+                        <Typography variant="heading-2" class="mb-3 mr-5 ">
+                            <span v-if="props.contact">
+                                {{getFullName(props.contact)}}
+                            </span>
+
+                            <span v-else>
+                                {{getName(props.conversation)}}
+                            </span>
+                        </Typography>
+
+                        <IconButton v-if="['group', 'boradcast'].includes((props.conversation as Conversation).type)">
+                            <PencilIcon class="w-5 h-5 text-gray-400"
+                                @click="$emit('active-page-change', {tabName: 'edit-group', animationName: 'slide-left'})" />
+                        </IconButton>
+                    </div>
 
                     <Typography variant="body-2" class="font-extralight">
                         <!--last seen-->
@@ -111,7 +137,7 @@ const props = defineProps<{
             <!--media-->
             <div class="px-5 pt-5 flex items-center">
                 <InfoItem :icon="ShareIcon" title="shared media" link chevron
-                    @click="$emit('active-page-change', {tabName: 'sharedMedia', animationName: 'slide-left'})" />
+                    @click="$emit('active-page-change', {tabName: 'shared-media', animationName: 'slide-left'})" />
             </div>
         </div>
 
@@ -133,5 +159,8 @@ const props = defineProps<{
                 <InfoItem :icon="ArrowLeftOnRectangleIcon" title="exit group" link danger />
             </div>
         </div>
+
+        <!--image viewer-->
+        <ImageViewer :image-url="imageUrl" :open="openImageViewer" :close-image="() => openImageViewer = false" />
     </div>
 </template>

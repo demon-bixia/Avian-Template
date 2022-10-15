@@ -2,7 +2,7 @@
 import { ArrowUturnLeftIcon } from "@heroicons/vue/24/outline";
 import { computed } from 'vue';
 
-import { Conversation, Message } from '../../../../stores/chat';
+import { Contact, Conversation, Message } from '../../../../stores/chat';
 import { hasAttachments } from "../../../../utils";
 
 import NoMedia from "../../../reusables/emptyStates/NoMedia.vue";
@@ -13,6 +13,7 @@ import MediaItem from "./MediaItem.vue";
 const props = defineProps<{
     closeModal: () => void,
     conversation: Conversation,
+    contact?: Contact,
 }>();
 
 // extract messages that contain attachments.
@@ -21,9 +22,16 @@ const attachmentMessages = computed(() => {
 
     for (let message of props.conversation.messages) {
         if (hasAttachments(message)) {
-            media.push(message);
+            if (props.contact) {
+                if (message.sender.id === props.contact.id) {
+                    media.push(message);
+                }
+            } else {
+                media.push(message);
+            }
         }
     }
+
     return media;
 })
 </script>
@@ -36,7 +44,8 @@ const attachmentMessages = computed(() => {
                 Shared Media
             </Typography>
 
-            <button @click="$emit('active-page-change', {tabName: 'conversationInfo', animationName: 'slide-right'})"
+            <!--return button-->
+            <button @click="$emit('active-page-change', {tabName: 'conversation-info', animationName: 'slide-right'})"
                 class="group p-2 border rounded-full border-gray-200  
                         dark:border-white dark:border-opacity-70  focus:outline-none focus:border-indigo-100 
                         focus:bg-indigo-100 hover:bg-indigo-100 hover:border-indigo-100 dark:hover:border-indigo-400 

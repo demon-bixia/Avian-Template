@@ -73,7 +73,8 @@ const handleClickOutside = (event: Event) => {
                 Members
             </Typography>
 
-            <button @click="$emit('active-page-change', {tabName: 'conversationInfo', animationName: 'slide-right'})"
+            <button
+                @click="$emit('active-page-change', {tabName: 'conversation-info', animationName: 'slide-right', removeContact: true})"
                 class="group p-2 border rounded-full border-gray-200  
                         dark:border-white dark:border-opacity-70  focus:outline-none focus:border-indigo-100 
                         focus:bg-indigo-100 hover:bg-indigo-100 hover:border-indigo-100 dark:hover:border-indigo-400 
@@ -92,7 +93,7 @@ const handleClickOutside = (event: Event) => {
         <!--contacts-->
         <div ref="contactContainer" class="max-h-[232px] overflow-y-scroll scrollbar scrollbar-hidden">
             <ContactItem variant="card"
-                @contact-selected="contact => $emit('active-page-change', {tabName: 'conversationInfo', animationName: 'slide-left', contact: contact})"
+                @contact-selected="contact => $emit('active-page-change', {tabName: 'conversation-info', animationName: 'slide-left', contact: contact})"
                 v-for="(contact, index) in props.conversation.contacts" :contact="contact" :key="index">
 
                 <template v-slot:tag v-if="(props.conversation.admins as number[]).includes(contact.id)">

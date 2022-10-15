@@ -12,6 +12,7 @@ const props = defineProps<{
     contact: Contact,
     variant?: string,
     active?: boolean,
+    unselectable?: boolean,
 }>();
 
 const auth = useAuthStore();
@@ -36,7 +37,7 @@ const auth = useAuthStore();
             <div class="w-full flex flex-col items-start">
                 <div class="w-full mb-3 flex justify-between items-center">
                     <!--contact name-->
-                    <component :is="props.variant === 'card' ? 'a' : 'div'"
+                    <component :is="props.variant === 'card' && !props.unselectable ? 'a' : 'div'"
                         @click="props.variant === 'card' ? $emit('contactSelected', props.contact) : () => {}" href="#"
                         class="flex items-center">
                         <Typography variant="heading-2">

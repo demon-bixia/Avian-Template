@@ -40,7 +40,7 @@ const props = defineProps<{
                 </div>
 
                 <!--message-->
-                <div class="max-h-64 overflow-y-scroll scrollbar scrollbar-hidden">
+                <div class=" max-h-[230px] overflow-y-scroll scrollbar scrollbar-hidden">
                     <Message v-if="(props.conversation as Conversation).messages.length > 0"
                         v-for="(message, index) in (props.conversation as Conversation).messages" :message="message"
                         :key="index" />

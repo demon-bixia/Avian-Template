@@ -66,8 +66,10 @@ const handleCloseVoiceCallModal = (endCall: boolean) => {
         chat.callMinimized = false;
     }
 
-    chat.openVoiceCall = false;
-    chat.callMinimized = true;
+    if (chat.openVoiceCall) {
+        chat.openVoiceCall = false;
+        chat.callMinimized = true;
+    }
 };
 </script>
 

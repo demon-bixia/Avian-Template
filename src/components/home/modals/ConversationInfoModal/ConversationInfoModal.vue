@@ -7,6 +7,7 @@ import { Contact, Conversation } from "../../../../stores/chat";
 import SlideTransition from "../../../reusables/transitions/SlideTransition.vue";
 import Modal from "../Modal.vue";
 import ConversationInfo from "./ConversationInfo.vue";
+import EditGroupInfo from "./EditGroupInfo.vue";
 import Members from "./Members.vue";
 import SharedMedia from "./SharedMedia.vue";
 
@@ -25,26 +26,35 @@ const selectedMember: Ref<Contact | undefined> = ref();
 const animation = ref("slide-left");
 
 // name of the active modal page
-const activePageName = ref("conversationInfo");
+const activePageName = ref("conversation-info");
 
 // the active modal page component
 const ActivePage = computed(() => {
-    if (activePageName.value === 'conversationInfo')
+    if (activePageName.value === 'conversation-info')
         return ConversationInfo;
     else if (activePageName.value === 'members')
         return Members;
-    else if (activePageName.value === 'groupMember')
+    else if (activePageName.value === 'group-member')
         return ConversationInfo;
-    else if (activePageName.value === 'sharedMedia')
+    else if (activePageName.value === 'shared-media')
         return SharedMedia;
+    else if (activePageName.value === 'edit-group')
+        return EditGroupInfo;
 });
 
 
 // (event) move between modal pages
-const changeActiveTab = (event: { tabName: string, animationName: string, contact?: Contact }) => {
+const changeActiveTab = (event: { tabName: string, animationName: string, contact?: Contact, removeContact?: boolean }) => {
     animation.value = event.animationName;
     activePageName.value = event.tabName;
-    selectedMember.value = event.contact;
+
+    if (event.contact) {
+        selectedMember.value = event.contact;
+    }
+
+    if (event.removeContact) {
+        selectedMember.value = undefined;
+    }
 };
 </script>
     
