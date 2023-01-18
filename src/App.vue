@@ -5,6 +5,10 @@ import useChatStore from './stores/chat';
 
 import FadeTransition from './components/reusables/transitions/FadeTransition.vue'; const chat = useChatStore();
 
+// fix height on mobile screens
+// todo add video calling
+// todo refactor tailwind classes
+
 // todo add video calling
 // todo refactor tailwind classes
 
