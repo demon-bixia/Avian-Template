@@ -27,7 +27,7 @@ const removeMessageToReplyTo = () => {
 </script>
 
 <template>
-    <div class="h-full flex flex-col scrollbar-hidden">
+    <div class="relative h-full flex flex-col scrollbar-hidden pb-11 pt-[84px]">
         <Top :active-conversation="props.activeConversation" />
 
         <Middle :active-conversation="props.activeConversation" :select-message-to-reply-to="selectMessageToReplyTo" />

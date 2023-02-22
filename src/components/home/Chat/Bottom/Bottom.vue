@@ -57,9 +57,9 @@ const handleClickOutside = (event: Event) => {
 </script>
 
 <template>
-    <div>
+    <div class="absolute bottom-0 w-full">
         <!--selected reply display-->
-        <div class="relative transition-all duration-200" :class="{'pt-[60px]': props.selectedMessageToReplyTo}">
+        <div class="relative transition-all duration-200" :class="{ 'pt-[60px]': props.selectedMessageToReplyTo }">
             <SelectedReply :selected-message-to-reply-to="props.selectedMessageToReplyTo"
                 :remove-message-to-reply-to="removeMessageToReplyTo" />
         </div>
@@ -78,8 +78,8 @@ const handleClickOutside = (event: Event) => {
             <div class="grow mr-5" v-if="!recording">
                 <textarea cols="30" rows="1" placeholder="Write your message here" aria-label="Write your message here"
                     class="resize-none py-[30px] w-full mr-5 outline-none text-sm text-black opacity-60 
-                    dark:text-white dark:opacity-70 font-normal leading-4 tracking-[0.16px] placeholder:text-black 
-                    placeholder:opacity-50 dark:placeholder:text-white dark:placeholder:opacity-70 bg-transparent"
+                                    dark:text-white dark:opacity-70 font-normal leading-4 tracking-[0.16px] placeholder:text-black 
+                                    placeholder:opacity-50 dark:placeholder:text-white dark:placeholder:opacity-70 bg-transparent"
                     :class="chat.settings[2].settings[0].value ? ['scrollbar-dark'] : ['scrollbar']"></textarea>
             </div>
 
@@ -95,8 +95,7 @@ const handleClickOutside = (event: Event) => {
                 <!--emoji button-->
                 <IconButton @click="showPicker = !showPicker" class="toggle-picker-button group w-7 h-7 mr-5"
                     aria-label="toggle emoji picker">
-                    <XCircleIcon v-if="showPicker"
-                        class=" w-[20px] h-[20px] text-gray-300 group-hover:text-indigo-300" />
+                    <XCircleIcon v-if="showPicker" class=" w-[20px] h-[20px] text-gray-300 group-hover:text-indigo-300" />
                     <FaceSmileIcon v-else class="w-[20px] h-[20px] text-gray-300 group-hover:text-indigo-300" />
                 </IconButton>
 

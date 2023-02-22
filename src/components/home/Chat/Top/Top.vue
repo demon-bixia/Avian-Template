@@ -74,7 +74,7 @@ const handleCloseVoiceCallModal = (endCall: boolean) => {
 </script>
 
 <template>
-    <div>
+    <div class="absolute w-full top-0">
         <!--Top section-->
         <div class="w-full px-5 py-6 flex justify-center items-center">
             <!--back button-->
@@ -88,7 +88,7 @@ const handleCloseVoiceCallModal = (endCall: boolean) => {
             <div v-if="chat.status !== 'loading'" class="flex grow">
                 <!--avatar-->
                 <button class="mr-5 outline-none" @click="() => openInfo = true" aria-label="profile avatar">
-                    <div :style="{ backgroundImage: `url(${getAvatar(activeConversation)})`}"
+                    <div :style="{ backgroundImage: `url(${getAvatar(activeConversation)})` }"
                         class="w-[36px] h-[36px] rounded-full bg-cover bg-center">
                     </div>
                 </button>
@@ -97,7 +97,7 @@ const handleCloseVoiceCallModal = (endCall: boolean) => {
                 <div class="flex flex-col">
                     <Typography variant="heading-2" @click="() => openInfo = true" class="mb-2 outline cursor-pointer"
                         tabindex="0">
-                        {{getName(activeConversation)}}
+                        {{ getName(activeConversation) }}
                     </Typography>
 
                     <Typography variant="body-2" class="font-extralight" tabindex="0"
@@ -107,7 +107,7 @@ const handleCloseVoiceCallModal = (endCall: boolean) => {
                 </div>
             </div>
 
-            <div class="flex" :class="{'hidden': chat.status === 'loading'}">
+            <div class="flex" :class="{ 'hidden': chat.status === 'loading' }">
                 <!--search button-->
                 <IconButton @click="openSearch = true" aria-label="Search messages" class="group w-7 h-7 mr-3">
                     <MagnifyingGlassIcon class="w-[20px] h-[20px] text-gray-300 group-hover:text-indigo-300" />
@@ -116,8 +116,8 @@ const handleCloseVoiceCallModal = (endCall: boolean) => {
                 <div class="relative">
                     <!--dropdown menu button-->
                     <IconButton id="open-conversation-menu" @click="showDropdown = !showDropdown" tabindex="0"
-                        class="open-top-menu group w-7 h-7" :aria-expanded="showDropdown"
-                        aria-controls="conversation-menu" aria-label="toggle conversation menu">
+                        class="open-top-menu group w-7 h-7" :aria-expanded="showDropdown" aria-controls="conversation-menu"
+                        aria-label="toggle conversation menu">
                         <EllipsisVerticalIcon
                             class="open-top-menu w-[20px] h-[20px] text-gray-300 group-hover:text-indigo-300" />
                     </IconButton>
@@ -132,7 +132,7 @@ const handleCloseVoiceCallModal = (endCall: boolean) => {
                             Profile Information
                         </DropdownLink>
 
-                        <DropdownLink :handle-click="()=>{handleCloseDropdown(); handleOpenVoiceCallModal()}">
+                        <DropdownLink :handle-click="() => { handleCloseDropdown(); handleOpenVoiceCallModal() }">
                             <PhoneIcon class="h-5 w-5 mr-3 text-black opacity-60 dark:text-white dark:opacity-70" />
                             Voice call
                         </DropdownLink>
@@ -155,7 +155,7 @@ const handleCloseVoiceCallModal = (endCall: boolean) => {
 
         <!--Pinned Message-->
         <div class="relative transition-[padding] duration-200"
-            :class="{'pb-[60px]': (props.activeConversation as Conversation).pinnedMessage && !(props.activeConversation as Conversation).pinnedMessageHidden}">
+            :class="{ 'pb-[60px]': (props.activeConversation as Conversation).pinnedMessage && !(props.activeConversation as Conversation).pinnedMessageHidden }">
             <SelectedPinnedMessage :active-conversation="props.activeConversation" />
         </div>
 
