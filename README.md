@@ -1,6 +1,7 @@
-<img src="src/assets/cover.svg"/>
+<img src="public/vectors/cover.svg"/>
 
 ## Features ⚡
+
 - [x] Dark and light themes
 - [x] Message attachments
 - [x] Replies and pins
@@ -11,7 +12,6 @@
 
 <br/>
 <br/>
-
 
 ## Setup 🔧
 
@@ -32,6 +32,7 @@ npm install
 ```bash
 npm run dev
 ```
+
 <br/>
 <br/>
 

@@ -17,6 +17,8 @@
     "linkify-string": "^4.0.2",
     "linkifyjs": "^4.0.2",
     "pinia": "^2.0.22",
+    "prettier": "^2.8.4",
+    "tailwind-merge": "^1.10.0",
     "video.js": "^7.20.3",
     "vue": "^3.2.40",
     "vue-router": "4",

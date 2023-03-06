@@ -1,29 +1,28 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { twMerge } from "tailwind-merge";
+import { computed } from "vue";
 
 const props = defineProps<{
-    variant?: string,
+  variant?: string;
+  class?: string;
 }>();
 
-const classes = computed(() => {
-    let classes = ['flex', 'justify-center', 'items-center',
-        'outline-none', 'rounded-full', 'focus:outline-none', 'transition-all',
-        'duration-200'];
+let baseClasses = `flex justify-center items-center
+    outline-none rounded-full focus:outline-none transition-all
+    duration-200`;
 
-    if (props.variant === 'gohst') {
-        classes = [...classes];
-    }
-
-    else {
-        classes = [...classes, 'p-2', 'focus:bg-gray-50', 'hover:bg-gray-50', 'dark:hover:bg-gray-700', 'dark:focus:bg-gray-600'];
-    }
-
-    return classes;
+const variantClasses = computed(() => {
+  if (props.variant === "ghost") {
+  } else {
+    return "focus:bg-gray-50 hover:bg-gray-50 dark:hover:bg-gray-700 dark:focus:bg-gray-600";
+  }
 });
+
+const classes = twMerge(baseClasses, variantClasses.value, props.class);
 </script>
 
 <template>
-    <button :class="classes">
-        <slot></slot>
-    </button>
+  <button :class="classes">
+    <slot></slot>
+  </button>
 </template>

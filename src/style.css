@@ -3,58 +3,57 @@
 @tailwind utilities;
 
 @layer utilities {
+  /* light styled scrollbar */
+  .scrollbar::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
 
-    /* light styled scrollbar */
-    .scrollbar::-webkit-scrollbar {
-        width: 7px;
-        height: 7px;
-    }
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #ffffff;
+  }
 
-    .scrollbar::-webkit-scrollbar-track {
-        border-radius: 100vh;
-        background: #FFFFFF;
-    }
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #eeeeee;
+    border-radius: 100vh;
+    border: 0;
+    cursor: default;
+  }
 
-    .scrollbar::-webkit-scrollbar-thumb {
-        background: #EEEEEE;
-        border-radius: 100vh;
-        border: 0;
-        cursor: default;
-    }
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9e9e9e;
+  }
 
-    .scrollbar::-webkit-scrollbar-thumb:hover {
-        background: #9e9e9e;
-    }
+  /* dark theme styled scrollbar */
+  .scrollbar-dark::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
 
-    /* dark theme styled scrollbar */
-    .scrollbar-dark::-webkit-scrollbar {
-        width: 7px;
-        height: 7px;
-    }
+  .scrollbar-dark::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #1f2937;
+  }
 
-    .scrollbar-dark::-webkit-scrollbar-track {
-        border-radius: 100vh;
-        background: #1F2937;
-    }
+  .scrollbar-dark::-webkit-scrollbar-thumb {
+    background: #52565a;
+    border-radius: 100vh;
+    border: 0;
+    cursor: default;
+  }
 
-    .scrollbar-dark::-webkit-scrollbar-thumb {
-        background: #52565A;
-        border-radius: 100vh;
-        border: 0;
-        cursor: default;
-    }
+  .scrollbar-dark::-webkit-scrollbar-thumb:hover {
+    background: #52565a;
+  }
 
-    .scrollbar-dark::-webkit-scrollbar-thumb:hover {
-        background: #52565A;
-    }
+  /* hidden scrollbar */
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
 
-    /* hidden scrollbar */
-    .scrollbar-hidden::-webkit-scrollbar {
-        display: none;
-    }
-
-    .scrollbar-hidden {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
