@@ -4,21 +4,43 @@ import { EyeSlashIcon } from "@heroicons/vue/24/outline";
 import IconButton from "@src/components/ui/inputs/IconButton.vue";
 import Button from "@src/components/ui/inputs/Button.vue";
 import TextInput from "@src/components/ui/inputs/TextInput.vue";
+import Typography from "@src/components/ui/data-display/Typography.vue";
 </script>
 
 <template>
-  <div>
-    <div>
+  <div class="w-full p-5 flex flex-col justify-center items-center">
+    <div class="mb-6 w-[350px]">
+      <!--header-->
+      <div class="mb-6 flex flex-col">
+        <img
+          src="@src/assets/vectors/logo-gradient.svg"
+          class="w-[22px] h-[18px] mb-4 opacity-70"
+          alt="bird logo"
+        />
+        <Typography variant="heading-2" class="mb-4"
+          >Reset Your Password</Typography
+        >
+        <Typography variant="body-3" class="text-opacity-75 font-light">
+          Enter your old password and your new password below to reset your
+          password
+        </Typography>
+      </div>
+
       <!--form-->
-      <div class="mb-6">
+      <div class="mb-5">
         <TextInput
           variant="bordered"
           label="Old Password"
           placeholder="Enter your password"
-          class="mb-4"
+          class="mb-5"
         >
           <template v-slot:endAdornment>
-            <IconButton variant="ghost" class="p-4">
+            <IconButton
+              variant="ghost"
+              class="p-4"
+              title="toggle show password"
+              aria-label="toggle show password"
+            >
               <EyeSlashIcon class="w-5 h-5 text-black opacity-50" />
             </IconButton>
           </template>
@@ -28,10 +50,15 @@ import TextInput from "@src/components/ui/inputs/TextInput.vue";
           variant="bordered"
           label="New Password"
           placeholder="Enter your password"
-          class="mb-4"
+          class="mb-5"
         >
           <template v-slot:endAdornment>
-            <IconButton variant="ghost" class="p-4">
+            <IconButton
+              variant="ghost"
+              class="p-4"
+              title="toggle show password"
+              aria-label="toggle show password"
+            >
               <EyeSlashIcon class="w-5 h-5 text-black opacity-50" />
             </IconButton>
           </template>
@@ -43,7 +70,12 @@ import TextInput from "@src/components/ui/inputs/TextInput.vue";
           placeholder="Enter your password"
         >
           <template v-slot:endAdornment>
-            <IconButton variant="ghost" class="p-4">
+            <IconButton
+              variant="ghost"
+              class="p-4"
+              title="toggle show password"
+              aria-label="toggle show password"
+            >
               <EyeSlashIcon class="w-5 h-5 text-black opacity-50" />
             </IconButton>
           </template>

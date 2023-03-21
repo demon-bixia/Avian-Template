@@ -39,10 +39,8 @@ const store = useStore();
     <SettingsSwitch
       title="Bordered Theme"
       description="Apply borders to the theme"
-      :value="!!store.settings['bordered-theme']"
-      :handle-toggle-switch="
-        (value) => (store.settings['bordered-theme'] = value)
-      "
+      :value="!!store.settings.borderedTheme"
+      :handle-toggle-switch="(value) => (store.settings.borderedTheme = value)"
       class="mb-7"
     />
   </Collapse>

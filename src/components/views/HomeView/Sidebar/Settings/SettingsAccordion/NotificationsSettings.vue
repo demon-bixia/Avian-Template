@@ -32,18 +32,18 @@ const store = useStore();
     <SettingsSwitch
       title="Allow Notifications"
       description="Receive Notifications from avian"
-      :value="!!store.settings['allow-notifications']"
+      :value="!!store.settings.allowNotifications"
       :handle-toggle-switch="
-        (value) => (store.settings['allow-notifications'] = value)
+        (value) => (store.settings.allowNotifications = value)
       "
       class="mb-7"
     />
     <SettingsSwitch
       title="Keep Notifications"
       description="Save notifications after they are received"
-      :value="!!store.settings['keep-notifications']"
+      :value="!!store.settings.keepNotifications"
       :handle-toggle-switch="
-        (value) => (store.settings['keep-notifications'] = value)
+        (value) => (store.settings.keepNotifications = value)
       "
       class="mb-7"
     />

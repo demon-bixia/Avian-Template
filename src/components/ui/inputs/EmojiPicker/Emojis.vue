@@ -101,7 +101,12 @@ onMounted(() => {
       <div class="flex flex-wrap justify-start">
         <!--Emojis-->
         <div v-for="emoji in group">
-          <IconButton v-if="emoji && emoji.r" class="w-[30px] h-[30px] mr-1">
+          <IconButton
+            v-if="emoji && emoji.r"
+            class="w-[30px] h-[30px] mr-1"
+            :title="emoji.n[0]"
+            :aria-label="emoji.n[0]"
+          >
             {{ unicodeToEmoji(emoji.r) }}
           </IconButton>
         </div>

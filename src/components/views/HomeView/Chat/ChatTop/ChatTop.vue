@@ -90,7 +90,12 @@ const activeConversation = <IConversation>inject("activeConversation");
     <div class="w-full px-5 py-6 flex justify-center items-center">
       <!--back button-->
       <div class="group mr-4 md:hidden">
-        <IconButton class="w-7 h-7" @click="handleCloseConversation">
+        <IconButton
+          class="w-7 h-7"
+          @click="handleCloseConversation"
+          title="close conversation"
+          aria-label=""
+        >
           <ChevronLeftIcon
             aria-label="close conversation"
             class="w-[20px] h-[20px] text-gray-300 group-hover:text-indigo-300"
@@ -138,8 +143,9 @@ const activeConversation = <IConversation>inject("activeConversation");
       <div class="flex" :class="{ hidden: store.status === 'loading' }">
         <!--search button-->
         <IconButton
+          title="search messages"
+          aria-label="search messages"
           @click="openSearch = true"
-          aria-label="Search messages"
           class="group w-7 h-7 mr-3"
         >
           <MagnifyingGlassIcon
@@ -156,6 +162,7 @@ const activeConversation = <IConversation>inject("activeConversation");
             class="open-top-menu group w-7 h-7"
             :aria-expanded="showDropdown"
             aria-controls="conversation-menu"
+            title="toggle conversation menu"
             aria-label="toggle conversation menu"
           >
             <EllipsisVerticalIcon

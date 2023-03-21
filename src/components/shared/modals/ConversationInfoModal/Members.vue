@@ -143,6 +143,7 @@ const handleClickOutside = (event: Event) => {
           <div>
             <!--dropdown menu button-->
             <IconButton
+              title="menu"
               @click="(event) => handleToggleDropdown(event, index)"
               class="open-menu w-6 h-6"
             >

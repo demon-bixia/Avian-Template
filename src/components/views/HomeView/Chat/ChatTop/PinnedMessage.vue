@@ -66,6 +66,8 @@ const handleRemovePinnedMessage = () => {
       <div class="flex">
         <!--hide pinned Message-->
         <IconButton
+          title="hide pinned message"
+          aria-label="hide pinned message"
           @click="handleHidePinnedMessage"
           class="group w-7 h-7 text-gray-300"
           :class="{
@@ -83,6 +85,8 @@ const handleRemovePinnedMessage = () => {
           "
           @click="handleRemovePinnedMessage"
           class="group w-7 h-7"
+          title="close pinned message"
+          aria-label="close pinned message"
         >
           <XCircleIcon
             class="w-[16px] h-[16px] text-gray-300 group-hover:text-red-300"

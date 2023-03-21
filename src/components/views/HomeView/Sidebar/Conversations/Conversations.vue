@@ -83,6 +83,7 @@ onMounted(() => {
         <IconButton
           @click="composeOpen = true"
           aria-label="compose conversation"
+          title="compose conversation"
           class="w-7 h-7"
         >
           <PencilSquareIcon

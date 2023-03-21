@@ -3,9 +3,6 @@ import { ref, onMounted, onUnmounted } from "vue";
 import useStore from "@src/store/store";
 import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 
-// Fixes:
-// todo messages in dev console.
-
 // New Features and improvements:
 // todo add loading states to components that require downloading files. (important)
 // todo add a "clear text" button to search input (easy)

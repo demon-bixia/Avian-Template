@@ -41,7 +41,12 @@ const removeReplyMessage = () => {
       <MessagePreview :message="activeConversation?.replyMessage" />
 
       <!--close selected Message-->
-      <IconButton @click="removeReplyMessage" class="group w-7 h-7">
+      <IconButton
+        @click="removeReplyMessage"
+        class="group w-7 h-7"
+        title="remove reply"
+        aria-label="remove reply"
+      >
         <XCircleIcon
           class="w-[16px] h-[16px] text-gray-300 group-hover:text-red-300"
         />

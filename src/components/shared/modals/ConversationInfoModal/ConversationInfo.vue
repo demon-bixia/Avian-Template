@@ -146,6 +146,7 @@ const imageUrl = computed(() => {
           </div>
 
           <IconButton
+            title="edit group"
             v-if="['group', 'broadcast'].includes(conversation.type)"
             class="group w-7 h-7"
           >

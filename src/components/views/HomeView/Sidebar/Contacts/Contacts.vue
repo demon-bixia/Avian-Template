@@ -65,8 +65,9 @@ watch(searchText, () => {
       <template v-slot:actions>
         <IconButton
           @click="openModal = true"
-          aria-label="add contacts"
           class="w-7 h-7"
+          title="add contacts"
+          aria-label="add contacts"
         >
           <UserPlusIcon
             class="w-[20px] h-[20px] text-indigo-300 hover:text-indigo-400"

@@ -21,7 +21,12 @@ const showPasswordConfirm = ref(false);
         class="pr-[40px] mb-5"
       >
         <template v-slot:endAdornment>
-          <IconButton class="m-[8px] p-2" @click="showPassword = !showPassword">
+          <IconButton
+            title="toggle password visibility"
+            aria-label="toggle password visibility"
+            class="m-[8px] p-2"
+            @click="showPassword = !showPassword"
+          >
             <EyeSlashIcon
               v-if="showPassword"
               class="w-5 h-5 text-black opacity-50 dark:text-white dark:opacity-60"
@@ -41,6 +46,8 @@ const showPasswordConfirm = ref(false);
       >
         <template v-slot:endAdornment>
           <IconButton
+            title="toggle password visibility"
+            aria-label="toggle password visibility"
             class="m-[8px] p-2"
             @click="showPasswordConfirm = !showPasswordConfirm"
           >

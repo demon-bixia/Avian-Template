@@ -26,7 +26,12 @@ const props = defineProps<{
           : 'border-transparent',
       ]"
     >
-      <IconButton @click="$emit('tab-change', 'people')" variant="ghost">
+      <IconButton
+        @click="$emit('tab-change', 'people')"
+        variant="ghost"
+        title="people and smiles"
+        aria-label="people and smiles"
+      >
         <FaceSmileIcon
           class="w-5 h-5 transition-colors duration-200"
           :class="[
@@ -47,7 +52,12 @@ const props = defineProps<{
           : 'border-transparent',
       ]"
     >
-      <IconButton @click="$emit('tab-change', 'nature')" variant="ghost">
+      <IconButton
+        title="nature"
+        aria-label="nature"
+        @click="$emit('tab-change', 'nature')"
+        variant="ghost"
+      >
         <FireIcon
           class="w-5 h-5 transition-colors duration-200"
           :class="[
@@ -68,7 +78,12 @@ const props = defineProps<{
           : 'border-transparent',
       ]"
     >
-      <IconButton @click="$emit('tab-change', 'food')" variant="ghost">
+      <IconButton
+        title="food"
+        aria-label="food"
+        @click="$emit('tab-change', 'food')"
+        variant="ghost"
+      >
         <CakeIcon
           class="w-5 h-5 transition-colors duration-200"
           :class="[
@@ -89,7 +104,12 @@ const props = defineProps<{
           : 'border-transparent',
       ]"
     >
-      <IconButton @click="$emit('tab-change', 'activity')" variant="ghost">
+      <IconButton
+        @click="$emit('tab-change', 'activity')"
+        variant="ghost"
+        title="activities and sports"
+        aria-label="activities and sports"
+      >
         <RocketLaunchIcon
           class="w-5 h-5 transition-colors duration-200"
           :class="[
@@ -131,7 +151,12 @@ const props = defineProps<{
           : 'border-transparent',
       ]"
     >
-      <IconButton @click="$emit('tab-change', 'travel')" variant="ghost">
+      <IconButton
+        @click="$emit('tab-change', 'travel')"
+        variant="ghost"
+        title="travel"
+        aria-label="travel"
+      >
         <GlobeAsiaAustraliaIcon
           class="w-5 h-5 transition-colors duration-200"
           :class="[
@@ -152,7 +177,12 @@ const props = defineProps<{
           : 'border-transparent',
       ]"
     >
-      <IconButton @click="$emit('tab-change', 'flags')" variant="ghost">
+      <IconButton
+        title="flags"
+        aria-label="flags"
+        @click="$emit('tab-change', 'flags')"
+        variant="ghost"
+      >
         <FlagIcon
           class="w-5 h-5 transition-colors duration-200"
           :class="[

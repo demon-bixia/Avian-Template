@@ -40,6 +40,8 @@ const showPassword = ref(false);
         >
           <template v-slot:endAdornment>
             <IconButton
+              title="toggle password visibility"
+              aria-label="toggle password visibility"
               class="m-[8px] p-2"
               @click="showPassword = !showPassword"
             >

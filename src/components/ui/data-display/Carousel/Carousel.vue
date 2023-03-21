@@ -196,6 +196,7 @@ const handleDecreaseZoom = () => {
             <!--Left controls-->
             <div class="flex items-center justify-end mr-5">
               <IconButton
+                title="previous"
                 @click="handlePreviousItem"
                 aria-label="previous item"
                 :class="{ invisible: !thereIsPrevious() }"
@@ -233,6 +234,7 @@ const handleDecreaseZoom = () => {
             <!--right controls-->
             <div class="flex items-center justify-end ml-5">
               <IconButton
+                title="next"
                 aria-label="next item"
                 :class="{ invisible: !thereIsNext() }"
                 @click="handleNextItem"

@@ -49,8 +49,8 @@ const style = computed(() => {
         : "outline-none text-sm text-black opacity-60 dark:text-white dark:opacity-70 font-normal leading-4 tracking-[0.16px]";
     } else if (props.variant === "body-3") {
       return props.noColor
-        ? "outline-none text-sm font-light leading-4 tracking-[0.16px]"
-        : "outline-none text-sm font-light text-black opacity-60 dark:text-white dark:opacity-70 leading-4 tracking-[0.16px]";
+        ? "outline-none text-sm font-light leading-5 tracking-[0.16px]"
+        : "outline-none text-sm font-light text-black opacity-60 dark:text-white dark:opacity-70 leading-5 tracking-[0.16px]";
     } else if (props.variant === "body-4") {
       return props.noColor
         ? "outline-none text-xs font-light leading-4 tracking-[0.16px]"

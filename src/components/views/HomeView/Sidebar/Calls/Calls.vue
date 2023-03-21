@@ -39,8 +39,9 @@ const handleOpenInfoModal = (call: ICall) => {
       <template v-slot:actions>
         <IconButton
           @click="openDialModal = true"
-          aria-label="initiate call"
           class="w-7 h-7"
+          title="initiate call"
+          aria-label="initiate call"
         >
           <PlusCircleIcon
             class="w-[20px] h-[20px] text-indigo-300 hover:text-indigo-400"

@@ -33,34 +33,34 @@ const store = useStore();
     <SettingsSwitch
       title="Show Last Seen"
       description="Allow people to see your last login"
-      :value="!!store.settings['last-seen']"
-      :handle-toggle-switch="(value:boolean) => (store.settings['last-seen'] = value)"
+      :value="!!store.settings.lastSeen"
+      :handle-toggle-switch="(value:boolean) => (store.settings.lastSeen = value)"
       class="mb-7"
     />
     <SettingsSwitch
       title="Show Read Receipt"
       description="Allow people to see whether or not you've read the message"
-      :value="!!store.settings['read-receipt']"
+      :value="!!store.settings.readReceipt"
       :handle-toggle-switch="
-        (value:boolean) => (store.settings['read-receipt'] = value)
+        (value:boolean) => (store.settings.readReceipt = value)
       "
       class="mb-7"
     />
     <SettingsSwitch
       title="Joining Groups"
       description="Allow people to add you to groups"
-      :value="!!store.settings['joining-groups']"
+      :value="!!store.settings.joiningGroups"
       :handle-toggle-switch="
-        (value:boolean) => (store.settings['joining-groups'] = value)
+        (value:boolean) => (store.settings.joiningGroups = value)
       "
       class="mb-7"
     />
     <SettingsSwitch
       title="Private Messages"
       description="Receive messages from non-contacts"
-      :value="!!store.settings['private-messages']"
+      :value="!!store.settings.privateMessages"
       :handle-toggle-switch="
-        (value:boolean) => (store.settings['private-messages'] = value)
+        (value:boolean) => (store.settings.privateMessages = value)
       "
       class="mb-7"
     />

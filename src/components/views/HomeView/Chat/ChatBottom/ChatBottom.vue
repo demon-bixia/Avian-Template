@@ -82,6 +82,8 @@ const activeConversation = <IConversation>inject("activeConversation");
       <div class="min-h-[44px]">
         <!--select attachments button-->
         <IconButton
+          title="open select attachments modal"
+          aria-label="open select attachments modal"
           @click="openAttachmentsModal = true"
           v-if="!recording"
           class="group w-7 h-7 md:mr-5 xs:mr-4"
@@ -118,9 +120,10 @@ const activeConversation = <IConversation>inject("activeConversation");
           <div class="absolute bottom-[13px] right-0">
             <!--emoji button-->
             <IconButton
+              title="toggle emoji picker"
+              aria-label="toggle emoji picker"
               @click="showPicker = !showPicker"
               class="toggle-picker-button group w-7 h-7 md:mr-5 xs:mr-4"
-              aria-label="toggle emoji picker"
             >
               <XCircleIcon
                 v-if="showPicker"
@@ -158,9 +161,10 @@ const activeConversation = <IConversation>inject("activeConversation");
       <div class="min-h-[44px] flex">
         <!--finish recording button-->
         <IconButton
+          title="finish recording"
+          aria-label="finish recording"
           v-if="recording"
           @click="handleToggleRecording"
-          aria-label="finish recording"
           class="relative group w-7 h-7 flex justify-center items-center outline-none rounded-full bg-indigo-300 hover:bg-green-300 dark:hover:bg-green-400 dark:focus:bg-green-400 focus:outline-none transition-all duration-200"
         >
           <span
@@ -180,6 +184,7 @@ const activeConversation = <IConversation>inject("activeConversation");
         <IconButton
           v-else
           @click="handleToggleRecording"
+          title="start recording"
           aria-label="start recording"
           class="group w-7 h-7 md:mr-5 xs:mr-4"
         >
@@ -193,6 +198,8 @@ const activeConversation = <IConversation>inject("activeConversation");
           v-if="!recording"
           class="group w-7 h-7 bg-indigo-300 hover:bg-indigo-400 focus:bg-indigo-400 dark:focus:bg-indigo-300 dark:bg-indigo-400 dark:hover:bg-indigo-400 active:scale-110"
           variant="ghost"
+          title="send message"
+          aria-label="send message"
         >
           <PaperAirplaneIcon class="w-[17px] h-[17px] text-white" />
         </IconButton>

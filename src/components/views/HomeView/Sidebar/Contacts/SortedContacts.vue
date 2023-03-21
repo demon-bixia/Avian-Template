@@ -115,9 +115,10 @@ const handleClickOutside = (event: Event) => {
             :id="'open-contact-menu-' + index"
             :aria-expanded="(dropdownMenuStates as boolean[][])[groupIndex][index]"
             :aria-controls="'contact-menu-' + index"
-            aria-label="toggle contact menu"
             @click="(event) => handleToggleDropdown(event, groupIndex, index)"
             class="open-menu w-6 h-6"
+            title="toggle contact menu"
+            aria-label="toggle contact menu"
           >
             <EllipsisVerticalIcon
               class="open-menu h-5 w-5 text-black opacity-60 dark:text-white dark:opacity-70"
