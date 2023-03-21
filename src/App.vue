@@ -1,41 +1,44 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
+import useStore from "@src/store/store";
+import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 
-import useChatStore from "./stores/chat";
+// Fixes:
+// todo messages in dev console.
 
-import FadeTransition from "./components/reusables/transitions/FadeTransition.vue";
+// New Features and improvements:
+// todo add loading states to components that require downloading files. (important)
+// todo add a "clear text" button to search input (easy)
+// todo add a new messages counter to conversation bubble. (easy)
+// todo add tool tips. (easy)
+// todo add drafts. (easy)
+// todo add read receipt. (requires some thinking)
+// todo add multi select. (requires some thinking)
+// todo add voice video calling. (important)
 
-const chat = useChatStore();
+// Refactoring code:
+// todo refactor ui components to use component utilities.
+// todo refactor remove getters from utils file and add them to store folder.
+
+// Accessability:
+// dropdown menus.
+// modals.
+// lists (conversations, contacts, calls).
+// improve the way you view messages.
+// video calling
+// multi-select
+
+// SEO.
+
+// Performance:
+// todo performance testing. (version 2.0 release).
+
+const store = useStore();
 
 // the app height
 const height = ref(`${window.innerHeight}px`);
 
-// todo refactor make all imports absolute with @src/ paths.
-// change component file names.
-// todo refactor indentation.
-// todo refactor folder structure.
-
-// todo refactor reduce the amount of type casting.
-// todo refactor restore outline.
-
-// todo redesign scrollbars.
-// todo redesign custom emoji component.
-// todo redesign the attachment view component.
-// todo redesign the recording player component.
-// todo redesign login, register and password reset forms.
-// todo redesign accessibility.
-
-// todo add tool tips.
-// todo add multi select.
-// todo add read receipt.
-
-// todo add video calling.
-// todo add stories.
-// todo add message reactions.
-
-// todo performance testing. (version 2.0 release).
-
-// change the app height whenever the window resizes.
+// change the app height to the window hight.
 const resizeWindow = () => {
   height.value = `${window.innerHeight}px`;
 };
@@ -52,7 +55,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div :class="{ dark: chat.settings['dark-mode'] }">
+  <div :class="{ dark: store.settings.darkMode }">
     <div
       class="bg-white dark:bg-gray-800 transition-colors duration-500"
       :style="{ height: height }"

@@ -3,57 +3,53 @@
 @tailwind utilities;
 
 @layer utilities {
-  /* light styled scrollbar */
-  .scrollbar::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
-  }
-
-  .scrollbar::-webkit-scrollbar-track {
-    border-radius: 100vh;
-    background: #ffffff;
-  }
-
-  .scrollbar::-webkit-scrollbar-thumb {
-    background: #eeeeee;
-    border-radius: 100vh;
-    border: 0;
-    cursor: default;
-  }
-
-  .scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #9e9e9e;
-  }
-
-  /* dark theme styled scrollbar */
-  .scrollbar-dark::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
-  }
-
-  .scrollbar-dark::-webkit-scrollbar-track {
-    border-radius: 100vh;
-    background: #1f2937;
-  }
-
-  .scrollbar-dark::-webkit-scrollbar-thumb {
-    background: #52565a;
-    border-radius: 100vh;
-    border: 0;
-    cursor: default;
-  }
-
-  .scrollbar-dark::-webkit-scrollbar-thumb:hover {
-    background: #52565a;
-  }
-
   /* hidden scrollbar */
   .scrollbar-hidden::-webkit-scrollbar {
-    display: none;
+    @apply hidden;
   }
 
   .scrollbar-hidden {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  /* custom outline */
+  .default-outline {
+    @apply focus-visible:outline-black dark:focus-visible:outline-white rounded-[4px];
+  }
+
+  /* custom range slider input */
+  .slider {
+    @apply bg-gray-300 appearance-none outline-none h-[6px] rounded-[4px];
+  }
+
+  .slider::-webkit-slider-thumb {
+    @apply bg-indigo-300 w-[12px] h-[12px] mt-[-2px] appearance-none outline-none border-none cursor-pointer rounded-full;
+  }
+
+  .slider::-moz-range-thumb {
+    @apply bg-indigo-300 w-[12px] h-[12px] appearance-none outline-none border-none cursor-pointer rounded-full;
+  }
+
+  .slider::-moz-range-progress {
+    @apply h-[6px] rounded-[4px] bg-indigo-300;
+  }
+
+  .slider::-webkit-slider-runnable-track {
+    @apply rounded-[4px] h-[6px] cursor-pointer;
+  }
+
+  .video-slider {
+    background: transparent !important;
+  }
+
+  .video-slider::-moz-range-thumb {
+    width: 0px;
+    height: 0px;
+  }
+
+  .video-slider::-webkit-slider-thumb {
+    width: 0px;
+    height: 0px;
   }
 }

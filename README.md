@@ -1,24 +1,31 @@
-<img src="public/vectors/cover.svg"/>
+<image src="src/assets/images/thumbnail.png" style="border-radius:16px;margin-bottom:5px;"/>
 
 ## Features ⚡
 
-- [x] Dark and light themes
-- [x] Message attachments
-- [x] Replies and pins
-- [x] Voice calls
-- [x] Settings
-- [x] Archive conversations
-- [x] Notifications
+This template is packed with a lot of features including:
+
+- [x] Dark and light modes.
+- [x] Messages with attachments.
+- [x] Replies and pins.
+- [x] Conversations and archives.
+- [x] Settings.
+- [x] Notifications.
+- [x] Voice calls.
+- [x] Sign in and sign up pages.
+- [x] Password reset page.
+- [x] and much more.
 
 <br/>
 <br/>
 
 ## Setup 🔧
 
+Here is how to setup this template:
+
 <p>1. Clone the repository.</p>
 
 ```bash
-git clone https://github.com/demon-bixia/Avian.git
+git clone https://github.com/demon-bixia/Avian-Template.git
 ```
 
 <p>2. Install dependencies.</p>
@@ -38,10 +45,11 @@ npm run dev
 
 ## Resources 📙
 
-<p>The resources used in this project are:</p>
+<p>The resources used to create this project are:</p>
 
+- <a href="https://www.figma.com/file/P4anyRLoN2NNhDicfFUcqi/Avian-Messaging?node-id=2%3A4">Custom design system in figma</a>
 - <a href="https://pinia.vuejs.org/">Pinia</a>
 - <a href="https://heroicons.com/">Heroicons</a>
-- <a href="https://github.com/delowardev/vue3-emoji-picker">Vue3 Emoji Picker</a>
+- <a href="https://github.com/dcastil/tailwind-merge">Tailwind merge</a>
 - <a href="https://vueuse.org/">vueuse</a>
-- <a href="https://www.figma.com/file/P4anyRLoN2NNhDicfFUcqi/Avian-Messaging?node-id=2%3A4">Figma File</a>
+- <a href="https://wavesurfer-js.org/">Wavesurfer-js</a>

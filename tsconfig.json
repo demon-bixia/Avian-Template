@@ -13,7 +13,9 @@
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
     "paths": {
-      "*": ["./src/client/@custom_types/*"]
+      "*": ["./src/client/@custom_types/*"],
+      "@src/*": ["./src/*"],
+      "@custom_types/*": ["./src/@custom_types/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
