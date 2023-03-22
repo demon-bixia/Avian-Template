@@ -41,7 +41,9 @@ import Typography from "@src/components/ui/data-display/Typography.vue";
               title="toggle show password"
               aria-label="toggle show password"
             >
-              <EyeSlashIcon class="w-5 h-5 text-black opacity-50" />
+              <EyeSlashIcon
+                class="w-w-5 h-5 text-black opacity-50 dark:text-white dark:opacity-60"
+              />
             </IconButton>
           </template>
         </TextInput>
@@ -59,7 +61,9 @@ import Typography from "@src/components/ui/data-display/Typography.vue";
               title="toggle show password"
               aria-label="toggle show password"
             >
-              <EyeSlashIcon class="w-5 h-5 text-black opacity-50" />
+              <EyeSlashIcon
+                class="w-5 h-5 text-black opacity-50 dark:text-white dark:opacity-60"
+              />
             </IconButton>
           </template>
         </TextInput>
@@ -76,7 +80,9 @@ import Typography from "@src/components/ui/data-display/Typography.vue";
               title="toggle show password"
               aria-label="toggle show password"
             >
-              <EyeSlashIcon class="w-5 h-5 text-black opacity-50" />
+              <EyeSlashIcon
+                class="w-5 h-5 text-black opacity-50 dark:text-white dark:opacity-60"
+              />
             </IconButton>
           </template>
         </TextInput>

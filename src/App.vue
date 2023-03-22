@@ -12,7 +12,7 @@ import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 // todo add multi select. (requires some thinking).
 
 // Video Calling:
-// todo add video calling. (most important).
+// todo add voice video calling. (most important).
 
 // Refactoring code:
 // todo refactor ui components to use component utilities.
