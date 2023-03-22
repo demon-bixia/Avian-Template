@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IConversation, IMessage } from "@custom_types/store";
+import type { IConversation, IMessage } from "@src/types";
 import { inject } from "vue";
 
 import useStore from "@src/store/store";

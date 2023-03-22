@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import type {
-  IAttachment,
-  IConversation,
-  IRecording,
-} from "@custom_types/store";
+import type { IAttachment, IConversation, IRecording } from "@src/types";
 import type { Ref } from "vue";
 import { computed, ref } from "vue";
 

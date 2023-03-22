@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { ICall } from "@custom_types/store";
+import { ICall } from "@src/types";
 import { getCallName, getOtherMembers } from "@src/utils";
 
 import {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Typography from "@src/components/ui/data-display/Typography.vue";
-import type { IContact } from "@custom_types/store";
+import type { IContact } from "@src/types";
 
 const props = defineProps<{
   member: IContact;

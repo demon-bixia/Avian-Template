@@ -4,14 +4,15 @@ import useStore from "@src/store/store";
 import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 
 // New Features and improvements:
-// todo add loading states to components that require downloading files. (important)
-// todo add a "clear text" button to search input (easy)
-// todo add a new messages counter to conversation bubble. (easy)
-// todo add tool tips. (easy)
-// todo add drafts. (easy)
-// todo add read receipt. (requires some thinking)
-// todo add multi select. (requires some thinking)
-// todo add voice video calling. (important)
+// todo add a "clear text" button to search input (easy).
+// todo add a new messages counter to conversation bubble. (easy).
+// todo add tool tips. (easy).
+// todo add drafts. (easy).
+// todo add read receipt. (requires some thinking).
+// todo add multi select. (requires some thinking).
+
+// Video Calling:
+// todo add video calling. (most important).
 
 // Refactoring code:
 // todo refactor ui components to use component utilities.

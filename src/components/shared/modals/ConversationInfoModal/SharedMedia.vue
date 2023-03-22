@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IContact, IConversation, IMessage } from "@custom_types/store";
+import type { IContact, IConversation, IMessage } from "@src/types";
 import { computed } from "vue";
 
 import { hasAttachments } from "@src/utils";

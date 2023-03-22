@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Ref } from "vue";
-import type { IConversation } from "@custom_types/store";
+import type { IConversation } from "@src/types";
 
 import useStore from "@src/store/store";
 import { ref, inject } from "vue";

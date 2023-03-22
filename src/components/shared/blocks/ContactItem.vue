@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IContact, IUser } from "@custom_types/store";
+import type { IContact, IUser } from "@src/types";
 
 import useStore from "@src/store/store";
 import { getFullName } from "@src/utils";

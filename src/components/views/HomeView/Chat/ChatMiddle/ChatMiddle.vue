@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IConversation, IMessage, IUser } from "@custom_types/store";
+import type { IConversation, IMessage, IUser } from "@src/types";
 import type { Ref } from "vue";
 import { inject, onMounted, ref } from "vue";
 

@@ -2,7 +2,7 @@
 import type { Ref } from "vue";
 import { computed, inject, onMounted, onUnmounted, ref, watch } from "vue";
 
-import type { IAttachment, IConversation } from "@custom_types/store";
+import type { IAttachment, IConversation } from "@src/types";
 import { hasAttachments } from "@src/utils";
 import { useFocusTrap } from "@vueuse/integrations/useFocusTrap";
 import VideoPlayer from "@src/components/ui/data-display/VideoPlayer.vue";

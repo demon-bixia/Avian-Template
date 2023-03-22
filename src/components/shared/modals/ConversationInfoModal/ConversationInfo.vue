@@ -2,7 +2,7 @@
 import { ArrowUturnLeftIcon } from "@heroicons/vue/24/solid";
 import { computed, ref } from "vue";
 
-import { IContact, IConversation } from "@custom_types/store";
+import { IContact, IConversation } from "@src/types";
 import { getAvatar, getFullName, getName, getOddContact } from "@src/utils";
 
 import {

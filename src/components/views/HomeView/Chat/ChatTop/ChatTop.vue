@@ -8,7 +8,7 @@ import {
   PhoneIcon,
   ShareIcon,
 } from "@heroicons/vue/24/outline";
-import type { IConversation } from "@custom_types/store";
+import type { IConversation } from "@src/types";
 import { ref, inject } from "vue";
 
 import useStore from "@src/store/store";

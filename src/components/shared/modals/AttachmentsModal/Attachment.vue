@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IAttachment } from "@custom_types/store";
+import type { IAttachment } from "@src/types";
 
 import {
   ArrowPathRoundedSquareIcon,

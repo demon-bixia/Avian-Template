@@ -11,7 +11,7 @@ import type {
   ICall,
   ISettings,
   IEmoji,
-} from "@custom_types/store";
+} from "@src/types";
 
 const useStore = defineStore("chat", () => {
   // local storage

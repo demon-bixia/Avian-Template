@@ -33,6 +33,7 @@ export interface IAttachment {
   size: string;
   url: string;
   thumbnail?: string;
+  file?: File;
 }
 
 export interface IRecording {
@@ -40,6 +41,7 @@ export interface IRecording {
   size: string;
   src: string;
   duration: string;
+  file?: File;
 }
 
 export interface IMessage {

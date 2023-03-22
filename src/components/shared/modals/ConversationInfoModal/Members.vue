@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IConversation, IUser } from "@custom_types/store";
+import type { IConversation, IUser } from "@src/types";
 import type { Ref } from "vue";
 import { ref } from "vue";
 

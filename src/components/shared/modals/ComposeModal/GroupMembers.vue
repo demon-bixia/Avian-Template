@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import type { Ref } from "vue";
-import type { IContact, IUser } from "@custom_types/store";
+import type { IContact, IUser } from "@src/types";
 
 import useStore from "@src/store/store";
 

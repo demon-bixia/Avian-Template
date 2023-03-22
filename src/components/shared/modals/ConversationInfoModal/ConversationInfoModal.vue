@@ -2,7 +2,7 @@
 import type { Ref } from "vue";
 import { computed, ref } from "vue";
 
-import type { IContact, IConversation } from "@custom_types/store";
+import type { IContact, IConversation } from "@src/types";
 
 import ConversationInfo from "@src/components/shared/modals/ConversationInfoModal/ConversationInfo.vue";
 import EditGroupInfo from "@src/components/shared/modals/ConversationInfoModal/EditGroupInfo.vue";

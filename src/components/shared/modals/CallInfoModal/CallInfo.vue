@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import type { ICall } from "@custom_types/store";
+import type { ICall } from "@src/types";
 
 import {
   CalendarIcon,

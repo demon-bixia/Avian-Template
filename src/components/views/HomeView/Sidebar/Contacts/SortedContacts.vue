@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IContactGroup } from "@custom_types/store";
+import type { IContactGroup } from "@src/types";
 import type { Ref } from "vue";
 import { ref } from "vue";
 

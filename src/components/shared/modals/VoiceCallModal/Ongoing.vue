@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ICall, IContact } from "@custom_types/store";
+import type { ICall, IContact } from "@src/types";
 
 import { getCallName } from "@src/utils";
 

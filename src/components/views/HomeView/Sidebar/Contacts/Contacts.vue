@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { UserPlusIcon } from "@heroicons/vue/24/outline";
-import type { IContactGroup, IUser } from "@custom_types/store";
+import type { IContactGroup, IUser } from "@src/types";
 import type { Ref } from "vue";
 import { ref, watch } from "vue";
 

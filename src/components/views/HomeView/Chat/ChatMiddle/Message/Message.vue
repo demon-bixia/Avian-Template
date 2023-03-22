@@ -4,7 +4,7 @@ import type {
   IMessage,
   IPreviewData,
   IRecording,
-} from "@custom_types/store";
+} from "@src/types";
 import type { Ref } from "vue";
 
 import linkifyStr from "linkify-string";

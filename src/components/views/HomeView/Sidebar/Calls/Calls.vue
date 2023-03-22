@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ICall } from "@custom_types/store";
+import type { ICall } from "@src/types";
 import { PlusCircleIcon } from "@heroicons/vue/24/outline";
 import { Ref, ref } from "vue";
 

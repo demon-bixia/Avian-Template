@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { LinkIcon } from "@heroicons/vue/24/outline";
 
-import { IPreviewData } from "@custom_types/store";
+import { IPreviewData } from "@src/types";
 
 const props = defineProps<{
   self?: boolean;

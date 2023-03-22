@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IAttachment, IMessage, IUser } from "@custom_types/store";
+import type { IAttachment, IMessage, IUser } from "@src/types";
 
 import useStore from "@src/store/store";
 import { getFullName, hasAttachments, shorten } from "@src/utils";

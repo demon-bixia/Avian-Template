@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { PhoneIcon, XMarkIcon } from "@heroicons/vue/24/solid";
-import { ICall, IContact } from "@custom_types/store";
+import { ICall, IContact } from "@src/types";
 import { getCallName } from "@src/utils";
 
 import CallAvatar from "@src/components/shared/blocks/CallAvatar.vue";

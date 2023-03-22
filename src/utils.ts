@@ -4,7 +4,7 @@ import type {
   IConversation,
   IMessage,
   IRecording,
-} from "@custom_types/store";
+} from "@src/types";
 import useStore from "@src/store/store";
 
 /**

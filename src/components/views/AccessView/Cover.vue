@@ -9,11 +9,11 @@ import Typography from "@src/components/ui/data-display/Typography.vue";
   >
     <div
       class="w-full h-full px-7 flex items-center bg-no-repeat bg-center bg-cover rounded-[12px]"
-      style="background-image: url('../../../src/assets/images/colorful.png')"
+      style="background-image: url('/src/assets/images/colorful.png')"
     >
       <div
         class="px-9 py-[60px] rounded-[5px] bg-cover bg-no-repeat"
-        style="background-image: url('../../../src/assets/images/blur.png')"
+        style="background-image: url('/src/assets/images/blur.png')"
       >
         <Typography variant="display" class="mb-5 text-white" no-color
           >Blazingly fast messaging platform for the

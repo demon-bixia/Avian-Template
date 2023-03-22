@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IConversation } from "@custom_types/store";
+import type { IConversation } from "@src/types";
 import Conversation from "./Conversation.vue";
 
 const props = defineProps<{

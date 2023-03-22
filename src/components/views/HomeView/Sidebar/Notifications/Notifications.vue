@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { INotification } from "@custom_types/store";
+import type { INotification } from "@src/types";
 import useStore from "@src/store/store";
 
 import NoNotifications from "@src/components/states/empty-states/NoNotifications.vue";

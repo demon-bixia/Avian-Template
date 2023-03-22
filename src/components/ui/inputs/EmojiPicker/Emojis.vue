@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Ref } from "vue";
-import type { IEmoji } from "@custom_types/store";
+import type { IEmoji } from "@src/types";
 
 import { watch, ref, onMounted } from "vue";
 import useStore from "@src/store/store";

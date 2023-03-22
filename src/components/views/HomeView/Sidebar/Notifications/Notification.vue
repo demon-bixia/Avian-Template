@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { INotification } from "@custom_types/store";
+import type { INotification } from "@src/types";
 
 import Typography from "@src/components/ui/data-display/Typography.vue";
 import {

@@ -4,7 +4,7 @@ import { PlayIcon } from "@heroicons/vue/24/solid";
 import type { Ref } from "vue";
 import { computed, ref } from "vue";
 
-import type { IAttachment, IMessage } from "@custom_types/store";
+import type { IAttachment, IMessage } from "@src/types";
 
 import Carousel from "@src/components/ui/data-display/Carousel/Carousel.vue";
 import Typography from "@src/components/ui/data-display/Typography.vue";
