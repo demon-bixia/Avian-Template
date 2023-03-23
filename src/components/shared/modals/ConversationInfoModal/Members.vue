@@ -110,65 +110,67 @@ const handleClickOutside = (event: Event) => {
     </div>
 
     <!--contacts-->
-    <ScrollBox ref="contactContainer" class="max-h-[232px] overflow-y-scroll">
-      <ContactItem
-        variant="card"
-        @contact-selected="
-          (contact) =>
-            $emit('active-page-change', {
-              tabName: 'conversation-info',
-              animationName: 'slide-left',
-              contact: contact,
-            })
-        "
-        v-for="(contact, index) in props.conversation.contacts"
-        :contact="contact"
-        :key="index"
-      >
-        <template
-          v-slot:tag
-          v-if="(props.conversation.admins as number[]).includes(contact.id)"
+    <div ref="contactContainer">
+      <ScrollBox class="max-h-[232px] overflow-y-scroll">
+        <ContactItem
+          variant="card"
+          @contact-selected="
+            (contact) =>
+              $emit('active-page-change', {
+                tabName: 'conversation-info',
+                animationName: 'slide-left',
+                contact: contact,
+              })
+          "
+          v-for="(contact, index) in props.conversation.contacts"
+          :contact="contact"
+          :key="index"
         >
-          <div class="ml-3">
-            <Typography variant="body-4" noColor class="text-indigo-400"
-              >admin</Typography
-            >
-          </div>
-        </template>
+          <template
+            v-slot:tag
+            v-if="(props.conversation.admins as number[]).includes(contact.id)"
+          >
+            <div class="ml-3">
+              <Typography variant="body-4" noColor class="text-indigo-400"
+                >admin</Typography
+              >
+            </div>
+          </template>
 
-        <template
-          v-slot:menu
-          v-if="store.user && (props.conversation.admins as number[]).includes(store.user.id) && contact.id !== store.user.id"
-        >
-          <div>
-            <!--dropdown menu button-->
-            <IconButton
-              title="menu"
-              @click="(event) => handleToggleDropdown(event, index)"
-              class="open-menu w-6 h-6"
-            >
-              <EllipsisVerticalIcon
-                class="open-menu h-5 w-5 text-black opacity-60 dark:text-white"
-                tabindex="0"
-              />
-            </IconButton>
+          <template
+            v-slot:menu
+            v-if="store.user && (props.conversation.admins as number[]).includes(store.user.id) && contact.id !== store.user.id"
+          >
+            <div>
+              <!--dropdown menu button-->
+              <IconButton
+                title="menu"
+                @click="(event) => handleToggleDropdown(event, index)"
+                class="open-menu w-6 h-6"
+              >
+                <EllipsisVerticalIcon
+                  class="open-menu h-5 w-5 text-black opacity-60 dark:text-white"
+                  tabindex="0"
+                />
+              </IconButton>
 
-            <!--dropdown menu-->
-            <Dropdown
-              :close-dropdown="closeDropdowns"
-              :handle-click-outside="handleClickOutside"
-              :show="(dropdownMenuStates as boolean[])[index]"
-              :position="dropdownMenuPosition"
-            >
-              <DropdownLink> Promote to admin </DropdownLink>
+              <!--dropdown menu-->
+              <Dropdown
+                :close-dropdown="closeDropdowns"
+                :handle-click-outside="handleClickOutside"
+                :show="(dropdownMenuStates as boolean[])[index]"
+                :position="dropdownMenuPosition"
+              >
+                <DropdownLink> Promote to admin </DropdownLink>
 
-              <DropdownLink> Demote to member </DropdownLink>
+                <DropdownLink> Demote to member </DropdownLink>
 
-              <DropdownLink color="danger"> Remove contact </DropdownLink>
-            </Dropdown>
-          </div>
-        </template>
-      </ContactItem>
-    </ScrollBox>
+                <DropdownLink color="danger"> Remove contact </DropdownLink>
+              </Dropdown>
+            </div>
+          </template>
+        </ContactItem>
+      </ScrollBox>
+    </div>
   </div>
 </template>

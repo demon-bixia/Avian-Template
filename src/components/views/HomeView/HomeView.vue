@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted } from "vue";
 
-import { fetchData } from "@src/store/defaults";
 import useStore from "@src/store/store";
 
 import Chat from "@src/components/views/HomeView/Chat/Chat.vue";
@@ -12,30 +11,6 @@ import Loading3 from "@src/components/states/loading-states/Loading3.vue";
 import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 
 const store = useStore();
-
-// update localStorage with state changes
-store.$subscribe((_mutation, state) => {
-  localStorage.setItem("chat", JSON.stringify(state));
-});
-
-// here we load the data from the server.
-onMounted(async () => {
-  store.status = "loading";
-
-  // fake server call
-  setTimeout(() => {
-    store.delayLoading = false;
-  });
-  const request = await fetchData();
-
-  store.$patch({
-    status: "success",
-    user: request.data.user,
-    conversations: request.data.conversations,
-    notifications: request.data.notifications,
-    archivedConversations: request.data.archivedConversations,
-  });
-});
 
 // the active chat component or loading component.
 const activeChatComponent = computed(() => {

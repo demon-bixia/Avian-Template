@@ -1,13 +1,18 @@
 <script setup lang="ts">
+import type { Ref } from "vue";
+
 import { twMerge } from "tailwind-merge";
-import { computed } from "vue";
-import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
+import { ref, computed } from "vue";
+
+import { MagnifyingGlassIcon, XCircleIcon } from "@heroicons/vue/24/outline";
+import IconButton from "@src/components/ui/inputs/IconButton.vue";
 
 const props = defineProps<{
-  modelValue?: string | null;
   variant?: string;
   class?: string;
 }>();
+
+const input: Ref<HTMLInputElement | null> = ref(null);
 
 const baseClasses = `w-full h-8 py-3 px-7 border outline-none rounded-sm text-black
 dark:text-white dark:opacity-70 placeholder:text-black placeholder:opacity-40
@@ -34,12 +39,34 @@ const classes = twMerge(baseClasses, variantClasses.value, props.class);
       />
     </i>
     <input
+      ref="input"
       type="text"
       placeholder="Search.."
       :class="classes"
-      @input="
+      @input="$event => {
         $emit('update:modelValue', ($event.target as HTMLInputElement).value)
+      }
       "
     />
+    <div class="absolute top-0 right-0">
+      <slot name="endAdornment">
+        <IconButton
+          v-if="input && input.value"
+          @click="
+            ($event) => {
+              if (input) input.value = '';
+              $emit('update:modelValue', '');
+            }
+          "
+          title="clear text"
+          aria-label="clear text"
+          class="m-[8px] p-2"
+        >
+          <XCircleIcon
+            class="w-5 h-5 text-black opacity-40 dark:text-white dark:opacity-60"
+          />
+        </IconButton>
+      </slot>
+    </div>
   </div>
 </template>

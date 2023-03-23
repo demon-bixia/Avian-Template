@@ -27,7 +27,7 @@ import Typography from "@src/components/ui/data-display/Typography.vue";
       </div>
 
       <!--form-->
-      <div class="mb-5">
+      <div class="mb-6">
         <TextInput
           variant="bordered"
           label="Old Password"

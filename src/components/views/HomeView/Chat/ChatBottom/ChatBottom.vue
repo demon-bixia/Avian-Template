@@ -3,7 +3,8 @@ import type { Ref } from "vue";
 import type { IConversation } from "@src/types";
 
 import useStore from "@src/store/store";
-import { ref, inject } from "vue";
+import { ref, inject, onMounted } from "vue";
+import { getConversationIndex } from "@src/utils";
 
 import {
   CheckIcon,
@@ -24,8 +25,10 @@ import Textarea from "@src/components/ui/inputs/Textarea.vue";
 
 const store = useStore();
 
+const activeConversation = <IConversation>inject("activeConversation");
+
 // the content of the message.
-const content: Ref<string | null> = ref(null);
+const value: Ref<string> = ref("");
 
 // determines whether the app is recording or not.
 const recording = ref(false);
@@ -61,7 +64,17 @@ const handleClickOutside = (event: Event) => {
   }
 };
 
-const activeConversation = <IConversation>inject("activeConversation");
+// (event) set the draft message equals the content of the text area
+const handleSetDraft = () => {
+  const index = getConversationIndex(activeConversation.id);
+  if (index !== undefined) {
+    store.conversations[index].draftMessage = value.value;
+  }
+};
+
+onMounted(() => {
+  value.value = activeConversation.draftMessage;
+});
 </script>
 
 <template>
@@ -107,7 +120,9 @@ const activeConversation = <IConversation>inject("activeConversation");
       <div class="grow md:mr-5 xs:mr-4 self-end" v-if="!recording">
         <div class="relative">
           <Textarea
-            v-model="content"
+            v-model="value"
+            @input="handleSetDraft"
+            :value="value"
             class="max-h-[80px] pr-[50px] resize-none scrollbar-hidden"
             auto-resize
             cols="30"

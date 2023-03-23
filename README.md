@@ -53,3 +53,4 @@ npm run dev
 - <a href="https://github.com/dcastil/tailwind-merge">Tailwind merge</a>
 - <a href="https://vueuse.org/">vueuse</a>
 - <a href="https://wavesurfer-js.org/">Wavesurfer-js</a>
+- <a href="https://github.com/Akryum/floating-vue">floating-vue</a>

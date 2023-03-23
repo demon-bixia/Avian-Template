@@ -66,6 +66,8 @@ export interface IConversation {
   pinnedMessage?: IMessage;
   pinnedMessageHidden?: boolean;
   replyMessage?: IMessage;
+  unread?: number;
+  draftMessage: string;
 }
 
 export interface IContactGroup {

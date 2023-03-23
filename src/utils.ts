@@ -110,7 +110,9 @@ export const hasAttachments = (message: IMessage) => {
  * @param conversationId
  * @returns A number indicating the index of the conversation.
  */
-export const getConversationIndex = (conversationId: number) => {
+export const getConversationIndex = (
+  conversationId: number
+): number | undefined => {
   let conversationIndex;
   const store = useStore();
 

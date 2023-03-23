@@ -7,6 +7,7 @@ import { computed, ref } from "vue";
 const props = defineProps<{
   class: any;
   variant?: string;
+  value?: string;
   autoResize?: boolean;
 }>();
 
@@ -42,6 +43,7 @@ const handleAutoResize = () => {
   <textarea
     :class="classes"
     ref="textarea"
+    :value="props.value"
     @input="$event =>{handleAutoResize(); $emit('update:modelValue', ($event.target as HTMLInputElement).value)}"
   ></textarea>
 </template>

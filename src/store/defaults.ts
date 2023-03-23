@@ -109,6 +109,8 @@ export const conversations = [
   {
     id: 1,
     type: "couple",
+    unread: 2,
+    draftMessage: "",
     contacts: [
       {
         id: 6,
@@ -316,6 +318,7 @@ export const conversations = [
   {
     id: 2,
     type: "couple",
+    draftMessage: "",
     contacts: [
       {
         id: 5,
@@ -470,6 +473,8 @@ export const conversations = [
     avatar:
       "https://images.unsplash.com/photo-1573867639040-6dd25fa5f597?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
     admins: [1],
+    draftMessage: "",
+
     contacts: [
       {
         id: 1,
@@ -608,6 +613,8 @@ export const conversations = [
     avatar:
       "https://images.unsplash.com/photo-1572949645841-094f3a9c4c94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
     admins: [1],
+    draftMessage: "",
+
     contacts: [
       {
         id: 1,
@@ -676,6 +683,8 @@ export const archive = [
   {
     id: 3,
     type: "couple",
+    draftMessage: "",
+
     contacts: [
       {
         id: 4,
@@ -717,6 +726,7 @@ export const archive = [
   {
     id: 4,
     type: "couple",
+    draftMessage: "",
     contacts: [
       {
         id: 3,

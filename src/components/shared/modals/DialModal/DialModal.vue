@@ -12,6 +12,7 @@ import SearchInput from "@src/components/ui/inputs/SearchInput.vue";
 import Modal from "@src/components/ui/utils/Modal.vue";
 import ContactItem from "@src/components/shared/blocks/ContactItem.vue";
 import ScrollBox from "@src/components/ui/utils/ScrollBox.vue";
+import Loading1 from "@src/components/states/loading-states/Loading1.vue";
 
 const props = defineProps<{
   closeModal: () => void;
@@ -83,8 +84,13 @@ const handleSelectedContactsChange = (contact: IContact) => {
           ref="contactContainer"
           class="max-h-[216px] mb-5 overflow-y-scroll"
         >
+          <Loading1
+            v-if="store.status === 'loading' || store.delayLoading"
+            v-for="item in 3"
+          />
+
           <ContactItem
-            v-if="store.user"
+            v-else-if="store.user"
             v-for="(contact, index) in store.user.contacts"
             :contact="contact"
             @click="handleSelectedContactsChange(contact)"

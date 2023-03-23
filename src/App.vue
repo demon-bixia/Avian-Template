@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
+
 import useStore from "@src/store/store";
+import { fetchData } from "@src/store/defaults";
+
 import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 
 // New Features and improvements:
-// todo add a "clear text" button to search input (easy).
-// todo add a new messages counter to conversation bubble. (easy).
-// todo add tool tips. (easy).
-// todo add drafts. (easy).
 // todo add read receipt. (requires some thinking).
 // todo add multi select. (requires some thinking).
 
@@ -33,6 +32,30 @@ import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 
 const store = useStore();
 
+// update localStorage with state changes
+store.$subscribe((_mutation, state) => {
+  localStorage.setItem("chat", JSON.stringify(state));
+});
+
+// here we load the data from the server.
+onMounted(async () => {
+  store.status = "loading";
+
+  // fake server call
+  setTimeout(() => {
+    store.delayLoading = false;
+  });
+  const request = await fetchData();
+
+  store.$patch({
+    status: "success",
+    user: request.data.user,
+    conversations: request.data.conversations,
+    notifications: request.data.notifications,
+    archivedConversations: request.data.archivedConversations,
+  });
+});
+
 // the app height
 const height = ref(`${window.innerHeight}px`);
 
@@ -41,7 +64,7 @@ const resizeWindow = () => {
   height.value = `${window.innerHeight}px`;
 };
 
-// add the resize event when the component mounts.
+// and add the resize event when the component mounts.
 onMounted(() => {
   window.addEventListener("resize", resizeWindow);
 });
