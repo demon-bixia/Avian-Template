@@ -136,6 +136,7 @@ export const conversations = [
         id: 1,
         content: "Lorem ipsum dolor sit amet.",
         date: "3:00 pm",
+        state: "read",
         sender: {
           id: 6,
           email: "user@gmail.com",
@@ -150,6 +151,7 @@ export const conversations = [
         id: 2,
         content: "Lorem ipsum dolor sit amet.",
         date: "4:00 pm",
+        state: "sent",
         sender: {
           id: 1,
           firstName: "Dawn",
@@ -165,6 +167,7 @@ export const conversations = [
         id: 3,
         content: "Lorem ipsum dolor sit amet.",
         date: "3:00 pm",
+        state: "read",
         sender: {
           id: 6,
           email: "user@gmail.com",
@@ -180,6 +183,7 @@ export const conversations = [
         id: 4,
         content: "Check this out https://github.com/",
         date: "4:00 pm",
+        state: "read",
         sender: {
           id: 6,
           email: "user@gmail.com",
@@ -203,6 +207,7 @@ export const conversations = [
         id: 5,
         content: "Lorem ipsum dolor sit amet.",
         date: "5:00 pm",
+        state: "delivered",
         sender: {
           id: 1,
           firstName: "Dawn",
@@ -240,6 +245,7 @@ export const conversations = [
       {
         id: 6,
         date: "5:30 pm",
+        state: "read",
         attachments: [
           {
             id: 4,
@@ -262,6 +268,7 @@ export const conversations = [
       {
         id: 7,
         date: "6:00 pm",
+        state: "read",
         attachments: [
           {
             id: 5,
@@ -295,6 +302,7 @@ export const conversations = [
       {
         id: 8,
         type: "recording",
+        state: "waiting",
         content: {
           id: 1,
           size: "10 MB",
@@ -344,6 +352,7 @@ export const conversations = [
         id: 1,
         content: "Can you send me a link",
         date: "8:15 am",
+        state: "read",
         sender: {
           id: 1,
           firstName: "Dawn",
@@ -358,6 +367,7 @@ export const conversations = [
         id: 2,
         content: "So i found this great video online",
         date: "1:00 pm",
+        state: "read",
         sender: {
           id: 5,
           email: "user@gmail.com",
@@ -372,6 +382,7 @@ export const conversations = [
         id: 3,
         content: "It’s about stopping drugs",
         date: "1:05 pm",
+        state: "read",
         sender: {
           id: 5,
           email: "user@gmail.com",
@@ -386,6 +397,7 @@ export const conversations = [
         id: 4,
         content: "Can you send me a link",
         date: "1:15 pm",
+        state: "read",
         sender: {
           id: 1,
           firstName: "Dawn",
@@ -400,6 +412,7 @@ export const conversations = [
         id: 6,
         content: "Hey there, check this out",
         date: "1:30 pm",
+        state: "read",
         attachments: [
           {
             id: 14,
@@ -439,6 +452,7 @@ export const conversations = [
         id: 7,
         content: "Wow, really cool",
         date: "1:30 pm",
+        state: "read",
         sender: {
           id: 1,
           firstName: "Dawn",
@@ -453,6 +467,7 @@ export const conversations = [
         id: 8,
         content: "You're welcome",
         date: "1:30 pm",
+        state: "read",
         sender: {
           id: 5,
           email: "user@gmail.com",
@@ -474,7 +489,6 @@ export const conversations = [
       "https://images.unsplash.com/photo-1573867639040-6dd25fa5f597?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
     admins: [1],
     draftMessage: "",
-
     contacts: [
       {
         id: 1,
@@ -509,6 +523,7 @@ export const conversations = [
         id: 1,
         content: "Hey there",
         date: "1:00 pm",
+        state: "read",
         sender: {
           id: 1,
           firstName: "Dawn",
@@ -523,6 +538,7 @@ export const conversations = [
         id: 2,
         content: "I got a new dog",
         date: "2:00 pm",
+        state: "read",
         sender: {
           id: 2,
           email: "user@gmail.com",
@@ -537,6 +553,7 @@ export const conversations = [
         id: 3,
         content: "Oh, ok good to know.",
         date: "5:00 pm",
+        state: "read",
         sender: {
           id: 1,
           firstName: "Dawn",
@@ -551,6 +568,7 @@ export const conversations = [
         id: 4,
         content: "It was great catching up with you the other day",
         date: "3:00 pm",
+        state: "read",
         sender: {
           id: 3,
           email: "user@gmail.com",
@@ -565,6 +583,7 @@ export const conversations = [
         id: 5,
         content: "Thank you very much.",
         date: "3:00 pm",
+        state: "read",
         sender: {
           id: 1,
           firstName: "Dawn",
@@ -579,6 +598,7 @@ export const conversations = [
         id: 6,
         content: "Lets meet agian next week.",
         date: "5:00 pm",
+        state: "read",
         sender: {
           id: 1,
           firstName: "Dawn",
@@ -593,6 +613,7 @@ export const conversations = [
         id: 7,
         content: "Ok next week then.",
         date: "5:00 pm",
+        state: "read",
         sender: {
           id: 2,
           email: "user@gmail.com",
@@ -650,6 +671,7 @@ export const conversations = [
         content:
           "A truck collision turns a Florida highway into a silver sea of beer cans",
         date: "1:00 pm",
+        state: "read",
         sender: {
           id: 1,
           firstName: "Dawn",
@@ -665,6 +687,7 @@ export const conversations = [
         content:
           "Apple Watch Ultra and next-generation AirPods Pro available in stores Friday",
         date: "5:00 pm",
+        state: "read",
         sender: {
           id: 1,
           firstName: "Dawn",
@@ -684,7 +707,6 @@ export const archive = [
     id: 3,
     type: "couple",
     draftMessage: "",
-
     contacts: [
       {
         id: 4,
@@ -710,6 +732,7 @@ export const archive = [
         id: 1,
         content: "Oh, ok good to know.",
         date: "4:00 pm",
+        state: "read",
         sender: {
           id: 1,
           firstName: "Dawn",
@@ -752,6 +775,7 @@ export const archive = [
         id: 1,
         content: "Oh, ok good to know.",
         date: "4:00 pm",
+        state: "read",
         sender: {
           id: 1,
           firstName: "Dawn",

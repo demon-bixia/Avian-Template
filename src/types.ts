@@ -53,6 +53,7 @@ export interface IMessage {
   replyTo?: number;
   previewData?: IPreviewData;
   attachments?: IAttachment[];
+  state: string;
 }
 
 export interface IConversation {

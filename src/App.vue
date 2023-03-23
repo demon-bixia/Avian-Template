@@ -6,27 +6,30 @@ import { fetchData } from "@src/store/defaults";
 
 import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 
+// future features:
+// todo add video calling
+
 // New Features and improvements:
 // todo add read receipt. (requires some thinking).
 // todo add multi select. (requires some thinking).
-// todo add voice video calling. (most important).
 
 // Refactoring code:
 // todo refactor ui components to use component utilities.
 // todo refactor remove getters from utils file and add them to store folder.
 
 // Accessability:
-// dropdown menus.
-// modals.
-// lists (conversations, contacts, calls).
-// improve the way you view messages.
-// video calling
-// multi-select
+// todo make dropdown menus more accessible.
+// todo make modals more accessible.
+// todo make lists (i.e conversations, contacts, calls) more accessible.
+// todo improve the way you view messages.
+// todo make multi-select more accessible.
 
 // SEO.
+// todo improve seo.
 
 // Performance:
-// todo performance testing. (version 2.0 release).
+// todo add dynamic imports.
+// todo add chunking.
 
 const store = useStore();
 

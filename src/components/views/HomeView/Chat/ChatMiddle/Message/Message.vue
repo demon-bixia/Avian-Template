@@ -18,6 +18,7 @@ import LinkPreview from "@src/components/views/HomeView/Chat/ChatMiddle/Message/
 import MessageContextMenu from "@src/components/views/HomeView/Chat/ChatMiddle/Message/MessageContextMenu.vue";
 import Recording from "@src/components/views/HomeView/Chat/ChatMiddle/Message/Recording.vue";
 import MessagePreview from "@src/components/views/HomeView/Chat/MessagePreview.vue";
+import Receipt from "@src/components/views/HomeView/Chat/ChatMiddle/Message/Receipt.vue";
 
 const props = defineProps<{
   message: IMessage;
@@ -108,7 +109,7 @@ const replyMessage = getMessageById(activeConversation, props.message.replyTo);
               ? [
                   'rounded-tl',
                   'ml-4',
-                  'order-1',
+                  'order-2',
                   'bg-indigo-50',
                   'dark:bg-gray-600',
                 ]
@@ -166,11 +167,14 @@ const replyMessage = getMessageById(activeConversation, props.message.replyTo);
         </div>
 
         <!--date-->
-        <div>
+        <div :class="props.self ? ['ml-4', 'order-1'] : ['mr-4']">
           <Typography variant="body-1" class="whitespace-pre">
             {{ props.message.date }}
           </Typography>
         </div>
+
+        <!--read receipt-->
+        <Receipt v-if="props.self" :state="props.message.state" />
       </div>
     </div>
     <MessageContextMenu
