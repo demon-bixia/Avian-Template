@@ -55,6 +55,7 @@ const handleClickOutside = (event: Event) => {
 // (event) close the selected conversation
 const handleCloseConversation = () => {
   store.conversationOpen = "close";
+  store.activeConversationId = null;
 };
 
 // (event) open the voice call modal and expand call

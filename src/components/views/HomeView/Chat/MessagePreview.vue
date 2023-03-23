@@ -17,8 +17,8 @@ const store = useStore();
 <template>
   <div
     v-if="props.message"
-    class="border-l pl-3 cursor-pointer outline-none border-opacity-50 duration-200"
-    :class="['border-black', 'dark:border-white', 'dark:border-opacity-50']"
+    class="border-l-2 pl-3 cursor-pointer outline-none border-opacity-50 duration-200"
+    :class="['border-gray-900', 'dark:border-white', 'dark:border-opacity-50']"
     tabindex="0"
     :aria-label="'reply to: ' + getFullName(props.message.sender)"
   >

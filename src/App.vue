@@ -9,8 +9,6 @@ import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 // New Features and improvements:
 // todo add read receipt. (requires some thinking).
 // todo add multi select. (requires some thinking).
-
-// Video Calling:
 // todo add voice video calling. (most important).
 
 // Refactoring code:
