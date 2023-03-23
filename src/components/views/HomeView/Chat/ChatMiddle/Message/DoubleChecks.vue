@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import useStore from "@src/store/store";
-
-import BlueChecks from "@src/assets/vectors/blue_checks.svg";
+import GreenChecks from "@src/assets/vectors/green_checks.svg";
 import GrayChecks from "@src/assets/vectors/gray_checks.svg";
 
 const props = defineProps<{
@@ -17,7 +15,7 @@ const props = defineProps<{
   />
   <img
     v-else-if="props.state === 'read'"
-    :src="BlueChecks"
+    :src="GreenChecks"
     class="w-[14px] h-[14px]"
   />
 </template>
