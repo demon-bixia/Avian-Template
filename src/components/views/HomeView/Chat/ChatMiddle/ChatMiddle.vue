@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IConversation, IMessage, IUser } from "@src/types";
+import type { IConversation, IMessage } from "@src/types";
 import type { Ref } from "vue";
 import { inject, onMounted, ref } from "vue";
 
@@ -7,6 +7,12 @@ import useStore from "@src/store/store";
 
 import Message from "@src/components/views/HomeView/Chat/ChatMiddle/Message/Message.vue";
 import TimelineDivider from "@src/components/views/HomeView/Chat/ChatMiddle/TimelineDivider.vue";
+
+const props = defineProps<{
+  handleSelectMessage: (messageId: number) => void;
+  handleDeselectMessage: (messageId: number) => void;
+  selectedMessages: number[];
+}>();
 
 const store = useStore();
 
@@ -64,6 +70,9 @@ onMounted(() => {
         :self="isSelf(message)"
         :follow-up="isFollowUp(index, index - 1)"
         :divider="renderDivider(index, index - 1)"
+        :selected="props.selectedMessages.includes(message.id)"
+        :handle-select-message="handleSelectMessage"
+        :handle-deselect-message="handleDeselectMessage"
       />
     </div>
   </div>

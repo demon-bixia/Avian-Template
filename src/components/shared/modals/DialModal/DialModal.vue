@@ -98,7 +98,7 @@ const handleSelectedContactsChange = (contact: IContact) => {
             :key="index"
           >
             <template v-slot:checkbox>
-              <Checkbox :model-value="isContactSelected(contact)" />
+              <Checkbox :value="isContactSelected(contact)" />
             </template>
           </ContactItem>
         </ScrollBox>

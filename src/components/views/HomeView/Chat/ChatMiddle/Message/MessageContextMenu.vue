@@ -10,16 +10,21 @@ import {
   BookmarkIcon,
   BookmarkSquareIcon,
   TrashIcon,
+  CheckCircleIcon,
+  XCircleIcon,
 } from "@heroicons/vue/24/outline";
 import Dropdown from "@src/components/ui/navigation/Dropdown/Dropdown.vue";
 import DropdownLink from "@src/components/ui/navigation/Dropdown/DropdownLink.vue";
 
 const props = defineProps<{
-  handleCloseContextMenu: () => void;
   message: IMessage;
   show: boolean;
   left: number;
   top: number;
+  selected: boolean;
+  handleCloseContextMenu: () => void;
+  handleSelectMessage: (messageId: number) => void;
+  handleDeselectMessage: (messageId: number) => void;
 }>();
 
 const store = useStore();
@@ -92,6 +97,32 @@ const handleReplyToMessage = () => {
     <DropdownLink :handle-click="handlePinMessage">
       <BookmarkSquareIcon class="h-5 w-5 mr-3" />
       Pin
+    </DropdownLink>
+
+    <DropdownLink
+      v-if="props.selected"
+      :handle-click="
+        () => {
+          handleCloseContextMenu();
+          props.handleDeselectMessage(props.message.id);
+        }
+      "
+    >
+      <XCircleIcon class="h-5 w-5 mr-3" />
+      Deselect
+    </DropdownLink>
+
+    <DropdownLink
+      v-else
+      :handle-click="
+        () => {
+          handleCloseContextMenu();
+          props.handleSelectMessage(props.message.id);
+        }
+      "
+    >
+      <CheckCircleIcon class="h-5 w-5 mr-3" />
+      Select
     </DropdownLink>
 
     <DropdownLink :handle-click="handleCloseContextMenu" color="danger">

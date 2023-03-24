@@ -9,10 +9,6 @@ import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 // future features:
 // todo add video calling
 
-// New Features and improvements:
-// todo add read receipt. (requires some thinking).
-// todo add multi select. (requires some thinking).
-
 // Refactoring code:
 // todo refactor ui components to use component utilities.
 // todo refactor remove getters from utils file and add them to store folder.

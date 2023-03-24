@@ -25,6 +25,9 @@ const props = defineProps<{
   followUp: boolean;
   self: boolean;
   divider?: boolean;
+  selected?: boolean;
+  handleSelectMessage: (messageId: number) => void;
+  handleDeselectMessage: (messageId: number) => void;
 }>();
 
 const activeConversation = <IConversation>inject("activeConversation");
@@ -104,17 +107,19 @@ const replyMessage = getMessageById(activeConversation, props.message.replyTo);
           v-click-outside="contextConfig"
           @contextmenu.prevent="handleShowContextMenu"
           class="group max-w-[500px] p-5 rounded-b transition duration-500"
-          :class="[
-            props.self
-              ? [
-                  'rounded-tl',
-                  'ml-4',
-                  'order-2',
-                  'bg-indigo-50',
-                  'dark:bg-gray-600',
-                ]
-              : ['rounded-tr', 'mr-4', 'bg-gray-50', 'dark:bg-gray-600'],
-          ]"
+          :class="{
+            'rounded-tl ml-4 order-2 bg-indigo-50 dark:bg-gray-600':
+              props.self && !props.selected,
+
+            'rounded-tr mr-4 bg-gray-50 dark:bg-gray-600':
+              !props.self && !props.selected,
+
+            'rounded-tl ml-4 order-2 bg-indigo-200 dark:bg-indigo-500':
+              props.self && props.selected,
+
+            'rounded-tr mr-4 bg-indigo-200 dark:bg-indigo-500':
+              !props.self && props.selected,
+          }"
         >
           <!--reply to-->
           <MessagePreview
@@ -178,11 +183,14 @@ const replyMessage = getMessageById(activeConversation, props.message.replyTo);
       </div>
     </div>
     <MessageContextMenu
+      :selected="props.selected"
       :message="props.message"
       :show="showContextMenu"
-      :handle-close-context-menu="handleCloseContextMenu"
       :left="contextMenuCoordinations.x"
       :top="contextMenuCoordinations.y"
+      :handle-close-context-menu="handleCloseContextMenu"
+      :handle-select-message="handleSelectMessage"
+      :handle-deselect-message="handleDeselectMessage"
     />
   </div>
 </template>
