@@ -197,7 +197,7 @@ export const conversations = [
           link: "https://github.com/",
           title: "Github",
           image:
-            "https://th.bing.com/th/id/OIP.qKc7j_z6dQE6d6QV4ywVIAAAAA?pid=ImgDet&rs=1",
+            "https://github.blog/wp-content/uploads/2021/01/102393310-07478b80-3f8d-11eb-84eb-392d555ebd29.png?fit=1200%2C630",
           description:
             "GitHub is where over 83 million developers shape the future of software, together. Contribute to the open source community",
           domain: "github.com",
