@@ -13,7 +13,7 @@ import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 const store = useStore();
 
 // the active chat component or loading component.
-const activeChatComponent = computed(() => {
+const activeChatComponent = computed((): any => {
   if (store.status === "loading" || store.delayLoading) {
     return Loading3;
   } else if (store.activeConversationId) {

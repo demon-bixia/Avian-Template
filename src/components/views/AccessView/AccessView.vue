@@ -9,7 +9,7 @@ import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 
 const route = useRoute();
 
-const ActiveMethod = computed(() => {
+const ActiveMethod = computed((): any => {
   if (route.params.method === "sign-up") {
     return RegisterForm;
   } else if (route.params.method === "sign-in") {

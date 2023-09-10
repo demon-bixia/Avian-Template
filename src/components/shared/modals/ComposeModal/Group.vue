@@ -14,7 +14,7 @@ const animation = ref("slide-left");
 const activePageName = ref("group-info");
 
 // the active page component
-const ActivePage = computed(() => {
+const ActivePage = computed((): any => {
   if (activePageName.value === "group-info") return GroupInfo;
   else if (activePageName.value === "group-members") return GroupMembers;
 });

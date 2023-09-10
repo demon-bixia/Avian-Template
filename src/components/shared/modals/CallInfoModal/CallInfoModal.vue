@@ -21,7 +21,7 @@ const activePageName = ref("call-info");
 
 const animation = ref("slide-left");
 
-const ActivePage = computed(() => {
+const ActivePage = computed((): any => {
   if (activePageName.value === "call-info") {
     return CallInfo;
   } else if (activePageName.value === "call-members") {
