@@ -25,6 +25,10 @@
     "wavesurfer.js": "^6.6.1"
   },
   "devDependencies": {
+    "@rushstack/eslint-patch": "^1.2.0",
+    "@vue/eslint-config-prettier": "^7.1.0",
+    "eslint": "^8.35.0",
+    "eslint-plugin-vue": "^9.9.0",
     "@rollup/plugin-alias": "^4.0.3",
     "@types/node": "^18.14.6",
     "@types/video.js": "7.x",
