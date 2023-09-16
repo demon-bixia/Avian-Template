@@ -13,7 +13,7 @@ import Settings from "@src/components/views/HomeView/Sidebar/Settings/Settings.v
 const store = useStore();
 
 // the selected sidebar component (e.g message/notifications/settings)
-const ActiveComponent = computed(() => {
+const ActiveComponent = computed((): any => {
   if (store.activeSidebarComponent === "messages") {
     return Conversations;
   } else if (store.activeSidebarComponent === "contacts") {

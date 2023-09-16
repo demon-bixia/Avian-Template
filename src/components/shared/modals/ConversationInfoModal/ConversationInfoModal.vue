@@ -29,7 +29,7 @@ const animation = ref("slide-left");
 const activePageName = ref("conversation-info");
 
 // the active modal page component
-const ActivePage = computed(() => {
+const ActivePage = computed((): any => {
   if (activePageName.value === "conversation-info") return ConversationInfo;
   else if (activePageName.value === "members") return Members;
   else if (activePageName.value === "group-member") return ConversationInfo;

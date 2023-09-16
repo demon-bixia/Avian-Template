@@ -26,7 +26,7 @@ const members = computed(() => {
 const modalSize = ref("290px");
 
 // the active modal component
-const ActiveComponent = computed(() => {
+const ActiveComponent = computed((): any => {
   if (store.activeCall) {
     if (store?.activeCall.status === "dialing") {
       modalSize.value = "290px";

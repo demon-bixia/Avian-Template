@@ -16,7 +16,7 @@ const activeSectionName = ref("personal-section");
 const animation = ref("slide-left");
 
 // get the active section component from the section name
-const ActiveSection = computed(() => {
+const ActiveSection = computed((): any => {
   if (activeSectionName.value === "personal-section") {
     return PersonalSection;
   } else if (activeSectionName.value === "password-section") {
