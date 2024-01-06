@@ -15,28 +15,28 @@
 
   /* custom outline */
   .default-outline {
-    @apply focus-visible:outline-black dark:focus-visible:outline-white rounded-[4px];
+    @apply focus-visible:outline-black dark:focus-visible:outline-white rounded-[.25rem];
   }
 
   /* custom range slider input */
   .slider {
-    @apply bg-gray-300 appearance-none outline-none h-[6px] rounded-[4px];
+    @apply bg-gray-300 appearance-none outline-none h-[.375rem] rounded-[.25rem];
   }
 
   .slider::-webkit-slider-thumb {
-    @apply bg-indigo-300 w-[12px] h-[12px] mt-[-2px] appearance-none outline-none border-none cursor-pointer rounded-full;
+    @apply bg-indigo-300 w-[.75rem] h-[.75rem] mt-[-0.125rem] appearance-none outline-none border-none cursor-pointer rounded-full;
   }
 
   .slider::-moz-range-thumb {
-    @apply bg-indigo-300 w-[12px] h-[12px] appearance-none outline-none border-none cursor-pointer rounded-full;
+    @apply bg-indigo-300 w-[.75rem] h-[.75rem] appearance-none outline-none border-none cursor-pointer rounded-full;
   }
 
   .slider::-moz-range-progress {
-    @apply h-[6px] rounded-[4px] bg-indigo-300;
+    @apply h-[.375rem] rounded-[.25rem] bg-indigo-300;
   }
 
   .slider::-webkit-slider-runnable-track {
-    @apply rounded-[4px] h-[6px] cursor-pointer;
+    @apply rounded-[.25rem] h-[.375rem] cursor-pointer;
   }
 
   .video-slider {
@@ -44,12 +44,12 @@
   }
 
   .video-slider::-moz-range-thumb {
-    width: 0px;
-    height: 0px;
+    width: 0rem;
+    height: 0rem;
   }
 
   .video-slider::-webkit-slider-thumb {
-    width: 0px;
-    height: 0px;
+    width: 0rem;
+    height: 0rem;
   }
 }

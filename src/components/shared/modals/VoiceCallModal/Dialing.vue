@@ -46,11 +46,11 @@ const props = defineProps<{
     <div class="flex">
       <button
         @click="handleCallStatusChange('ongoing')"
-        class="relative p-[17px] mr-8 flex justify-center items-center rounded-full outline-none bg-green-400 hover:bg-green-500 active:bg-green-600 transition-all duratoin-500 ease"
+        class="relative p-[1.0625rem] mr-8 flex justify-center items-center rounded-full outline-none bg-green-400 hover:bg-green-500 active:bg-green-600 transition-all duratoin-500 ease"
       >
-        <PhoneIcon class="w-[16px] h-[16px] text-white" />
+        <PhoneIcon class="w-[1rem] h-[1rem] text-white" />
         <span
-          class="animate-ping absolute inline-flex w-[35px] h-[35px] rounded-full bg-green-400 opacity-75"
+          class="animate-ping absolute inline-flex w-[2.1875rem] h-[2.1875rem] rounded-full bg-green-400 opacity-75"
         ></span>
       </button>
 
@@ -60,11 +60,11 @@ const props = defineProps<{
             props.closeModal();
           }
         "
-        class="relative p-[17px] flex justify-center items-center rounded-full outline-none bg-red-400 hover:bg-red-500 active:bg-red-600 transition-all duratoin-500 ease"
+        class="relative p-[1.0625rem] flex justify-center items-center rounded-full outline-none bg-red-400 hover:bg-red-500 active:bg-red-600 transition-all duratoin-500 ease"
       >
-        <XMarkIcon class="w-[16px] h-[16px] text-white" />
+        <XMarkIcon class="w-[1rem] h-[1rem] text-white" />
         <span
-          class="animate-ping absolute inline-flex w-[35px] h-[35px] rounded-full bg-red-400 opacity-75"
+          class="animate-ping absolute inline-flex w-[2.1875rem] h-[2.1875rem] rounded-full bg-red-400 opacity-75"
         ></span>
       </button>
     </div>

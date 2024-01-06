@@ -11,11 +11,11 @@ const props = defineProps<{
   <img
     v-if="props.state === 'delivered'"
     :src="GrayChecks"
-    class="w-[14px] h-[14px]"
+    class="w-[.875rem] h-[.875rem]"
   />
   <img
     v-else-if="props.state === 'read'"
     :src="GreenChecks"
-    class="w-[14px] h-[14px]"
+    class="w-[.875rem] h-[.875rem]"
   />
 </template>

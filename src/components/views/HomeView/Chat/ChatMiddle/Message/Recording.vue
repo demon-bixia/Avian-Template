@@ -73,7 +73,7 @@ onUnmounted(() => {
   >
     <div
       v-if="loading"
-      class="p-4 mr-4 flex justify-center items-center rounded-[12px] outline-none transition-all duration-200 bg-indigo-300 active:bg-indigo-400"
+      class="p-4 mr-4 flex justify-center items-center rounded-[.75rem] outline-none transition-all duration-200 bg-indigo-300 active:bg-indigo-400"
     >
       <Spinner />
     </div>
@@ -82,7 +82,7 @@ onUnmounted(() => {
     <button
       v-else
       @click="handleTogglePlay"
-      class="p-4 mr-4 flex justify-center items-center rounded-[12px] outline-none transition-all duration-200 bg-indigo-300 active:bg-indigo-400"
+      class="p-4 mr-4 flex justify-center items-center rounded-[.75rem] outline-none transition-all duration-200 bg-indigo-300 active:bg-indigo-400"
       :aria-label="playing ? 'pause' : 'play'"
     >
       <PauseIcon v-if="playing" class="w-5 h-5 text-white" />
@@ -91,9 +91,9 @@ onUnmounted(() => {
 
     <!--audio waveform-->
     <div class="w-full mr-4 relative flex items-center">
-      <div :id="'waveform-' + props.recording.id" class="w-[150px]"></div>
+      <div :id="'waveform-' + props.recording.id" class="w-[9.375rem]"></div>
       <div
-        class="absolute border animate-pulse w-[150px] border-gray-300"
+        class="absolute border animate-pulse w-[9.375rem] border-gray-300"
         v-show="loading"
       ></div>
     </div>

@@ -18,13 +18,13 @@ const showPasswordConfirm = ref(false);
         label="Password"
         placeholder="Enter your password"
         :type="showPassword ? 'text' : 'password'"
-        class="pr-[40px] mb-5"
+        class="pr-[2.5rem] mb-5"
       >
         <template v-slot:endAdornment>
           <IconButton
             title="toggle password visibility"
             aria-label="toggle password visibility"
-            class="m-[8px] p-2"
+            class="m-[.5rem] p-2"
             @click="showPassword = !showPassword"
           >
             <EyeSlashIcon
@@ -48,7 +48,7 @@ const showPasswordConfirm = ref(false);
           <IconButton
             title="toggle password visibility"
             aria-label="toggle password visibility"
-            class="m-[8px] p-2"
+            class="m-[.5rem] p-2"
             @click="showPasswordConfirm = !showPasswordConfirm"
           >
             <EyeSlashIcon

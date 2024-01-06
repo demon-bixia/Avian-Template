@@ -10,11 +10,11 @@ const props = defineProps<{
 <template>
   <ClockIcon
     v-if="props.state === 'waiting'"
-    class="w-[14px] h-[14px] text-gray-300"
+    class="w-[.875rem] h-[.875rem] text-gray-300"
   />
   <CheckIcon
     v-else-if="props.state === 'sent'"
-    class="w-[14px] h-[14px] text-gray-300"
+    class="w-[.875rem] h-[.875rem] text-gray-300"
   />
   <DoubleChecks v-else :state="props.state" />
 </template>

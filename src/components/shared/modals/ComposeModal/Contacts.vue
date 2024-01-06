@@ -18,7 +18,7 @@ const store = useStore();
     </div>
 
     <!--contacts-->
-    <ScrollBox class="overflow-y-scroll max-h-[200px]">
+    <ScrollBox class="overflow-y-scroll max-h-[12.5rem]">
       <Loading1
         v-if="store.status === 'loading' || store.delayLoading"
         v-for="item in 3"

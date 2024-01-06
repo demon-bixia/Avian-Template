@@ -55,7 +55,7 @@ const handleCloseVoiceCallModal = (endCall: boolean) => {
 <template>
   <div class="w-full">
     <!--Top section-->
-    <div class="w-full min-h-[84px] px-5 py-6">
+    <div class="w-full min-h-[5.25rem] px-5 py-6">
       <SelectSection
         v-if="props.selectMode"
         :select-mode="props.selectMode"
@@ -75,7 +75,7 @@ const handleCloseVoiceCallModal = (endCall: boolean) => {
     <div
       class="relative transition-[padding] duration-200"
       :class="{
-        'pb-[60px]':
+        'pb-[3.75rem]':
           activeConversation.pinnedMessage &&
           !activeConversation.pinnedMessageHidden,
       }"

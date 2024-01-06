@@ -44,7 +44,7 @@ const handleOpenInfoModal = (call: ICall) => {
           aria-label="initiate call"
         >
           <PlusCircleIcon
-            class="w-[20px] h-[20px] text-indigo-300 hover:text-indigo-400"
+            class="w-[1.25rem] h-[1.25rem] text-indigo-300 hover:text-indigo-400"
           />
         </IconButton>
       </template>
@@ -64,7 +64,7 @@ const handleOpenInfoModal = (call: ICall) => {
       <div v-else>
         <ExpandTransition>
           <div
-            class="max-h-[200px]"
+            class="max-h-[12.5rem]"
             v-if="store.callMinimized && store.activeCall"
           >
             <Call

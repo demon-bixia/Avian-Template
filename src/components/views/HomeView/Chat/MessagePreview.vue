@@ -24,7 +24,7 @@ const store = useStore();
   >
     <!--name-->
     <p
-      class="mb-3 font-semibold text-xs leading-4 tracking-[0.16px]"
+      class="mb-3 font-semibold text-xs leading-4 tracking-[.01rem]"
       :class="[
         'text-black',
         'opacity-60',

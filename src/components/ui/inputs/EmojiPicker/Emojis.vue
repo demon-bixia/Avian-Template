@@ -92,7 +92,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <ScrollBox class="w-full max-h-[274px] overflow-y-scroll">
+  <ScrollBox class="w-full max-h-[17.125rem] overflow-y-scroll">
     <div v-for="[name, group] in Object.entries(filteredEmojis)" class="mb-6">
       <!--Group title-->
       <Typography variant="heading-2" class="mb-4 dark:text-white"
@@ -103,7 +103,7 @@ onMounted(() => {
         <div v-for="emoji in group">
           <IconButton
             v-if="emoji && emoji.r"
-            class="w-[30px] h-[30px] mr-1"
+            class="w-[1.875rem] h-[1.875rem] mr-1"
             :title="emoji.n[0]"
             :aria-label="emoji.n[0]"
           >

@@ -41,8 +41,8 @@ const activeChatComponent = computed((): any => {
         class="xs:absolute xs:z-10 md:static grow h-full xs:w-full md:w-fit scrollbar-hidden bg-white dark:bg-gray-800 transition-all duration-500"
         :class="
           store.conversationOpen === 'open'
-            ? ['xs:left-[0px]', 'xs:static']
-            : ['xs:left-[1000px]']
+            ? ['xs:left-[0rem]', 'xs:static']
+            : ['xs:left-[62.5rem]']
         "
         role="region"
       >

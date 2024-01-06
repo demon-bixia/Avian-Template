@@ -14,7 +14,7 @@ const store = useStore();
   <div>
     <button
       :aria-label="'toggle archived conversations'"
-      class="group w-full h-[92px] px-5 py-6 mb-3 flex rounded focus:outline-none transition duration-300 ease-out"
+      class="group w-full h-[5.75rem] px-5 py-6 mb-3 flex rounded focus:outline-none transition duration-300 ease-out"
       :class="
         props.open
           ? [

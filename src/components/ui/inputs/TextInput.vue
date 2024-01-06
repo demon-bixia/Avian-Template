@@ -39,7 +39,7 @@ const classes = twMerge(baseClasses, variantClasses.value, props.class);
     <div class="flex justify-start">
       <label v-if="props.label" :for="props.id" class="mb-3">
         <span
-          class="w-13 text-sm text-black opacity-60 dark:text-white dark:opacity-70 font-semibold leading-4 tracking-[0.16px]"
+          class="w-13 text-sm text-black opacity-60 dark:text-white dark:opacity-70 font-semibold leading-4 tracking-[.01rem]"
         >
           {{ props.label }}
         </span>

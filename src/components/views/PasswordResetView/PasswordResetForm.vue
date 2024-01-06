@@ -9,12 +9,12 @@ import Typography from "@src/components/ui/data-display/Typography.vue";
 
 <template>
   <div class="w-full p-5 flex flex-col justify-center items-center">
-    <div class="mb-6 w-[350px]">
+    <div class="mb-6 w-[21.875rem]">
       <!--header-->
       <div class="mb-6 flex flex-col">
         <img
           src="@src/assets/vectors/logo-gradient.svg"
-          class="w-[22px] h-[18px] mb-4 opacity-70"
+          class="w-[1.375rem] h-[1.125rem] mb-4 opacity-70"
           alt="bird logo"
         />
         <Typography variant="heading-2" class="mb-4"

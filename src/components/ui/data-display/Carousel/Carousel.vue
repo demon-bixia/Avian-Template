@@ -213,7 +213,7 @@ const handleDecreaseZoom = () => {
             >
               <!--Image-->
               <img
-                class="w-auto md:max-w-[700px] xs:max-w-[340px] transition-transform duration-300"
+                class="w-auto md:max-w-[43.75rem] xs:max-w-[21.25rem] transition-transform duration-300"
                 :style="{ transform: `scale(${zoom})` }"
                 v-if="selectedAttachment.type === 'image'"
                 :src="selectedAttachment?.url"

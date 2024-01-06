@@ -87,7 +87,7 @@ onMounted(() => {
           class="w-7 h-7"
         >
           <PencilSquareIcon
-            class="w-[20px] h-[20px] text-indigo-300 hover:text-indigo-400"
+            class="w-[1.25rem] h-[1.25rem] text-indigo-300 hover:text-indigo-400"
           />
         </IconButton>
       </template>

@@ -20,7 +20,7 @@ const showPassword = ref(false);
       <div class="mb-6 flex flex-col">
         <img
           src="@src/assets/vectors/logo-gradient.svg"
-          class="w-[22px] h-[18px] mb-4 opacity-70"
+          class="w-[1.375rem] h-[1.125rem] mb-4 opacity-70"
           alt="bird logo"
         />
         <Typography variant="heading-2" class="mb-4">Welcome back</Typography>
@@ -36,13 +36,13 @@ const showPassword = ref(false);
           label="Password"
           placeholder="Enter your password"
           :type="showPassword ? 'text' : 'password'"
-          class="pr-[40px]"
+          class="pr-[2.5rem]"
         >
           <template v-slot:endAdornment>
             <IconButton
               title="toggle password visibility"
               aria-label="toggle password visibility"
-              class="m-[8px] p-2"
+              class="m-[.5rem] p-2"
               @click="showPassword = !showPassword"
             >
               <EyeSlashIcon
@@ -66,13 +66,13 @@ const showPassword = ref(false);
       <!--divider-->
       <div class="mb-6 flex items-center">
         <span
-          class="w-full border border-dashed border-gray-100 dark:border-gray-600 rounded-[1px]"
+          class="w-full border border-dashed border-gray-100 dark:border-gray-600 rounded-[.0625rem]"
         ></span>
         <Typography variant="body-3" class="px-4 text-opacity-75 font-light"
           >or</Typography
         >
         <span
-          class="w-full border border-dashed border-gray-100 dark:border-gray-600 rounded-[1px]"
+          class="w-full border border-dashed border-gray-100 dark:border-gray-600 rounded-[.0625rem]"
         ></span>
       </div>
 

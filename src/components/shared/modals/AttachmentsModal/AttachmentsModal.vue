@@ -16,9 +16,9 @@ const props = defineProps<{
 <template>
   <Modal :open="props.open" :close-modal="props.closeModal">
     <template v-slot:content>
-      <div class="w-[400px] bg-white dark:bg-gray-800 rounded py-6">
+      <div class="w-[25rem] bg-white dark:bg-gray-800 rounded py-6">
         <!--attachments list-->
-        <ScrollBox class="max-h-[140px] overflow-y-scroll">
+        <ScrollBox class="max-h-[8.75rem] overflow-y-scroll">
           <Attachment
             v-for="(attachment, index) in attachments"
             :attachment="attachment"

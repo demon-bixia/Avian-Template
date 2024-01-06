@@ -40,8 +40,8 @@ const handleCloseOnClickOutside = (event: Event) => {
       class="bg-white rounded-full active:scale-110 focus:outline-none focus:scale-110 transition duration-200 ease-out"
       :style="{
         'box-shadow': !store.settings.darkMode
-          ? '0 2px 5px rgba(193, 202, 255, 0.5),2px 0 5px rgba(193, 202, 255, 0.5),-2px 0 5px rgba(193, 202, 255, 0.5),0 -2px 5px rgba(193, 202, 255, 0.5)'
-          : '0 2px 5px rgba(0, 70, 128, 0.5),2px 0 5px rgba(0, 70, 128, 0.5),-2px 0 5px rgba(0, 70, 128, 0.5),0 -2px 5px rgba(0, 70, 128, 0.5)',
+          ? '0 .125rem .3125rem rgba(193, 202, 255, 0.5),.125rem 0 .3125rem rgba(193, 202, 255, 0.5),-0.125rem 0 .3125rem rgba(193, 202, 255, 0.5),0 -0.125rem .3125rem rgba(193, 202, 255, 0.5)'
+          : '0 .125rem .3125rem rgba(0, 70, 128, 0.5),.125rem 0 .3125rem rgba(0, 70, 128, 0.5),-0.125rem 0 .3125rem rgba(0, 70, 128, 0.5),0 -0.125rem .3125rem rgba(0, 70, 128, 0.5)',
       }"
       :aria-expanded="showDropdown"
       aria-controls="profile-menu"
@@ -61,10 +61,10 @@ const handleCloseOnClickOutside = (event: Event) => {
       :show="props.showDropdown"
       :position="[
         'md:bottom-0',
-        'md:left-[40px]',
+        'md:left-[2.5rem]',
         'md:top-[auto]',
-        'bottom-[50px]',
-        'left-[-77px]',
+        'bottom-[3.125rem]',
+        'left-[-4.8125rem]',
       ]"
       :handle-click-outside="handleCloseOnClickOutside"
       :close-dropdown="props.handleCloseDropdown"

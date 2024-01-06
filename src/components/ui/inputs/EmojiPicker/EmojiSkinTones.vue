@@ -23,7 +23,7 @@ const handleChangeSkinTone = (tone: string) => {
 </script>
 
 <template>
-  <div class="w-full h-[20px] flex justify-between items-center">
+  <div class="w-full h-[1.25rem] flex justify-between items-center">
     <!--list of tones-->
     <div>
       <FadeTransition>

@@ -111,7 +111,7 @@ const handleClickOutside = (event: Event) => {
 
     <!--contacts-->
     <div ref="contactContainer">
-      <ScrollBox class="max-h-[232px] overflow-y-scroll">
+      <ScrollBox class="max-h-[14.5rem] overflow-y-scroll">
         <ContactItem
           variant="card"
           @contact-selected="

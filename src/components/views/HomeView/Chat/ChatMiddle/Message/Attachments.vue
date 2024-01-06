@@ -107,12 +107,12 @@ const isNumber = (
             class="rounded bg-cover bg-center"
             :class="
               numberOfMedia === 1
-                ? ['w-[200px]', 'h-[200px]']
+                ? ['w-[12.5rem]', 'h-[12.5rem]']
                 : [
-                    'md:w-[110px]',
-                    'md:h-[100px]',
-                    'xs:w-[100px]',
-                    'xs:h-[95px]',
+                    'md:w-[6.875rem]',
+                    'md:h-[6.25rem]',
+                    'xs:w-[6.25rem]',
+                    'xs:h-[5.9375rem]',
                   ]
             "
           >
@@ -145,12 +145,12 @@ const isNumber = (
             class="rounded bg-cover bg-center"
             :class="
               numberOfMedia === 1
-                ? ['w-[200px]', 'h-[200px]']
+                ? ['w-[12.5rem]', 'h-[12.5rem]']
                 : [
-                    'md:w-[110px]',
-                    'md:h-[100px]',
-                    'xs:w-[100px]',
-                    'xs:h-[95px]',
+                    'md:w-[6.875rem]',
+                    'md:h-[6.25rem]',
+                    'xs:w-[6.25rem]',
+                    'xs:h-[5.9375rem]',
                   ]
             "
           >

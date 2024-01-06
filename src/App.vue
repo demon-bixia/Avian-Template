@@ -6,19 +6,25 @@ import { fetchData } from "@src/store/defaults";
 
 import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 
+// Fixes
+// todo fix clicking back to close conversations.
+
 // future features:
 // todo add video calling
+// todo add stories
 
 // Refactoring code:
-// todo refactor ui components to use component utilities.
+// todo reorganize component structure
+// todo rerfactor make everything that can be a ui component into one.
 // todo refactor remove getters from utils file and add them to store folder.
+// todo improve the video component.
 
 // Accessability:
+// todo improve the way you view messages.
+// todo make multi-select more accessible.
 // todo make dropdown menus more accessible.
 // todo make modals more accessible.
 // todo make lists (i.e conversations, contacts, calls) more accessible.
-// todo improve the way you view messages.
-// todo make multi-select more accessible.
 
 // SEO.
 // todo improve seo.

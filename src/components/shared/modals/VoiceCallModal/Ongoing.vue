@@ -55,7 +55,7 @@ const props = defineProps<{
           class="p-3 mb-3 flex justify-center items-center rounded-full outline-none bg-gray-100 hover:bg-gray-200 focus:bg-gray-200 active:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:active:bg-gray-500 transition duration-200"
         >
           <UserPlusIcon
-            class="w-[17px] h-[17px] text-black text-opacity-60 dark:text-white dark:text-opacity-70"
+            class="w-[1.0625rem] h-[1.0625rem] text-black text-opacity-60 dark:text-white dark:text-opacity-70"
           />
         </button>
 
@@ -68,7 +68,7 @@ const props = defineProps<{
           class="p-3 mb-3 flex justify-center items-center rounded-full outline-none bg-gray-100 hover:bg-gray-200 focus:bg-gray-200 active:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:active:bg-gray-500 transition duration-200"
         >
           <SpeakerXMarkIcon
-            class="w-[17px] h-[17px] text-black text-opacity-60 dark:text-white dark:text-opacity-70"
+            class="w-[1.0625rem] h-[1.0625rem] text-black text-opacity-60 dark:text-white dark:text-opacity-70"
           />
         </button>
 
@@ -81,7 +81,7 @@ const props = defineProps<{
           class="p-3 mb-3 flex justify-center items-center rounded-full outline-none bg-gray-100 hover:bg-gray-200 focus:bg-gray-200 active:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:active:bg-gray-500 transition duration-200"
         >
           <ChatBubbleBottomCenterTextIcon
-            class="w-[17px] h-[17px] text-black text-opacity-60 dark:text-white dark:text-opacity-70"
+            class="w-[1.0625rem] h-[1.0625rem] text-black text-opacity-60 dark:text-white dark:text-opacity-70"
           />
         </button>
 
@@ -91,9 +91,9 @@ const props = defineProps<{
 
     <!--call actions-->
     <div
-      class="relative w-full h-[50px] rounded-b flex justify-center bg-gray-50 dark:bg-gray-700"
+      class="relative w-full h-[3.125rem] rounded-b flex justify-center bg-gray-50 dark:bg-gray-700"
     >
-      <div class="absolute bottom-[19px]">
+      <div class="absolute bottom-[1.1875rem]">
         <div class="p-3 rounded-full bg-white dark:bg-gray-800">
           <button
             @click="
@@ -101,9 +101,9 @@ const props = defineProps<{
                 props.closeModal();
               }
             "
-            class="p-[17px] flex justify-center items-center rounded-full outline-none bg-red-400 hover:bg-red-500 active:bg-red-600 transition-all duratoin-500 ease"
+            class="p-[1.0625rem] flex justify-center items-center rounded-full outline-none bg-red-400 hover:bg-red-500 active:bg-red-600 transition-all duratoin-500 ease"
           >
-            <PhoneIcon class="w-[16px] h-[16px] text-white" />
+            <PhoneIcon class="w-[1rem] h-[1rem] text-white" />
           </button>
         </div>
       </div>

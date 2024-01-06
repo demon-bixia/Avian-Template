@@ -38,13 +38,13 @@ import Typography from "@src/components/ui/data-display/Typography.vue";
     <!--divider-->
     <div class="mb-6 flex items-center">
       <span
-        class="w-full border border-dashed border-gray-100 dark:border-gray-600 rounded-[1px]"
+        class="w-full border border-dashed border-gray-100 dark:border-gray-600 rounded-[.0625rem]"
       ></span>
       <Typography variant="body-3" class="px-4 text-opacity-75 font-light"
         >or</Typography
       >
       <span
-        class="w-full border border-dashed border-gray-100 dark:border-gray-600 rounded-[1px]"
+        class="w-full border border-dashed border-gray-100 dark:border-gray-600 rounded-[.0625rem]"
       ></span>
     </div>
 

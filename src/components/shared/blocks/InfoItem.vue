@@ -40,7 +40,7 @@ const colorClasses = computed(() => {
   >
     <component
       :is="props.icon"
-      class="w-[20px] h-[20px] mr-6 transition-all duration-200"
+      class="w-[1.25rem] h-[1.25rem] mr-6 transition-all duration-200"
       :class="colorClasses"
     />
 
@@ -57,7 +57,7 @@ const colorClasses = computed(() => {
 
     <ChevronRightIcon
       v-if="props.chevron"
-      class="w-[20px] h-[20px] duration-200"
+      class="w-[1.25rem] h-[1.25rem] duration-200"
       :class="colorClasses"
     />
   </button>
@@ -66,7 +66,7 @@ const colorClasses = computed(() => {
   <div v-else class="w-full flex items-center">
     <component
       :is="props.icon"
-      class="w-[20px] h-[20px] mr-6 transition-all duration-200"
+      class="w-[1.25rem] h-[1.25rem] mr-6 transition-all duration-200"
       :class="colorClasses"
     />
 

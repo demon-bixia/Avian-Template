@@ -43,7 +43,7 @@ const changeActiveSection = (event: {
       <div class="mb-6 flex flex-col">
         <img
           src="@src/assets/vectors/logo-gradient.svg"
-          class="w-[22px] h-[18px] mb-5 opacity-70"
+          class="w-[1.375rem] h-[1.125rem] mb-5 opacity-70"
         />
         <Typography variant="heading-2" class="mb-4"
           >Get started with Avian</Typography

@@ -96,7 +96,7 @@ const handleRemoveUnread = () => {
           handleSelectConversation();
         }
       "
-      class="w-full h-[92px] px-5 py-6 mb-3 flex rounded focus:bg-indigo-50 dark:active:bg-gray-600 dark:focus:bg-gray-600 dark:hover:bg-gray-600 hover:bg-indigo-50 active:bg-indigo-100 focus:outline-none transition duration-500 ease-out"
+      class="w-full h-[5.75rem] px-5 py-6 mb-3 flex rounded focus:bg-indigo-50 dark:active:bg-gray-600 dark:focus:bg-gray-600 dark:hover:bg-gray-600 hover:bg-indigo-50 active:bg-indigo-100 focus:outline-none transition duration-500 ease-out"
       :class="{
         'md:bg-indigo-50': props.isActive,
         'md:dark:bg-gray-600': props.isActive,
@@ -187,7 +187,7 @@ const handleRemoveUnread = () => {
 
           <div v-if="props.conversation.unread">
             <div
-              class="w-[18px] h-[18px] flex justify-center items-center rounded-[50%] bg-indigo-300"
+              class="w-[1.125rem] h-[1.125rem] flex justify-center items-center rounded-[50%] bg-indigo-300"
             >
               <Typography variant="body-1" no-color class="text-white">{{
                 props.conversation.unread

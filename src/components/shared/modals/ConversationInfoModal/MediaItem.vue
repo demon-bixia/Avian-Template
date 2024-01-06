@@ -51,7 +51,7 @@ const props = defineProps<{
       <div class="flex justify-start">
         <Typography
           variant="body-2"
-          class="font-normal text-sm text-black opacity-60 leading-4 tracking-[0.16px]"
+          class="font-normal text-sm text-black opacity-60 leading-4 tracking-[.01rem]"
         >
           {{ props.attachment.size }}
         </Typography>

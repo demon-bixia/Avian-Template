@@ -82,17 +82,17 @@ onMounted(() => {
     <!--selected reply display-->
     <div
       class="relative transition-all duration-200"
-      :class="{ 'pt-[60px]': activeConversation?.replyMessage }"
+      :class="{ 'pt-[3.75rem]': activeConversation?.replyMessage }"
     >
       <ReplyMessage />
     </div>
 
     <div
-      class="h-auto min-h-[84px] p-5 flex items-end"
+      class="h-auto min-h-[5.25rem] p-5 flex items-end"
       v-if="store.status !== 'loading'"
       :class="recording ? ['justify-between'] : []"
     >
-      <div class="min-h-[44px]">
+      <div class="min-h-[2.75rem]">
         <!--select attachments button-->
         <IconButton
           title="open select attachments modal"
@@ -102,7 +102,7 @@ onMounted(() => {
           class="group w-7 h-7 md:mr-5 xs:mr-4"
         >
           <PaperClipIcon
-            class="w-[20px] h-[20px] text-gray-400 group-hover:text-indigo-300"
+            class="w-[1.25rem] h-[1.25rem] text-gray-400 group-hover:text-indigo-300"
           />
         </IconButton>
 
@@ -123,7 +123,7 @@ onMounted(() => {
             v-model="value"
             @input="handleSetDraft"
             :value="value"
-            class="max-h-[80px] pr-[50px] resize-none scrollbar-hidden"
+            class="max-h-[5rem] pr-[3.125rem] resize-none scrollbar-hidden"
             auto-resize
             cols="30"
             rows="1"
@@ -132,7 +132,7 @@ onMounted(() => {
           />
 
           <!--emojis-->
-          <div class="absolute bottom-[13px] right-0">
+          <div class="absolute bottom-[.8125rem] right-0">
             <!--emoji button-->
             <IconButton
               title="toggle emoji picker"
@@ -142,11 +142,11 @@ onMounted(() => {
             >
               <XCircleIcon
                 v-if="showPicker"
-                class="w-[20px] h-[20px] text-gray-400 group-hover:text-indigo-300"
+                class="w-[1.25rem] h-[1.25rem] text-gray-400 group-hover:text-indigo-300"
               />
               <FaceSmileIcon
                 v-else
-                class="w-[20px] h-[20px] text-gray-400 group-hover:text-indigo-300"
+                class="w-[1.25rem] h-[1.25rem] text-gray-400 group-hover:text-indigo-300"
               />
             </IconButton>
 
@@ -155,7 +155,7 @@ onMounted(() => {
               <div
                 v-click-outside="handleClickOutside"
                 v-show="showPicker"
-                class="absolute z-10 bottom-[55px] md:right-0 xs:right-[-80px] mt-2"
+                class="absolute z-10 bottom-[3.4375rem] md:right-0 xs:right-[-5rem] mt-2"
               >
                 <div role="none">
                   <EmojiPicker :show="showPicker" />
@@ -166,14 +166,14 @@ onMounted(() => {
         </div>
       </div>
 
-      <div class="min-h-[44px]">
+      <div class="min-h-[2.75rem]">
         <!--cancel recording button-->
         <div v-if="recording" @click="handleCancelRecording">
           <Button variant="ghost" color="danger"> Cancel </Button>
         </div>
       </div>
 
-      <div class="min-h-[44px] flex">
+      <div class="min-h-[2.75rem] flex">
         <!--finish recording button-->
         <IconButton
           title="finish recording"
@@ -188,10 +188,10 @@ onMounted(() => {
           </span>
 
           <MicrophoneIcon
-            class="w-[20px] h-[20px] text-white group-hover:hidden"
+            class="w-[1.25rem] h-[1.25rem] text-white group-hover:hidden"
           />
           <CheckIcon
-            class="w-[20px] h-[20px] hidden text-white group-hover:block"
+            class="w-[1.25rem] h-[1.25rem] hidden text-white group-hover:block"
           />
         </IconButton>
 
@@ -204,7 +204,7 @@ onMounted(() => {
           class="group w-7 h-7 md:mr-5 xs:mr-4"
         >
           <MicrophoneIcon
-            class="w-[20px] h-[20px] text-gray-400 group-hover:text-indigo-300"
+            class="w-[1.25rem] h-[1.25rem] text-gray-400 group-hover:text-indigo-300"
           />
         </IconButton>
 
@@ -216,7 +216,7 @@ onMounted(() => {
           title="send message"
           aria-label="send message"
         >
-          <PaperAirplaneIcon class="w-[17px] h-[17px] text-white" />
+          <PaperAirplaneIcon class="w-[1.0625rem] h-[1.0625rem] text-white" />
         </IconButton>
       </div>
     </div>

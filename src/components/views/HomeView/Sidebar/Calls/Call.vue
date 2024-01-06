@@ -38,7 +38,7 @@ const handleOpenInfoModal = () => {
       :is="props.active ? 'div' : 'button'"
       :aria-label="'voice call with ' + getCallName(props.call, true)"
       @click="handleOpenInfoModal"
-      class="w-full h-[92px] px-5 py-6 mb-3 flex rounded focus:outline-none transition duration-500 ease-out"
+      class="w-full h-[5.75rem] px-5 py-6 mb-3 flex rounded focus:outline-none transition duration-500 ease-out"
       :class="
         props.active
           ? ['border border-dashed border-green-100 dark:border-green-800']
@@ -49,7 +49,7 @@ const handleOpenInfoModal = () => {
       tabindex="0"
     >
       <!--profile images-->
-      <div :class="members.length === 1 ? ['mr-4'] : ['mr-[32px]']">
+      <div :class="members.length === 1 ? ['mr-4'] : ['mr-[2rem]']">
         <div class="relative">
           <button
             v-if="props.active"
@@ -98,24 +98,24 @@ const handleOpenInfoModal = () => {
             <button
               v-if="props.active"
               @click="props.endCall"
-              class="p-[5px] flex justify-center items-center rounded-full outline-none bg-red-400 hover:bg-red-500 active:bg-red-600 transition-all duratoin-500 ease"
+              class="p-[.3125rem] flex justify-center items-center rounded-full outline-none bg-red-400 hover:bg-red-500 active:bg-red-600 transition-all duratoin-500 ease"
             >
-              <PhoneIcon class="w-[14px] h-[14px] text-white" />
+              <PhoneIcon class="w-[.875rem] h-[.875rem] text-white" />
             </button>
 
             <!--status icon-->
             <div v-else class="mr-2">
               <PhoneXMarkIcon
                 v-if="props.call.status === 'missed'"
-                class="w-[14px] h-[14px] text-red-300 dark:text-red-400"
+                class="w-[.875rem] h-[.875rem] text-red-300 dark:text-red-400"
               />
               <PhoneArrowUpRightIcon
                 v-else-if="props.call.status === 'sent'"
-                class="w-[14px] h-[14px] text-green-300 dark:text-green-400"
+                class="w-[.875rem] h-[.875rem] text-green-300 dark:text-green-400"
               />
               <PhoneArrowDownLeftIcon
                 v-else-if="props.call.status === 'received'"
-                class="w-[14px] h-[14px] text-green-300 dark:text-green-400"
+                class="w-[.875rem] h-[.875rem] text-green-300 dark:text-green-400"
               />
             </div>
           </div>

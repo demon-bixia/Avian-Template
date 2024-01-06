@@ -48,7 +48,7 @@ const removeReplyMessage = () => {
         aria-label="remove reply"
       >
         <XCircleIcon
-          class="w-[16px] h-[16px] text-gray-300 group-hover:text-red-300"
+          class="w-[1rem] h-[1rem] text-gray-300 group-hover:text-red-300"
         />
       </IconButton>
     </div>

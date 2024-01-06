@@ -20,7 +20,7 @@ const props = defineProps<{
   >
     <!--title-->
     <p
-      class="mb-3 font-semibold text-xs leading-4 tracking-[0.16px]"
+      class="mb-3 font-semibold text-xs leading-4 tracking-[.01rem]"
       :class="
         props.self
           ? ['text-white']
@@ -32,7 +32,7 @@ const props = defineProps<{
 
     <!--description-->
     <p
-      class="font-normal text-xs leading-4 tracking-[0.16px]"
+      class="font-normal text-xs leading-4 tracking-[.01rem]"
       :class="
         props.self
           ? ['text-white']
@@ -52,7 +52,7 @@ const props = defineProps<{
     <!--link domain-->
     <a
       :href="props.previewData.link"
-      class="font-normal text-xs leading-4 tracking-[0.16px] flex items-center"
+      class="font-normal text-xs leading-4 tracking-[.01rem] flex items-center"
       :class="
         props.self
           ? ['text-white']

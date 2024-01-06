@@ -33,7 +33,7 @@ const classes = twMerge(baseClasses, variantClasses.value, props.class);
 
 <template>
   <div class="relative">
-    <i class="absolute left-0 top-[10.5px] ml-3 text-center">
+    <i class="absolute left-0 top-[.6563rem] ml-3 text-center">
       <MagnifyingGlassIcon
         class="w-5 h-5 stroke-2 text-black opacity-40 dark:text-white dark:opacity-70"
       />
@@ -60,7 +60,7 @@ const classes = twMerge(baseClasses, variantClasses.value, props.class);
           "
           title="clear text"
           aria-label="clear text"
-          class="m-[8px] p-2"
+          class="m-[.5rem] p-2"
         >
           <XCircleIcon
             class="w-5 h-5 text-black opacity-40 dark:text-white dark:opacity-60"

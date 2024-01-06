@@ -50,7 +50,7 @@ const handleSelectedContactsChange = (contact: IContact) => {
     </div>
 
     <!--contacts-->
-    <ScrollBox class="overflow-y-scroll max-h-[200px] mb-5">
+    <ScrollBox class="overflow-y-scroll max-h-[12.5rem] mb-5">
       <ContactItem
         v-if="store.status === 'success' && !store.delayLoading && store.user"
         v-for="(contact, index) in store.user.contacts"

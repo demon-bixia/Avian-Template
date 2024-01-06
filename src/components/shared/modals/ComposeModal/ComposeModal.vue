@@ -38,7 +38,7 @@ const activeTab = computed(() => {
 <template>
   <Modal :open="props.open" :close-modal="props.closeModal">
     <template v-slot:content>
-      <div class="w-[300px] bg-white dark:bg-gray-800 rounded pt-6">
+      <div class="w-[18.75rem] bg-white dark:bg-gray-800 rounded pt-6">
         <!--header-->
         <div class="flex justify-between items-center mb-6 px-5">
           <Typography
@@ -68,7 +68,7 @@ const activeTab = computed(() => {
           >
             <button
               @click="switchTab('contacts')"
-              class="basis-1/2 p-4 rounded-sm text-md outline-none leading-4 tracking-[0.16px] transition-all duration-200 focus:outline-none mr-1"
+              class="basis-1/2 p-4 rounded-sm text-md outline-none leading-4 tracking-[.01rem] transition-all duration-200 focus:outline-none mr-1"
               :class="
                 activeTabName === 'contacts'
                   ? ['bg-indigo-400', 'text-white']
@@ -84,7 +84,7 @@ const activeTab = computed(() => {
             </button>
             <button
               @click="switchTab('group')"
-              class="basis-1/2 p-4 rounded-sm text-md leading-4 tracking-[0.16px] transition-all duration-200 outline-none focus:outline-none"
+              class="basis-1/2 p-4 rounded-sm text-md leading-4 tracking-[.01rem] transition-all duration-200 outline-none focus:outline-none"
               :class="
                 activeTabName === 'group'
                   ? ['bg-indigo-400', 'text-white']

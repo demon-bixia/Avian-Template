@@ -7,29 +7,29 @@ module.exports = {
 
   theme: {
     screens: {
-      xs: "0px",
-      md: "968px",
-      lg: "1024px",
-      xl: "1280px",
-      "2xl": "1536px",
+      xs: "0rem",
+      md: "60.5rem",
+      lg: "64rem",
+      xl: "80rem",
+      "2xl": "96rem",
     },
 
     extend: {
       spacing: {
         0: "0",
-        1: "2px",
-        2: "4px",
-        3: "8px",
-        4: "12px",
-        5: "16px",
-        6: "24px",
-        7: "32px",
-        8: "40px",
-        9: "48px",
-        10: "64px",
-        11: "80px",
-        12: "96px",
-        13: "160px",
+        1: ".125rem",
+        2: ".25rem",
+        3: ".5rem",
+        4: ".75rem",
+        5: "1rem",
+        6: "1.5rem",
+        7: "2rem",
+        8: "2.5rem",
+        9: "3rem",
+        10: "4rem",
+        11: "5rem",
+        12: "6rem",
+        13: "10rem",
       },
 
       fontFamily: {
@@ -39,10 +39,10 @@ module.exports = {
 
       borderRadius: {
         none: "0",
-        sm: "8px",
-        DEFAULT: "12px",
-        lg: "20px",
-        full: "9999px",
+        sm: ".5rem",
+        DEFAULT: ".75rem",
+        lg: "1.25rem",
+        full: "624.9375rem",
       },
 
       opacity: {
@@ -55,15 +55,15 @@ module.exports = {
       },
 
       boxShadow: {
-        "shadow-sm": "0px 1px 3px 0px rgba(5,5,5,0.10)",
+        "shadow-sm": "0rem .0625rem .1875rem 0rem rgba(5,5,5,0.10)",
         shadow:
-          "rgb(145 158 171 / 20%) 0px 1px 3px 0px , rgb(145 158 171 / 12%) 0px 1px 2px -4px",
+          "rgb(145 158 171 / 20%) 0rem .0625rem .1875rem 0rem , rgb(145 158 171 / 12%) 0rem .0625rem .125rem -0.25rem",
         "shadow-md":
-          "0px 3px 4px 0px rgba(3,3,3,0.1), 0px 2px 4px 0px rgba(3,3,3,0.1)",
+          "0rem .1875rem .25rem 0rem rgba(3,3,3,0.1), 0rem .125rem .25rem 0rem rgba(3,3,3,0.1)",
         "shadow-lg":
-          "0px 10px 20px 0px rgba(3,3,3,0.1), 0px 3px 6px 0px rgba(3,3,3,0.1)",
+          "0rem .625rem 1.25rem 0rem rgba(3,3,3,0.1), 0rem .1875rem .375rem 0rem rgba(3,3,3,0.1)",
         "shadow-xl":
-          "0px 15px 25px 0px rgba(3,3,3,0.1), 0px 5px 10px 0px rgba(3,3,3,0.1)",
+          "0rem .9375rem 1.5625rem 0rem rgba(3,3,3,0.1), 0rem .3125rem .625rem 0rem rgba(3,3,3,0.1)",
       },
 
       keyframes: {
@@ -94,7 +94,7 @@ module.exports = {
       },
 
       boxShadow: {
-        cxl: "0 2px 5px rgba(193, 202, 255, 0.5), 2px 0 5px rgba(193, 202, 255, 0.5), -2px 0 5px rgba(193, 202, 255, 0.5), 0 -2px 5px rgba(193, 202, 255, 0.5)",
+        cxl: "0 .125rem .3125rem rgba(193, 202, 255, 0.5), .125rem 0 .3125rem rgba(193, 202, 255, 0.5), -0.125rem 0 .3125rem rgba(193, 202, 255, 0.5), 0 -0.125rem .3125rem rgba(193, 202, 255, 0.5)",
       },
     },
   },

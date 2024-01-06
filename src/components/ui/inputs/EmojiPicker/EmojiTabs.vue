@@ -19,7 +19,7 @@ const props = defineProps<{
   <div class="flex justify-between">
     <!--people-->
     <div
-      class="pb-[5px] border-b transition-colors duration-200"
+      class="pb-[.3125rem] border-b transition-colors duration-200"
       :class="[
         props.active === 'people'
           ? 'border-indigo-400 rounded-1'
@@ -45,7 +45,7 @@ const props = defineProps<{
 
     <!--nature-->
     <div
-      class="pb-[5px] border-b transition-colors duration-200"
+      class="pb-[.3125rem] border-b transition-colors duration-200"
       :class="[
         props.active === 'nature'
           ? 'border-indigo-400 rounded-1'
@@ -71,7 +71,7 @@ const props = defineProps<{
 
     <!--food-->
     <div
-      class="pb-[5px] border-b transition-colors duration-200"
+      class="pb-[.3125rem] border-b transition-colors duration-200"
       :class="[
         props.active === 'food'
           ? 'border-indigo-400 rounded-1'
@@ -97,7 +97,7 @@ const props = defineProps<{
 
     <!--activity-->
     <div
-      class="pb-[5px] border-b transition-colors duration-200"
+      class="pb-[.3125rem] border-b transition-colors duration-200"
       :class="[
         props.active === 'activity'
           ? 'border-indigo-400 rounded-1'
@@ -123,7 +123,7 @@ const props = defineProps<{
 
     <!--objects-->
     <div
-      class="pb-[5px] border-b transition-colors duration-200"
+      class="pb-[.3125rem] border-b transition-colors duration-200"
       :class="[
         props.active === 'objects'
           ? 'border-indigo-400 rounded-1'
@@ -144,7 +144,7 @@ const props = defineProps<{
 
     <!--travel-->
     <div
-      class="pb-[5px] border-b transition-colors duration-200"
+      class="pb-[.3125rem] border-b transition-colors duration-200"
       :class="[
         props.active === 'travel'
           ? 'border-indigo-400 rounded-1'
@@ -170,7 +170,7 @@ const props = defineProps<{
 
     <!--flags-->
     <div
-      class="pb-[5px] border-b transition-colors duration-200"
+      class="pb-[.3125rem] border-b transition-colors duration-200"
       :class="[
         props.active === 'flags'
           ? 'border-indigo-400 rounded-1'

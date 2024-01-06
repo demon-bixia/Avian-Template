@@ -87,7 +87,7 @@ const replyMessage = getMessageById(activeConversation, props.message.replyTo);
   <div class="select-none">
     <div class="xs:mb-6 md:mb-5 flex" :class="{ 'justify-end': props.self }">
       <!--avatar-->
-      <div class="mr-4" :class="{ 'ml-[36px]': props.followUp && !divider }">
+      <div class="mr-4" :class="{ 'ml-[2.25rem]': props.followUp && !divider }">
         <div
           v-if="!hideAvatar()"
           :aria-label="getFullName(props.message.sender)"
@@ -95,7 +95,7 @@ const replyMessage = getMessageById(activeConversation, props.message.replyTo);
         >
           <div
             :style="{ backgroundImage: `url(${props.message.sender.avatar})` }"
-            class="w-[36px] h-[36px] bg-cover bg-center rounded-full"
+            class="w-[2.25rem] h-[2.25rem] bg-cover bg-center rounded-full"
           ></div>
         </div>
       </div>
@@ -106,7 +106,7 @@ const replyMessage = getMessageById(activeConversation, props.message.replyTo);
           @click="handleCloseContextMenu"
           v-click-outside="contextConfig"
           @contextmenu.prevent="handleShowContextMenu"
-          class="group max-w-[500px] p-5 rounded-b transition duration-500"
+          class="group max-w-[31.25rem] p-5 rounded-b transition duration-500"
           :class="{
             'rounded-tl ml-4 order-2 bg-indigo-50 dark:bg-gray-600':
               props.self && !props.selected,

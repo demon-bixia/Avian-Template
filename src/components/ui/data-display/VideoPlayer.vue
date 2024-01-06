@@ -39,7 +39,7 @@ const handleTrackInput = (value: any, player: any, state: any) => {
     <!--player-->
     <VideoPlayer
       @timeupdate="handleTimeChange"
-      class="video-player xs:w-[340px] md:w-[700px] xs:h-[200px] md:h-[370px]"
+      class="video-player xs:w-[21.25rem] md:w-[43.75rem] xs:h-[12.5rem] md:h-[23.125rem]"
       :src="props.url"
       :poster="props.thumbnail"
     >
@@ -74,7 +74,7 @@ const handleTrackInput = (value: any, player: any, state: any) => {
             class="controls basis-[15%] w-full h-full flex items-end invisible transition duration-200"
           >
             <div
-              class="w-full flex p-5 justify-center items-center bg-white bg-opacity-20 rounded-[12px]"
+              class="w-full flex p-5 justify-center items-center bg-white bg-opacity-20 rounded-[.75rem]"
             >
               <!--pause button-->
               <button v-if="state.playing" class="mr-5">

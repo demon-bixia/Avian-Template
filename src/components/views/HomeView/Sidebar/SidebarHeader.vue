@@ -4,7 +4,7 @@ import Typography from "@src/components/ui/data-display/Typography.vue";
 
 <template>
   <div
-    class="w-full min-h-[80px] max-h-fit px-5 py-6 flex justify-between items-center"
+    class="w-full min-h-[5rem] max-h-fit px-5 py-6 flex justify-between items-center"
   >
     <Typography variant="heading-1" tabindex="0" class="outline-none">
       <slot name="title"></slot>

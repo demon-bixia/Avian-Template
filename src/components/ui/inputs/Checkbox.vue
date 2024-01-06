@@ -21,7 +21,7 @@ const props = defineProps<{
         }
       "
       :checked="props.value"
-      class="h-5 w-5 appearance-none relative cursor-pointer outline-none rounded-[5px] border border-indigo-400 transition-all duration-300"
+      class="h-5 w-5 appearance-none relative cursor-pointer outline-none rounded-[.3125rem] border border-indigo-400 transition-all duration-300"
     />
     <CheckIcon
       @click="
@@ -30,7 +30,7 @@ const props = defineProps<{
           $emit('update', !props.value);
         }
       "
-      class="absolute top-[3px] cursor-pointer z-10 left-[2px] w-4 h-4 text-white transition-all duration-300"
+      class="absolute top-[.1875rem] cursor-pointer z-10 left-[.125rem] w-4 h-4 text-white transition-all duration-300"
       :class="props.value ? [] : ['hidden']"
     />
   </div>
