@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { IConversation } from "@src/types";
 
+import router from "@src/router";
 import { activeCall } from "@src/store/defaults";
 import useStore from "@src/store/store";
 import { getAvatar, getName } from "@src/utils";
@@ -51,10 +52,9 @@ const handleClickOutside = (event: Event) => {
   }
 };
 
-// (event) close the selected conversation
+// (event) navigate to the /chat/ url
 const handleCloseConversation = () => {
-  store.conversationOpen = "close";
-  store.activeConversationId = null;
+  router.push({ path: "/chat/" });
 };
 
 // (event) open the voice call modal and expand call
@@ -77,10 +77,9 @@ const handleOpenVoiceCallModal = () => {
         class="w-7 h-7"
         @click="handleCloseConversation"
         title="close conversation"
-        aria-label=""
+        aria-label="close conversation"
       >
         <ChevronLeftIcon
-          aria-label="close conversation"
           class="w-[1.25rem] h-[1.25rem] text-gray-300 group-hover:text-indigo-300"
         />
       </IconButton>

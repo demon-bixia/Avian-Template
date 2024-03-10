@@ -3,14 +3,16 @@ import type { IAttachment, IConversation, IRecording } from "@src/types";
 import type { Ref } from "vue";
 import { computed, ref } from "vue";
 
+import useStore from "@src/store/store";
 import {
+  getActiveConversationId,
   getAvatar,
+  getConversationIndex,
   getName,
   hasAttachments,
   shorten,
-  getConversationIndex,
 } from "@src/utils";
-import useStore from "@src/store/store";
+import router from "@src/router";
 
 import {
   ArchiveBoxArrowDownIcon,
@@ -24,8 +26,6 @@ import DropdownLink from "@src/components/ui/navigation/Dropdown/DropdownLink.vu
 
 const props = defineProps<{
   conversation: IConversation;
-  isActive?: boolean;
-  handleConversationChange?: (conversationId: number) => void;
 }>();
 
 const store = useStore();
@@ -64,9 +64,7 @@ const contextConfig = {
 // (event) select this conversation.
 const handleSelectConversation = () => {
   showContextMenu.value = false;
-
-  if (props.handleConversationChange)
-    props.handleConversationChange(props.conversation.id);
+  router.push({ path: `/chat/${props.conversation.id}/` });
 };
 
 // last message in conversation to display
@@ -81,6 +79,11 @@ const handleRemoveUnread = () => {
     store.conversations[index].unread = 0;
   }
 };
+
+// (computed propert) determines if this conversation is active.
+const isActive = computed(
+  () => getActiveConversationId() === props.conversation.id
+);
 </script>
 
 <template>
@@ -91,15 +94,15 @@ const handleRemoveUnread = () => {
       v-click-outside="contextConfig"
       @contextmenu.prevent="handleShowContextMenu"
       @click="
-        ($event) => {
+        () => {
           handleRemoveUnread();
           handleSelectConversation();
         }
       "
       class="w-full h-[5.75rem] px-5 py-6 mb-3 flex rounded focus:bg-indigo-50 dark:active:bg-gray-600 dark:focus:bg-gray-600 dark:hover:bg-gray-600 hover:bg-indigo-50 active:bg-indigo-100 focus:outline-none transition duration-500 ease-out"
       :class="{
-        'md:bg-indigo-50': props.isActive,
-        'md:dark:bg-gray-600': props.isActive,
+        'md:bg-indigo-50': isActive,
+        'md:dark:bg-gray-600': isActive,
       }"
     >
       <!--profile image-->
@@ -133,7 +136,7 @@ const handleRemoveUnread = () => {
             <Typography
               v-if="
                 props.conversation.draftMessage &&
-                props.conversation.id !== store.activeConversationId
+                props.conversation.id !== getActiveConversationId()
               "
               variant="body-2"
               class="flex justify-start items-center text-red-400"

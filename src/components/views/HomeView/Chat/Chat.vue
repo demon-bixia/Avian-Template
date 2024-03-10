@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import type { Ref } from "vue";
 
-import { computed, provide, ref } from "vue";
 import useStore from "@src/store/store";
+import { computed, provide, ref } from "vue";
 
+import { getActiveConversationId } from "@src/utils";
+
+import NoChatSelected from "@src/components/states/empty-states/NoChatSelected.vue";
+import Loading3 from "@src/components/states/loading-states/Loading3.vue";
 import ChatBottom from "@src/components/views/HomeView/Chat/ChatBottom/ChatBottom.vue";
 import ChatMiddle from "@src/components/views/HomeView/Chat/ChatMiddle/ChatMiddle.vue";
 import ChatTop from "@src/components/views/HomeView/Chat/ChatTop/ChatTop.vue";
@@ -13,14 +17,14 @@ const store = useStore();
 // search the selected conversation using activeConversationId.
 const activeConversation = computed(() => {
   let activeConversation = store.conversations.find(
-    (conversation) => conversation.id === store.activeConversationId
+    (conversation) => conversation.id === getActiveConversationId()
   );
 
   if (activeConversation) {
     return activeConversation;
   } else {
     return store.archivedConversations.find(
-      (conversation) => conversation.id === store.activeConversationId
+      (conversation) => conversation.id === getActiveConversationId()
     );
   }
 });
@@ -91,7 +95,12 @@ const handleCloseSelect = () => {
 </script>
 
 <template>
-  <div v-if="activeConversation" class="h-full flex flex-col scrollbar-hidden">
+  <Loading3 v-if="store.status === 'loading' || store.delayLoading" />
+
+  <div
+    v-else-if="getActiveConversationId() && activeConversation"
+    class="h-full flex flex-col scrollbar-hidden"
+  >
     <ChatTop
       :select-all="selectAll"
       :select-mode="selectMode"
@@ -106,4 +115,6 @@ const handleCloseSelect = () => {
     />
     <ChatBottom />
   </div>
+
+  <NoChatSelected v-else />
 </template>

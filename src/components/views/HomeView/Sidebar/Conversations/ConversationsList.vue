@@ -4,8 +4,6 @@ import Conversation from "./Conversation.vue";
 
 const props = defineProps<{
   filteredConversations?: IConversation[];
-  handleConversationChange: (conversationId: number) => void;
-  activeId?: number;
 }>();
 </script>
 
@@ -16,8 +14,6 @@ const props = defineProps<{
       :conversation="conversation"
       :key="conversation.id"
       role="listitem"
-      :handle-conversation-change="props.handleConversationChange"
-      :is-active="activeId === conversation.id"
     />
   </div>
 </template>

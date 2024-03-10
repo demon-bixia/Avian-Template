@@ -4,7 +4,7 @@ import type { Ref } from "vue";
 import { onMounted, ref, watch } from "vue";
 
 import useStore from "@src/store/store";
-import { getName } from "@src/utils";
+import { getActiveConversationId, getName } from "@src/utils";
 
 import { PencilSquareIcon } from "@heroicons/vue/24/outline";
 import ComposeModal from "@src/components/shared/modals/ComposeModal/ComposeModal.vue";
@@ -50,12 +50,6 @@ watch([keyword, openArchive], () => {
   }
 });
 
-// (event) switch between the rendered conversations.
-const handleConversationChange = (conversationId: number) => {
-  store.activeConversationId = conversationId;
-  store.conversationOpen = "open";
-};
-
 // (event) close the compose modal.
 const closeComposeModal = () => {
   composeOpen.value = false;
@@ -65,7 +59,7 @@ const closeComposeModal = () => {
 // then open the archive
 onMounted(() => {
   let conversation = store.archivedConversations.find(
-    (conversation) => conversation.id === store.activeConversationId
+    (conversation) => conversation.id === getActiveConversationId()
   );
 
   if (conversation) openArchive.value = true;
@@ -128,8 +122,6 @@ onMounted(() => {
             <component
               :is="ConversationsList"
               :filtered-conversations="filteredConversations"
-              :active-id="(store.activeConversationId as number)"
-              :handle-conversation-change="handleConversationChange"
               :key="openArchive ? 'archive' : 'active'"
             />
           </FadeTransition>

@@ -60,7 +60,7 @@ const showPassword = ref(false);
 
       <!--local controls-->
       <div class="mb-6">
-        <Button class="w-full mb-4" link to="/">Sign in</Button>
+        <Button class="w-full mb-4" link to="/chat/no-chat/">Sign in</Button>
       </div>
 
       <!--divider-->

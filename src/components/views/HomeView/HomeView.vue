@@ -1,27 +1,12 @@
 <script setup lang="ts">
-import { computed, onMounted } from "vue";
-
 import useStore from "@src/store/store";
 
-import Chat from "@src/components/views/HomeView/Chat/Chat.vue";
+import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 import Navigation from "@src/components/views/HomeView/Navigation/Navigation.vue";
 import Sidebar from "@src/components/views/HomeView/Sidebar/Sidebar.vue";
-import NoChatSelected from "@src/components/states/empty-states/NoChatSelected.vue";
-import Loading3 from "@src/components/states/loading-states/Loading3.vue";
-import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
+import { getActiveConversationId } from "@src/utils";
 
 const store = useStore();
-
-// the active chat component or loading component.
-const activeChatComponent = computed((): any => {
-  if (store.status === "loading" || store.delayLoading) {
-    return Loading3;
-  } else if (store.activeConversationId) {
-    return Chat;
-  } else {
-    return NoChatSelected;
-  }
-});
 </script>
 
 <template>
@@ -40,18 +25,17 @@ const activeChatComponent = computed((): any => {
         id="mainContent"
         class="xs:absolute xs:z-10 md:static grow h-full xs:w-full md:w-fit scrollbar-hidden bg-white dark:bg-gray-800 transition-all duration-500"
         :class="
-          store.conversationOpen === 'open'
+          getActiveConversationId()
             ? ['xs:left-[0rem]', 'xs:static']
             : ['xs:left-[62.5rem]']
         "
         role="region"
       >
-        <FadeTransition name="fade" mode="out-in">
-          <component
-            :is="activeChatComponent"
-            :key="store.activeConversationId"
-          />
-        </FadeTransition>
+        <router-view v-slot="{ Component }">
+          <FadeTransition name="fade" mode="out-in">
+            <component :is="Component" :key="getActiveConversationId()" />
+          </FadeTransition>
+        </router-view>
       </div>
     </div>
   </KeepAlive>

@@ -1,3 +1,4 @@
+import useStore from "@src/store/store";
 import type {
   ICall,
   IContact,
@@ -5,15 +6,19 @@ import type {
   IMessage,
   IRecording,
 } from "@src/types";
-import useStore from "@src/store/store";
+import { useRoute } from "vue-router";
 
 /**
  * combine first name and last name of a contact.
  * @param contact
  * @returns A string the combines the first and last names.
  */
-export const getFullName = (contact: IContact) => {
-  return contact.firstName + " " + contact.lastName;
+export const getFullName = (contact: IContact, hyphen?: boolean) => {
+  if (hyphen) {
+    return contact.firstName + "-" + contact.lastName;
+  } else {
+    return contact.firstName + " " + contact.lastName;
+  }
 };
 
 /**
@@ -54,13 +59,17 @@ export const getAvatar = (conversation: IConversation) => {
  * @param conversation
  * @returns String
  */
-export const getName = (conversation: IConversation) => {
+export const getName = (conversation: IConversation, hyphen?: boolean) => {
   if (["group", "broadcast"].includes(conversation.type)) {
-    return conversation?.name;
+    if (hyphen) {
+      return (conversation.name as string).split(" ").join("-");
+    } else {
+      return conversation.name;
+    }
   } else {
     let oddContact = getOddContact(conversation);
     if (oddContact) {
-      return getFullName(oddContact);
+      return getFullName(oddContact, hyphen);
     }
   }
 };
@@ -103,6 +112,14 @@ export const shorten = (message: IMessage | string, maxLength: number = 23) => {
 export const hasAttachments = (message: IMessage) => {
   let attachments = message.attachments;
   return attachments && attachments.length > 0;
+};
+
+/**
+ * extract the id of the active conversaiton from the url
+ */
+export const getActiveConversationId = () => {
+  const route = useRoute();
+  return route.params.id ? Number(route.params.id) : undefined;
 };
 
 /**
