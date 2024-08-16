@@ -1,3 +1,8 @@
+> [!IMPORTANT]  
+> Will begin implementing the new styles specified in the figma design file.
+
+<br>
+
 <image src="src/assets/images/thumbnail.png" style="border-radius:16px;margin-bottom:5px;"/>
 
 ## Features ⚡
