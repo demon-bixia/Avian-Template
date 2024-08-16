@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import type { Ref } from "vue";
+
 import { computed, ref } from "vue";
 
-import Contacts from "@src/components/shared/modals/ComposeModal/Contacts.vue";
-import Group from "@src/components/shared/modals/ComposeModal/Group.vue";
+import ContactsTab from "@src/components/shared/modals/ComposeModal/ContactsTab.vue";
+import GroupTab from "@src/components/shared/modals/ComposeModal/GroupTab/GroupTab.vue";
 import Typography from "@src/components/ui/data-display/Typography.vue";
 import Button from "@src/components/ui/inputs/Button.vue";
 import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 import Modal from "@src/components/ui/utils/Modal.vue";
+import Tabs from "@src/components/ui/navigation/Tabs/Tabs.vue";
+import Tab from "@src/components/ui/navigation/Tabs/Tab.vue";
 
 const props = defineProps<{
   open: boolean;
@@ -20,17 +23,17 @@ const modalTitle: Ref<HTMLElement | null> = ref(null);
 // the name of the selected tab
 const activeTabName = ref("contacts");
 
-// switch between the contacts and group tabs
-const switchTab = (tabName: string) => {
+// (event) switch between the contacts and group tabs
+const handleSwitchTab = (tabName: string) => {
   activeTabName.value = tabName;
 };
 
 // the active tab contacts or group.
 const activeTab = computed(() => {
   if (activeTabName.value === "contacts") {
-    return Contacts;
+    return ContactsTab;
   } else {
-    return Group;
+    return GroupTab;
   }
 });
 </script>
@@ -63,42 +66,18 @@ const activeTab = computed(() => {
 
         <!--tabs-->
         <div class="px-5 pb-5">
-          <div
-            class="flex items-center p-2 bg-gray-50 rounded-sm dark:bg-gray-700"
-          >
-            <button
-              @click="switchTab('contacts')"
-              class="basis-1/2 p-4 rounded-sm text-md outline-none leading-4 tracking-[.01rem] transition-all duration-200 focus:outline-none mr-1"
-              :class="
-                activeTabName === 'contacts'
-                  ? ['bg-indigo-400', 'text-white']
-                  : [
-                      'text-black',
-                      'opacity-60',
-                      'dark:text-white',
-                      'dark:opacity-70',
-                    ]
-              "
-            >
-              Contact
-            </button>
-            <button
-              @click="switchTab('group')"
-              class="basis-1/2 p-4 rounded-sm text-md leading-4 tracking-[.01rem] transition-all duration-200 outline-none focus:outline-none"
-              :class="
-                activeTabName === 'group'
-                  ? ['bg-indigo-400', 'text-white']
-                  : [
-                      'text-black',
-                      'opacity-60',
-                      'dark:text-white',
-                      'dark:opacity-70',
-                    ]
-              "
-            >
-              Group
-            </button>
-          </div>
+          <Tabs>
+            <Tab
+              @click="handleSwitchTab('contacts')"
+              name="Contact"
+              :active="activeTabName === 'contacts'"
+            />
+            <Tab
+              @click="handleSwitchTab('group')"
+              name="Group"
+              :active="activeTabName === 'group'"
+            />
+          </Tabs>
         </div>
 
         <!--ActiveTab-->

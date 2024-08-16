@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { inject } from "vue";
 import type { IConversation } from "@src/types";
+
+import { inject } from "vue";
 
 import { getConversationIndex } from "@src/utils";
 import useStore from "@src/store/store";
@@ -14,7 +15,8 @@ const store = useStore();
 
 const activeConversation = <IConversation>inject("activeConversation");
 
-const removeReplyMessage = () => {
+// (event) removes the reply message from top of the text message textarea
+const handleRemoveReplyMessage = () => {
   if (activeConversation) {
     // get the active conversation index in the state store
     let activeConversationIndex = getConversationIndex(activeConversation.id);
@@ -42,7 +44,7 @@ const removeReplyMessage = () => {
 
       <!--close selected Message-->
       <IconButton
-        @click="removeReplyMessage"
+        @click="handleRemoveReplyMessage"
         class="group w-7 h-7"
         title="remove reply"
         aria-label="remove reply"

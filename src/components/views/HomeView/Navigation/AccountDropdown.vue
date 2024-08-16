@@ -23,7 +23,7 @@ const store = useStore();
 const handleCloseOnClickOutside = (event: Event) => {
   if (
     !["user-avatar", "profile-menu-button"].includes(
-      (event.target as HTMLButtonElement).id
+      (event.target as HTMLButtonElement).id,
     )
   ) {
     props.handleCloseDropdown();

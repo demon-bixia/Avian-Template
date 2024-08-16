@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { EyeSlashIcon } from "@heroicons/vue/24/outline";
+import { ref } from "vue";
 
-import IconButton from "@src/components/ui/inputs/IconButton.vue";
 import Button from "@src/components/ui/inputs/Button.vue";
-import TextInput from "@src/components/ui/inputs/TextInput.vue";
+import PasswordInput from "@src/components/ui/inputs/PasswordInput.vue";
 import Typography from "@src/components/ui/data-display/Typography.vue";
+
+const oldPassword = ref("");
+const newPassword = ref("");
+const confirmNewPassword = ref("");
 </script>
 
 <template>
@@ -28,64 +31,43 @@ import Typography from "@src/components/ui/data-display/Typography.vue";
 
       <!--form-->
       <div class="mb-6">
-        <TextInput
+        <PasswordInput
+          :value="oldPassword"
+          @valueChanged="
+            (value) => {
+              oldPassword = value;
+            }
+          "
           variant="bordered"
           label="Old Password"
           placeholder="Enter your password"
           class="mb-5"
-        >
-          <template v-slot:endAdornment>
-            <IconButton
-              variant="ghost"
-              class="p-4"
-              title="toggle show password"
-              aria-label="toggle show password"
-            >
-              <EyeSlashIcon
-                class="w-w-5 h-5 text-black opacity-50 dark:text-white dark:opacity-60"
-              />
-            </IconButton>
-          </template>
-        </TextInput>
+        />
 
-        <TextInput
+        <PasswordInput
+          :value="newPassword"
+          @valueChanged="
+            (value) => {
+              newPassword = value;
+            }
+          "
           variant="bordered"
           label="New Password"
           placeholder="Enter your password"
           class="mb-5"
-        >
-          <template v-slot:endAdornment>
-            <IconButton
-              variant="ghost"
-              class="p-4"
-              title="toggle show password"
-              aria-label="toggle show password"
-            >
-              <EyeSlashIcon
-                class="w-5 h-5 text-black opacity-50 dark:text-white dark:opacity-60"
-              />
-            </IconButton>
-          </template>
-        </TextInput>
+        />
 
-        <TextInput
+        <PasswordInput
+          :value="confirmNewPassword"
+          @valueChanged="
+            (value) => {
+              confirmNewPassword = value;
+            }
+          "
           variant="bordered"
           label="Confirm New Password"
           placeholder="Enter your password"
-        >
-          <template v-slot:endAdornment>
-            <IconButton
-              variant="ghost"
-              class="p-4"
-              title="toggle show password"
-              aria-label="toggle show password"
-            >
-              <EyeSlashIcon
-                class="w-5 h-5 text-black opacity-50 dark:text-white dark:opacity-60"
-              />
-            </IconButton>
-          </template>
-        </TextInput>
+        />
       </div>
 
       <!--controls-->

@@ -59,6 +59,10 @@ const style = computed(() => {
       return props.noColor
         ? "outline-none text-[1rem] font-light leading-4 tracking-[.01rem]"
         : "outline-none text-[1rem] font-light text-black opacity-60 dark:text-white dark:opacity-70 leading-4 tracking-[.01rem]";
+    } else if (props.variant === "body-6") {
+      return props.noColor
+        ? "outline-none text-md leading-4 tracking-[.01rem]"
+        : "outline-none text-md leading-4  tracking-[.01rem] text-black opacity-60 dark:text-white dark:opacity-70";
     }
   }
 

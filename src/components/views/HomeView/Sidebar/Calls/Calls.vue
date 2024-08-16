@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import type { ICall } from "@src/types";
-import { PlusCircleIcon } from "@heroicons/vue/24/outline";
 import { Ref, ref } from "vue";
 
 import useStore from "@src/store/store";
 
+import { PlusCircleIcon } from "@heroicons/vue/24/outline";
 import CallInfoModal from "@src/components/shared/modals/CallInfoModal/CallInfoModal.vue";
 import DialModal from "@src/components/shared/modals/DialModal/DialModal.vue";
 import NoCalls from "@src/components/states/empty-states/NoCalls.vue";
-import Loading1 from "@src/components/states/loading-states/Loading1.vue";
+import Circle2Lines from "@src/components/states/loading-states/Circle2Lines.vue";
 import IconButton from "@src/components/ui/inputs/IconButton.vue";
 import ExpandTransition from "@src/components/ui/transitions/ExpandTransition.vue";
 import Call from "@src/components/views/HomeView/Sidebar/Calls/Call.vue";
@@ -17,12 +17,11 @@ import SidebarHeader from "@src/components/views/HomeView/Sidebar/SidebarHeader.
 
 const store = useStore();
 
-const selectedCall: Ref<ICall | null> = ref(null);
-
-const openInfoModal = ref(false);
-
 const openDialModal = ref(false);
 
+const selectedCall: Ref<ICall | null> = ref(null);
+const openInfoModal = ref(false);
+// (event) opens the voice call info modal
 const handleOpenInfoModal = (call: ICall) => {
   openInfoModal.value = true;
   selectedCall.value = call;
@@ -56,7 +55,7 @@ const handleOpenInfoModal = (call: ICall) => {
       class="w-full h-full scroll-smooth scrollbar-hidden"
       style="overflow-x: visible; overflow-y: scroll"
     >
-      <Loading1
+      <Circle2Lines
         v-if="store.status === 'loading' || store.delayLoading"
         v-for="item in 6"
       />
@@ -84,10 +83,10 @@ const handleOpenInfoModal = (call: ICall) => {
 
         <CallList
           v-if="(store.calls as ICall[])?.length > 0"
-          :calls="(store.calls as ICall[])"
           delay-loading="chat.delayLoading"
           :chat-status="store.status"
           :open-info-modal="handleOpenInfoModal"
+          :calls="<ICall[]>store.calls"
         />
 
         <NoCalls v-else />
@@ -98,7 +97,7 @@ const handleOpenInfoModal = (call: ICall) => {
     <CallInfoModal
       :open="openInfoModal"
       :close-modal="() => (openInfoModal = false)"
-      :call="(selectedCall as ICall)"
+      :call="<ICall>selectedCall"
     />
 
     <!--start call modal-->

@@ -79,7 +79,7 @@ const hideAvatar = () => {
   }
 };
 
-// Reply message
+// reply message
 const replyMessage = getMessageById(activeConversation, props.message.replyTo);
 </script>
 
@@ -135,10 +135,17 @@ const replyMessage = getMessageById(activeConversation, props.message.replyTo);
             noColor
             v-if="props.message.content && props.message.type !== 'recording'"
             class="outline-none text-black opacity-60 dark:text-white dark:opacity-70"
-            v-html="linkifyStr((props.message.content as string), {
-                            className: props.self ? 'text-black opacity-50' : 'text-indigo-500 dark:text-indigo-300',
-                            format: { url: (value) => value.length > 50 ? value.slice(0, 50) + `…` : value }
-                        })"
+            v-html="
+              linkifyStr(props.message.content as string, {
+                className: props.self
+                  ? 'text-black opacity-50'
+                  : 'text-indigo-500 dark:text-indigo-300',
+                format: {
+                  url: (value) =>
+                    value.length > 50 ? value.slice(0, 50) + `…` : value,
+                },
+              })
+            "
             tabindex="0"
           >
           </Typography>
@@ -150,7 +157,7 @@ const replyMessage = getMessageById(activeConversation, props.message.replyTo);
             "
           >
             <Recording
-              :recording="(props.message.content as IRecording)"
+              :recording="<IRecording>props.message.content"
               :self="props.self"
             />
           </div>
@@ -166,7 +173,7 @@ const replyMessage = getMessageById(activeConversation, props.message.replyTo);
           <LinkPreview
             v-if="props.message.previewData && !props.message.attachments"
             :self="props.self"
-            :preview-data="(props.message.previewData as IPreviewData)"
+            :preview-data="props.message.previewData as IPreviewData"
             class="mt-5"
           />
         </div>

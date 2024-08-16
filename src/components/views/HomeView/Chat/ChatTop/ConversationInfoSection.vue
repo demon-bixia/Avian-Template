@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import type { IConversation } from "@src/types";
 
+import { inject, ref } from "vue";
+
 import router from "@src/router";
 import { activeCall } from "@src/store/defaults";
 import useStore from "@src/store/store";
 import { getAvatar, getName } from "@src/utils";
-import { inject, ref } from "vue";
 
 import {
   ChevronLeftIcon,
@@ -174,7 +175,6 @@ const handleOpenVoiceCallModal = () => {
             />
             Profile Information
           </DropdownLink>
-
           <DropdownLink
             :handle-click="
               () => {
@@ -188,14 +188,12 @@ const handleOpenVoiceCallModal = () => {
             />
             Voice call
           </DropdownLink>
-
           <DropdownLink :handle-click="handleCloseDropdown">
             <ShareIcon
               class="h-5 w-5 mr-3 text-black opacity-60 dark:text-white dark:opacity-70"
             />
             Shared media
           </DropdownLink>
-
           <DropdownLink :handle-click="handleCloseDropdown" color="danger">
             <NoSymbolIcon class="h-5 w-5 mr-3" />
             Block contact

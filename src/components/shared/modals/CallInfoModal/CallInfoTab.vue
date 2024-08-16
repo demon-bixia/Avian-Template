@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed } from "vue";
-
 import type { ICall } from "@src/types";
+
+import { computed } from "vue";
 
 import {
   CalendarIcon,
@@ -10,7 +10,7 @@ import {
   PhoneXMarkIcon,
   UserGroupIcon,
 } from "@heroicons/vue/24/outline";
-import InfoItem from "@src/components/shared/blocks/InfoItem.vue";
+import IconAndText from "@src/components/shared/blocks/IconAndText.vue";
 import Typography from "@src/components/ui/data-display/Typography.vue";
 import Button from "@src/components/ui/inputs/Button.vue";
 
@@ -57,15 +57,15 @@ const CallStatusIcon = computed(() => {
 
     <div v-if="props.call" class="w-full py-7">
       <div class="px-5 pb-5 flex items-center">
-        <InfoItem :icon="CalendarIcon" :title="props.call.date" />
+        <IconAndText :icon="CalendarIcon" :title="props.call.date" />
       </div>
 
       <div class="px-5 pb-5 flex items-center">
-        <InfoItem :icon="CallStatusIcon" :title="props.call.status" />
+        <IconAndText :icon="CallStatusIcon" :title="props.call.status" />
       </div>
 
       <div class="px-5 flex items-center">
-        <InfoItem
+        <IconAndText
           :icon="UserGroupIcon"
           title="members"
           link

@@ -306,7 +306,7 @@ export const conversations = [
         content: {
           id: 1,
           size: "10 MB",
-          src: "https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3",
+          src: "https://assets.mixkit.co/music/614/614.mp3",
           duration: "23s",
         },
         date: "6:20 pm",

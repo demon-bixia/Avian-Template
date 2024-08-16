@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { UserPlusIcon } from "@heroicons/vue/24/outline";
-import type { IContactGroup, IUser } from "@src/types";
+import type { IContactGroup } from "@src/types";
 import type { Ref } from "vue";
 import { ref, watch } from "vue";
 
@@ -8,7 +8,7 @@ import useStore from "@src/store/store";
 
 import AddContactModal from "@src/components/shared/modals/AddContactModal.vue";
 import NoContacts from "@src/components/states/empty-states/NoContacts.vue";
-import Loading2 from "@src/components/states/loading-states/Loading2.vue";
+import MultipleLines from "@src/components/states/loading-states/MultipleLines.vue";
 import IconButton from "@src/components/ui/inputs/IconButton.vue";
 import SearchInput from "@src/components/ui/inputs/SearchInput.vue";
 import SortedContacts from "@src/components/views/HomeView/Sidebar/Contacts/SortedContacts.vue";
@@ -25,7 +25,7 @@ const contactContainer: Ref<HTMLElement | null> = ref(null);
 
 // contact groups filtered by search text
 const filteredContactGroups: Ref<IContactGroup[] | undefined> = ref(
-  store.contactGroups
+  store.contactGroups,
 );
 
 // update the filtered contact groups based on the search text
@@ -87,7 +87,7 @@ watch(searchText, () => {
       class="w-full h-full scroll-smooth scrollbar-hidden"
       style="overflow-x: visible; overflow-y: scroll"
     >
-      <Loading2
+      <MultipleLines
         v-if="store.status === 'loading' || store.delayLoading"
         v-for="item in 5"
       />
@@ -100,7 +100,9 @@ watch(searchText, () => {
           store.user.contacts.length > 0
         "
         :contactGroups="filteredContactGroups"
-        :bottom-edge="(contactContainer as HTMLElement)?.getBoundingClientRect().bottom"
+        :bottom-edge="
+          (contactContainer as HTMLElement)?.getBoundingClientRect().bottom
+        "
       />
 
       <NoContacts v-else />

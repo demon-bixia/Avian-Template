@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import type { IConversation } from "@src/types";
 
+import { inject, ref } from "vue";
+
 import useStore from "@src/store/store";
-import { inject, ref, computed } from "vue";
 
 import ConversationInfoModal from "@src/components/shared/modals/ConversationInfoModal/ConversationInfoModal.vue";
 import SearchModal from "@src/components/shared/modals/SearchModal/SearchModal.vue";
 import VoiceCallModal from "@src/components/shared/modals/VoiceCallModal/VoiceCallModal.vue";
 import PinnedMessage from "@src/components/views/HomeView/Chat/ChatTop/PinnedMessage.vue";
-import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 import ConversationInfoSection from "./ConversationInfoSection.vue";
 import SelectSection from "./SelectSection.vue";
 

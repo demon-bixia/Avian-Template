@@ -3,12 +3,11 @@ import { ref } from "vue";
 
 import Typography from "@src/components/ui/data-display/Typography.vue";
 import Button from "@src/components/ui/inputs/Button.vue";
-import IconButton from "@src/components/ui/inputs/IconButton.vue";
 import TextInput from "@src/components/ui/inputs/TextInput.vue";
-import { EyeSlashIcon, EyeIcon } from "@heroicons/vue/24/outline";
+import PasswordInput from "@src/components/ui/inputs/PasswordInput.vue";
 import { RouterLink } from "vue-router";
 
-const showPassword = ref(false);
+const password = ref("");
 </script>
 
 <template>
@@ -32,30 +31,13 @@ const showPassword = ref(false);
       <!--form-->
       <div class="mb-6">
         <TextInput label="Email" placeholder="Enter your email" class="mb-5" />
-        <TextInput
+        <PasswordInput
+          @valueChanged="(value) => (password = value)"
+          :value="password"
           label="Password"
           placeholder="Enter your password"
-          :type="showPassword ? 'text' : 'password'"
           class="pr-[2.5rem]"
-        >
-          <template v-slot:endAdornment>
-            <IconButton
-              title="toggle password visibility"
-              aria-label="toggle password visibility"
-              class="m-[.5rem] p-2"
-              @click="showPassword = !showPassword"
-            >
-              <EyeSlashIcon
-                v-if="showPassword"
-                class="w-5 h-5 text-black opacity-50 dark:text-white dark:opacity-60"
-              />
-              <EyeIcon
-                v-else
-                class="w-5 h-5 text-black opacity-50 dark:text-white dark:opacity-60"
-              />
-            </IconButton>
-          </template>
-        </TextInput>
+        />
       </div>
 
       <!--local controls-->
@@ -92,7 +74,7 @@ const showPassword = ref(false);
         <!--bottom text-->
         <div class="flex justify-center">
           <Typography variant="body-2"
-            >Don’t have an account ?
+            >Don’t have an account?
             <RouterLink
               to="/access/sign-up/"
               class="text-indigo-400 opacity-100"

@@ -98,7 +98,7 @@ const handleOpenInfoModal = () => {
             <button
               v-if="props.active"
               @click="props.endCall"
-              class="p-[.3125rem] flex justify-center items-center rounded-full outline-none bg-red-400 hover:bg-red-500 active:bg-red-600 transition-all duratoin-500 ease"
+              class="p-[.3125rem] flex justify-center items-center rounded-full outline-none bg-red-400 hover:bg-red-500 active:bg-red-600 transition-all duration-500 ease"
             >
               <PhoneIcon class="w-[.875rem] h-[.875rem] text-white" />
             </button>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import type { IConversation, IUser } from "@src/types";
+import type { IConversation } from "@src/types";
 import type { Ref } from "vue";
+
 import { ref } from "vue";
 
 import useStore from "@src/store/store";
@@ -25,9 +26,9 @@ const store = useStore();
 // html container of the contacts list
 const contactContainer: Ref<HTMLElement | undefined> = ref();
 
-// controll the states of contact dropdown menus
+// controls the states of contact dropdown menus
 const dropdownMenuStates: Ref<boolean[] | undefined> = ref(
-  props.conversation.contacts?.map(() => false)
+  props.conversation.contacts?.map(() => false),
 );
 
 // the position of the dropdown menu
@@ -62,7 +63,7 @@ const handleToggleDropdown = (event: Event, contactIndex: number) => {
       } else {
         return false;
       }
-    }
+    },
   );
 };
 
@@ -88,7 +89,8 @@ const handleClickOutside = (event: Event) => {
         Members
       </Typography>
 
-      <button
+      <!--return button-->
+      <IconButton
         @click="
           $emit('active-page-change', {
             tabName: 'conversation-info',
@@ -96,12 +98,13 @@ const handleClickOutside = (event: Event) => {
             removeContact: true,
           })
         "
-        class="group p-2 border rounded-full border-gray-200 dark:border-white dark:border-opacity-70 focus:outline-none focus:border-indigo-100 focus:bg-indigo-100 hover:bg-indigo-100 hover:border-indigo-100 dark:hover:border-indigo-400 dark:hover:bg-indigo-400 dark:focus:bg-reindigod-400 dark:focus:border-indigo-400 transition-all duration-200 outline-none"
+        color="danger"
+        class="group p-2 border rounded-full border-gray-200 dark:border-white dark:border-opacity-70 focus:border-red-100 dark:focus:border-red-400 hover:border-red-100 dark:hover:border-red-500"
       >
         <ArrowUturnLeftIcon
-          class="w-5 h-5 text-black opacity-50 dark:text-white dark:opacity-70 group-hover:text-indigo-500 group-hover:opacity-100 dark:group-hover:text-white"
+          class="w-5 h-5 text-black opacity-50 dark:text-white dark:opacity-70 group-focus:text-red-500 dark:group-focus:text-white group-hover:text-red-500 group-hover:opacity-100 dark:group-hover:text-white"
         />
-      </button>
+      </IconButton>
     </div>
 
     <!--search-->
@@ -139,7 +142,11 @@ const handleClickOutside = (event: Event) => {
 
           <template
             v-slot:menu
-            v-if="store.user && (props.conversation.admins as number[]).includes(store.user.id) && contact.id !== store.user.id"
+            v-if="
+              store.user &&
+              (props.conversation.admins as number[]).includes(store.user.id) &&
+              contact.id !== store.user.id
+            "
           >
             <div>
               <!--dropdown menu button-->
@@ -162,9 +169,7 @@ const handleClickOutside = (event: Event) => {
                 :position="dropdownMenuPosition"
               >
                 <DropdownLink> Promote to admin </DropdownLink>
-
                 <DropdownLink> Demote to member </DropdownLink>
-
                 <DropdownLink color="danger"> Remove contact </DropdownLink>
               </Dropdown>
             </div>

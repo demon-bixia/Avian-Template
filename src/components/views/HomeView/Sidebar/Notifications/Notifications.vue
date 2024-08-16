@@ -3,7 +3,7 @@ import type { INotification } from "@src/types";
 import useStore from "@src/store/store";
 
 import NoNotifications from "@src/components/states/empty-states/NoNotifications.vue";
-import Loading1 from "@src/components/states/loading-states/Loading1.vue";
+import Circle2Lines from "@src/components/states/loading-states/Circle2Lines.vue";
 import Notification from "@src/components/views/HomeView/Sidebar/Notifications/Notification.vue";
 import SidebarHeader from "@src/components/views/HomeView/Sidebar/SidebarHeader.vue";
 
@@ -20,8 +20,12 @@ const store = useStore();
       class="w-full h-full scroll-smooth scrollbar-hidden"
       style="overflow-x: visible; overflow-y: scroll"
     >
-      <Loading1
-        v-if="store.status === 'loading'  || store.delayLoading && (store.notifications as INotification[]).length > 0"
+      <Circle2Lines
+        v-if="
+          store.status === 'loading' ||
+          (store.delayLoading &&
+            (store.notifications as INotification[]).length > 0)
+        "
         v-for="item in 6"
       />
 

@@ -33,7 +33,7 @@ const classes = twMerge(baseClasses, variantClasses.value, props.class);
 
 <template>
   <div class="relative">
-    <i class="absolute left-0 top-[.6563rem] ml-3 text-center">
+    <i class="absolute left-0 top-[30%] ml-3 text-center">
       <MagnifyingGlassIcon
         class="w-5 h-5 stroke-2 text-black opacity-40 dark:text-white dark:opacity-70"
       />
@@ -43,9 +43,10 @@ const classes = twMerge(baseClasses, variantClasses.value, props.class);
       type="text"
       placeholder="Search.."
       :class="classes"
-      @input="$event => {
-        $emit('update:modelValue', ($event.target as HTMLInputElement).value)
-      }
+      @input="
+        ($event) => {
+          $emit('update:modelValue', ($event.target as HTMLInputElement).value);
+        }
       "
     />
     <div class="absolute top-0 right-0">

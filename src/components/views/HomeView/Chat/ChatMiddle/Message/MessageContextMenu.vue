@@ -7,11 +7,11 @@ import { getConversationIndex } from "@src/utils";
 
 import {
   ArrowUturnLeftIcon,
-  BookmarkIcon,
   BookmarkSquareIcon,
   TrashIcon,
   CheckCircleIcon,
   XCircleIcon,
+  ClipboardDocumentIcon,
 } from "@heroicons/vue/24/outline";
 import Dropdown from "@src/components/ui/navigation/Dropdown/Dropdown.vue";
 import DropdownLink from "@src/components/ui/navigation/Dropdown/DropdownLink.vue";
@@ -90,7 +90,7 @@ const handleReplyToMessage = () => {
     </DropdownLink>
 
     <DropdownLink :handle-click="handleCloseContextMenu">
-      <BookmarkIcon class="h-5 w-5 mr-3" />
+      <ClipboardDocumentIcon class="h-5 w-5 mr-3" />
       Copy
     </DropdownLink>
 

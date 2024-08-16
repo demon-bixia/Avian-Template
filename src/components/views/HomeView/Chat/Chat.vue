@@ -7,7 +7,7 @@ import { computed, provide, ref } from "vue";
 import { getActiveConversationId } from "@src/utils";
 
 import NoChatSelected from "@src/components/states/empty-states/NoChatSelected.vue";
-import Loading3 from "@src/components/states/loading-states/Loading3.vue";
+import Spinner from "@src/components/states/loading-states/Spinner.vue";
 import ChatBottom from "@src/components/views/HomeView/Chat/ChatBottom/ChatBottom.vue";
 import ChatMiddle from "@src/components/views/HomeView/Chat/ChatMiddle/ChatMiddle.vue";
 import ChatTop from "@src/components/views/HomeView/Chat/ChatTop/ChatTop.vue";
@@ -17,14 +17,14 @@ const store = useStore();
 // search the selected conversation using activeConversationId.
 const activeConversation = computed(() => {
   let activeConversation = store.conversations.find(
-    (conversation) => conversation.id === getActiveConversationId()
+    (conversation) => conversation.id === getActiveConversationId(),
   );
 
   if (activeConversation) {
     return activeConversation;
   } else {
     return store.archivedConversations.find(
-      (conversation) => conversation.id === getActiveConversationId()
+      (conversation) => conversation.id === getActiveConversationId(),
     );
   }
 });
@@ -61,7 +61,7 @@ const handleSelectMessage = (messageId: number) => {
 const handleDeselectMessage = (messageId: number) => {
   selectAll.value = false;
   selectedMessages.value = selectedMessages.value.filter(
-    (item) => item !== messageId
+    (item) => item !== messageId,
   );
 
   if (activeConversation.value && selectedMessages.value.length === 0) {
@@ -73,7 +73,7 @@ const handleDeselectMessage = (messageId: number) => {
 const handleSelectAll = () => {
   if (activeConversation.value) {
     const messages = activeConversation.value.messages.map(
-      (message) => message.id
+      (message) => message.id,
     );
     selectedMessages.value = messages;
     selectAll.value = true;
@@ -95,7 +95,7 @@ const handleCloseSelect = () => {
 </script>
 
 <template>
-  <Loading3 v-if="store.status === 'loading' || store.delayLoading" />
+  <Spinner v-if="store.status === 'loading' || store.delayLoading" />
 
   <div
     v-else-if="getActiveConversationId() && activeConversation"

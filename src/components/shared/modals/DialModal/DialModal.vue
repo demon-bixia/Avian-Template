@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import type { IContact, IUser } from "@src/types";
+import type { IContact } from "@src/types";
 import type { Ref } from "vue";
+
 import { ref } from "vue";
 
 import useStore from "@src/store/store";
@@ -12,7 +13,7 @@ import SearchInput from "@src/components/ui/inputs/SearchInput.vue";
 import Modal from "@src/components/ui/utils/Modal.vue";
 import ContactItem from "@src/components/shared/blocks/ContactItem.vue";
 import ScrollBox from "@src/components/ui/utils/ScrollBox.vue";
-import Loading1 from "@src/components/states/loading-states/Loading1.vue";
+import Circle2Lines from "@src/components/states/loading-states/Circle2Lines.vue";
 
 const props = defineProps<{
   closeModal: () => void;
@@ -28,7 +29,7 @@ const selectedContacts: Ref<IContact[]> = ref([]);
 const isContactSelected = (contact: IContact) => {
   if (contact) {
     return Boolean(
-      selectedContacts.value.find((item) => item.id === contact.id)
+      selectedContacts.value.find((item) => item.id === contact.id),
     );
   } else {
     return false;
@@ -38,7 +39,7 @@ const isContactSelected = (contact: IContact) => {
 // (event) change the value of selected contacts
 const handleSelectedContactsChange = (contact: IContact) => {
   let contactIndex = selectedContacts.value.findIndex(
-    (item) => item.id === contact.id
+    (item) => item.id === contact.id,
   );
   if (contactIndex !== -1) {
     selectedContacts.value.splice(contactIndex, 1);
@@ -84,7 +85,7 @@ const handleSelectedContactsChange = (contact: IContact) => {
           ref="contactContainer"
           class="max-h-[13.5rem] mb-5 overflow-y-scroll"
         >
-          <Loading1
+          <Circle2Lines
             v-if="store.status === 'loading' || store.delayLoading"
             v-for="item in 3"
           />

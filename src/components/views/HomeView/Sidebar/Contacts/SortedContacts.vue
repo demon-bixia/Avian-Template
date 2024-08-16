@@ -23,12 +23,12 @@ const props = defineProps<{
 // the position of the dropdown menu.
 const dropdownMenuPosition = ref(["top-6", "right-0"]);
 
-// controll the states of contact dropdown menus
+// controls the states of contact dropdown menus
 const dropdownMenuStates: Ref<boolean[][] | undefined> = ref(
   props.contactGroups?.map((contactGroup) => {
     let group = contactGroup.contacts.map(() => false);
     return group;
-  })
+  }),
 );
 
 // close all contact dropdown menus
@@ -43,7 +43,7 @@ const handleCloseAllMenus = () => {
 const handleToggleDropdown = (
   event: Event,
   groupIndex: number,
-  index: number
+  index: number,
 ) => {
   if (props.bottomEdge) {
     let buttonBottom = (
@@ -63,7 +63,7 @@ const handleToggleDropdown = (
         if (idx === index) return value;
         else return false;
       });
-    }
+    },
   );
 
   dropdownMenuStates.value[groupIndex][index] = !(
@@ -71,7 +71,7 @@ const handleToggleDropdown = (
   )[groupIndex][index];
 };
 
-// (event) close doprdown menu when clicking outside
+// (event) close dropdown menu when clicking outside
 const handleClickOutside = (event: Event) => {
   let target = event.target as HTMLElement;
   let parentElement = target.parentElement as HTMLElement;
@@ -113,7 +113,9 @@ const handleClickOutside = (event: Event) => {
           <!--dropdown menu button-->
           <IconButton
             :id="'open-contact-menu-' + index"
-            :aria-expanded="(dropdownMenuStates as boolean[][])[groupIndex][index]"
+            :aria-expanded="
+              (dropdownMenuStates as boolean[][])[groupIndex][index]
+            "
             :aria-controls="'contact-menu-' + index"
             @click="(event) => handleToggleDropdown(event, groupIndex, index)"
             class="open-menu w-6 h-6"

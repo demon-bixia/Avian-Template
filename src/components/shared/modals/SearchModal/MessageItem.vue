@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { IMessage } from "@src/types";
+
 import { getFullName } from "@src/utils";
+
 import Typography from "@src/components/ui/data-display/Typography.vue";
 
 const props = defineProps<{

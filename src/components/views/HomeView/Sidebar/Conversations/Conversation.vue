@@ -55,12 +55,6 @@ const handleCloseContextMenu = () => {
   showContextMenu.value = false;
 };
 
-// (event) close context menu when opening a new one.
-const contextConfig = {
-  handler: handleCloseContextMenu,
-  events: ["contextmenu"],
-};
-
 // (event) select this conversation.
 const handleSelectConversation = () => {
   showContextMenu.value = false;
@@ -69,7 +63,7 @@ const handleSelectConversation = () => {
 
 // last message in conversation to display
 const lastMessage = computed(
-  () => props.conversation.messages[props.conversation.messages.length - 1]
+  () => props.conversation.messages[props.conversation.messages.length - 1],
 );
 
 // (event) remove the unread indicator when opening the conversation
@@ -80,9 +74,9 @@ const handleRemoveUnread = () => {
   }
 };
 
-// (computed propert) determines if this conversation is active.
+// (computed property) determines if this conversation is active.
 const isActive = computed(
-  () => getActiveConversationId() === props.conversation.id
+  () => getActiveConversationId() === props.conversation.id,
 );
 </script>
 
@@ -91,7 +85,6 @@ const isActive = computed(
     <button
       :aria-label="'conversation with' + getName(props.conversation)"
       tabindex="0"
-      v-click-outside="contextConfig"
       @contextmenu.prevent="handleShowContextMenu"
       @click="
         () => {
@@ -192,9 +185,9 @@ const isActive = computed(
             <div
               class="w-[1.125rem] h-[1.125rem] flex justify-center items-center rounded-[50%] bg-indigo-300"
             >
-              <Typography variant="body-1" no-color class="text-white">{{
-                props.conversation.unread
-              }}</Typography>
+              <Typography variant="body-1" no-color class="text-white">
+                {{ props.conversation.unread }}
+              </Typography>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import Typography from "@src/components/ui/data-display/Typography.vue";
 import Button from "@src/components/ui/inputs/Button.vue";
 import DropFileUpload from "@src/components/ui/inputs/DropFileUpload.vue";
 import TextInput from "@src/components/ui/inputs/TextInput.vue";
+import IconButton from "@src/components/ui/inputs/IconButton.vue";
 </script>
 
 <template>
@@ -20,19 +21,20 @@ import TextInput from "@src/components/ui/inputs/TextInput.vue";
       </Typography>
 
       <!--return button-->
-      <button
+      <IconButton
         @click="
           $emit('active-page-change', {
             tabName: 'conversation-info',
             animationName: 'slide-right',
           })
         "
-        class="group p-2 border rounded-full border-gray-200 dark:border-white dark:border-opacity-70 focus:outline-none focus:border-indigo-100 focus:bg-indigo-100 hover:bg-indigo-100 hover:border-indigo-100 dark:hover:border-indigo-400 dark:hover:bg-indigo-400 dark:focus:bg-reindigod-400 dark:focus:border-indigo-400 transition-all duration-200 outline-none"
+        color="danger"
+        class="group p-2 border rounded-full border-gray-200 dark:border-white dark:border-opacity-70 focus:border-red-100 dark:focus:border-red-400 hover:border-red-100 dark:hover:border-red-500"
       >
         <ArrowUturnLeftIcon
-          class="w-5 h-5 text-black opacity-50 dark:text-white dark:opacity-70 group-hover:text-indigo-500 group-hover:opacity-100 dark:group-hover:text-white"
+          class="w-5 h-5 text-black opacity-50 dark:text-white dark:opacity-70 group-focus:text-red-500 dark:group-focus:text-white group-hover:text-red-500 group-hover:opacity-100 dark:group-hover:text-white"
         />
-      </button>
+      </IconButton>
     </div>
 
     <!--inputs-->

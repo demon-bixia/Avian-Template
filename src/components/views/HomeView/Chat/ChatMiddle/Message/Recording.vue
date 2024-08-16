@@ -18,6 +18,7 @@ const wavesurfer: Ref<any> = ref(null);
 const playing = ref(false);
 const loading = ref(true);
 
+// (event) turns the audio on/off
 const handleTogglePlay = () => {
   if (wavesurfer.value) {
     if (playing.value) {
@@ -33,7 +34,7 @@ const handleTogglePlay = () => {
 // when mounted load the audio
 onMounted(() => {
   const waveform: HTMLElement | null = document.querySelector(
-    "#waveform-" + props.recording.id
+    "#waveform-" + props.recording.id,
   );
 
   if (waveform) {
@@ -46,7 +47,7 @@ onMounted(() => {
       barRadius: 1,
       cursorWidth: 1,
       height: 30,
-      barGap: 5,
+      barGap: 4,
     });
 
     // load the audio

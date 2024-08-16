@@ -1,156 +1,379 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { VideoPlayer } from "@videojs-player/vue";
+
 import {
-  PlayIcon,
-  PauseIcon,
-  ArrowsPointingOutIcon,
   ArrowsPointingInIcon,
+  ArrowsPointingOutIcon,
+  PauseIcon,
+  PlayIcon,
+  SpeakerWaveIcon,
+  SpeakerXMarkIcon,
 } from "@heroicons/vue/24/solid";
 import RangeSlider from "@src/components/ui/inputs/RangeSlider.vue";
+import { VideoPlayer } from "@videojs-player/vue";
+import Typography from "@src/components/ui/data-display/Typography.vue";
 
 import "video.js/dist/video-js.css";
+
+defineEmits(["videoLoad"]);
 
 const props = defineProps<{
   id: string;
   url: string;
+  name?: string;
   thumbnail: string;
 }>();
 
-const percentage = ref(0);
-
+// if the fullscreen is toggled or not
 const fullScreen = ref(false);
 
-const handleTimeChange = (event: any) => {
-  percentage.value = Math.floor(
-    (event.target.player.cache_.currentTime /
-      event.target.player.cache_.duration) *
-      100
-  );
+// percentage of the video that played
+const percentage = ref(0);
+
+// value representing the volume
+const volume = ref(0);
+
+// controls showing the volume slider when hovering over mute/unmute buttons
+const volumeSliderInvisible = ref(false);
+
+// tells us if the video was started
+const started = ref(false);
+
+// (event) mute and unmute the audio of the video
+const handleToggleMute = (player: any) => {
+  player.muted(!player.muted());
 };
 
+// (event) increases and decreases volume based on the volume range slider location
+const handleVolumeSliderChange = (value: any, player: any) => {
+  player.volume(value / 100);
+};
+
+// (event) update the volume ref when the video volume changes
+const handleVolumeChange = (event: any) => {
+  volume.value = event.target.player.volume() * 100;
+};
+
+// (event) increase and decrease the percentage based on the video time
+const handleTimeChange = (event: any) => {
+  percentage.value =
+    (event.target.player.cache_.currentTime /
+      event.target.player.cache_.duration) *
+    100;
+};
+
+// (event) change the current time of the video based on the slider's value
 const handleTrackInput = (value: any, player: any, state: any) => {
   player.currentTime((value / 100) * state.duration);
+};
+
+// (event) pause and play the video
+const handleToggleVideo = (state: any, player: any) => {
+  if (!state.playing && !started.value) {
+    started.value = true;
+    volume.value = player.volume() * 100;
+  }
+  state.playing ? player.pause() : player.play();
 };
 </script>
 
 <template>
-  <div class="flex justify-center items-center">
-    <!--player-->
-    <VideoPlayer
-      @timeupdate="handleTimeChange"
-      class="video-player xs:w-[21.25rem] md:w-[43.75rem] xs:h-[12.5rem] md:h-[23.125rem]"
-      :src="props.url"
-      :poster="props.thumbnail"
-    >
-      <template v-slot="{ player, state }">
-        <div
-          class="custom-player-controls absolute w-full h-full p-6 flex flex-col justify-center items-center bg-black bg-opacity-0 hover:bg-opacity-30 transition duration-200"
-          :class="{ 'bg-opacity-30': !state.playing }"
-        >
-          <div class="basis-[85%] flex justify-center items-center">
-            <!--play button-->
-            <button
-              v-if="!state.playing"
-              @click="state.playing ? player.pause() : player.play()"
-              class="control-button p-4 mt-7 rounded-full bg-white bg-opacity-20 transition-all duration-200"
-            >
-              <PlayIcon class="w-7 h-7 text-white" />
-            </button>
+  <VideoPlayer
+    class="video-player"
+    :src="props.url"
+    :poster="props.thumbnail"
+    @timeupdate="handleTimeChange"
+    @volumechange="handleVolumeChange"
+    @loadstart="(event) => $emit('videoLoad', event)"
+  >
+    <template v-slot="{ player, state }">
+      <div class="overlay-container">
+        <!--video title-->
+        <div v-if="props.name" class="video-title">
+          <Typography variant="body-5" no-color>{{ props.name }}</Typography>
+        </div>
 
-            <!--pause button-->
-            <button
-              v-if="state.playing"
-              @click="state.playing ? player.pause() : player.play()"
-              class="control-button p-4 mt-7 rounded-full bg-white bg-opacity-20 transition-all duration-200"
-              :class="{ invisible: state.playing }"
-            >
-              <PauseIcon class="w-7 h-7 text-white" />
-            </button>
-          </div>
-
-          <!--controls-->
-          <div
-            class="controls basis-[15%] w-full h-full flex items-end invisible transition duration-200"
+        <!--pause and start buttons-->
+        <div class="pause-start-container">
+          <!--play button-->
+          <button
+            v-if="!state.playing"
+            @click="() => handleToggleVideo(state, player)"
+            class="control-button play-button"
           >
-            <div
-              class="w-full flex p-5 justify-center items-center bg-white bg-opacity-20 rounded-[.75rem]"
+            <PlayIcon class="icon large" />
+          </button>
+          <!--pause button-->
+          <button
+            v-if="state.playing"
+            @click="() => handleToggleVideo(state, player)"
+            class="control-button pause-button"
+            :class="{ 'opacity-0': state.playing }"
+          >
+            <PauseIcon class="icon large" />
+          </button>
+        </div>
+
+        <!--controls-->
+        <div v-if="started" class="controls-container">
+          <!--audio controls-->
+          <div
+            class="audio-controls-container"
+            @mouseenter="volumeSliderInvisible = false"
+            @mouseleave="volumeSliderInvisible = true"
+          >
+            <!--unmute button-->
+            <button
+              v-if="state.muted"
+              class="mute-unmute-buttons"
+              @click="() => handleToggleMute(player)"
             >
-              <!--pause button-->
-              <button v-if="state.playing" class="mr-5">
-                <PauseIcon class="w-5 h-5 text-white" />
-              </button>
+              <SpeakerXMarkIcon class="icon small" />
+            </button>
 
-              <!--play button-->
-              <button v-if="!state.playing" class="mr-5">
-                <PlayIcon class="w-5 h-5 text-white" />
-              </button>
+            <!--mute button-->
+            <button
+              v-else
+              class="mute-unmute-buttons"
+              @click="() => handleToggleMute(player)"
+            >
+              <SpeakerWaveIcon class="icon small" />
+            </button>
 
-              <!--track slider-->
+            <!--audio slider-->
+            <div
+              class="volume-slider-container"
+              :style="{ opacity: volumeSliderInvisible ? 0 : 1 }"
+            >
               <RangeSlider
-                :id="props.id"
-                :percentage="percentage"
-                class="w-full mr-5 video-slider"
-                @value-change="
-                  ($event) => handleTrackInput($event, player, state)
+                @value-changed="
+                  ($event) => handleVolumeSliderChange($event, player)
                 "
+                :percentage="volume"
+                class="volume-slider"
+                aria-label="volume change slider"
               />
-
-              <!--size controls-->
-              <div>
-                <!--maximize button-->
-                <button
-                  v-if="!fullScreen"
-                  @click="
-                    () => {
-                      fullScreen = !fullScreen;
-                      player.enterFullWindow();
-                    }
-                  "
-                >
-                  <ArrowsPointingOutIcon class="w-5 h-5 text-white" />
-                </button>
-                <!--minimize button-->
-                <button
-                  v-if="fullScreen"
-                  @click="
-                    () => {
-                      fullScreen = !fullScreen;
-                      player.exitFullWindow();
-                    }
-                  "
-                >
-                  <ArrowsPointingInIcon class="w-5 h-5 text-white" />
-                </button>
-              </div>
             </div>
           </div>
+
+          <!--pause button-->
+          <button
+            v-if="state.playing"
+            class="pause-play-buttons"
+            @click="() => handleToggleVideo(state, player)"
+          >
+            <PauseIcon class="icon small" />
+          </button>
+
+          <!--play button-->
+          <button
+            v-if="!state.playing"
+            class="pause-play-buttons"
+            @click="() => handleToggleVideo(state, player)"
+          >
+            <PlayIcon class="icon small" />
+          </button>
+
+          <!--track slider-->
+          <RangeSlider
+            class="track-slider"
+            :percentage="percentage"
+            aria-label="time track slider"
+            @value-changed="($event) => handleTrackInput($event, player, state)"
+          />
+
+          <!--maximize button-->
+          <button
+            v-if="!fullScreen"
+            @click="
+              () => {
+                fullScreen = !fullScreen;
+                player.enterFullWindow();
+              }
+            "
+          >
+            <ArrowsPointingOutIcon class="icon small" />
+          </button>
+
+          <!--minimize button-->
+          <button
+            v-if="fullScreen"
+            @click="
+              () => {
+                fullScreen = !fullScreen;
+                player.exitFullWindow();
+              }
+            "
+          >
+            <ArrowsPointingInIcon class="icon small" />
+          </button>
         </div>
-      </template>
-    </VideoPlayer>
-  </div>
+      </div>
+    </template>
+  </VideoPlayer>
 </template>
 
 <style>
-/* set the button background */
-.video-player .control-button {
-  background: rgba(255, 255, 255, 0.3) !important;
+.video-player {
+  border-radius: 12px;
+  overflow: hidden;
+
+  /** the video thumbnail */
+  .vjs-poster {
+    background-size: cover !important;
+  }
+
+  /* the overlay that contains the title and controls */
+  .overlay-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0);
+    transition: all 200ms ease;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    /** the icons in the overlay container */
+    .icon {
+      color: white;
+      &.small {
+        width: 16px;
+        height: 16px;
+      }
+      &.large {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    /* video title container */
+    .video-title {
+      width: 100%;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.2);
+      opacity: 0;
+      transition: all 200ms ease;
+    }
+
+    /* pause and start container */
+    .pause-start-container {
+      position: absolute;
+      top: calc(50% - 56px / 2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .control-button {
+        padding: 12px;
+        border-radius: 100%;
+        background: rgba(255, 255, 255, 0.2);
+        transition: all 200ms ease;
+      }
+
+      .pause-button {
+        opacity: 0;
+        &:hover {
+          background: rgba(255, 255, 255, 0.5) !important;
+        }
+      }
+    }
+
+    /** contains the audio, play, time, and size controls */
+    .controls-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.2);
+      opacity: 0;
+      transition: all 200ms ease;
+
+      /** contains the mute audio buttons and range slider */
+      .audio-controls-container {
+        position: relative;
+
+        /** contains the range slider */
+        .volume-slider-container {
+          position: absolute;
+          bottom: 75px;
+          right: -85%;
+          transform: rotate(270deg);
+          width: 100px;
+          padding: 8px;
+          border-radius: 12px;
+          background: rgba(255, 255, 255, 0.2);
+        }
+
+        /** the mute and unmute buttons */
+        .mute-unmute-buttons {
+          margin-right: 16px;
+        }
+
+        /* the slider that controls the video volume */
+        .volume-slider {
+          width: 100%;
+          margin-right: 16px;
+        }
+      }
+
+      /** the pause and play buttons */
+      .pause-play-buttons {
+        margin-right: 16px;
+      }
+
+      /** the slider that changes the video curren time */
+      .track-slider {
+        width: 100%;
+        margin-right: 16px;
+      }
+    }
+  }
+
+  /* show the video title  */
+  &:hover .overlay-container .video-title {
+    opacity: 1;
+  }
+
+  /* show pause button when the user hovers over the video */
+  &:hover .overlay-container .pause-start-container .control-button {
+    opacity: 1;
+  }
+
+  /** show the controls on the bottom when the user hovers over the video */
+  &:hover .overlay-container .controls-container {
+    opacity: 1;
+  }
 }
 
-/* show pause button when the user hovers over the video */
-.video-player:hover .custom-player-controls .control-button {
-  visibility: visible !important;
+/** tablets and above */
+@media (min-width: 60.5rem) {
+  .video-player {
+    width: 546.39px;
+    height: 301px;
+  }
 }
 
-.video-player:hover .custom-player-controls .controls {
-  visibility: visible !important;
-}
+/** mobile */
+@media (max-width: 60.4rem) {
+  .video-player {
+    width: 346px;
+    height: 191px;
 
-.video-player .control-button:hover {
-  background: rgba(255, 255, 255, 0.5) !important;
-}
-
-.video-player .vjs-poster {
-  background-size: cover !important;
+    .overlay-container
+      .controls-container
+      .audio-controls-container
+      .volume-slider-container {
+      bottom: 60px;
+      right: -30%;
+      width: 70px;
+    }
+  }
 }
 </style>

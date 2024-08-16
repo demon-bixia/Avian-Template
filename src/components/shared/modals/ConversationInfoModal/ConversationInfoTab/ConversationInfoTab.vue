@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ArrowUturnLeftIcon } from "@heroicons/vue/24/solid";
+import type { IContact, IConversation } from "@src/types";
+
 import { computed, ref } from "vue";
 
-import { IContact, IConversation } from "@src/types";
-import { getAvatar, getFullName, getName, getOddContact } from "@src/utils";
+import { getAvatar, getName, getOddContact } from "@src/utils";
 
 import {
   ArrowLeftOnRectangleIcon,
@@ -15,8 +15,9 @@ import {
   TrashIcon,
   UserIcon,
 } from "@heroicons/vue/24/outline";
-import InfoItem from "@src/components/shared/blocks/InfoItem.vue";
-import ImageViewer from "@src/components/shared/modals/ConversationInfoModal/ImageViewer.vue";
+import { ArrowUturnLeftIcon } from "@heroicons/vue/24/solid";
+import IconAndText from "@src/components/shared/blocks/IconAndText.vue";
+import ImageViewer from "@src/components/shared/modals/ConversationInfoModal/ConversationInfoTab/ImageViewer.vue";
 import Typography from "@src/components/ui/data-display/Typography.vue";
 import Button from "@src/components/ui/inputs/Button.vue";
 import IconButton from "@src/components/ui/inputs/IconButton.vue";
@@ -68,7 +69,7 @@ const imageUrl = computed(() => {
       </Button>
 
       <!--return button-->
-      <button
+      <IconButton
         v-else
         @click="
           $emit('active-page-change', {
@@ -76,12 +77,13 @@ const imageUrl = computed(() => {
             animationName: 'slide-right',
           })
         "
-        class="group p-2 border rounded-full border-gray-200 dark:border-white dark:border-opacity-70 focus:outline-none focus:border-indigo-100 focus:bg-indigo-100 hover:bg-indigo-100 hover:border-indigo-100 dark:hover:border-indigo-400 dark:hover:bg-indigo-400 dark:focus:bg-reindigod-400 dark:focus:border-indigo-400 transition-all duration-200 outline-none"
+        color="danger"
+        class="group p-2 border rounded-full border-gray-200 dark:border-white dark:border-opacity-70 focus:border-red-100 dark:focus:border-red-400 hover:border-red-100 dark:hover:border-red-500"
       >
         <ArrowUturnLeftIcon
-          class="w-5 h-5 text-black opacity-100 dark:text-white dark:opacity-70 group-hover:text-indigo-500 group-hover:opacity-100 dark:group-hover:text-white"
+          class="w-5 h-5 text-black opacity-50 dark:text-white dark:opacity-70 group-focus:text-red-500 dark:group-focus:text-white group-hover:text-red-500 group-hover:opacity-100 dark:group-hover:text-white"
         />
-      </button>
+      </IconButton>
     </div>
 
     <!--top-->
@@ -90,19 +92,6 @@ const imageUrl = computed(() => {
         <!--avatar-->
         <div class="mr-5">
           <button
-            v-if="props.contact"
-            @click="openImageViewer = true"
-            class="outline-none"
-            aria-label="view avatar"
-          >
-            <div
-              :style="{ backgroundImage: `url(${props.contact.avatar})` }"
-              class="w-[2.375rem] h-[2.375rem] rounded-full bg-cover bg-center"
-            ></div>
-          </button>
-
-          <button
-            v-else
             @click="openImageViewer = true"
             class="outline-none"
             aria-label="view avatar"
@@ -120,28 +109,19 @@ const imageUrl = computed(() => {
         <div class="w-full flex justify-between">
           <div>
             <Typography variant="heading-2" class="mb-3 mr-5 text-start">
-              <span v-if="props.contact">
-                {{ getFullName(props.contact) }}
-              </span>
-
-              <span v-else>
+              <span>
                 {{ getName(props.conversation) }}
               </span>
             </Typography>
 
             <Typography variant="body-2" class="font-extralight text-start">
               <!--last seen-->
-              <span v-if="conversation.type === 'couple' || contact">
-                Last seen Dec 16, 2019
-              </span>
-
               <!--or number of group members-->
-              <span
-                v-else-if="['group', 'broadcast'].includes(conversation.type)"
-              >
-                {{ conversation.contacts.length }}
-                Contacts
-              </span>
+              {{
+                conversation.type === "couple" || props.contact
+                  ? "Last seen Dec 16, 2019"
+                  : `${conversation.contacts.length} Contacts`
+              }}
             </Typography>
           </div>
 
@@ -171,7 +151,7 @@ const imageUrl = computed(() => {
         v-if="conversation.type === 'couple' || props.contact"
         class="flex px-5 pb-5 items-center"
       >
-        <InfoItem
+        <IconAndText
           :icon="AtSymbolIcon"
           :title="getOddContact(props.conversation)?.email"
         />
@@ -184,7 +164,7 @@ const imageUrl = computed(() => {
         "
         class="px-5 flex items-center pb-5"
       >
-        <InfoItem
+        <IconAndText
           :icon="UserIcon"
           title="members"
           link
@@ -200,12 +180,12 @@ const imageUrl = computed(() => {
 
       <!--(both) notifications-->
       <div class="px-5 flex items-center">
-        <InfoItem :icon="BellIcon" title="notifications" switch />
+        <IconAndText :icon="BellIcon" title="notifications" switch />
       </div>
 
-      <!--media-->
+      <!--(both) shared media-->
       <div class="px-5 pt-5 flex items-center">
-        <InfoItem
+        <IconAndText
           :icon="ShareIcon"
           title="shared media"
           link
@@ -222,12 +202,12 @@ const imageUrl = computed(() => {
 
     <!--bottom-->
     <div class="w-full border-t border-gray-100 dark:border-gray-700">
-      <!--block contact-->
+      <!--(contact) block contact-->
       <div
         v-if="conversation.type === 'couple' || props.contact"
         class="px-5 pt-5 group"
       >
-        <InfoItem
+        <IconAndText
           :icon="NoSymbolIcon"
           title="block contact"
           link
@@ -235,12 +215,12 @@ const imageUrl = computed(() => {
         />
       </div>
 
-      <!--delete contact-->
+      <!--(contact) delete contact-->
       <div
         v-if="conversation.type === 'couple' || props.contact"
         class="px-5 pt-5 group"
       >
-        <InfoItem
+        <IconAndText
           :icon="TrashIcon"
           title="delete contact"
           link
@@ -248,14 +228,14 @@ const imageUrl = computed(() => {
         />
       </div>
 
-      <!--exit group-->
+      <!--(group) exit group-->
       <div
         v-if="
           ['group', 'broadcast'].includes(conversation.type) && !props.contact
         "
         class="px-5 pt-5 flex items-center group"
       >
-        <InfoItem
+        <IconAndText
           :icon="ArrowLeftOnRectangleIcon"
           title="exit group"
           link

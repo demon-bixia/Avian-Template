@@ -59,7 +59,7 @@ export const getAvatar = (conversation: IConversation) => {
  * @param conversation
  * @returns String
  */
-export const getName = (conversation: IConversation, hyphen?: boolean) => {
+export const getName = (conversation: IConversation , hyphen?: boolean) => {
   if (["group", "broadcast"].includes(conversation.type)) {
     if (hyphen) {
       return (conversation.name as string).split(" ").join("-");

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 
-import GroupInfo from "@src/components/shared/modals/ComposeModal/GroupInfo.vue";
-import GroupMembers from "@src/components/shared/modals/ComposeModal/GroupMembers.vue";
+import GroupInfo from "@src/components/shared/modals/ComposeModal/GroupTab/GroupInfo.vue";
+import GroupMembers from "@src/components/shared/modals/ComposeModal/GroupTab/GroupMembers.vue";
 import SlideTransition from "@src/components/ui/transitions/SlideTransition.vue";
 
 defineEmits(["activePageChange"]);
@@ -19,8 +19,11 @@ const ActivePage = computed((): any => {
   else if (activePageName.value === "group-members") return GroupMembers;
 });
 
-// event to move between modal pages
-const changeActiveTab = (event: { tabName: string; animationName: string }) => {
+// (event) to move between modal pages
+const handleChangeActiveTab = (event: {
+  tabName: string;
+  animationName: string;
+}) => {
   animation.value = event.animationName;
   activePageName.value = event.tabName;
 };
@@ -32,7 +35,7 @@ const changeActiveTab = (event: { tabName: string; animationName: string }) => {
     <div class="overflow-x-hidden">
       <SlideTransition :animation="animation">
         <component
-          @active-page-change="changeActiveTab"
+          @active-page-change="handleChangeActiveTab"
           :is="ActivePage"
           :key="activePageName"
         />

@@ -3,7 +3,7 @@ import { ref } from "vue";
 
 import AccountSettings from "@src/components/views/HomeView/Sidebar/Settings/SettingsAccordion/AccountSettings.vue";
 import PrivacySettings from "@src/components/views/HomeView/Sidebar/Settings/SettingsAccordion/PrivacySettings.vue";
-import ApperanceSettings from "@src/components/views/HomeView/Sidebar/Settings/SettingsAccordion/ApperanceSettings.vue";
+import AppearanceSettings from "@src/components/views/HomeView/Sidebar/Settings/SettingsAccordion/AppearanceSettings.vue";
 import NotificationsSettings from "@src/components/views/HomeView/Sidebar/Settings/SettingsAccordion/NotificationsSettings.vue";
 
 // Types
@@ -48,7 +48,7 @@ const handleToggle = (name: accordionItems) => {
       :collapsed="accordionState['privacy-settings']"
       :handleToggle="() => handleToggle(accordionItems.privacySettings)"
     />
-    <ApperanceSettings
+    <AppearanceSettings
       :collapsed="accordionState['appearance-settings']"
       :handleToggle="() => handleToggle(accordionItems.appearanceSettings)"
     />

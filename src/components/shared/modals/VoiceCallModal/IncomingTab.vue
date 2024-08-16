@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { PhoneIcon, XMarkIcon } from "@heroicons/vue/24/solid";
-import { ICall, IContact } from "@src/types";
+import type { ICall, IContact } from "@src/types";
+
 import { getCallName } from "@src/utils";
 
+import { PhoneIcon, XMarkIcon } from "@heroicons/vue/24/solid";
 import CallAvatar from "@src/components/shared/blocks/CallAvatar.vue";
 import Typography from "@src/components/ui/data-display/Typography.vue";
+import IconButton from "@src/components/ui/inputs/IconButton.vue";
 
 const props = defineProps<{
   members: IContact[];
@@ -42,31 +44,36 @@ const props = defineProps<{
       </Typography>
     </div>
 
-    <!--answer buttons-->
+    <!--answer button-->
     <div class="flex">
-      <button
+      <IconButton
+        variant="solid"
+        color="success"
         @click="handleCallStatusChange('ongoing')"
-        class="relative p-[1.0625rem] mr-8 flex justify-center items-center rounded-full outline-none bg-green-400 hover:bg-green-500 active:bg-green-600 transition-all duratoin-500 ease"
+        class="relative p-[1.0625rem] mr-8"
       >
         <PhoneIcon class="w-[1rem] h-[1rem] text-white" />
         <span
           class="animate-ping absolute inline-flex w-[2.1875rem] h-[2.1875rem] rounded-full bg-green-400 opacity-75"
         ></span>
-      </button>
+      </IconButton>
 
-      <button
+      <!--reject button-->
+      <IconButton
+        variant="solid"
+        color="danger"
         @click="
           () => {
             props.closeModal();
           }
         "
-        class="relative p-[1.0625rem] flex justify-center items-center rounded-full outline-none bg-red-400 hover:bg-red-500 active:bg-red-600 transition-all duratoin-500 ease"
+        class="relative p-[1.0625rem]"
       >
         <XMarkIcon class="w-[1rem] h-[1rem] text-white" />
         <span
           class="animate-ping absolute inline-flex w-[2.1875rem] h-[2.1875rem] rounded-full bg-red-400 opacity-75"
         ></span>
-      </button>
+      </IconButton>
     </div>
   </div>
 </template>

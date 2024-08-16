@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IContact, IUser } from "@src/types";
+import type { IContact } from "@src/types";
 
 import useStore from "@src/store/store";
 import { getFullName } from "@src/utils";
@@ -21,13 +21,12 @@ const store = useStore();
 <template>
   <div>
     <component
-      :is="props.variant === 'card' ? 'div' : 'a'"
+      :is="props.variant === 'card' ? 'div' : 'button'"
       @click="
         props.variant === 'card'
           ? () => {}
           : $emit('contactSelected', props.contact)
       "
-      href="#"
       class="w-full p-5 flex transition duration-200 ease-out outline-none"
       :class="{
         'hover:bg-indigo-50 active:bg-indigo-100 focus:bg-indigo-50 dark:hover:bg-gray-600 dark:focus:bg-gray-600':
@@ -77,6 +76,7 @@ const store = useStore();
         <Typography variant="body-2"> Last seen 2:30 am </Typography>
       </div>
 
+      <!--optional checkbox-->
       <div class="h-full flex flex-col justify-center items-center">
         <slot name="checkbox"></slot>
       </div>

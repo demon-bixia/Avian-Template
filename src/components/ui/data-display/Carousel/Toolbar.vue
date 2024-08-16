@@ -27,7 +27,7 @@ const props = defineProps<{
       @click="props.handleDecreaseZoom()"
     >
       <MagnifyingGlassMinusIcon
-        class="md:w-6 md:h-6 xs:w-5 xs:h-5 text-white opacity-80 hover:opacity-100"
+        class="w-6 h-6 text-white opacity-80 hover:opacity-100"
       />
     </IconButton>
 
@@ -41,7 +41,7 @@ const props = defineProps<{
       @click="props.handleIncreaseZoom()"
     >
       <MagnifyingGlassPlusIcon
-        class="md:w-6 md:h-6 xs:w-5 xs:h-5 text-white opacity-80 hover:opacity-100"
+        class="w-6 h-6 text-white opacity-80 hover:opacity-100"
       />
     </IconButton>
 
@@ -52,9 +52,7 @@ const props = defineProps<{
       variant="ghost"
       title="delete attachment"
     >
-      <TrashIcon
-        class="md:w-6 md:h-6 xs:w-5 xs:h-5 text-white opacity-80 hover:opacity-100"
-      />
+      <TrashIcon class="w-6 h-6 text-white opacity-80 hover:opacity-100" />
     </IconButton>
 
     <!--close carousel-->
@@ -64,9 +62,7 @@ const props = defineProps<{
       @click="props.handleCloseCarousel()"
       variant="ghost"
     >
-      <XMarkIcon
-        class="md:w-6 md:h-6 xs:w-5 xs:h-5 text-white opacity-80 hover:opacity-100"
-      />
+      <XMarkIcon class="w-6 h-6 text-white opacity-80 hover:opacity-100" />
     </IconButton>
   </div>
 </template>

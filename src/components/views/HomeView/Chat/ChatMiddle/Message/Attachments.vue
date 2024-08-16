@@ -29,7 +29,7 @@ const closeCarousel = () => {
   openCarousel.value = false;
 };
 
-// check if the message contians images or videos
+// check if the message contains images or videos
 const containsMedia = computed(() => {
   if (props.message.attachments) {
     for (let attachment of props.message.attachments) {
@@ -54,11 +54,11 @@ const numberOfMedia = computed(() => {
   return counter;
 });
 
-// (event) test is the attachment is the second media item.
+// test is the attachment is the second media item.
 const isNumber = (
   attachment: IAttachment,
   number: number,
-  largerThan?: boolean
+  largerThan?: boolean,
 ) => {
   let counter = 0;
   let caseCorrect = false;
@@ -99,7 +99,13 @@ const isNumber = (
           v-if="attachment.type === 'image'"
           @click="openCarouselWithAttachment(attachment.id)"
           class="outline-none"
-          :aria-label="numberOfMedia > 2 ? (props.message.attachments as []).length - 1 + ' more attachments' : attachment.name"
+          :aria-label="
+            numberOfMedia > 2
+              ? (props.message.attachments as []).length -
+                1 +
+                ' more attachments'
+              : attachment.name
+          "
         >
           <div
             v-if="!isNumber(attachment, 2, true)"
@@ -137,7 +143,13 @@ const isNumber = (
           v-if="attachment.type === 'video'"
           @click="openCarouselWithAttachment(attachment.id)"
           class="overflow-hidden outline-none"
-          :aria-label="numberOfMedia > 2 ? (props.message.attachments as []).length - 1 + ' more attachments' : attachment.name"
+          :aria-label="
+            numberOfMedia > 2
+              ? (props.message.attachments as []).length -
+                1 +
+                ' more attachments'
+              : attachment.name
+          "
         >
           <div
             v-if="!isNumber(attachment, 2, true)"
@@ -262,7 +274,7 @@ const isNumber = (
       <!--carousel modal-->
       <Carousel
         :open="openCarousel"
-        :starting-id="(selectedAttachmentId as number)"
+        :starting-id="selectedAttachmentId as number"
         :close-carousel="closeCarousel"
       />
     </div>

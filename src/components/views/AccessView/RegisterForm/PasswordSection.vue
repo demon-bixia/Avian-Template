@@ -1,67 +1,31 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-import { EyeSlashIcon, EyeIcon } from "@heroicons/vue/24/outline";
-import IconButton from "@src/components/ui/inputs/IconButton.vue";
-import TextInput from "@src/components/ui/inputs/TextInput.vue";
+import PasswordInput from "@src/components/ui/inputs/PasswordInput.vue";
 import Button from "@src/components/ui/inputs/Button.vue";
 
-const showPassword = ref(false);
-const showPasswordConfirm = ref(false);
+const password = ref("");
+const confirmPassword = ref("");
 </script>
 
 <template>
   <div>
     <div class="mb-5">
       <!--form-->
-      <TextInput
+      <PasswordInput
+        @valueChanged="(value) => (password = value)"
+        :value="password"
         label="Password"
         placeholder="Enter your password"
-        :type="showPassword ? 'text' : 'password'"
         class="pr-[2.5rem] mb-5"
-      >
-        <template v-slot:endAdornment>
-          <IconButton
-            title="toggle password visibility"
-            aria-label="toggle password visibility"
-            class="m-[.5rem] p-2"
-            @click="showPassword = !showPassword"
-          >
-            <EyeSlashIcon
-              v-if="showPassword"
-              class="w-5 h-5 text-black opacity-50 dark:text-white dark:opacity-60"
-            />
-            <EyeIcon
-              v-else
-              class="w-5 h-5 text-black opacity-50 dark:text-white dark:opacity-60"
-            />
-          </IconButton>
-        </template>
-      </TextInput>
+      />
 
-      <TextInput
+      <PasswordInput
+        @valueChanged="(value) => (confirmPassword = value)"
+        :value="confirmPassword"
         label="Confirm Password"
         placeholder="Enter your password"
-        :type="showPasswordConfirm ? 'text' : 'password'"
-      >
-        <template v-slot:endAdornment>
-          <IconButton
-            title="toggle password visibility"
-            aria-label="toggle password visibility"
-            class="m-[.5rem] p-2"
-            @click="showPasswordConfirm = !showPasswordConfirm"
-          >
-            <EyeSlashIcon
-              v-if="showPasswordConfirm"
-              class="w-5 h-5 text-black opacity-50 dark:text-white dark:opacity-60"
-            />
-            <EyeIcon
-              v-else
-              class="w-5 h-5 text-black opacity-50 dark:text-white dark:opacity-60"
-            />
-          </IconButton>
-        </template>
-      </TextInput>
+      />
     </div>
 
     <!--controls-->

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { RouterLink } from "vue-router";
 
-import SlideTransition from "@src/components/ui/transitions/SlideTransition.vue";
 import Typography from "@src/components/ui/data-display/Typography.vue";
+import SlideTransition from "@src/components/ui/transitions/SlideTransition.vue";
 import PasswordSection from "@src/components/views/AccessView/RegisterForm/PasswordSection.vue";
 import PersonalSection from "@src/components/views/AccessView/RegisterForm/PersonalSection.vue";
+import { RouterLink } from "vue-router";
 
 defineEmits(["activeSectionChange"]);
 
@@ -64,7 +64,7 @@ const changeActiveSection = (event: {
       <!--bottom text-->
       <div class="flex justify-center">
         <Typography variant="body-2"
-          >Already have an account ?
+          >Already have an account?
           <RouterLink to="/access/sign-in/" class="text-indigo-400 opacity-100">
             Sign in
           </RouterLink>

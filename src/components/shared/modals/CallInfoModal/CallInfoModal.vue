@@ -3,8 +3,8 @@ import { computed, ref } from "vue";
 
 import type { ICall } from "@src/types";
 
-import CallInfo from "@src/components/shared/modals/CallInfoModal/CallInfo.vue";
-import CallMembers from "@src/components/shared/modals/CallInfoModal/CallMembers.vue";
+import CallInfoTab from "@src/components/shared/modals/CallInfoModal/CallInfoTab.vue";
+import CallMembersTab from "@src/components/shared/modals/CallInfoModal/CallMembersTab.vue";
 import Button from "@src/components/ui/inputs/Button.vue";
 import SlideTransition from "@src/components/ui/transitions/SlideTransition.vue";
 import Modal from "@src/components/ui/utils/Modal.vue";
@@ -23,14 +23,17 @@ const animation = ref("slide-left");
 
 const ActivePage = computed((): any => {
   if (activePageName.value === "call-info") {
-    return CallInfo;
+    return CallInfoTab;
   } else if (activePageName.value === "call-members") {
-    return CallMembers;
+    return CallMembersTab;
   }
 });
 
 // (event) move between modal pages
-const changeActiveTab = (event: { tabName: string; animationName: string }) => {
+const handleChangeActiveTab = (event: {
+  tabName: string;
+  animationName: string;
+}) => {
   animation.value = event.animationName;
   activePageName.value = event.tabName;
 };
@@ -45,7 +48,7 @@ const changeActiveTab = (event: { tabName: string; animationName: string }) => {
         <!--modal content-->
         <SlideTransition :animation="animation">
           <component
-            @active-page-change="changeActiveTab"
+            @active-page-change="handleChangeActiveTab"
             :is="ActivePage"
             :call="props.call"
             :close-modal="closeModal"

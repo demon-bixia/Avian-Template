@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { IConversation, IMessage } from "@src/types";
 import type { Ref } from "vue";
+
 import { inject, onMounted, ref } from "vue";
 
 import useStore from "@src/store/store";

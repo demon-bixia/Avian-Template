@@ -4,8 +4,8 @@ import { computed, ref } from "vue";
 import useStore from "@src/store/store";
 import { getOtherMembers } from "@src/utils";
 
-import Dialing from "@src/components/shared/modals/VoiceCallModal/Dialing.vue";
-import Ongoing from "@src/components/shared/modals/VoiceCallModal/Ongoing.vue";
+import IncomingTab from "@src/components/shared/modals/VoiceCallModal/IncomingTab.vue";
+import OngoingTab from "@src/components/shared/modals/VoiceCallModal/OngoingTab.vue";
 import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 import Modal from "@src/components/ui/utils/Modal.vue";
 
@@ -26,14 +26,14 @@ const members = computed(() => {
 const modalSize = ref("290px");
 
 // the active modal component
-const ActiveComponent = computed((): any => {
+const ActiveTab = computed((): any => {
   if (store.activeCall) {
     if (store?.activeCall.status === "dialing") {
       modalSize.value = "290px";
-      return Dialing;
+      return IncomingTab;
     } else if (store?.activeCall.status === "ongoing") {
       modalSize.value = "400px";
-      return Ongoing;
+      return OngoingTab;
     }
   } else {
     return "div";
@@ -56,7 +56,7 @@ const handleCallStatusChange = (status: string) => {
       >
         <FadeTransition>
           <component
-            :is="ActiveComponent"
+            :is="ActiveTab"
             :members="members"
             :active-call="store.activeCall"
             :close-modal="() => props.closeModal(true)"

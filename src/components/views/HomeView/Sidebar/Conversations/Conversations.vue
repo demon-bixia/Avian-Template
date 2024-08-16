@@ -9,7 +9,7 @@ import { getActiveConversationId, getName } from "@src/utils";
 import { PencilSquareIcon } from "@heroicons/vue/24/outline";
 import ComposeModal from "@src/components/shared/modals/ComposeModal/ComposeModal.vue";
 import NoConversation from "@src/components/states/empty-states/NoConversation.vue";
-import Loading1 from "@src/components/states/loading-states/Loading1.vue";
+import Circle2Lines from "@src/components/states/loading-states/Circle2Lines.vue";
 import IconButton from "@src/components/ui/inputs/IconButton.vue";
 import SearchInput from "@src/components/ui/inputs/SearchInput.vue";
 import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
@@ -34,18 +34,20 @@ watch([keyword, openArchive], () => {
   if (openArchive.value) {
     // search conversations
     filteredConversations.value =
-      store.archivedConversations?.filter((conversation) =>
-        getName(conversation)
-          ?.toLowerCase()
-          .includes(keyword.value.toLowerCase())
+      store.archivedConversations?.filter(
+        (conversation) =>
+          getName(conversation)
+            ?.toLowerCase()
+            .includes(keyword.value.toLowerCase()),
       ) || [];
   } else {
     // search archived conversations
     filteredConversations.value =
-      store.conversations?.filter((conversation) =>
-        getName(conversation)
-          ?.toLowerCase()
-          .includes(keyword.value.toLowerCase())
+      store.conversations?.filter(
+        (conversation) =>
+          getName(conversation)
+            ?.toLowerCase()
+            .includes(keyword.value.toLowerCase()),
       ) || [];
   }
 });
@@ -59,7 +61,7 @@ const closeComposeModal = () => {
 // then open the archive
 onMounted(() => {
   let conversation = store.archivedConversations.find(
-    (conversation) => conversation.id === getActiveConversationId()
+    (conversation) => conversation.id === getActiveConversationId(),
   );
 
   if (conversation) openArchive.value = true;
@@ -99,7 +101,7 @@ onMounted(() => {
       class="w-full h-full scroll-smooth scrollbar-hidden"
       style="overflow-x: visible; overflow-y: scroll"
     >
-      <Loading1
+      <Circle2Lines
         v-if="store.status === 'loading' || store.delayLoading"
         v-for="item in 6"
       />

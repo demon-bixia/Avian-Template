@@ -26,7 +26,7 @@ const props = defineProps<{
           />
         </ScrollBox>
 
-        <!--caption button-->
+        <!--Caption input-->
         <div class="px-5 py-6">
           <TextInput placeholder="Caption" type="text" />
         </div>
