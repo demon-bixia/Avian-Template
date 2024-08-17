@@ -18,7 +18,7 @@ export default defineConfig({
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ['video.js/dist/video-js.css'],
+      external: ['video.js/dist/video-js.css', 'video.js'],
     }
   }
 });
