@@ -14,11 +14,4 @@ export default defineConfig({
       "@custom_types": resolve(rootDir, "src/@custom_types"),
     },
   },
-  build:{
-    rollupOptions: {
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
-      external: ['video.js/dist/video-js.css', 'video.js'],
-    }
-  }
 });
