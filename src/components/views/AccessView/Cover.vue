@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import cloudPatternPath from "@src/assets/images/clouds.png";
 import blurPath from "@src/assets/images/blur.png";
 </script>
@@ -16,14 +15,14 @@ import blurPath from "@src/assets/images/blur.png";
         class="px-9 py-[3.75rem] rounded-[.3125rem] bg-cover bg-no-repeat"
         :style="{ 'background-image': `url(${blurPath})` }"
       >
-        <Typography variant="display" class="mb-5 text-white" no-color
-          >Blazingly fast messaging platform for the
+        <p class="display mb-5 text-white">
+          Blazingly fast messaging platform for the
           <span class="text-gradient">web.</span>
-        </Typography>
-        <Typography variant="body-3" class="text-white" no-color
-          >Avian saves all the data in user’s devices and uses a cryptographic
+        </p>
+        <p class="body-3 text-white">
+          Avian saves all the data in user’s devices and uses a cryptographic
           protocols to sync the data across multiple browsers and devices.
-        </Typography>
+        </p>
       </div>
     </div>
   </div>

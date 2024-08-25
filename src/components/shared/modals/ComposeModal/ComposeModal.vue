@@ -5,7 +5,6 @@ import { computed, ref } from "vue";
 
 import ContactsTab from "@src/components/shared/modals/ComposeModal/ContactsTab.vue";
 import GroupTab from "@src/components/shared/modals/ComposeModal/GroupTab/GroupTab.vue";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import Button from "@src/components/ui/inputs/Button.vue";
 import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 import Modal from "@src/components/ui/utils/Modal.vue";
@@ -44,21 +43,18 @@ const activeTab = computed(() => {
       <div class="w-[18.75rem] bg-white dark:bg-gray-800 rounded pt-6">
         <!--header-->
         <div class="flex justify-between items-center mb-6 px-5">
-          <Typography
+          <p
             id="modal-title"
-            variant="heading-1"
+            class="heading-1 text-color"
             ref="modalTitle"
-            class="default-outline"
             tabindex="0"
           >
             Compose
-          </Typography>
+          </p>
 
           <Button
             @click="props.closeModal"
-            variant="outlined"
-            color="danger"
-            typography="body-4"
+            class="outlined-danger ghost-text py-2 px-4"
           >
             esc
           </Button>

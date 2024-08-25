@@ -4,8 +4,6 @@ import type { IContact } from "@src/types";
 import useStore from "@src/store/store";
 import { getFullName } from "@src/utils";
 
-import Typography from "@src/components/ui/data-display/Typography.vue";
-
 defineEmits(["contactSelected"]);
 
 const props = defineProps<{
@@ -55,13 +53,13 @@ const store = useStore();
             href="#"
             class="flex items-center"
           >
-            <Typography variant="heading-2">
+            <p class="heading-2 text-color">
               {{
                 store.user && store.user.id === props.contact.id
                   ? "You"
                   : getFullName(props.contact)
               }}
-            </Typography>
+            </p>
 
             <slot name="tag" />
           </component>
@@ -73,7 +71,7 @@ const store = useStore();
         </div>
 
         <!--contact last seen-->
-        <Typography variant="body-2"> Last seen 2:30 am </Typography>
+        <p class="body-2 text-color">Last seen 2:30 am</p>
       </div>
 
       <!--optional checkbox-->

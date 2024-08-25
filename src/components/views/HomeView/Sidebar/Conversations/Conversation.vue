@@ -20,7 +20,6 @@ import {
   MicrophoneIcon,
   TrashIcon,
 } from "@heroicons/vue/24/outline";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import Dropdown from "@src/components/ui/navigation/Dropdown/Dropdown.vue";
 import DropdownLink from "@src/components/ui/navigation/Dropdown/DropdownLink.vue";
 
@@ -111,40 +110,37 @@ const isActive = computed(
           <!--conversation name-->
           <div class="flex items-start">
             <div class="grow mb-4 text-start">
-              <Typography variant="heading-2">
+              <p class="heading-2 text-color">
                 {{ getName(props.conversation) }}
-              </Typography>
+              </p>
             </div>
 
             <!--last message date-->
-            <Typography variant="body-1">
+            <p class="body-1 text-color">
               {{ lastMessage?.date }}
-            </Typography>
+            </p>
           </div>
         </div>
 
         <div class="flex justify-between">
           <div>
             <!--draft Message-->
-            <Typography
+            <p
               v-if="
                 props.conversation.draftMessage &&
                 props.conversation.id !== getActiveConversationId()
               "
-              variant="body-2"
-              class="flex justify-start items-center text-red-400"
-              no-color
+              class="body-2 flex justify-start items-center text-red-400"
             >
               draft: {{ shorten(props.conversation.draftMessage) }}
-            </Typography>
+            </p>
 
             <!--recording name-->
-            <Typography
+            <p
               v-else-if="
                 lastMessage.type === 'recording' && lastMessage.content
               "
-              variant="body-2"
-              class="flex justify-start items-center"
+              class="body-2 text-color flex justify-start items-center"
             >
               <MicrophoneIcon
                 class="w-4 h-4 mr-2 text-black opacity-60 dark:text-white dark:opacity-70"
@@ -154,40 +150,38 @@ const isActive = computed(
                 Recording
                 {{ (lastMessage.content as IRecording).duration }}
               </span>
-            </Typography>
+            </p>
 
             <!--attachments title-->
-            <Typography
+            <p
               v-else-if="hasAttachments(lastMessage)"
-              variant="body-2"
-              class="flex justify-start items-center"
+              class="body-2 text-color flex justify-start items-center"
               :class="{ 'text-indigo-400': props.conversation.unread }"
             >
               <span :class="{ 'text-indigo-400': props.conversation.unread }">
                 {{ (lastMessage?.attachments as IAttachment[])[0].name }}
               </span>
-            </Typography>
+            </p>
 
             <!--last message content -->
-            <Typography
+            <p
               v-else
-              variant="body-2"
-              class="flex justify-start items-center"
+              class="body-2 text-color flex justify-start items-center"
               :class="{ 'text-indigo-400': props.conversation.unread }"
             >
               <span :class="{ 'text-indigo-400': props.conversation.unread }">
                 {{ shorten(lastMessage) }}
               </span>
-            </Typography>
+            </p>
           </div>
 
           <div v-if="props.conversation.unread">
             <div
               class="w-[1.125rem] h-[1.125rem] flex justify-center items-center rounded-[50%] bg-indigo-300"
             >
-              <Typography variant="body-1" no-color class="text-white">
+              <p class="body-1 text-white">
                 {{ props.conversation.unread }}
-              </Typography>
+              </p>
             </div>
           </div>
         </div>
@@ -206,20 +200,35 @@ const isActive = computed(
       }"
       :position="['top-0']"
     >
-      <DropdownLink :handle-click="handleCloseContextMenu">
+      <button
+        class="dropdown-link dropdown-link-primary"
+        aria-label="Show conversation information"
+        role="menuitem"
+        @click="handleCloseContextMenu"
+      >
         <InformationCircleIcon class="h-5 w-5 mr-3" />
         Conversation info
-      </DropdownLink>
+      </button>
 
-      <DropdownLink :handle-click="handleCloseContextMenu">
+      <button
+        class="dropdown-link dropdown-link-primary"
+        aria-label="Add conversation to archive"
+        role="menuitem"
+        @click="handleCloseContextMenu"
+      >
         <ArchiveBoxArrowDownIcon class="h-5 w-5 mr-3" />
         Archive conversation
-      </DropdownLink>
+      </button>
 
-      <DropdownLink :handle-click="handleCloseContextMenu" color="danger">
+      <button
+        class="dropdown-link dropdown-link-danger"
+        aria-label="Delete the conversation"
+        role="menuitem"
+        @click="handleCloseContextMenu"
+      >
         <TrashIcon class="h-5 w-5 mr-3" />
         Delete conversation
-      </DropdownLink>
+      </button>
     </Dropdown>
   </div>
 </template>

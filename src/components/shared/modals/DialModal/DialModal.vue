@@ -6,7 +6,6 @@ import { ref } from "vue";
 
 import useStore from "@src/store/store";
 
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import Button from "@src/components/ui/inputs/Button.vue";
 import Checkbox from "@src/components/ui/inputs/Checkbox.vue";
 import SearchInput from "@src/components/ui/inputs/SearchInput.vue";
@@ -55,20 +54,14 @@ const handleSelectedContactsChange = (contact: IContact) => {
       <div class="w-[18.75rem] py-6 bg-white dark:bg-gray-800 rounded">
         <!--modal header-->
         <div class="flex justify-between items-center mb-6 px-5">
-          <Typography
-            id="modal-title"
-            variant="heading-1"
-            class="default-outline"
-            tabindex="0"
-          >
+          <p id="modal-title" class="heading-1 text-color" tabindex="0">
             Contacts
-          </Typography>
+          </p>
 
           <!--close button-->
           <Button
             @click="props.closeModal"
-            variant="outlined"
-            color="danger"
+            class="outlined-danger ghost-text py-2 px-4"
             typography="body-4"
           >
             esc
@@ -106,7 +99,9 @@ const handleSelectedContactsChange = (contact: IContact) => {
 
         <!--call button-->
         <div class="px-5">
-          <Button color="success" class="w-full py-4"> Call </Button>
+          <Button class="contained-success contained-text w-full">
+            Call
+          </Button>
         </div>
       </div>
     </template>

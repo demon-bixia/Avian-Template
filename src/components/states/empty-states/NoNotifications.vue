@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { BellSlashIcon } from "@heroicons/vue/24/outline";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 </script>
 
 <template>
@@ -18,11 +17,9 @@ import Typography from "@src/components/ui/data-display/Typography.vue";
 
     <!--content-->
     <div>
-      <Typography variant="heading-2" class="mb-3">No notifications</Typography>
+      <p class="heading-2 text-color mb-3">No notifications</p>
 
-      <Typography variant="body-2" class="flex">
-        Your notifications will appear here.
-      </Typography>
+      <p class="body-2 text-color flex">Your notifications will appear here.</p>
     </div>
   </div>
 </template>

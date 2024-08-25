@@ -4,7 +4,6 @@ import useStore from "@src/store/store";
 import AccordionButton from "@src/components/ui/data-display/AccordionButton.vue";
 import Collapse from "@src/components/ui/utils/Collapse.vue";
 import SettingsSwitch from "@src/components/views/HomeView/Sidebar/Settings/SettingsAccordion/SettingsSwitch.vue";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 
 const props = defineProps<{
   collapsed: boolean;
@@ -24,8 +23,8 @@ const store = useStore();
     aria-controls="notifications-settings-collapse"
     @click="props.handleToggle()"
   >
-    <Typography variant="heading-2" class="mb-4"> Notifications </Typography>
-    <Typography variant="body-2"> Customize notifications </Typography>
+    <p class="heading-2 text-color mb-4">Notifications</p>
+    <p class="body-2 text-color">Customize notifications</p>
   </AccordionButton>
 
   <Collapse id="notifications-settings-collapse" :collapsed="props.collapsed">

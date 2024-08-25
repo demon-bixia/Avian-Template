@@ -8,7 +8,6 @@ import {
   TrashIcon,
   VideoCameraIcon,
 } from "@heroicons/vue/24/outline";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import IconButton from "@src/components/ui/inputs/IconButton.vue";
 
 const props = defineProps<{
@@ -39,29 +38,25 @@ const props = defineProps<{
     <!--name, date and size-->
     <div class="grow">
       <div class="flex items-center justify-between mb-3">
-        <Typography variant="heading-2" tabindex="0">
+        <p class="heading-2 text-color" tabindex="0">
           {{ attachment.name }}
-        </Typography>
+        </p>
       </div>
 
       <div class="flex justify-start">
-        <Typography variant="body-2" tabindex="0">
+        <p class="body-2 text-color" tabindex="0">
           {{ attachment.size }}
-        </Typography>
+        </p>
       </div>
     </div>
 
     <!--action buttons-->
     <div class="flex">
-      <IconButton class="w-7 h-7 mr-2" title="replace">
-        <ArrowPathRoundedSquareIcon
-          class="w-[.9375rem] h-[.9375rem] text-gray-400 group-hover:text-indigo-300"
-        />
+      <IconButton class="ic-btn-ghost-primary w-7 h-7 mr-2" title="replace">
+        <ArrowPathRoundedSquareIcon class="w-[.9375rem] h-[.9375rem]" />
       </IconButton>
-      <IconButton class="w-7 h-7" title="delete">
-        <TrashIcon
-          class="w-[.9375rem] h-[.9375rem] text-gray-400 group-hover:text-red-300"
-        />
+      <IconButton class="ic-btn-ghost-danger w-7 h-7" title="delete">
+        <TrashIcon class="w-[.9375rem] h-[.9375rem]" />
       </IconButton>
     </div>
   </div>

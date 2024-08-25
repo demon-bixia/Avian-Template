@@ -5,7 +5,6 @@ import { getCallName } from "@src/utils";
 
 import { PhoneIcon, XMarkIcon } from "@heroicons/vue/24/solid";
 import CallAvatar from "@src/components/shared/blocks/CallAvatar.vue";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import IconButton from "@src/components/ui/inputs/IconButton.vue";
 
 const props = defineProps<{
@@ -30,29 +29,22 @@ const props = defineProps<{
         />
       </div>
 
-      <Typography variant="heading-2" class="mb-4 outline-none" tabindex="0">
+      <p class="heading-2 text-color mb-4" tabindex="0">
         {{ getCallName(activeCall) }}
-      </Typography>
+      </p>
 
-      <Typography
-        variant="body-3"
-        no-color
-        class="outline-none text-green-300"
-        tabindex="0"
-      >
+      <p class="body-3 outline-none text-green-300" tabindex="0">
         {{ activeCall.direction }}
-      </Typography>
+      </p>
     </div>
 
     <!--answer button-->
     <div class="flex">
       <IconButton
-        variant="solid"
-        color="success"
         @click="handleCallStatusChange('ongoing')"
-        class="relative p-[1.0625rem] mr-8"
+        class="ic-btn-contained-success relative p-[1.0625rem] mr-8"
       >
-        <PhoneIcon class="w-[1rem] h-[1rem] text-white" />
+        <PhoneIcon class="w-[1rem] h-[1rem]" />
         <span
           class="animate-ping absolute inline-flex w-[2.1875rem] h-[2.1875rem] rounded-full bg-green-400 opacity-75"
         ></span>
@@ -60,16 +52,14 @@ const props = defineProps<{
 
       <!--reject button-->
       <IconButton
-        variant="solid"
-        color="danger"
         @click="
           () => {
             props.closeModal();
           }
         "
-        class="relative p-[1.0625rem]"
+        class="ic-btn-contained-danger relative p-[1.0625rem]"
       >
-        <XMarkIcon class="w-[1rem] h-[1rem] text-white" />
+        <XMarkIcon class="w-[1rem] h-[1rem]" />
         <span
           class="animate-ping absolute inline-flex w-[2.1875rem] h-[2.1875rem] rounded-full bg-red-400 opacity-75"
         ></span>

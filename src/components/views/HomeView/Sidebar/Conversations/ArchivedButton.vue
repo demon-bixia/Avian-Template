@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ArchiveBoxIcon, XMarkIcon } from "@heroicons/vue/24/outline";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import useStore from "@src/store/store";
 
 const props = defineProps<{
@@ -68,13 +67,11 @@ const store = useStore();
           "
         />
 
-        <Typography
-          variant="body-2"
-          no-color
-          class="text-white dark:text-white group-hover:text-white group-focus:text-white"
+        <p
+          class="body-2 text-white dark:text-white group-hover:text-white group-focus:text-white"
         >
           Close Archive
-        </Typography>
+        </p>
       </div>
 
       <div class="w-full flex flex-col" :class="{ hidden: props.open }">
@@ -82,19 +79,17 @@ const store = useStore();
           <!--title-->
           <div class="flex items-start">
             <div class="grow mb-4 text-start">
-              <Typography variant="heading-2">
-                Archived Conversations
-              </Typography>
+              <p class="heading-2 text-color">Archived Conversations</p>
             </div>
           </div>
         </div>
 
         <div>
           <!--number of conversations -->
-          <Typography variant="body-2" class="flex justify-start items-center">
+          <p class="body-2 text-color flex justify-start items-center">
             {{ store.archivedConversations.length }}
             conversations
-          </Typography>
+          </p>
         </div>
       </div>
     </button>

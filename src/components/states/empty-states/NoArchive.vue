@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { InboxIcon } from "@heroicons/vue/24/outline";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 </script>
 
 <template>
@@ -18,13 +17,10 @@ import Typography from "@src/components/ui/data-display/Typography.vue";
 
     <!--content-->
     <div>
-      <Typography variant="heading-2" class="mb-3"
-        >No archived conversations</Typography
-      >
-
-      <Typography variant="body-2" class="flex">
+      <p class="heading-2 text-color mb-3">No archived conversations</p>
+      <p class="body-2 text-color flex">
         select archive from the conversation context menu to save one.
-      </Typography>
+      </p>
     </div>
   </div>
 </template>

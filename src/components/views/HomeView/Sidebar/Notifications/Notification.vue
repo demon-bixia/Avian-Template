@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { INotification } from "@src/types";
 
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import {
   ArrowPathIcon,
   LockClosedIcon,
@@ -48,13 +47,13 @@ const props = defineProps<{
 
     <!--notification content-->
     <div class="grow">
-      <Typography variant="heading-2" class="mb-4">
+      <p class="heading-2 text-color mb-4">
         {{ props.notification.title }}
-      </Typography>
+      </p>
 
-      <Typography variant="body-2">
+      <p class="body-2 text-color">
         {{ props.notification.message }}
-      </Typography>
+      </p>
     </div>
   </div>
 </template>

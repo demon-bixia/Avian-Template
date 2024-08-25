@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import type { IAttachment, IMessage, IUser } from "@src/types";
+import type { IAttachment, IMessage } from "@src/types";
 
 import useStore from "@src/store/store";
 import { getFullName, hasAttachments, shorten } from "@src/utils";
-
-import Typography from "@src/components/ui/data-display/Typography.vue";
 
 const props = defineProps<{
   message: IMessage;
@@ -40,31 +38,27 @@ const store = useStore();
     </p>
 
     <!--content-->
-    <Typography
+    <p
       v-if="props.message.type !== 'recording' && props.message.content"
-      variant="body-2"
-      :no-color="true"
-      class="text-black opacity-50 dark:text-white dark:opacity-70"
+      class="body-2 text-black opacity-50 dark:text-white dark:opacity-70"
     >
       {{ shorten(props.message, 60) }}
-    </Typography>
+    </p>
 
     <!--attachments title-->
-    <Typography
+    <p
       v-else-if="hasAttachments(props.message)"
-      variant="body-2"
-      class="text-black opacity-50 dark:text-white dark:opacity-70"
+      class="body-2 text-black opacity-50 dark:text-white dark:opacity-70"
     >
       {{ (props.message?.attachments as IAttachment[])[0].name }}
-    </Typography>
+    </p>
 
     <!--recording title-->
-    <Typography
+    <p
       v-else-if="props.message.type === 'recording'"
-      variant="body-2"
-      class="text-black opacity-50 dark:text-white dark:opacity-70"
+      class="body-2 text-black opacity-50 dark:text-white dark:opacity-70"
     >
       recording 23s
-    </Typography>
+    </p>
   </div>
 </template>

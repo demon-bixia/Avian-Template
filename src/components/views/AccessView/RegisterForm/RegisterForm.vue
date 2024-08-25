@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import SlideTransition from "@src/components/ui/transitions/SlideTransition.vue";
 import PasswordSection from "@src/components/views/AccessView/RegisterForm/PasswordSection.vue";
 import PersonalSection from "@src/components/views/AccessView/RegisterForm/PersonalSection.vue";
@@ -45,12 +44,10 @@ const changeActiveSection = (event: {
           src="@src/assets/vectors/logo-gradient.svg"
           class="w-[1.375rem] h-[1.125rem] mb-5 opacity-70"
         />
-        <Typography variant="heading-2" class="mb-4"
-          >Get started with Avian</Typography
-        >
-        <Typography variant="body-3" class="text-opacity-75 font-light">
+        <p class="heading-2 text-color mb-4">Get started with Avian</p>
+        <p class="body-3 text-color text-opacity-75 font-light">
           Sign in to start using messaging!
-        </Typography>
+        </p>
       </div>
 
       <!--form section-->
@@ -63,12 +60,12 @@ const changeActiveSection = (event: {
 
       <!--bottom text-->
       <div class="flex justify-center">
-        <Typography variant="body-2"
-          >Already have an account?
+        <p class="body-2 text-color">
+          Already have an account?
           <RouterLink to="/access/sign-in/" class="text-indigo-400 opacity-100">
             Sign in
           </RouterLink>
-        </Typography>
+        </p>
       </div>
     </div>
   </div>

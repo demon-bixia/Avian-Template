@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Button from "@src/components/ui/inputs/Button.vue";
 import DropFileUpload from "@src/components/ui/inputs/DropFileUpload.vue";
-import TextInput from "@src/components/ui/inputs/TextInput.vue";
+import LabeledTextInput from "@src/components/ui/inputs/LabeledTextInput.vue";
 </script>
 
 <template>
@@ -9,7 +9,7 @@ import TextInput from "@src/components/ui/inputs/TextInput.vue";
     <!--inputs-->
     <div class="mb-5">
       <div class="mb-5">
-        <TextInput type="text" placeholder="Group name" label="Name" />
+        <LabeledTextInput type="text" placeholder="Group name" label="Name" />
       </div>
 
       <div>
@@ -27,7 +27,7 @@ import TextInput from "@src/components/ui/inputs/TextInput.vue";
             animationName: 'slide-left',
           })
         "
-        class="px-5 bg-indigo-400 hover:bg-indigo-500 active:bg-indigo-500"
+        class="contained-primary contained-text"
       >
         Next
       </Button>

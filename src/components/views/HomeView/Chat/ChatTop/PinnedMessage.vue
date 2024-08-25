@@ -70,7 +70,7 @@ const handleRemovePinnedMessage = () => {
           title="hide pinned message"
           aria-label="hide pinned message"
           @click="handleHidePinnedMessage"
-          class="group w-7 h-7 text-gray-300"
+          class="ic-btn-ghost-primary w-7 h-7"
           :class="{
             'mr-3':
               store.user && activeConversation?.admins?.includes(store.user.id),
@@ -85,13 +85,11 @@ const handleRemovePinnedMessage = () => {
             store.user && activeConversation?.admins?.includes(store.user.id)
           "
           @click="handleRemovePinnedMessage"
-          class="group w-7 h-7"
+          class="ic-btn-ghost-primary w-7 h-7"
           title="close pinned message"
           aria-label="close pinned message"
         >
-          <XCircleIcon
-            class="w-[1rem] h-[1rem] text-gray-300 group-hover:text-red-300"
-          />
+          <XCircleIcon class="w-[1rem] h-[1rem]" />
         </IconButton>
       </div>
     </div>

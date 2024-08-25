@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { IConversation } from "@src/types";
 import type { Ref } from "vue";
+
 import { onMounted, ref, watch } from "vue";
 
 import useStore from "@src/store/store";
@@ -63,7 +64,6 @@ onMounted(() => {
   let conversation = store.archivedConversations.find(
     (conversation) => conversation.id === getActiveConversationId(),
   );
-
   if (conversation) openArchive.value = true;
 });
 </script>
@@ -77,21 +77,26 @@ onMounted(() => {
       <!--side actions-->
       <template v-slot:actions>
         <IconButton
+          class="ic-btn-ghost-primary w-7 h-7"
           @click="composeOpen = true"
           aria-label="compose conversation"
           title="compose conversation"
-          class="w-7 h-7"
         >
-          <PencilSquareIcon
-            class="w-[1.25rem] h-[1.25rem] text-indigo-300 hover:text-indigo-400"
-          />
+          <PencilSquareIcon class="w-[1.25rem] h-[1.25rem]" />
         </IconButton>
       </template>
     </SidebarHeader>
 
     <!--search bar-->
     <div class="px-5 xs:pb-6 md:pb-5">
-      <SearchInput v-model="keyword" />
+      <SearchInput
+        @value-changed="
+          (value) => {
+            keyword = value;
+          }
+        "
+        :value="keyword"
+      />
     </div>
 
     <!--conversations-->

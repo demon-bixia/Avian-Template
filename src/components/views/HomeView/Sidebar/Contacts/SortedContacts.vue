@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { IContactGroup } from "@src/types";
 import type { Ref } from "vue";
+
 import { ref } from "vue";
 
 import { getFullName } from "@src/utils";
@@ -10,7 +11,6 @@ import {
   InformationCircleIcon,
   TrashIcon,
 } from "@heroicons/vue/24/outline";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import IconButton from "@src/components/ui/inputs/IconButton.vue";
 import Dropdown from "@src/components/ui/navigation/Dropdown/Dropdown.vue";
 import DropdownLink from "@src/components/ui/navigation/Dropdown/DropdownLink.vue";
@@ -89,22 +89,22 @@ const handleClickOutside = (event: Event) => {
 <template>
   <div v-for="(group, groupIndex) in props.contactGroups" :key="groupIndex">
     <!--group title-->
-    <Typography variant="heading-3" class="w-full px-5 pb-3 pt-5">
+    <p class="heading-3 text-color w-full px-5 pb-3 pt-5">
       {{ group.letter }}
-    </Typography>
+    </p>
 
     <!--contacts-->
     <div v-for="(contact, index) in group.contacts" :key="index">
       <div class="w-full p-5 flex justify-between items-center">
         <button
-          class="default-outline transition-all duration-200 ease-out"
+          class="transition-all duration-200 ease-out"
           :aria-label="getFullName(contact)"
         >
           <div class="flex-row">
             <!--contact name-->
-            <Typography variant="heading-2">
+            <p class="heading-2 text-color">
               {{ getFullName(contact) }}
-            </Typography>
+            </p>
           </div>
         </button>
 
@@ -113,19 +113,16 @@ const handleClickOutside = (event: Event) => {
           <!--dropdown menu button-->
           <IconButton
             :id="'open-contact-menu-' + index"
+            class="open-menu w-6 h-6"
+            @click="(event) => handleToggleDropdown(event, groupIndex, index)"
             :aria-expanded="
               (dropdownMenuStates as boolean[][])[groupIndex][index]
             "
             :aria-controls="'contact-menu-' + index"
-            @click="(event) => handleToggleDropdown(event, groupIndex, index)"
-            class="open-menu w-6 h-6"
             title="toggle contact menu"
             aria-label="toggle contact menu"
           >
-            <EllipsisVerticalIcon
-              class="open-menu h-5 w-5 text-black opacity-60 dark:text-white dark:opacity-70"
-              tabindex="0"
-            />
+            <EllipsisVerticalIcon class="open-menu h-5 w-5" tabindex="0" />
           </IconButton>
 
           <Dropdown
@@ -136,17 +133,25 @@ const handleClickOutside = (event: Event) => {
             :show="(dropdownMenuStates as boolean[][])[groupIndex][index]"
             :position="dropdownMenuPosition"
           >
-            <DropdownLink>
+            <button
+              class="dropdown-link dropdown-link-primary"
+              aria-label="Show profile information"
+              role="menuitem"
+            >
               <InformationCircleIcon
                 class="h-5 w-5 mr-3 text-black opacity-60 dark:text-white dark:opacity-70"
               />
               Personal information
-            </DropdownLink>
+            </button>
 
-            <DropdownLink color="danger">
+            <button
+              class="dropdown-link dropdown-link-danger"
+              aria-label="Delete contact"
+              role="menuitem"
+            >
               <TrashIcon class="h-5 w-5 mr-3" />
               Delete contact
-            </DropdownLink>
+            </button>
           </Dropdown>
         </div>
       </div>

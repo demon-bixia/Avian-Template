@@ -15,7 +15,6 @@ import {
   XCircleIcon,
 } from "@heroicons/vue/24/outline";
 import AttachmentsModal from "@src/components/shared/modals/AttachmentsModal/AttachmentsModal.vue";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import Button from "@src/components/ui/inputs/Button.vue";
 import IconButton from "@src/components/ui/inputs/IconButton.vue";
 import ScaleTransition from "@src/components/ui/transitions/ScaleTransition.vue";
@@ -95,35 +94,27 @@ onMounted(() => {
       <div class="min-h-[2.75rem]">
         <!--select attachments button-->
         <IconButton
+          v-if="!recording"
+          class="ic-btn-ghost-primary w-7 h-7 md:mr-5 xs:mr-4"
           title="open select attachments modal"
           aria-label="open select attachments modal"
           @click="openAttachmentsModal = true"
-          v-if="!recording"
-          class="group w-7 h-7 md:mr-5 xs:mr-4"
         >
-          <PaperClipIcon
-            class="w-[1.25rem] h-[1.25rem] text-gray-400 group-hover:text-indigo-300"
-          />
+          <PaperClipIcon class="w-[1.25rem] h-[1.25rem]" />
         </IconButton>
 
         <!--recording timer-->
-        <Typography
-          v-if="recording"
-          variant="body-1"
-          no-color
-          class="text-indigo-300"
-          >00:11</Typography
-        >
+        <p v-if="recording" class="body-1 text-indigo-300">00:11</p>
       </div>
 
       <!--message textarea-->
       <div class="grow md:mr-5 xs:mr-4 self-end" v-if="!recording">
         <div class="relative">
           <Textarea
-            v-model="value"
+            class="max-h-[5rem] pr-[3.125rem] resize-none scrollbar-hidden"
+            @value-changed="(newValue: string) => (value = newValue)"
             @input="handleSetDraft"
             :value="value"
-            class="max-h-[5rem] pr-[3.125rem] resize-none scrollbar-hidden"
             auto-resize
             cols="30"
             rows="1"
@@ -138,12 +129,9 @@ onMounted(() => {
               title="toggle emoji picker"
               aria-label="toggle emoji picker"
               @click="showPicker = !showPicker"
-              class="toggle-picker-button group w-7 h-7 md:mr-5 xs:mr-4"
+              class="ic-btn-ghost-primary toggle-picker-button w-7 h-7 md:mr-5 xs:mr-4"
             >
-              <XCircleIcon
-                v-if="showPicker"
-                class="w-[1.25rem] h-[1.25rem] text-gray-400 group-hover:text-indigo-300"
-              />
+              <XCircleIcon v-if="showPicker" class="w-[1.25rem] h-[1.25rem]" />
               <FaceSmileIcon
                 v-else
                 class="w-[1.25rem] h-[1.25rem] text-gray-400 group-hover:text-indigo-300"
@@ -169,16 +157,16 @@ onMounted(() => {
       <div class="min-h-[2.75rem]">
         <!--cancel recording button-->
         <div v-if="recording" @click="handleCancelRecording">
-          <Button variant="ghost" color="danger"> Cancel </Button>
+          <Button class="ghost-danger ghost-text"> Cancel </Button>
         </div>
       </div>
 
       <div class="min-h-[2.75rem] flex">
         <!--finish recording button-->
         <IconButton
+          v-if="recording"
           title="finish recording"
           aria-label="finish recording"
-          v-if="recording"
           @click="handleToggleRecording"
           class="relative group w-7 h-7 flex justify-center items-center outline-none rounded-full bg-indigo-300 hover:bg-green-300 dark:hover:bg-green-400 dark:focus:bg-green-400 focus:outline-none transition-all duration-200"
         >
@@ -201,22 +189,19 @@ onMounted(() => {
           @click="handleToggleRecording"
           title="start recording"
           aria-label="start recording"
-          class="group w-7 h-7 md:mr-5 xs:mr-4"
+          class="ic-btn-ghost-primary w-7 h-7 md:mr-5 xs:mr-4"
         >
-          <MicrophoneIcon
-            class="w-[1.25rem] h-[1.25rem] text-gray-400 group-hover:text-indigo-300"
-          />
+          <MicrophoneIcon class="w-[1.25rem] h-[1.25rem]" />
         </IconButton>
 
         <!--send message button-->
         <IconButton
           v-if="!recording"
-          class="group w-7 h-7 bg-indigo-300 hover:bg-indigo-400 focus:bg-indigo-400 dark:focus:bg-indigo-300 dark:bg-indigo-400 dark:hover:bg-indigo-400 active:scale-110"
-          variant="ghost"
+          class="ic-btn-contained-primary w-7 h-7 active:scale-110"
           title="send message"
           aria-label="send message"
         >
-          <PaperAirplaneIcon class="w-[1.0625rem] h-[1.0625rem] text-white" />
+          <PaperAirplaneIcon class="w-[1.0625rem] h-[1.0625rem]" />
         </IconButton>
       </div>
     </div>

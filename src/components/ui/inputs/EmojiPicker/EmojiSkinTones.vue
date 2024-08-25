@@ -2,7 +2,6 @@
 import { ref } from "vue";
 import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 import useStore from "@src/store/store";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 
 const store = useStore();
 const select = ref(false);
@@ -54,7 +53,7 @@ const handleChangeSkinTone = (tone: string) => {
 
     <!--active tone-->
     <div class="flex items-center">
-      <Typography variant="body-2">Skin tone:</Typography>
+      <p class="body-2 text-color">Skin tone:</p>
       <button
         @click="select = !select"
         class="w-5 h-5 ml-3 rounded-full hover:scale-110 duration-200 ease-in"

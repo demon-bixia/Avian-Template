@@ -2,7 +2,6 @@
 import type { IConversation } from "@src/types";
 
 import NoMessage from "@src/components/states/empty-states/NoMessage.vue";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import Button from "@src/components/ui/inputs/Button.vue";
 import SearchInput from "@src/components/ui/inputs/SearchInput.vue";
 import Modal from "@src/components/ui/utils/Modal.vue";
@@ -22,14 +21,13 @@ const props = defineProps<{
       <div class="w-[18.75rem] py-6 bg-white dark:bg-gray-800 rounded">
         <!--header-->
         <div class="mb-6 px-5 flex justify-between items-center">
-          <Typography id="modal-title" variant="heading-1" tabindex="0">
+          <p id="modal-title" class="heading-1 text-color" tabindex="0">
             Messages
-          </Typography>
+          </p>
 
           <Button
             @click="props.closeModal"
-            variant="outlined"
-            color="danger"
+            class="outlined-danger ghost-text py-2 px-4"
             typography="body-4"
           >
             esc

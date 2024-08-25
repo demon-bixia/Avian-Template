@@ -23,7 +23,6 @@ const props = defineProps<{
       v-show="props.isImage"
       aria-label="decrease zoom"
       class="mr-5"
-      variant="ghost"
       @click="props.handleDecreaseZoom()"
     >
       <MagnifyingGlassMinusIcon
@@ -37,7 +36,6 @@ const props = defineProps<{
       v-show="props.isImage"
       aria-label="increase zoom"
       class="mr-5"
-      variant="ghost"
       @click="props.handleIncreaseZoom()"
     >
       <MagnifyingGlassPlusIcon
@@ -49,7 +47,6 @@ const props = defineProps<{
     <IconButton
       aria-label="delete attachment"
       class="mr-5"
-      variant="ghost"
       title="delete attachment"
     >
       <TrashIcon class="w-6 h-6 text-white opacity-80 hover:opacity-100" />
@@ -60,7 +57,6 @@ const props = defineProps<{
       title="close carousel"
       aria-label="close carousel"
       @click="props.handleCloseCarousel()"
-      variant="ghost"
     >
       <XMarkIcon class="w-6 h-6 text-white opacity-80 hover:opacity-100" />
     </IconButton>

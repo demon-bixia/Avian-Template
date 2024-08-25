@@ -10,7 +10,6 @@ import Circle2Lines from "@src/components/states/loading-states/Circle2Lines.vue
 import SearchInput from "@src/components/ui/inputs/SearchInput.vue";
 import ContactItem from "@src/components/shared/blocks/ContactItem.vue";
 import Button from "@src/components/ui/inputs/Button.vue";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import Checkbox from "@src/components/ui/inputs/Checkbox.vue";
 import ScrollBox from "@src/components/ui/utils/ScrollBox.vue";
 
@@ -81,18 +80,13 @@ const handleSelectedContactsChange = (contact: IContact) => {
             animationName: 'slide-right',
           })
         "
-        variant="ghost"
-        class="px-5 mr-4"
+        class="ghost-primary ghost-text mr-4"
       >
-        <Typography variant="body-5" no-color> Previous </Typography>
+        <p class="body-5">Previous</p>
       </Button>
 
       <!--next button-->
-      <Button
-        class="px-5 bg-indigo-400 hover:bg-indigo-500 active:bg-indigo-500"
-      >
-        Finish
-      </Button>
+      <Button class="contained-primary contained-text"> Finish </Button>
     </div>
   </div>
 </template>

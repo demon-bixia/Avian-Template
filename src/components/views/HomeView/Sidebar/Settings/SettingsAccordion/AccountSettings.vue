@@ -6,10 +6,9 @@ import { ref } from "vue";
 import useStore from "@src/store/store";
 
 import AccordionButton from "@src/components/ui/data-display/AccordionButton.vue";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import Button from "@src/components/ui/inputs/Button.vue";
 import DropFileUpload from "@src/components/ui/inputs/DropFileUpload.vue";
-import TextInput from "@src/components/ui/inputs/TextInput.vue";
+import LabeledTextInput from "@src/components/ui/inputs/LabeledTextInput.vue";
 import Collapse from "@src/components/ui/utils/Collapse.vue";
 
 // Types
@@ -63,20 +62,20 @@ const handleSubmit = () => {
     aria-controls="account-settings-collapse"
     @click="handleToggle()"
   >
-    <Typography variant="heading-2" class="mb-4"> Account </Typography>
-    <Typography variant="body-2"> Update your profile details</Typography>
+    <p class="heading-2 text-color mb-4">Account</p>
+    <p class="body-2 text-color">Update your profile details</p>
   </AccordionButton>
 
   <Collapse id="account-settings-collapse" :collapsed="props.collapsed">
-    <TextInput
+    <LabeledTextInput
       label="First name"
-      class="mb-7"
+      inputClasses="mb-7"
       :value="accountValues?.firstName"
       @value-changed="(value) => (accountValues.firstName = value)"
     />
-    <TextInput
+    <LabeledTextInput
       label="Last name"
-      class="mb-7"
+      inputClasses="mb-7"
       :value="accountValues?.lastName"
       @value-changed="(value) => (accountValues.lastName = value)"
     />
@@ -87,7 +86,11 @@ const handleSubmit = () => {
       :value="accountValues.avatar"
       @value-changed="(value) => (accountValues.avatar = value)"
     />
-    <Button class="w-full py-4" @click="handleSubmit" :loading="loading">
+    <Button
+      class="contained-primary contained-text w-full py-4"
+      @click="handleSubmit"
+      :loading="loading"
+    >
       Save Settings
     </Button>
   </Collapse>

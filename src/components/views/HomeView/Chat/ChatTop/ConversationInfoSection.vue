@@ -17,7 +17,6 @@ import {
   PhoneIcon,
   ShareIcon,
 } from "@heroicons/vue/24/outline";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import IconButton from "@src/components/ui/inputs/IconButton.vue";
 import Dropdown from "@src/components/ui/navigation/Dropdown/Dropdown.vue";
 import DropdownLink from "@src/components/ui/navigation/Dropdown/DropdownLink.vue";
@@ -75,14 +74,12 @@ const handleOpenVoiceCallModal = () => {
   <div class="w-full flex justify-center items-center">
     <div class="group mr-4 md:hidden">
       <IconButton
-        class="w-7 h-7"
+        class="ic-btn-ghost-primary w-7 h-7"
         @click="handleCloseConversation"
         title="close conversation"
         aria-label="close conversation"
       >
-        <ChevronLeftIcon
-          class="w-[1.25rem] h-[1.25rem] text-gray-300 group-hover:text-indigo-300"
-        />
+        <ChevronLeftIcon class="w-[1.25rem] h-[1.25rem]" />
       </IconButton>
     </div>
 
@@ -103,23 +100,21 @@ const handleOpenVoiceCallModal = () => {
 
       <!--name and last seen-->
       <div class="flex flex-col">
-        <Typography
-          variant="heading-2"
+        <p
+          class="w-fit heading-2 text-color mb-2 cursor-pointer"
           @click="props.handleOpenInfo"
-          class="mb-2 default-outline cursor-pointer"
           tabindex="0"
         >
           {{ getName(activeConversation) }}
-        </Typography>
+        </p>
 
-        <Typography
-          variant="body-2"
-          class="font-extralight default-outline rounded-[.25rem]"
+        <p
+          class="body-2 text-color font-extralight rounded-[.25rem]"
           tabindex="0"
           aria-label="Last seen december 16, 2019"
         >
           Last seen Dec 16, 2019
-        </Typography>
+        </p>
       </div>
     </div>
 
@@ -129,7 +124,7 @@ const handleOpenVoiceCallModal = () => {
         title="search messages"
         aria-label="search messages"
         @click="props.handleOpenSearch"
-        class="group w-7 h-7 mr-3"
+        class="ic-btn-ghost-primary w-7 h-7 mr-3"
       >
         <MagnifyingGlassIcon
           class="w-[1.25rem] h-[1.25rem] text-gray-400 group-hover:text-indigo-300"
@@ -140,17 +135,15 @@ const handleOpenVoiceCallModal = () => {
         <!--dropdown menu button-->
         <IconButton
           id="open-conversation-menu"
+          class="ic-btn-ghost-primary open-top-menu group w-7 h-7"
           @click="showDropdown = !showDropdown"
-          tabindex="0"
-          class="open-top-menu group w-7 h-7"
           :aria-expanded="showDropdown"
+          tabindex="0"
           aria-controls="conversation-menu"
           title="toggle conversation menu"
           aria-label="toggle conversation menu"
         >
-          <EllipsisVerticalIcon
-            class="open-top-menu w-[1.25rem] h-[1.25rem] text-gray-400 group-hover:text-indigo-300"
-          />
+          <EllipsisVerticalIcon class="open-top-menu w-[1.25rem] h-[1.25rem]" />
         </IconButton>
 
         <!--dropdown menu-->
@@ -162,8 +155,11 @@ const handleOpenVoiceCallModal = () => {
           :handle-click-outside="handleClickOutside"
           aria-labelledby="open-conversation-menu"
         >
-          <DropdownLink
-            :handle-click="
+          <button
+            class="dropdown-link dropdown-link-primary"
+            aria-label="Show profile information"
+            role="menuitem"
+            @click="
               () => {
                 handleCloseDropdown();
                 props.handleOpenInfo();
@@ -174,9 +170,12 @@ const handleOpenVoiceCallModal = () => {
               class="h-5 w-5 mr-3 text-black opacity-60 dark:text-white dark:opacity-70"
             />
             Profile Information
-          </DropdownLink>
-          <DropdownLink
-            :handle-click="
+          </button>
+          <button
+            class="dropdown-link dropdown-link-primary"
+            aria-label="start a voice call with this contact"
+            role="menuitem"
+            @click="
               () => {
                 handleCloseDropdown();
                 handleOpenVoiceCallModal();
@@ -187,17 +186,27 @@ const handleOpenVoiceCallModal = () => {
               class="h-5 w-5 mr-3 text-black opacity-60 dark:text-white dark:opacity-70"
             />
             Voice call
-          </DropdownLink>
-          <DropdownLink :handle-click="handleCloseDropdown">
+          </button>
+          <button
+            class="dropdown-link dropdown-link-primary"
+            aria-label="share this contact"
+            role="menuitem"
+            @click="handleCloseDropdown"
+          >
             <ShareIcon
               class="h-5 w-5 mr-3 text-black opacity-60 dark:text-white dark:opacity-70"
             />
             Shared media
-          </DropdownLink>
-          <DropdownLink :handle-click="handleCloseDropdown" color="danger">
+          </button>
+          <button
+            class="dropdown-link dropdown-link-danger"
+            aria-label="block this contact"
+            role="menuitem"
+            @click="handleCloseDropdown"
+          >
             <NoSymbolIcon class="h-5 w-5 mr-3" />
             Block contact
-          </DropdownLink>
+          </button>
         </Dropdown>
       </div>
     </div>

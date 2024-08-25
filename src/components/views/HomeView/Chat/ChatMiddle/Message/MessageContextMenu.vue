@@ -84,24 +84,42 @@ const handleReplyToMessage = () => {
     }"
     :position="['top-0']"
   >
-    <DropdownLink :handle-click="handleReplyToMessage">
+    <button
+      class="dropdown-link dropdown-link-primary"
+      role="menuitem"
+      aria-label="reply to this message"
+      @click="handleReplyToMessage"
+    >
       <ArrowUturnLeftIcon class="h-5 w-5 mr-3" />
       Reply
-    </DropdownLink>
+    </button>
 
-    <DropdownLink :handle-click="handleCloseContextMenu">
+    <button
+      class="dropdown-link dropdown-link-primary"
+      role="menuitem"
+      aria-label="copy this message"
+      @click="handleCloseContextMenu"
+    >
       <ClipboardDocumentIcon class="h-5 w-5 mr-3" />
       Copy
-    </DropdownLink>
+    </button>
 
-    <DropdownLink :handle-click="handlePinMessage">
+    <button
+      class="dropdown-link dropdown-link-primary"
+      role="menuitem"
+      aria-label="pin this message"
+      @click="handlePinMessage"
+    >
       <BookmarkSquareIcon class="h-5 w-5 mr-3" />
       Pin
-    </DropdownLink>
+    </button>
 
-    <DropdownLink
+    <button
       v-if="props.selected"
-      :handle-click="
+      class="dropdown-link dropdown-link-primary"
+      role="menuitem"
+      aria-label="deselect this message"
+      @click="
         () => {
           handleCloseContextMenu();
           props.handleDeselectMessage(props.message.id);
@@ -110,11 +128,14 @@ const handleReplyToMessage = () => {
     >
       <XCircleIcon class="h-5 w-5 mr-3" />
       Deselect
-    </DropdownLink>
+    </button>
 
-    <DropdownLink
+    <button
       v-else
-      :handle-click="
+      class="dropdown-link dropdown-link-primary"
+      role="menuitem"
+      aria-label="select this message"
+      @click="
         () => {
           handleCloseContextMenu();
           props.handleSelectMessage(props.message.id);
@@ -123,11 +144,16 @@ const handleReplyToMessage = () => {
     >
       <CheckCircleIcon class="h-5 w-5 mr-3" />
       Select
-    </DropdownLink>
+    </button>
 
-    <DropdownLink :handle-click="handleCloseContextMenu" color="danger">
+    <button
+      class="dropdown-link dropdown-link-danger"
+      role="menuitem"
+      aria-label="delete this message"
+      @click="handleCloseContextMenu"
+    >
       <TrashIcon class="h-5 w-5 mr-3" />
       Delete Message
-    </DropdownLink>
+    </button>
   </Dropdown>
 </template>

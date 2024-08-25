@@ -45,13 +45,11 @@ const handleRemoveReplyMessage = () => {
       <!--close selected Message-->
       <IconButton
         @click="handleRemoveReplyMessage"
-        class="group w-7 h-7"
+        class="ic-btn-ghost-primary w-7 h-7"
         title="remove reply"
         aria-label="remove reply"
       >
-        <XCircleIcon
-          class="w-[1rem] h-[1rem] text-gray-300 group-hover:text-red-300"
-        />
+        <XCircleIcon class="w-[1rem] h-[1rem]" />
       </IconButton>
     </div>
   </SlideTransition>

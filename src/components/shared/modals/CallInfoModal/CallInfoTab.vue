@@ -11,7 +11,6 @@ import {
   UserGroupIcon,
 } from "@heroicons/vue/24/outline";
 import IconAndText from "@src/components/shared/blocks/IconAndText.vue";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import Button from "@src/components/ui/inputs/Button.vue";
 
 const props = defineProps<{
@@ -36,20 +35,13 @@ const CallStatusIcon = computed(() => {
   <div>
     <!--modal header-->
     <div class="px-5 flex justify-between items-center">
-      <Typography
-        id="modal-title"
-        variant="heading-1"
-        class="-none"
-        tabindex="0"
-      >
+      <p id="modal-title" class="heading-1 text-color" tabindex="0">
         Call Details
-      </Typography>
+      </p>
 
       <Button
         @click="props.closeModal"
-        variant="outlined"
-        color="danger"
-        typography="body-4"
+        class="outlined-danger ghost-text py-2 px-4"
       >
         esc
       </Button>

@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-import Typography from "@src/components/ui/data-display/Typography.vue";
-
 const emit = defineEmits(["valueChanged"]);
 
 const active = ref(false);
@@ -15,7 +13,7 @@ const props = defineProps<{
   accept?: string;
 }>();
 
-// (event) handle change when droping files
+// (event) handle change when dropping files
 const handleFileDrop = (event: any) => {
   active.value = false;
   emit("valueChanged", (event.dataTransfer as DataTransfer).files[0]);
@@ -25,7 +23,7 @@ const handleFileDrop = (event: any) => {
 const handleFileChange = (event: Event) => {
   emit(
     "valueChanged",
-    ((event.target as HTMLInputElement).files as FileList)[0]
+    ((event.target as HTMLInputElement).files as FileList)[0],
   );
 };
 </script>
@@ -70,16 +68,14 @@ const handleFileChange = (event: Event) => {
 
       <!--custom placeholder and input-->
       <div :class="{ hidden: active }">
-        <Typography v-if="value" variant="body-2">{{ value.name }}</Typography>
-        <Typography
+        <p v-if="value" class="body-2 text-color">{{ value.name }}</p>
+        <p
           v-else
-          variant="body-2"
-          no-color
-          class="text-black text-opacity-40 dark:text-white dark:text-opacity-70"
+          class="body-2 text-black text-opacity-40 dark:text-white dark:text-opacity-70"
         >
           Choose a file <br />
           or drop it here.
-        </Typography>
+        </p>
       </div>
     </label>
   </div>

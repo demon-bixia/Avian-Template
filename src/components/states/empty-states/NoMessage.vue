@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ChatBubbleOvalLeftIcon } from "@heroicons/vue/24/outline";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 
 const props = defineProps<{
   vertical?: boolean;
@@ -29,11 +28,9 @@ const props = defineProps<{
 
     <!--content-->
     <div :class="props.vertical ? [] : ['flex', 'flex-col', 'items-start']">
-      <Typography variant="heading-2" class="mb-3">No Messages</Typography>
+      <p class="heading-2 text-color mb-3">No Messages</p>
 
-      <Typography variant="body-2" class="flex">
-        no messages found.
-      </Typography>
+      <p class="body-2 text-color flex">no messages found.</p>
     </div>
   </div>
 </template>

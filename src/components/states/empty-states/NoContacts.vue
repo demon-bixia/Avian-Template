@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { UserGroupIcon } from "@heroicons/vue/24/outline";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 
 const props = defineProps<{
   vertical?: boolean;
@@ -29,11 +28,9 @@ const props = defineProps<{
 
     <!--content-->
     <div :class="props.vertical ? [] : ['flex', 'flex-col', 'items-start']">
-      <Typography variant="heading-2" class="mb-3">No contacts</Typography>
+      <p class="heading-2 text-color mb-3">No contacts</p>
 
-      <Typography variant="body-2" class="flex">
-        click the plus icon to add one.
-      </Typography>
+      <p class="body-2 text-color flex">click the plus icon to add one.</p>
     </div>
   </div>
 </template>

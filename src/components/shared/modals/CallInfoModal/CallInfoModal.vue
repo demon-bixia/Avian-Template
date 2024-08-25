@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
-
 import type { ICall } from "@src/types";
+
+import { computed, ref } from "vue";
 
 import CallInfoTab from "@src/components/shared/modals/CallInfoModal/CallInfoTab.vue";
 import CallMembersTab from "@src/components/shared/modals/CallInfoModal/CallMembersTab.vue";
@@ -55,9 +55,11 @@ const handleChangeActiveTab = (event: {
           />
         </SlideTransition>
 
-        <!--Call agian button-->
+        <!--Call again button-->
         <div class="px-5">
-          <Button color="success" class="w-full py-4"> Call again </Button>
+          <Button class="contained-success contained-text w-full">
+            Call again
+          </Button>
         </div>
       </div>
     </template>

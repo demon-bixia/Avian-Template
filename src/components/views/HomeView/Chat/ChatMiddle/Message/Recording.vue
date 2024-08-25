@@ -2,10 +2,9 @@
 import type { IRecording } from "@src/types";
 import type { Ref } from "vue";
 
-import { ref, onMounted, onUnmounted, computed } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 
 import { PauseIcon, PlayIcon } from "@heroicons/vue/24/outline";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import WaveSurfer from "wavesurfer.js";
 import Spinner from "@src/components/ui/utils/Spinner.vue";
 
@@ -99,14 +98,12 @@ onUnmounted(() => {
       ></div>
     </div>
 
-    <Typography
-      variant="body-1"
-      noColor
-      class="text-black dark:text-white opacity-40 dark:opacity-70"
+    <p
+      class="body-1 text-black dark:text-white opacity-40 dark:opacity-70"
       tabindex="0"
       aria-label="11 seconds"
     >
       00:11
-    </Typography>
+    </p>
   </div>
 </template>

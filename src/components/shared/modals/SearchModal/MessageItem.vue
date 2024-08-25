@@ -3,8 +3,6 @@ import type { IMessage } from "@src/types";
 
 import { getFullName } from "@src/utils";
 
-import Typography from "@src/components/ui/data-display/Typography.vue";
-
 const props = defineProps<{
   message: IMessage;
 }>();
@@ -25,18 +23,18 @@ const props = defineProps<{
     <!--name and message-->
     <div class="grow">
       <div class="flex flex-col items-start">
-        <Typography variant="heading-2" class="mb-4">
+        <p class="heading-2 text-color mb-4">
           {{ getFullName(props.message.sender) }}
-        </Typography>
+        </p>
 
-        <Typography variant="body-2"> Wow really cool </Typography>
+        <p class="body-2 text-color"> Wow really cool </p>
       </div>
     </div>
 
     <!--message date-->
     <div>
       <p class="opacity-60 font-light text-xs leading-4 tracking-[.01rem]">
-        <Typography variant="body-4"> 1/5/2019 </Typography>
+        <p class="body-4 text-color"> 1/5/2019 </p>
       </p>
     </div>
   </button>

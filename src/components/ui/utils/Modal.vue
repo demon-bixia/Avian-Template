@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { useFocusTrap } from "@vueuse/integrations/useFocusTrap";
 import type { Ref } from "vue";
+
+import { useFocusTrap } from "@vueuse/integrations/useFocusTrap";
 import { onMounted, onUnmounted, ref, watch } from "vue";
 
 import SlideTransition from "@src/components/ui/transitions/SlideTransition.vue";
@@ -51,7 +52,7 @@ watch(
         deactivate();
       }, 200);
     }
-  }
+  },
 );
 </script>
 

@@ -12,7 +12,7 @@ const props = defineProps<{
   <div class="relative flex justify-center items-center">
     <input
       :id="props.inputId"
-      :class="props.value ? ['bg-indigo-400'] : []"
+      :class="props.value ? ['bg-indigo-300'] : []"
       type="checkbox"
       @click="
         () => {
@@ -21,7 +21,7 @@ const props = defineProps<{
         }
       "
       :checked="props.value"
-      class="h-5 w-5 appearance-none relative cursor-pointer outline-none rounded-[.3125rem] border border-indigo-400 transition-all duration-300"
+      class="h-5 w-5 appearance-none relative cursor-pointer outline-none rounded-[.3125rem] border border-indigo-300 transition-all duration-300"
     />
     <CheckIcon
       @click="

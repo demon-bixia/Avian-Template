@@ -3,7 +3,6 @@ import type { Component } from "vue";
 import { computed } from "vue";
 
 import { ChevronRightIcon } from "@heroicons/vue/24/outline";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import SwitchInput from "@src/components/ui/inputs/SwitchInput.vue";
 
 const props = defineProps<{
@@ -45,14 +44,9 @@ const colorClasses = computed(() => {
     />
 
     <div class="grow flex justify-start items-start">
-      <Typography
-        variant="body-2"
-        no-color
-        class="transition-all duration-200"
-        :class="colorClasses"
-      >
+      <p class="body-2 transition-all duration-200" :class="colorClasses">
         {{ props.title }}
-      </Typography>
+      </p>
     </div>
 
     <ChevronRightIcon
@@ -71,9 +65,9 @@ const colorClasses = computed(() => {
     />
 
     <div class="grow flex justify-start items-start">
-      <Typography variant="body-2" no-color :class="colorClasses">
+      <p class="body-2" :class="colorClasses">
         {{ props.title }}
-      </Typography>
+      </p>
     </div>
 
     <SwitchInput v-if="props.switch" :value="true" />

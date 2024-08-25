@@ -11,7 +11,6 @@ import {
 } from "@heroicons/vue/24/solid";
 import RangeSlider from "@src/components/ui/inputs/RangeSlider.vue";
 import { VideoPlayer } from "@videojs-player/vue";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 
 import "video.js/dist/video-js.css";
 
@@ -90,7 +89,7 @@ const handleToggleVideo = (state: any, player: any) => {
       <div class="overlay-container">
         <!--video title-->
         <div v-if="props.name" class="video-title">
-          <Typography variant="body-5" no-color>{{ props.name }}</Typography>
+          <p class="body-5">{{ props.name }}</p>
         </div>
 
         <!--pause and start buttons-->

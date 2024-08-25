@@ -1,73 +1,43 @@
 <script setup lang="ts">
-import type { Ref } from "vue";
-
-import { twMerge } from "tailwind-merge";
-import { ref, computed } from "vue";
-
 import { MagnifyingGlassIcon, XCircleIcon } from "@heroicons/vue/24/outline";
 import IconButton from "@src/components/ui/inputs/IconButton.vue";
+import LabeledTextInput from "@src/components/ui/inputs/LabeledTextInput.vue";
+
+defineEmits(["valueChanged"]);
 
 const props = defineProps<{
   variant?: string;
   class?: string;
+  value?: string;
 }>();
-
-const input: Ref<HTMLInputElement | null> = ref(null);
-
-const baseClasses = `w-full h-8 py-3 px-7 border outline-none rounded-sm text-black
-dark:text-white dark:opacity-70 placeholder:text-black placeholder:opacity-40
-dark:placeholder:text-white dark:placeholder:opacity-70 focus:outline-none 
-focus:ring focus:ring-indigo-100 duration-200 transition ease-out
-text-opacity-70`;
-
-const variantClasses = computed(() => {
-  if (props.variant === "outline") {
-    return "bg-transparent border-gray-100 dark:border-gray-600";
-  } else {
-    return "border-none bg-gray-50 dark:bg-gray-700 focus:bg-white dark:focus:bg-gray-800";
-  }
-});
-
-const classes = twMerge(baseClasses, variantClasses.value, props.class);
 </script>
 
 <template>
-  <div class="relative">
-    <i class="absolute left-0 top-[30%] ml-3 text-center">
+  <LabeledTextInput
+    placeholder="Search.."
+    class="pl-7"
+    :value="props.value"
+    @value-changed="(value) => $emit('valueChanged', value)"
+  >
+    <template v-slot:startAdornment>
       <MagnifyingGlassIcon
-        class="w-5 h-5 stroke-2 text-black opacity-40 dark:text-white dark:opacity-70"
+        class="w-5 h-5 mx-[8px] translate-y-[75%] text-gray-400 dark:text-white dark:opacity-70"
       />
-    </i>
-    <input
-      ref="input"
-      type="text"
-      placeholder="Search.."
-      :class="classes"
-      @input="
-        ($event) => {
-          $emit('update:modelValue', ($event.target as HTMLInputElement).value);
-        }
-      "
-    />
-    <div class="absolute top-0 right-0">
-      <slot name="endAdornment">
-        <IconButton
-          v-if="input && input.value"
-          @click="
-            ($event) => {
-              if (input) input.value = '';
-              $emit('update:modelValue', '');
-            }
-          "
-          title="clear text"
-          aria-label="clear text"
-          class="m-[.5rem] p-2"
-        >
-          <XCircleIcon
-            class="w-5 h-5 text-black opacity-40 dark:text-white dark:opacity-60"
-          />
-        </IconButton>
-      </slot>
-    </div>
-  </div>
+    </template>
+    <template v-slot:endAdornment>
+      <IconButton
+        v-if="props.value"
+        @click="
+          () => {
+            if (props.value) $emit('valueChanged', '');
+          }
+        "
+        title="clear text"
+        aria-label="clear text"
+        class="ic-btn-ghost-gray m-[.5rem] p-2"
+      >
+        <XCircleIcon class="w-5 h-5" />
+      </IconButton>
+    </template>
+  </LabeledTextInput>
 </template>

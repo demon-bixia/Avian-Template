@@ -65,13 +65,11 @@ watch(searchText, () => {
       <template v-slot:actions>
         <IconButton
           @click="openModal = true"
-          class="w-7 h-7"
+          class="ic-btn-ghost-primary w-7 h-7"
           title="add contacts"
           aria-label="add contacts"
         >
-          <UserPlusIcon
-            class="w-[1.25rem] h-[1.25rem] text-indigo-300 hover:text-indigo-400"
-          />
+          <UserPlusIcon class="w-[1.25rem] h-[1.25rem]" />
         </IconButton>
       </template>
     </SidebarHeader>

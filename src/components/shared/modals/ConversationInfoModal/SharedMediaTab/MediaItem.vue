@@ -6,7 +6,6 @@ import {
   PhotoIcon,
   VideoCameraIcon,
 } from "@heroicons/vue/24/outline";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 
 const props = defineProps<{
   attachment: IAttachment;
@@ -39,22 +38,21 @@ const props = defineProps<{
     <!--name, date and size-->
     <div class="grow">
       <div class="flex items-center justify-between mb-3">
-        <Typography variant="heading-2">
+        <p class="heading-2 text-color">
           {{ props.attachment.name }}
-        </Typography>
+        </p>
 
-        <Typography variant="body-4">
+        <p class="body-4 text-color">
           {{ props.date }}
-        </Typography>
+        </p>
       </div>
 
       <div class="flex justify-start">
-        <Typography
-          variant="body-2"
-          class="font-normal text-sm text-black opacity-60 leading-4 tracking-[.01rem]"
+        <p
+          class="body-2 text-color font-normal text-sm text-black opacity-60 leading-4 tracking-[.01rem]"
         >
           {{ props.attachment.size }}
-        </Typography>
+        </p>
       </div>
     </div>
   </button>

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ChatBubbleOvalLeftIcon } from "@heroicons/vue/24/solid";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 </script>
 
 <template>
@@ -13,10 +12,10 @@ import Typography from "@src/components/ui/data-display/Typography.vue";
       />
     </div>
 
-    <Typography variant="heading-2" class="mb-3"> No chat selected </Typography>
+    <p class="heading-2 text-color mb-3">No chat selected</p>
 
-    <Typography variant="body-2" class="flex">
+    <p class="body-2 text-color flex">
       Select a conversation from the conversation menu.
-    </Typography>
+    </p>
   </div>
 </template>

@@ -10,7 +10,6 @@ import {
   UserPlusIcon,
 } from "@heroicons/vue/24/solid";
 import CallAvatar from "@src/components/shared/blocks/CallAvatar.vue";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import IconButton from "@src/components/ui/inputs/IconButton.vue";
 
 const props = defineProps<{
@@ -34,50 +33,43 @@ const props = defineProps<{
         />
       </div>
 
-      <Typography variant="heading-2" class="mb-4 outline-none" tabindex="0">
+      <p class="heading-2 text-color mb-4 outline-none" tabindex="0">
         {{ getCallName(activeCall) }}
-      </Typography>
+      </p>
 
-      <Typography
-        variant="body-3"
-        no-color
-        class="outline-none text-green-300"
-        tabindex="0"
-      >
+      <p class="body-3 outline-none text-green-300" tabindex="0">
         {{ activeCall.direction }}
-      </Typography>
+      </p>
     </div>
 
     <!--call actions-->
     <div class="mb-9 flex">
       <!--add member to call-->
       <div class="mr-5 first-letter:flex flex-col justify-center items-center">
-        <IconButton variant="solid" class="p-3 mb-3">
-          <UserPlusIcon
-            class="w-[1.0625rem] h-[1.0625rem] text-black text-opacity-60 dark:text-white dark:text-opacity-70"
-          />
+        <IconButton class="ic-btn-contained-gray p-3 mb-3">
+          <UserPlusIcon class="w-[1.0625rem] h-[1.0625rem]" />
         </IconButton>
-        <Typography variant="body-4">add</Typography>
+        <p class="body-4 text-color">add</p>
       </div>
 
       <!--mute sound-->
       <div class="mr-5 flex flex-col justify-center items-center">
-        <IconButton variant="solid" class="p-3 mb-3">
+        <IconButton class="ic-btn-contained-gray p-3 mb-3">
           <SpeakerXMarkIcon
             class="w-[1.0625rem] h-[1.0625rem] text-black text-opacity-60 dark:text-white dark:text-opacity-70"
           />
         </IconButton>
-        <Typography variant="body-4">mute</Typography>
+        <p class="body-4 text-color">mute</p>
       </div>
 
       <!--open chat-->
       <div class="flex flex-col justify-center items-center">
-        <IconButton variant="solid" class="p-3 mb-3">
+        <IconButton class="ic-btn-contained-gray p-3 mb-3">
           <ChatBubbleBottomCenterTextIcon
             class="w-[1.0625rem] h-[1.0625rem] text-black text-opacity-60 dark:text-white dark:text-opacity-70"
           />
         </IconButton>
-        <Typography variant="body-4">chat</Typography>
+        <p class="body-4 text-color">chat</p>
       </div>
     </div>
 
@@ -88,16 +80,14 @@ const props = defineProps<{
       <div class="absolute bottom-[1.1875rem]">
         <div class="p-3 rounded-full bg-white dark:bg-gray-800">
           <IconButton
-            variant="solid"
-            color="danger"
             @click="
               () => {
                 props.closeModal();
               }
             "
-            class="p-[1.0625rem]"
+            class="ic-btn-contained-danger p-[1.0625rem]"
           >
-            <PhoneIcon class="w-[1rem] h-[1rem] text-white" />
+            <PhoneIcon class="w-[1rem] h-[1rem]" />
           </IconButton>
         </div>
       </div>

@@ -28,7 +28,6 @@ const props = defineProps<{
     >
       <IconButton
         @click="$emit('tab-change', 'people')"
-        variant="ghost"
         title="people and smiles"
         aria-label="people and smiles"
       >
@@ -56,7 +55,6 @@ const props = defineProps<{
         title="nature"
         aria-label="nature"
         @click="$emit('tab-change', 'nature')"
-        variant="ghost"
       >
         <FireIcon
           class="w-5 h-5 transition-colors duration-200"
@@ -82,7 +80,6 @@ const props = defineProps<{
         title="food"
         aria-label="food"
         @click="$emit('tab-change', 'food')"
-        variant="ghost"
       >
         <CakeIcon
           class="w-5 h-5 transition-colors duration-200"
@@ -106,7 +103,6 @@ const props = defineProps<{
     >
       <IconButton
         @click="$emit('tab-change', 'activity')"
-        variant="ghost"
         title="activities and sports"
         aria-label="activities and sports"
       >
@@ -130,7 +126,7 @@ const props = defineProps<{
           : 'border-transparent',
       ]"
     >
-      <IconButton @click="$emit('tab-change', 'objects')" variant="ghost">
+      <IconButton @click="$emit('tab-change', 'objects')">
         <LightBulbIcon
           class="w-5 h-5 transition-colors duration-200"
           :class="[
@@ -153,7 +149,6 @@ const props = defineProps<{
     >
       <IconButton
         @click="$emit('tab-change', 'travel')"
-        variant="ghost"
         title="travel"
         aria-label="travel"
       >
@@ -181,7 +176,6 @@ const props = defineProps<{
         title="flags"
         aria-label="flags"
         @click="$emit('tab-change', 'flags')"
-        variant="ghost"
       >
         <FlagIcon
           class="w-5 h-5 transition-colors duration-200"

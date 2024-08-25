@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { ArrowDownTrayIcon } from "@heroicons/vue/24/outline";
-import { PlayIcon } from "@heroicons/vue/24/solid";
+import type { IAttachment, IMessage } from "@src/types";
 import type { Ref } from "vue";
+
 import { computed, ref } from "vue";
 
-import type { IAttachment, IMessage } from "@src/types";
-
+import { ArrowDownTrayIcon } from "@heroicons/vue/24/outline";
+import { PlayIcon } from "@heroicons/vue/24/solid";
 import Carousel from "@src/components/ui/data-display/Carousel/Carousel.vue";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 
 const props = defineProps<{
   message: IMessage;
@@ -232,10 +231,8 @@ const isNumber = (
             </button>
 
             <div class="flex flex-col justify-center">
-              <Typography
-                variant="heading-2"
-                :no-color="true"
-                class="mb-3"
+              <p
+                class="heading-2 mb-3"
                 :class="
                   props.self
                     ? ['text-black opacity-50 dark:text-white dark:opacity-70 ']
@@ -247,12 +244,11 @@ const isNumber = (
                       ]
                 "
               >
-                {{ attachment.name }}</Typography
-              >
+                {{ attachment.name }}
+              </p>
 
-              <Typography
-                variant="body-2"
-                :no-color="true"
+              <p
+                class="body-2"
                 :class="
                   props.self
                     ? ['text-black opacity-60 dark:text-white dark:opacity-70']
@@ -265,7 +261,7 @@ const isNumber = (
                 "
               >
                 {{ attachment.size }}
-              </Typography>
+              </p>
             </div>
           </div>
         </div>

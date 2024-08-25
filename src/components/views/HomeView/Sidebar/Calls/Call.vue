@@ -10,7 +10,6 @@ import {
   PhoneArrowUpRightIcon,
   PhoneXMarkIcon,
 } from "@heroicons/vue/24/solid";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import CallAvatar from "@src/components/shared/blocks/CallAvatar.vue";
 
 const props = defineProps<{
@@ -84,14 +83,14 @@ const handleOpenInfoModal = () => {
                 class="block"
                 @click="props.openVoiceCallModal"
               >
-                <Typography variant="heading-2">
+                <p class="heading-2 text-color">
                   {{ getCallName(props.call) }}
-                </Typography>
+                </p>
               </button>
 
-              <Typography v-else variant="heading-2">
+              <p v-else class="heading-2 text-color">
                 {{ getCallName(props.call) }}
-              </Typography>
+              </p>
             </div>
 
             <!--end Call-->
@@ -123,23 +122,17 @@ const handleOpenInfoModal = () => {
 
         <div>
           <!--recording length-->
-          <Typography
+          <p
             v-if="props.active"
-            variant="body-2"
-            no-color
-            class="flex justify-start items-center text-indigo-300"
+            class="body-2 flex justify-start items-center text-indigo-300"
           >
             {{ props.call.length }}
-          </Typography>
+          </p>
 
           <!--recording date-->
-          <Typography
-            v-else
-            variant="body-2"
-            class="flex justify-start items-center"
-          >
+          <p v-else class="body-2 text-color flex justify-start items-center">
             {{ props.call.date }}
-          </Typography>
+          </p>
         </div>
       </div>
     </component>

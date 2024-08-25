@@ -2,7 +2,6 @@
 import useStore from "@src/store/store";
 
 import AccordionButton from "@src/components/ui/data-display/AccordionButton.vue";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import Collapse from "@src/components/ui/utils/Collapse.vue";
 import SettingsSwitch from "@src/components/views/HomeView/Sidebar/Settings/SettingsAccordion/SettingsSwitch.vue";
 
@@ -25,8 +24,8 @@ const store = useStore();
     aria-controls="privacy-settings-collapse"
     @click="props.handleToggle()"
   >
-    <Typography variant="heading-2" class="mb-4"> Privacy & Safety </Typography>
-    <Typography variant="body-2"> Control your privacy settings</Typography>
+    <p class="mb-4 heading-2 text-color">Privacy & Safety</p>
+    <p class="body-2 text-color">Control your privacy settings</p>
   </AccordionButton>
 
   <Collapse id="privacy-settings-collapse" :collapsed="props.collapsed">
@@ -34,7 +33,9 @@ const store = useStore();
       title="Show Last Seen"
       description="Allow people to see your last login"
       :value="!!store.settings.lastSeen"
-      :handle-toggle-switch="(value:boolean) => (store.settings.lastSeen = value)"
+      :handle-toggle-switch="
+        (value: boolean) => (store.settings.lastSeen = value)
+      "
       class="mb-7"
     />
     <SettingsSwitch
@@ -42,7 +43,7 @@ const store = useStore();
       description="Allow people to see whether or not you've read the message"
       :value="!!store.settings.readReceipt"
       :handle-toggle-switch="
-        (value:boolean) => (store.settings.readReceipt = value)
+        (value: boolean) => (store.settings.readReceipt = value)
       "
       class="mb-7"
     />
@@ -51,7 +52,7 @@ const store = useStore();
       description="Allow people to add you to groups"
       :value="!!store.settings.joiningGroups"
       :handle-toggle-switch="
-        (value:boolean) => (store.settings.joiningGroups = value)
+        (value: boolean) => (store.settings.joiningGroups = value)
       "
       class="mb-7"
     />
@@ -60,7 +61,7 @@ const store = useStore();
       description="Receive messages from non-contacts"
       :value="!!store.settings.privateMessages"
       :handle-toggle-switch="
-        (value:boolean) => (store.settings.privateMessages = value)
+        (value: boolean) => (store.settings.privateMessages = value)
       "
       class="mb-7"
     />

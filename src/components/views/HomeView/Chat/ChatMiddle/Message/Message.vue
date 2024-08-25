@@ -12,13 +12,12 @@ import { inject, ref } from "vue";
 
 import { getFullName, getMessageById } from "@src/utils";
 
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import Attachments from "@src/components/views/HomeView/Chat/ChatMiddle/Message/Attachments.vue";
 import LinkPreview from "@src/components/views/HomeView/Chat/ChatMiddle/Message/LinkPreview.vue";
 import MessageContextMenu from "@src/components/views/HomeView/Chat/ChatMiddle/Message/MessageContextMenu.vue";
+import Receipt from "@src/components/views/HomeView/Chat/ChatMiddle/Message/Receipt.vue";
 import Recording from "@src/components/views/HomeView/Chat/ChatMiddle/Message/Recording.vue";
 import MessagePreview from "@src/components/views/HomeView/Chat/MessagePreview.vue";
-import Receipt from "@src/components/views/HomeView/Chat/ChatMiddle/Message/Receipt.vue";
 
 const props = defineProps<{
   message: IMessage;
@@ -130,11 +129,9 @@ const replyMessage = getMessageById(activeConversation, props.message.replyTo);
           />
 
           <!--content-->
-          <Typography
-            variant="body-2"
-            noColor
+          <p
             v-if="props.message.content && props.message.type !== 'recording'"
-            class="outline-none text-black opacity-60 dark:text-white dark:opacity-70"
+            class="body-2 outline-none text-black opacity-60 dark:text-white dark:opacity-70"
             v-html="
               linkifyStr(props.message.content as string, {
                 className: props.self
@@ -147,8 +144,7 @@ const replyMessage = getMessageById(activeConversation, props.message.replyTo);
               })
             "
             tabindex="0"
-          >
-          </Typography>
+          ></p>
 
           <!--recording-->
           <div
@@ -180,9 +176,9 @@ const replyMessage = getMessageById(activeConversation, props.message.replyTo);
 
         <!--date-->
         <div :class="props.self ? ['ml-4', 'order-1'] : ['mr-4']">
-          <Typography variant="body-1" class="whitespace-pre">
+          <p class="body-1 text-color whitespace-pre">
             {{ props.message.date }}
-          </Typography>
+          </p>
         </div>
 
         <!--read receipt-->

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import SwitchInput from "@src/components/ui/inputs/SwitchInput.vue";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 
 const props = defineProps<{
   value: boolean;
@@ -20,9 +19,9 @@ const props = defineProps<{
           class="inline-block outline-none mb-4"
           tabindex="0"
         >
-          <Typography variant="heading-2" class="w-13">
+          <p class="heading-2 text-color w-13">
             {{ props.title }}
-          </Typography>
+          </p>
         </label>
       </div>
 
@@ -34,8 +33,8 @@ const props = defineProps<{
       />
     </div>
     <!--description or help text-->
-    <Typography variant="body-2" class="help-block outline-none" tabindex="0">
+    <p class="body-2 text-color help-block outline-none" tabindex="0">
       {{ props.description }}
-    </Typography>
+    </p>
   </div>
 </template>

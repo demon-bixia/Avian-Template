@@ -69,42 +69,41 @@ const handleCloseOnClickOutside = (event: Event) => {
       :handle-click-outside="handleCloseOnClickOutside"
       :close-dropdown="props.handleCloseDropdown"
     >
-      <DropdownLink
-        label="Profile Information"
-        :handle-click="props.handleCloseDropdown"
-        tabindex="0"
+      <button
+        class="dropdown-link dropdown-link-primary"
+        aria-label="Show profile information"
+        role="menuitem"
+        @click="props.handleCloseDropdown"
       >
         <InformationCircleIcon
           class="h-5 w-5 mr-3 text-black opacity-60 dark:text-white dark:opacity-70"
         />
         Profile Information
-      </DropdownLink>
+      </button>
 
-      <DropdownLink
-        label="Password Change"
-        :handle-click="props.handleCloseDropdown"
+      <RouterLink
+        to="/reset/"
+        class="dropdown-link dropdown-link-primary"
+        aria-label="change password"
+        role="menuitem"
+        @click="props.handleCloseDropdown"
       >
-        <RouterLink to="/reset/" class="w-full flex items-center justify-start">
-          <ArrowPathIcon
-            class="h-5 w-5 mr-3 text-black opacity-60 dark:text-white dark:opacity-70"
-          />
-          Password Change
-        </RouterLink>
-      </DropdownLink>
+        <ArrowPathIcon
+          class="h-5 w-5 mr-3 text-black opacity-60 dark:text-white dark:opacity-70"
+        />
+        Password Change
+      </RouterLink>
 
-      <DropdownLink
-        label="Logout"
-        :handle-click="props.handleCloseDropdown"
-        color="danger"
+      <RouterLink
+        to="/access/sign-in/"
+        class="dropdown-link dropdown-link-danger"
+        aria-label="logout"
+        role="menuitem"
+        @click.prevent="props.handleCloseDropdown"
       >
-        <RouterLink
-          to="/access/sign-in/"
-          class="w-full flex items-center justify-start"
-        >
-          <ArrowLeftOnRectangleIcon class="h-5 w-5 mr-3" />
-          Logout
-        </RouterLink>
-      </DropdownLink>
+        <ArrowLeftOnRectangleIcon class="h-5 w-5 mr-3" />
+        Logout
+      </RouterLink>
     </Dropdown>
   </div>
 </template>

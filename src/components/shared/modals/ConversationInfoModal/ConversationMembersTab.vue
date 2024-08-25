@@ -9,7 +9,6 @@ import useStore from "@src/store/store";
 import { EllipsisVerticalIcon } from "@heroicons/vue/24/outline";
 import { ArrowUturnLeftIcon } from "@heroicons/vue/24/solid";
 import ContactItem from "@src/components/shared/blocks/ContactItem.vue";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import IconButton from "@src/components/ui/inputs/IconButton.vue";
 import SearchInput from "@src/components/ui/inputs/SearchInput.vue";
 import Dropdown from "@src/components/ui/navigation/Dropdown/Dropdown.vue";
@@ -85,9 +84,7 @@ const handleClickOutside = (event: Event) => {
   <div>
     <!--header-->
     <div class="flex justify-between items-center mb-6 px-5">
-      <Typography id="modal-title" variant="heading-1" class="default-outline">
-        Members
-      </Typography>
+      <p id="modal-title" class="heading-1 text-color">Members</p>
 
       <!--return button-->
       <IconButton
@@ -98,12 +95,9 @@ const handleClickOutside = (event: Event) => {
             removeContact: true,
           })
         "
-        color="danger"
-        class="group p-2 border rounded-full border-gray-200 dark:border-white dark:border-opacity-70 focus:border-red-100 dark:focus:border-red-400 hover:border-red-100 dark:hover:border-red-500"
+        class="ic-btn-outlined-danger p-2"
       >
-        <ArrowUturnLeftIcon
-          class="w-5 h-5 text-black opacity-50 dark:text-white dark:opacity-70 group-focus:text-red-500 dark:group-focus:text-white group-hover:text-red-500 group-hover:opacity-100 dark:group-hover:text-white"
-        />
+        <ArrowUturnLeftIcon class="w-5 h-5" />
       </IconButton>
     </div>
 
@@ -134,9 +128,7 @@ const handleClickOutside = (event: Event) => {
             v-if="(props.conversation.admins as number[]).includes(contact.id)"
           >
             <div class="ml-3">
-              <Typography variant="body-4" noColor class="text-indigo-400"
-                >admin</Typography
-              >
+              <p class="body-4 text-indigo-400">admin</p>
             </div>
           </template>
 
@@ -155,10 +147,7 @@ const handleClickOutside = (event: Event) => {
                 @click="(event) => handleToggleDropdown(event, index)"
                 class="open-menu w-6 h-6"
               >
-                <EllipsisVerticalIcon
-                  class="open-menu h-5 w-5 text-black opacity-60 dark:text-white"
-                  tabindex="0"
-                />
+                <EllipsisVerticalIcon class="open-menu h-5 w-5" tabindex="0" />
               </IconButton>
 
               <!--dropdown menu-->
@@ -168,9 +157,27 @@ const handleClickOutside = (event: Event) => {
                 :show="(dropdownMenuStates as boolean[])[index]"
                 :position="dropdownMenuPosition"
               >
-                <DropdownLink> Promote to admin </DropdownLink>
-                <DropdownLink> Demote to member </DropdownLink>
-                <DropdownLink color="danger"> Remove contact </DropdownLink>
+                <button
+                  class="dropdown-link dropdown-link-primary"
+                  aria-label="give admin permissions"
+                  role="menuitem"
+                >
+                  Promote to admin
+                </button>
+                <button
+                  class="dropdown-link dropdown-link-primary"
+                  aria-label="remove admin permissions"
+                  role="menuitem"
+                >
+                  Demote to member
+                </button>
+                <button
+                  class="dropdown-link dropdown-link-danger"
+                  aria-label="remove contacts"
+                  role="menuitem"
+                >
+                  Remove contact
+                </button>
               </Dropdown>
             </div>
           </template>

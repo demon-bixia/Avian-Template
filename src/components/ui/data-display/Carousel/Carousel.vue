@@ -262,13 +262,9 @@ onUnmounted(() => {
               aria-label="previous item"
               @click="handleMoveToPreviousItem"
               :class="{ hidden: !isThereAPrevious() }"
-              variant="solid"
-              color="glass"
-              class="absolute top-[50%] z-30 left-0 flex items-center justify-center mr-5 ml-5 p-4"
+              class="ic-btn-contained-glass absolute top-[50%] z-30 left-0 flex items-center justify-center mr-5 ml-5 p-4"
             >
-              <ChevronLeftIcon
-                class="w-6 h-6 text-white opacity-80 hover:opacity-100"
-              />
+              <ChevronLeftIcon class="w-6 h-6" />
             </IconButton>
 
             <!--Image-->
@@ -308,13 +304,9 @@ onUnmounted(() => {
               aria-label="next item"
               @click="handleMoveToNextItem"
               :class="{ hidden: !isThereANext() }"
-              class="absolute top-[50%] z-30 right-0 flex items-center justify-center p-4 ml-5 mr-5"
-              variant="solid"
-              color="glass"
+              class="ic-btn-contained-glass absolute top-[50%] z-30 right-0 flex items-center justify-center p-4 ml-5 mr-5"
             >
-              <ChevronRightIcon
-                class="w-6 h-6 text-white opacity-80 hover:opacity-100"
-              />
+              <ChevronRightIcon class="w-6 h-6" />
             </IconButton>
           </div>
         </div>

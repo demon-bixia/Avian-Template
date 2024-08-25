@@ -9,7 +9,6 @@ import { unicodeToEmoji } from "@src/utils";
 import emojis from "@src/components/ui/inputs/EmojiPicker/emojis.json";
 import ScrollBox from "@src/components/ui/utils/ScrollBox.vue";
 import IconButton from "@src/components/ui/inputs/IconButton.vue";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 
 interface IEmojiGroups {
   people: IEmoji[];
@@ -38,9 +37,7 @@ const props = defineProps<{
 
 const store = useStore();
 
-const loading = ref(true);
-
-// emojis filtered by skintone and keyword
+// emojis filtered by skin tone and keyword
 const filteredEmojis: Ref<IEmojiGroups> = ref(emojis);
 
 // Search for the emojis.
@@ -82,7 +79,7 @@ watch(
   () => [props.keyword, props.activeTab, store.emojiSkinTone],
   async () => {
     filteredEmojis.value = filterEmojis();
-  }
+  },
 );
 
 // when mounting the component filter the emojis
@@ -95,15 +92,13 @@ onMounted(() => {
   <ScrollBox class="w-full max-h-[17.125rem] overflow-y-scroll">
     <div v-for="[name, group] in Object.entries(filteredEmojis)" class="mb-6">
       <!--Group title-->
-      <Typography variant="heading-2" class="mb-4 dark:text-white"
-        >{{ name }}
-      </Typography>
+      <p class="heading-2 text-color mb-4 dark:text-white">{{ name }}</p>
       <div class="flex flex-wrap justify-start">
         <!--Emojis-->
         <div v-for="emoji in group">
           <IconButton
             v-if="emoji && emoji.r"
-            class="w-[1.875rem] h-[1.875rem] mr-1"
+            class="ic-btn-ghost-gray w-[1.875rem] h-[1.875rem] mr-1"
             :title="emoji.n[0]"
             :aria-label="emoji.n[0]"
           >

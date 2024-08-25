@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Typography from "@src/components/ui/data-display/Typography.vue";
 import Button from "@src/components/ui/inputs/Button.vue";
 import Checkbox from "@src/components/ui/inputs/Checkbox.vue";
 
@@ -32,12 +31,12 @@ const handleCheck = () => {
         :handle-check="handleCheck"
       />
       <label for="select-all">
-        <Typography variant="body-2">Select All</Typography>
+        <p class="body-2 text-color">Select All</p>
       </label>
     </div>
     <div class="flex items-center">
-      <Button variant="ghost" color="danger" class="mr-3"> Delete </Button>
-      <Button variant="ghost" color="primary" @click="props.handleCloseSelect">
+      <Button class="ghost-danger ghost-text mr-3"> Delete </Button>
+      <Button class="ghost-primary ghost-text" @click="props.handleCloseSelect">
         Cancel
       </Button>
     </div>

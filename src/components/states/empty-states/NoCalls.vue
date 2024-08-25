@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { PhoneIcon } from "@heroicons/vue/24/outline";
-import Typography from "@src/components/ui/data-display/Typography.vue";
 
 const props = defineProps<{
   vertical?: boolean;
@@ -29,11 +28,11 @@ const props = defineProps<{
 
     <!--content-->
     <div :class="props.vertical ? [] : ['flex', 'flex-col', 'items-start']">
-      <Typography variant="heading-2" class="mb-3">No Calls</Typography>
+      <p class="heading-2 text-color mb-3">No Calls</p>
 
-      <Typography variant="body-2" class="flex">
+      <p class="body-2 text-color flex">
         You didn't receive or send any calls.
-      </Typography>
+      </p>
     </div>
   </div>
 </template>

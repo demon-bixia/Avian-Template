@@ -17,7 +17,7 @@ const confirmPassword = ref("");
         :value="password"
         label="Password"
         placeholder="Enter your password"
-        class="pr-[2.5rem] mb-5"
+        class="mb-4"
       />
 
       <PasswordInput
@@ -30,10 +30,11 @@ const confirmPassword = ref("");
 
     <!--controls-->
     <div class="mb-5">
-      <Button class="w-full mb-4">Sign up</Button>
+      <Button class="contained-primary contained-text w-full mb-4"
+        >Sign up</Button
+      >
       <Button
-        variant="outlined"
-        class="w-full"
+        class="outlined-primary outlined-text w-full"
         @click="
           $emit('active-section-change', {
             sectionName: 'personal-section',

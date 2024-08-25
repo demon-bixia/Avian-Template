@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from "vue";
+import { onMounted, onUnmounted } from "vue";
 
 import ScaleTransition from "@src/components/ui/transitions/ScaleTransition.vue";
 
