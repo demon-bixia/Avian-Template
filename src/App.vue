@@ -8,9 +8,9 @@ import FadeTransition from "@src/components/ui/transitions/FadeTransition.vue";
 
 // Refactoring code:
 // todo reorganize component structure
-// todo refactor make everything that can be a ui component into one.
 // todo refactor remove getters from utils file and add them to store folder.
 // todo improve the video component.
+// todo add shortcuts
 
 // future features:
 // todo add video calling
@@ -77,7 +77,10 @@ onUnmounted(() => {
 
 <template>
   <div :class="{ dark: store.settings.darkMode }">
-    <div class="bg-white dark:bg-gray-800 transition-colors duration-500" :style="{ height: height }">
+    <div
+      class="bg-white dark:bg-gray-800 transition-colors duration-500"
+      :style="{ height: height }"
+    >
       <router-view v-slot="{ Component }">
         <FadeTransition>
           <component :is="Component" />
