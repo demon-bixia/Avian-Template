@@ -52,7 +52,7 @@ npm run dev
 
 <p>The resources used to create this project are:</p>
 
-- <a href="https://www.figma.com/file/P4anyRLoN2NNhDicfFUcqi/Avian-Messaging?node-id=2%3A4">Custom design system in figma</a>
+- <a href="https://www.figma.com/design/afxhPVpXABmGzKPk146vlz/Avian-Messaging-Old?node-id=0-1&t=zUVzLyhGRmDk1KCn-0">Figma file</a>
 - <a href="https://pinia.vuejs.org/">Pinia</a>
 - <a href="https://heroicons.com/">Heroicons</a>
 - <a href="https://github.com/dcastil/tailwind-merge">Tailwind merge</a>
