@@ -275,7 +275,7 @@ export const conversations = [
             type: "video",
             name: "fun-video.mp4",
             size: "11.4 MB",
-            url: "https://www.w3schools.com/html/mov_bbb.mp4",
+            url: "https://videos.pexels.com/video-files/29251873/12621639_1080_1920_30fps.mp4",
             thumbnail:
               "https://images.unsplash.com/photo-1559705421-4ae9bf6fabb5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
           },
@@ -284,7 +284,7 @@ export const conversations = [
             type: "video",
             name: "awesome-video.mp4",
             size: "11.4 MB",
-            url: "https://assets.mixkit.co/videos/preview/mixkit-small-flowering-plants-in-a-nursery-43709-large.mp4",
+            url: "https://videos.pexels.com/video-files/14637339/14637339-uhd_2560_1440_30fps.mp4",
             thumbnail:
               "https://images.unsplash.com/photo-1496715976403-7e36dc43f17b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
           },

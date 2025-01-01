@@ -33,8 +33,8 @@ const props = defineProps<{
 
     <!--message date-->
     <div>
-      <p class="opacity-60 font-light text-xs leading-4 tracking-[.01rem]">
-        <p class="body-4 text-color"> 1/5/2019 </p>
+      <p class="body-4 text-color ">
+         1/5/2019
       </p>
     </div>
   </button>
